@@ -24,6 +24,8 @@ const fs = require('fs');
 const bot = new Discord.Client();
 
 var commandsList = fs.readFileSync('Storage/commands.txt', 'utf8');
+
+function loadCmds () {
 bot.commands = new Discord.Collection();
 //
 fs.readdir('./commands/', (err, files) => {
@@ -34,6 +36,7 @@ fs.readdir('./commands/', (err, files) => {
   else { console.log(jsfiles.length + ' Commands found') }
   
   jsfiles.forEach((f, i) => {
+    delete require.cache[require.resolve(`./commands/${f}`)]; 
     var cmds = require (`./commands/${f}`);
     console.log(`Command ${f} loading...`);
     bot.commands.set(cmds.config.command, cmds);
@@ -42,6 +45,7 @@ fs.readdir('./commands/', (err, files) => {
   
 })
 
+}
 bot.on('message', message => {
   
   var sender = message.author;
@@ -57,6 +61,13 @@ bot.on('message', message => {
   if (cmd) cmd.run(bot, message, args);
   
 
+  if (msg === prefix + 'RELOAD') {
+      message.channel.send({embed:{
+      
+      
+      
+      }})
+  }
   if (message.channel.id === '410604743296286731') {
     if (isNaN(message.content)){
         message.delete();
