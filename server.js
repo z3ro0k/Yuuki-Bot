@@ -49,17 +49,15 @@ bot.on('message', message =>{
   var sender = message.author;
   var msg = message.content.toUpperCase();
   var prefix = '-';
-  var cont = message.content.slice(prefix.length).split(' ')
+  var cont = message.content.slice(prefix.length).split(' ');
+  var args = cont.slice(1);
   
   
-  if (!message.content.starsWith(prefix)) return;
+  if (!message.content.startsWith(prefix)) return;
   
+  var cmd = bot.commands.get(cont[0])
+  if (cmd) cmd.run(bot, message, args);
   
-  
-  if (msg === prefix + 'PING'){
-      message.channel.send('Pong! **' + sender.username + '**');  
-  
-  }
 
   if (message.channel.id === '410604743296286731') {
     if (isNaN(message.content)){
