@@ -24,21 +24,21 @@ const fs = require('fs');
 const bot = new Discord.Client();
 
 var commandsList = fs.readFileSync('Storage/commands.txt', 'utf8');
-bot.commads = new Discord.Collection();
+bot.commands = new Discord.Collection();
 //
 fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   
   var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
-  if (jsfiles.length < 0) { return console.log('No commands Found') }
+  if (jsfiles.length <= 0) { return console.log('No commands Found') }
   else { console.log(jsfiles.length + ' Commands found') }
   
   jsfiles.forEach((f, i) => {
     var cmds = require (`./commands/${f}`);
     console.log(`Command ${f} loading...`);
     bot.commands.set(cmds.config.command, cmds);
-  //
-  })//
+  //Pues ya me voy Bye
+  })//aaaaa no vi eso
   
 })
 
