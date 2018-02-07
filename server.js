@@ -37,9 +37,9 @@ bot.on('message', message =>{
   }
 
   if (message.channel.id === '410604743296286731') {
-    if (isNaN(message.contnt)){
+    if (isNaN(message.content)){
         message.delete();
-          message.author.send('Porfavor solo numeros manda en el canal <#410604743296286731>')      
+          message.author.send('Porfavor solo numeros manda en el canal <#410604743296286731>, Gracias!')      
         }
        
       }
@@ -49,5 +49,9 @@ bot.on('ready', () =>{
 console.log('Bot launched...')
 bot.user.setActivity('Hello everyone!')
 bot.user.setStatus('dnd')  
+});
+bot.on('guildMemberAdd', member => {
+  console.log('El usuario' + member.user.username + 'a entrado al server')
+
 });
 bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DVvirQ.TJ9A4pbAR7YFZcH5Gkx8Elc6l5Q')
