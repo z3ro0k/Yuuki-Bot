@@ -37,7 +37,8 @@ fs.readdir('./commands/', (err, files) => {
   
   jsfiles.forEach((f, i) => {
     var cmds = require(`./commands/${f}`)
-  
+    console.log(`Command ${f} loading...`)
+    bot.commands.set(cmds.config.command, cmds)
   
   })
   
@@ -48,6 +49,12 @@ bot.on('message', message =>{
   var sender = message.author;
   var msg = message.content.toUpperCase();
   var prefix = '-';
+  var cont = message.content.slice(prefix.length).split(' ')
+  
+  
+  if (!message.content.starsWith(prefix)) return;
+  
+  
   
   if (msg === prefix + 'PING'){
       message.channel.send('Pong! **' + sender.username + '**');  
