@@ -21,9 +21,18 @@ setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
 }, 280000);
 //DESDE AQUI EMPIEZA A ESCRIBIR EL CODIGO PARA SU BOT
-const Discord = require('discord.js')
-
+const Discord = require('discord.js');
+const fs = require('fs');
 const bot = new Discord.Client();
+
+
+bot.commads = new Discord.Collection();
+
+fs.readdir('./commands/', (err, files) => {
+  if (err) console.error(err);
+  
+  var jsfiles = files.filter 
+})
 
 bot.on('message', message =>{
   
