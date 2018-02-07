@@ -32,8 +32,8 @@ fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   
   var jsfiles = files.filter(f => f.split('-').pop() === 'js') 
-  if (jsfiles.length < 0) {return console.log('No commands Found')}
-  else { console.log( jsfiles.length + ' Commands found') }
+  if (jsfiles.length <= 0) { return console.log('No commands Found') }
+  else { console.log(jsfiles.length + ' Commands found') }
   
   jsfiles.forEach((f, i) => {
     var cmds = require(`./commands/${f}`)
@@ -55,7 +55,7 @@ bot.on('message', message =>{
   
   if (!message.content.startsWith(prefix)) return;
   
-  var cmd = bot.commands.get(cont[0])
+  var cmd = bot.commands.get(cont[1])
   if (cmd) cmd.run(bot, message, args);
   
 
