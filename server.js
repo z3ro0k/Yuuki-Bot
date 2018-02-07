@@ -1,39 +1,40 @@
-// server.js
-// where your node app starts
+//ESTE CODIGO NO AFECTARA SU BOT, SCRIPT DE ARRANQUE
 
-// init project
-var express = require('express');
-var app = express();
+const http = require('http');
+const express = require('express');
+const app = express();
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/static-files.html
+//
 app.use(express.static('public'));
 
-// http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/dreams", function (request, response) {
-  response.send(dreams);
-});
-
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
+app.get("/", (request, response) => {
   response.sendStatus(200);
 });
 
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+app.listen(process.env.PORT);
 
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
+}, 280000);
+//DESDE AQUI EMPIEZA A ESCRIBIR EL CODIGO PARA SU BOT
+const Discord = require('discord.js')
+
+const bot = new Discord.Client();
+
+bot.on('message', message =>{
+  
+  var sender = message.author;
+  var msg = message.content.toUpperCase();
+  var prefix = '-';
+  
+  if (msg === prefix + 'ping'){
+      message.channel.send('Pong!' + )  
+  
+  }
+
+
+})
