@@ -25,20 +25,20 @@ const bot = new Discord.Client();
 
 var commandsList = fs.readFileSync('Storage/commands.txt', 'utf8');
 bot.commads = new Discord.Collection();
-//aqui no sale los comandos 
+//
 fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   
-  var jsfiles = files.filter(f => f.split('-').pop() === 'js') 
-  if (jsfiles.length <= 0) { return console.log('No commands Found') }
+  var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
+  if (jsfiles.length < 0) { return console.log('No commands Found') }
   else { console.log(jsfiles.length + ' Commands found') }
   
   jsfiles.forEach((f, i) => {
-    var cmds = require(`./commands/${f}`)
-    console.log(`Command ${f} loading...`)
-    bot.commands.set(cmds.config.command, cmds)
-  //hmm
-  })//no salen los comandos mira logs
+    var cmds = require (`./commands/${f}`);
+    console.log(`Command ${f} loading...`);
+    bot.commands.set(cmds.config.command, cmds);
+  //
+  })//
   
 })
 
