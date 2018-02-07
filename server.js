@@ -37,8 +37,8 @@ fs.readdir('./commands/', (err, files) => {
     var cmds = require (`./commands/${f}`);
     console.log(`Command ${f} loading...`);
     bot.commands.set(cmds.config.command, cmds);
-  //Pues ya me voy Bye
-  })//aaaaa no vi eso
+
+  })
   
 })
 
@@ -46,14 +46,14 @@ bot.on('message', message => {
   
   var sender = message.author;
   var msg = message.content.toUpperCase();
-  var prefix = '-';
+  var prefix = 'No!';
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
   
   
   if (!message.content.startsWith(prefix)) return;
   
-  var cmd = bot.commands.get(cont[1])
+  var cmd = bot.commands.get(cont[0])
   if (cmd) cmd.run(bot, message, args);
   
 

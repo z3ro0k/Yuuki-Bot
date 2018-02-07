@@ -2,12 +2,11 @@ module.exports.run = async (bot, message, args) => {
 
   message.channel.send({embed:{ 
       title: "Ping",
-      description:"pong!",
-      color: 0x12a589
+      description:"pong! **" + message.author.username + "**"
   }})
   
 }
 
 module.exports.config = {
-  command: "PING"
+  command: "ping"
 }
