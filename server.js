@@ -1,4 +1,3 @@
-//ESTE CODIGO NO AFECTARA SU BOT, SCRIPT DE ARRANQUE
 
 const http = require('http');
 const express = require('express');
@@ -8,7 +7,6 @@ const app = express();
 app.use(express.static('public'));
 
 app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
 });
 
 app.get("/", (request, response) => {
@@ -25,9 +23,9 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
 
-
+var commandsList = fs.readFileSync('Storage/commands.txt', 'utf8');
 bot.commads = new Discord.Collection();
-
+//aqui no sale los comandos 
 fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   
@@ -39,12 +37,12 @@ fs.readdir('./commands/', (err, files) => {
     var cmds = require(`./commands/${f}`)
     console.log(`Command ${f} loading...`)
     bot.commands.set(cmds.config.command, cmds)
-  
-  })
+  //hmm
+  })//no salen los comandos mira logs
   
 })
 
-bot.on('message', message =>{
+bot.on('message', message => {
   
   var sender = message.author;
   var msg = message.content.toUpperCase();
