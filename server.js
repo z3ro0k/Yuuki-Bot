@@ -31,10 +31,16 @@ bot.on('message', message =>{
   var msg = message.content.toUpperCase();
   var prefix = '-';
   
-  if (msg === prefix + 'ping'){
-      message.channel.send('Pong!' + )  
+  if (msg === prefix + 'PING'){
+      message.channel.send('Pong! **' + sender.username + '**');  
   
   }
 
 
 })
+bot.on('ready', () =>{
+console.log('Bot launched...')
+bot.user.setActivity('Hello everyone!')
+bot.user.setStatus('dnd')  
+});
+bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DVvirQ.TJ9A4pbAR7YFZcH5Gkx8Elc6l5Q')
