@@ -52,6 +52,7 @@ bot.user.setStatus('dnd')
 });
 bot.on('guildMemberAdd', member => {
   console.log('El usuario' + member.user.username + 'a entrado al server')
-
+  var role = member.guild.roles.find('name', 'Members');
+  member.addRole(role)
 });
 bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DVvirQ.TJ9A4pbAR7YFZcH5Gkx8Elc6l5Q')
