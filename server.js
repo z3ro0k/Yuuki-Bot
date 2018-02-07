@@ -61,11 +61,6 @@ bot.on('message', message => {
   var cmd = bot.commands.get(cont[0])
   if (cmd) cmd.run(bot, message, args);
   
-
-  if (msg === prefix + 'RELOAD') {
-      message.channel.send('All Comands Reload')
-      loadCmds()
-  }
   if (message.channel.id === '410604743296286731') {
     if (isNaN(message.content)){
         message.delete();
@@ -74,6 +69,10 @@ bot.on('message', message => {
        
       }
   
+  if (msg === prefix + 'RELOAD') {
+      message.channel.send('All Comands Reload')
+      loadCmds()
+  } 
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')
