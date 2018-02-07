@@ -46,6 +46,7 @@ fs.readdir('./commands/', (err, files) => {
 })
 
 }
+loadCmds();
 bot.on('message', message => {
   
   var sender = message.author;
@@ -61,12 +62,11 @@ bot.on('message', message => {
   if (cmd) cmd.run(bot, message, args);
   
 
-  if (msg === prefix + 'RELOAD') {
+  if (msg === prefix + 'R') {
       message.channel.send({embed:{
-      
-      
-      
+        description:"All Commands Reload"
       }})
+      loadCmds()
   }
   if (message.channel.id === '410604743296286731') {
     if (isNaN(message.content)){
