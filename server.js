@@ -36,7 +36,14 @@ bot.on('message', message =>{
   
   }
 
-
+  if (message.channel.id === '410604743296286731') {
+    if (isNaN(message.contnt)){
+        message.delete();
+          message.author.send('Porfavor solo numeros manda en el canal <#410604743296286731>')      
+        }
+       
+      }
+  
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')
