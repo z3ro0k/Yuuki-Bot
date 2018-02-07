@@ -51,7 +51,7 @@ bot.on('message', message => {
   
   var sender = message.author;
   var msg = message.content.toUpperCase();
-  var prefix = 'No!';
+  var prefix = '-';
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
   
@@ -62,10 +62,8 @@ bot.on('message', message => {
   if (cmd) cmd.run(bot, message, args);
   
 
-  if (msg === prefix + 'R') {
-      message.channel.send({embed:{
-        description:"All Commands Reload"
-      }})
+  if (msg === prefix + 'RELOAD') {
+      message.channel.send('All Comands Reload')
       loadCmds()
   }
   if (message.channel.id === '410604743296286731') {
