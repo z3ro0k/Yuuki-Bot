@@ -84,4 +84,4 @@ bot.on('guildMemberAdd', member => {
   var role = member.guild.roles.find('name', 'Members');
   member.addRole(role)
 });
-bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DVvirQ.TJ9A4pbAR7YFZcH5Gkx8Elc6l5Q')
+//bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DVvirQ.TJ9A4pbAR7YFZcH5Gkx8Elc6l5Q')
