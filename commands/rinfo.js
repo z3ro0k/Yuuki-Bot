@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 exports.run = (bot, message, args, func) => {
 let server = message.guild 
-let rolee = message.mentions.roles.first()
+let rolee = message.mentions.roles.first() || message.guild.roles.find('name', args[0])
 if (!rolee) {
   message.channel.send('**Please mention a Role**\n *>roleinfo @role*')
   return;
