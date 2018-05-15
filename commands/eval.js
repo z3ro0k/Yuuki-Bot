@@ -10,7 +10,6 @@ exports.run = (bot, message) => {
     .setColor("#f45f42")
   .addField("<:error:401869378506719233> Acceso Denegado", "Este comando es solo para dueños del BOT!")
 		
-  const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
   const clean = text => {
   if (typeof(text) === "string")
     return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
@@ -92,5 +91,5 @@ exports.run = (bot, message) => {
     }
 }
 module.exports.config = {
-  comamnd: "eval"
+  command: "eval"
 }

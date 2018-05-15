@@ -51,7 +51,7 @@ bot.on('message', message => {
   
   var sender = message.author;
   var msg = message.content.toUpperCase();
-  var prefix = '-';
+  var prefix = 'Yu-';
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
   
@@ -74,4 +74,4 @@ bot.user.setActivity('Hello everyone!')
 bot.user.setStatus('dnd')  
 });
 
-//bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DXgWmw.e1zXkHOcrXJEY3635Pu8-cFWAgQ')
+bot.login('MzcwODI5Mzc5Mjc5OTEyOTcx.DdvsgQ.vEjUN5QR04xpa3JmC7dCCZehv4c')
