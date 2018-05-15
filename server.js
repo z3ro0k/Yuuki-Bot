@@ -61,13 +61,7 @@ bot.on('message', message => {
   var cmd = bot.commands.get(cont[0])
   if (cmd) cmd.run(bot, message, args);
   
-  if (message.channel.id === '410604743296286731') {
-    if (isNaN(message.content)){
-        message.delete();
-          message.author.send('Porfavor solo numeros manda en el canal <#410604743296286731>, Gracias!')      
-        }
-       
-      }
+  
   
   if (msg === prefix + 'RELOAD') {
       message.channel.send('All Comands Reload')
@@ -79,9 +73,5 @@ console.log('Bot launched...')
 bot.user.setActivity('Hello everyone!')
 bot.user.setStatus('dnd')  
 });
-bot.on('guildMemberAdd', member => {
-  console.log('El usuario' + member.user.username + 'a entrado al server')
-  var role = member.guild.roles.find('name', 'Members');
-  member.addRole(role)
-});
+
 //bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DXgWmw.e1zXkHOcrXJEY3635Pu8-cFWAgQ')
