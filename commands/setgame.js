@@ -1,0 +1,17 @@
+const Discord = require('discord.js')
+const { IdOwner } = require('./botconfig.js')
+exports.run = async (bot, message, args) => {
+   if(message.author.id !== IdOwner) return;
+
+    
+      if(!args.join(' ')) return message.channel.send(`Escriba el estado.`);
+    bot.user.setPresence( {
+    game: {
+    name: args.join(' '),
+    type: "LISTENING"
+    }
+    });
+}
+exports.config = {
+  command: "setgame"
+}
