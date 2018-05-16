@@ -1,22 +1,30 @@
-const Discord = require('discord.js');
+const Discord = require('discord.js')
 
-exports.run = (bot, message) => {
-  if(args[0] == "help"){
-  const help = new Discord.RichEmbed()
-      .addField('Uso:', "Yu-mc ")
-      .setColor(0x36393e)
-      .addField('Descripción', "Crea un **achievement** de minecraft ")
-      .addField('Ejemplos:', "Yu-mc Hola Mundo\nYu-mc Hello World")
-      message.channel.send(help);
-      return;
-    }
-          var ids = ["20", "1", "13", "18", "17", "9", "31", "22", "23", "2", "11", "19", "24", "25", "12", "33" ]
-            const randomizer = Math.floor(Math.random()*ids.length);
-            const args = message.content.split(" ").slice(1).join(" ")
-    if (!args) return message.channel.send("Put something you want to achieve!");
-    const image = new Discord.Attachment(`https://www.minecraftskinstealer.com/achievement/a.php?i=${ids[randomizer]}&h=Achievement Get!&t=${args}`, "achievement.png");
-message.channel.send(image)
-    }
-module.exports.config = {
-  command: "mc"
+exports.run = async (bot, message, args ) => {
+let razon = args.join(' ');
+let msg = args.join(' ')
+var snekfetch = require('snekfetch');
+
+  let [title, contents] = args.join(' ').split(" | ")
+  if(!contents) {
+    [title, contents] = ["Achievement Get!", title];
+  }
+  let rnd = Math.floor((Math.random() * 39) + 1);
+  if(args.join(' ').toLowerCase().includes("burn")) rnd = 38;
+  if(args.join(' ').toLowerCase().includes("cookie")) rnd = 21;
+  if(args.join(' ').toLowerCase().includes("cake")) rnd = 10;
+
+  if (!args.join(' ')) {
+      message.channel.send('Porfavor pon algo para transformarlo a un achievement');
+      return
+      }
+  if(title.length > 22 || contents.length > 22) return message.channel.send("Max Length: 22 Characters. Soz.").then(message.delete.bind(message), 2000);
+  const url = `https://www.minecraftskinstealer.com/achievement/a.php?i=${rnd}&h=${encodeURIComponent(title)}&t=${encodeURIComponent(contents)}`;
+  snekfetch.get(url)
+   .then(r=>message.channel.send("", {files:[{attachment: r.body}]}));
+  message.delete();
+
+}
+exports.config = {
+  command: "mcc"
 }

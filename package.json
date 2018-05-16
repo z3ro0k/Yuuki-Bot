@@ -24,7 +24,8 @@
     "malapi": "^0.0.3",
     "youtube-dl": "^1.12.2",
     "random-puppy": "^1.1.0",
-    "request": "^2.86.0"
+    "request": "^2.86.0",
+    "snekfetch": "^4.0.0"
   },
   "engines": {
     "node": "8.x"
