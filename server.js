@@ -49,17 +49,19 @@ fs.readdir('./commands/', (err, files) => {
 loadCmds();
 bot.on('message', message => {
   
+ 
+  var prefix = 'Yu-';
+ 
   var sender = message.author;
   var msg = message.content.toLowerCase();
-  var prefix = 'Yu-';
+  
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
-  
   
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0])
-  if (cmd) cmd.run(bot, message, args, loadCmds);
+  if (cmd) cmd.run(bot, message, args, loadCmds, userAFK);
   
   
   
@@ -82,7 +84,8 @@ bot.on('message', message => {
     message.reply("**<:AFKNEP:375862541307346954>** He definido tu estado en **AFK**. Si la gente te menciona en    su mensaje, les notificaré que estas en **AFK**.")
     userAFK.push(message.author.id); 
  
-  }
+    return;
+    }
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')

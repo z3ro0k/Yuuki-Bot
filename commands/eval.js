@@ -3,7 +3,7 @@ const Discord = require('discord.js'),
       ms = require('ms'),
       mss = require('parse-ms')
 
-exports.run = (bot, message, loadCmds) => {
+exports.run = (bot, message, loadCmds, userAFK) => {
     
    var embed = new Discord.RichEmbed()
   .setTitle("Restricted")
