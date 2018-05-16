@@ -5,6 +5,8 @@ message.delete();
   if(args[0] == "help"){
     const help = new Discord.RichEmbed()
       .addField('Uso:', "Yu-sembed <Tu texto>")
+      .setColor(0x36393e)
+      .addField('Descripción', "Convierte un mensaje a embed")
       .addField('Ejemplos:', "Yu-sembed Hola mundo\nYu-sembed Hello World")
       message.channel.send(help);
       return;

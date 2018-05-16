@@ -4,17 +4,15 @@ const dateFormat = require('dateformat');
 //let cooldown = new Set();
 
 exports.run = async(bot, message, args) => {
-  /*
-  if(cooldown.has(message.author.id)){
-   message.channel.send(message.author.username+ " use the command after 20 seconds!!");
-   return;
-}
-  cooldown.add(message.author.id);
-  
-  setTimeout(() => {
-  cooldown.delete(message.author.id);
-}, 20000);
-  */
+  if(args[0] == "help"){
+    const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-server")
+      .setColor(0x36393e)
+      .addField('Descripción', "Muestra la informacion del")
+      .addField('Ejemplos:', "Yu-server 322209371704786945\nYu-server 312846399731662850\nYu-server")
+      message.channel.send(help);
+      return;
+    }
   let server = bot.guilds.get(args.join(' ')) || message.guild
   let sender = message.author
   let online = server.members.filter(m => m.presence.status == 'online')

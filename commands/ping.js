@@ -1,6 +1,14 @@
 const Discord = require('discord.js')
 exports.run = (bot, message, args, func) => {
-
+if(args[0] == "help"){
+    const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-ping ")
+      .setColor(0x36393e)
+      .addField('Descripción', "Muestra el ping del **Bot** y el ping de la api de **Discord**")
+      .addField('Ejemplos:', "Yu-ping")
+      message.channel.send(help);
+      return;
+    }
     let ping = Math.floor(message.client.ping);
 
 message.channel.send(":ping_pong: Pong!")

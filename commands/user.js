@@ -4,9 +4,16 @@ const datediff = require('date-diff')
 
 
 exports.run = async(bot, message, args) => {
- 
+  if(args[0] == "help"){
+    const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-user ")
+      .setColor(0x36393e)
+      .addField('Ejemplos:', "Yu-user 322203879208910849\nYu-user 321438019653599233\nYu-user")
+      message.channel.send(help);
+      return;
+    }
     
-let user = message.mentions.users.first() || message.author
+let user = message.mentions.users.first() || message.guild.member(args.join(' ')) || message.author
 let member = message.guild.member(user)
 let roles = member.roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`);
 let messageauthor = message.guild.member(message.author)
