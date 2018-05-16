@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-
+let bCase = 12;
 exports.run = async (bot, message, args) => {
 
 let user = message.mentions.users.first();
@@ -14,8 +14,16 @@ if (!message.guild.member(user).bannable) return message.reply('No puedo banear 
                                       
                                   
  message.guild.member(user).ban(razon);
-  
- message.channel.send(`**${user.username}**, fue baneado del servidor, razón: ${razon}.`);
+  let banEmbed = new Discord.RichEmbed()
+    .setDescription(`**<:bEmoji:440388028939239434>Ban | Case #${bCase = bCase + 1}**`)
+    .setColor(0x36393e)
+    .addField("Banned User", `${user} with ID ${user.id}`)
+    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField("Banned In", message.channel)
+    .addField("Reason", razon)
+    .addField("Time", message.createdAt)
+    
+ message.channel.send(banEmbed);
 }
 module.exports.config = {
   command: "ban"
