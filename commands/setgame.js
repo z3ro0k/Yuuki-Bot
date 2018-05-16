@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const { IdOwner } = require('./botconfig.js')
+const { IdOwner } = require('../botconfig.js')
 exports.run = async (bot, message, args) => {
    if(message.author.id !== IdOwner) return;
 
@@ -8,7 +8,7 @@ exports.run = async (bot, message, args) => {
     bot.user.setPresence( {
     game: {
     name: args.join(' '),
-    type: "LISTENING"
+    type: 3
     }
     });
 }

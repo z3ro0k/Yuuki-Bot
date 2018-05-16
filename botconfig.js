@@ -2,4 +2,4 @@ exports.token = '';
 
 exports.prefix = 'Yu-';
 
-exports.IdOwne
+exports.IdOwner = '322203879208910849';
