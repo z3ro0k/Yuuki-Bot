@@ -40,6 +40,10 @@ const status = {
  if (!game) {
      game = "User is not playing a game"
  }
+  let nickname
+  if (user.displayName === undefined ) nickname = 'oof!'        
+  else nickname = user.displayName  
+  
   let botuser; 
   if (member.user.bot === true) botuser = 'Yes'
   else botuser = 'No'
@@ -53,17 +57,17 @@ const status = {
 	let embed = new Discord.RichEmbed()
 	.setTitle("Userinfo ")
   .setColor(0x36393e)
-  .setThumbnail(`${user.displayAvatarURL()}`)
+  .setThumbnail(user.displayAvatarURL)
   .addField("Username:", user.tag, true)
-  .addField("Nickname", message.member.displayName, true)
+  .addField("Nickname", nickname, true)
   .addField("ID", user.id, true)
   .addField(`Status${emoji}`, status[user.presence.status], true)
-  .addField("Last Message", lastmsg, true)
-  .addField("Playing", `${game}`, true)
-  .addField("Roles", `${roles.join(' [➜](https://discord.gg/RwmuHu6) ')}`, true)
+ // .addField("Last Message", lastmsg, true)
+  .addField("Playing", `${game}`, true) 
   .addField("Bot?", `${botuser}`, true)
   .addField("Created Account On", `${dateformat(user.createdAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}, that is **${Math.round(created.days())} days ago!**`, true)
   .addField(`Joined ${message.guild.name} On`, `${dateformat(member.joinedAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}, that is **${Math.round(joined.days())} days ago!**`, true)
+  .addField("Roles", `${roles.join(' [➜](https://discord.gg/RwmuHu6) ')}`, true)
   message.channel.send({ embed: embed })
 
 }
