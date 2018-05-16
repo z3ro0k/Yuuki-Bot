@@ -29,9 +29,9 @@ exports.run = (bot, message, args, func) => {
       .addField('Song Name:', `[${info.title}](${info.webpage_url})`, true)
       .addField('Duration', info._duration_hms,true)
       .addField('Video ID', info.id)
-      //.setDescription(`Description\n${info.description}`)
       .setImage(info.thumbnail)
       .setThumbnail(info.thumbnail)
+      .setFooter('Reacciona ➕ para mostrar más')
       .addField("Requested by:", `<@${message.author.id}>`, true)
       response.edit({embed}).then(msg => {
  
@@ -41,19 +41,21 @@ exports.run = (bot, message, args, func) => {
             const backwardsFilter = (reaction, user) => reaction.emoji.name === '➕' && user.id === message.author.id
             
             
-            const backwards = msg.createReactionCollector(backwardsFilter, { time: 6000000 });
+            const backwards = msg.createReactionCollector(backwardsFilter, { time: 10000 })
  
             backwards.on('collect', r => {
+              message.delete()
                 const embed = new Discord.RichEmbed()
                 embed.setColor(0x36393e)
-                embed.setDescription(`:tada: **${targetMember.tag}** accepted the proposal of **${message.author.tag}**`);
-                embed.setFooter(`congratulations are already married`);
-                msg.edit(embed);
+                embed.setThumbnail(info.thumbnail)
+                embed.setDescription(`Description\n${info.description}`);
+                msg.edit(embed)
+            })
           })    
         })      
       })
     })
-  })
+  }
   
 exports.config = {
   command: "ytsearch"
