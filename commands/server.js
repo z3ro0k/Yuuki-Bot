@@ -8,7 +8,7 @@ exports.run = async(bot, message, args) => {
     const help = new Discord.RichEmbed()
       .addField('Uso:', "Yu-server")
       .setColor(0x36393e)
-      .addField('Descripción', "Muestra la informacion del")
+      .addField('Descripción', "Muestra la información del server")
       .addField('Ejemplos:', "Yu-server 322209371704786945\nYu-server 312846399731662850\nYu-server")
       message.channel.send(help);
       return;

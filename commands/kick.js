@@ -4,8 +4,13 @@ let kCase = 1;
 module.exports.run = async (bot, message, args) => {
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");
-    if(args[0] == "help"){
-      message.reply("Usage: !kick <user> <reason>");
+      if(args[0] == "help"){
+  const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-kick <user> <razon> ")
+      .setColor(0x36393e)
+      .addField('Descripción', "Pateas al usuario mencionado del tu server")
+      .addField('Ejemplos:', "Yu-kick @ToXicGMDyt#7319 spam\nYu-kick @Kikin'M#9816 no respetar las reglas")
+      message.channel.send(help);
       return;
     }
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));

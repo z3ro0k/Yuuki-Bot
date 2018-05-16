@@ -8,6 +8,7 @@ exports.run = async(bot, message, args) => {
     const help = new Discord.RichEmbed()
       .addField('Uso:', "Yu-user ")
       .setColor(0x36393e)
+      .addField('Descripción', "Muestra la información del usuario mencionado o usando la id del usuario")
       .addField('Ejemplos:', "Yu-user 322203879208910849\nYu-user 321438019653599233\nYu-user")
       message.channel.send(help);
       return;

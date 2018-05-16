@@ -1,6 +1,15 @@
 const Discord = require('discord.js')
 
 exports.run = (bot, message, args, func) => {
+    if(args[0] == "help"){
+  const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-jumbo <:CatLove2:437761552146235402>")
+      .setColor(0x36393e)
+      .addField('Descripción', "Agrandas el emoji usado")
+      .addField('Ejemplos:', "Yu-jumbo <:CatLove2:437761552146235402>\nYu-jumbo <:discordblob:440414195243155457>")
+      message.channel.send(help);
+      return;
+    }
   
   if (args.length < 1) {
        message.channel.send('Please, provide an emoji to expand it');
