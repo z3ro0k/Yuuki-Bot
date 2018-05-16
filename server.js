@@ -23,8 +23,6 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
 
-var commandsList = fs.readFileSync('Storage/commands.txt', 'utf8');
-
 function loadCmds () {
 bot.commands = new Discord.Collection();
 //
