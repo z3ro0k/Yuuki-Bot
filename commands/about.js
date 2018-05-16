@@ -1,9 +1,18 @@
 const moment = require("moment")
 const momen = require('moment-duration-format');
-let owner = '322203879208910849';
 const Discord = require('discord.js')
-exports.run = async (bot, message, func, stats) => {
 
+exports.run = async (bot, message, args) => {
+  
+if(args[0] == "help"){
+  const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-about")
+      .setColor(0x36393e)
+      .addField('Descripción', "Te manda toda la informacion del bot")
+      .addField('Ejemplos:', "Yu-about")
+      message.channel.send(help);
+      return;
+    }
 const actividad = moment.duration(bot.uptime).format(" D [dias], H [hrs], m [mins], s [secs]");
 const cpu = process.cpuUsage().system / 1024 / 1024;    
     

@@ -1,17 +1,16 @@
 const Discord = require('discord.js')
-let cooldown = new Set(); 
+
 exports.run = (bot, message, args, func) => {
 let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author 
-
-if(cooldown.has(message.author.id)){
-   message.channel.send(message.author.username+ " Usa el comando despues de 20 segundos!");
-   return;
-}
-  cooldown.add(message.author.id);
-  
-  setTimeout(() => {
-  cooldown.delete(message.author.id);
-}, 20000);
+if(args[0] == "help"){
+  const help = new Discord.RichEmbed()
+      .addField('Uso:', "Yu-avatar <user> o <ID> ")
+      .setColor(0x36393e)
+      .addField('Descripción', "El bot manada el avatar del usuario mencioando ")
+      .addField('Ejemplos:', "Yu-avatar @ToXicGMDyt#7319\nYu-avatar 322203879208910849")
+      message.channel.send(help);
+      return;
+    }
  if (!user.avatarURL) return message.channel.send( 'Ese usuario no tiene avatar.');
  
  
