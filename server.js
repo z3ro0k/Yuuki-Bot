@@ -23,6 +23,8 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
 
+var userAFK = [];
+
 function loadCmds () {
 bot.commands = new Discord.Collection();
 //
@@ -48,7 +50,7 @@ loadCmds();
 bot.on('message', message => {
   
   var sender = message.author;
-  var msg = message.content.toUpperCase();
+  var msg = message.content.toLowerCase();
   var prefix = 'Yu-';
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
@@ -65,6 +67,22 @@ bot.on('message', message => {
       message.channel.send('All Comands Reload')
       loadCmds()
   } 
+  if (msg === prefix + 'AFK') {
+  if(userAFK.includes(message.author.id)){
+      message.reply("**<:AFKNEP:375862541307346954>** Ya no estas **AFK**.");
+      var index = userAFK.indexOf(message.author.id);
+      if(index !== -1){
+         userAFK.splice(index, 1);
+         
+      }
+      return;
+      
+    }
+    
+    message.reply("**<:AFKNEP:375862541307346954>** He definido tu estado en **AFK**. Si la gente te menciona en    su mensaje, les notificaré que estas en **AFK**.")
+    userAFK.push(message.author.id); 
+ 
+  }
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')
