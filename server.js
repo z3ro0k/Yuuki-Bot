@@ -50,7 +50,7 @@ loadCmds();
 bot.on('message', message => {
   
  
-  var prefix = 'Yu-';
+  var prefix = '.';
  
   var sender = message.author;
   var msg = message.content.toLowerCase();
