@@ -17,7 +17,7 @@ exports.run = async(bot, message, args) => {
 let user = message.mentions.users.first() || message.guild.member(args.join(' ')) || message.author
 let member = message.guild.member(user)
 let roles = member.roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`);
-let messageauthor = message.guild.member(message.author)
+//let userr = message.guild.member(message.author)
 let authorroles = message.guild.member(message.author).roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`)
 
 let joined = new datediff(Date.now(), member.joinedAt);
@@ -66,8 +66,8 @@ const status = {
 	.setTitle("Userinfo ")
   .setColor(0x36393e)
   .setThumbnail(user.displayAvatarURL)
-  .addField("Username:", user.tag, true)
-  .addField("Nickname", nickname, true)
+  .addField("Username:", user.username, true)
+  .addField("Nickname", user.displayName != null ? user.displayName : "Ninguno", true)
   .addField("ID", user.id, true)
   .addField(`Status${emoji}`, status[user.presence.status], true)
  // .addField("Last Message", lastmsg, true)
