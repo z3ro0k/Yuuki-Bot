@@ -23,5 +23,6 @@ if(args[0] == "help"){
  message.channel.send({embed})
   }
 module.exports.config = {
-  command: "avatar"
+  command: "avatar",
+   aliases: ["ava"]
 }

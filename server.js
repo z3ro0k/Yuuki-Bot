@@ -27,23 +27,26 @@ var userAFK = [];
 
 function loadCmds () {
 bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 //
 fs.readdir('./commands/', (err, files) => {
-  if (err) console.error(err);
-  
-  var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
-  if (jsfiles.length <= 0) { return console.log('No commands Found') }
-  else { console.log(jsfiles.length + ' Commands found') }
-  
-  jsfiles.forEach((f, i) => {
-    delete require.cache[require.resolve(`./commands/${f}`)]; 
-    var cmds = require (`./commands/${f}`);
-    console.log(`Command ${f} loading...`);
-    bot.commands.set(cmds.config.command, cmds);
-
-  })
-  
-})
+    if (err)
+        console.error(err);
+    let jsfiles = files.filter(f => f.split('.').pop() === 'js');
+    if (jsfiles.length <= 0) {
+        console.log('No commands to load!');
+        return;
+    }
+    console.log(`[Commands]\tLoaded a total amount ${files.length} Commands`);
+    jsfiles.forEach(f => {
+        let props = require(`./commands/${ f }`);
+        props.fileName = f;
+        bot.commands.set(props.config.command, props);
+        props.conf.aliases.forEach(alias => {
+            bot.aliases.set(alias, props.config.command);
+        });
+    });
+});
 
 }
 loadCmds();
