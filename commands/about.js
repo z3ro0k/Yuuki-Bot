@@ -24,14 +24,14 @@ const embed = new Discord.RichEmbed()
 .addField(`<:Version:442442898651217922> Version`, `2.6.0`, true)
 .addField(`<:Libraries:442442996705918987> Libreria`, `Discord ${Discord.version} (Js)`, true)
 
-.addField(`<:plex:410957444441964545>Memoria`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
+.addField(`<:cloud:447518353972658207> Memoria`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
 .addField("CPU Usage", `${Math.round(cpu * 100) / 100}%`, true)
-.addField(`<:uptime:413201335597662210>Uptime`, `${actividad}`, true)
+.addField(`<:relog:447518519752523776 >Uptime`, `${actividad}`, true)
 
 .addField("<:wEmoji:440388223017943042> Commands", bot.commands.size, true)
 .addField(`<:Servers:442443125005352962> Guilds`, `${bot.guilds.size.toLocaleString()}`, true)
 .addField(`<:members:442439950747697164> Members`, `${bot.users.size.toLocaleString()}`, true)
-.addField(`<:channels:413213800700051457>Channels`, `${bot.channels.size.toLocaleString()}`, true)
+.addField(`<:doc:448784570188562433 >Channels`, `${bot.channels.size.toLocaleString()}`, true)
 
 message.channel.send({embed});
 }
