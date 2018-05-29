@@ -12,7 +12,7 @@ let juego = user.presence.activity || {}
       .setColor(0x7301c5)
       .setThumbnail(user.displayAvatarURL())
       .addField(`State of ${user.username}`, '<:stream:409502167108419637>Transmitting')
-      .addField(`${user.username} is transmitting to`, `${juego.name || 'Nothing'} [(Streaming URL)](${user.presence.url})`)
+      .addField(`${user.username} is transmitting to`, `${juego.name || 'Nothing'} [(Streaming URL)](${user.presence.activity.url})`)
      message.channel.send({ embed })
      return;
    }

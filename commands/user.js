@@ -1,84 +1,83 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const dateformat = require('dateformat');
 const datediff = require('date-diff')
 
 
-exports.run = async(bot, message, args) => {
+exports.run = async(bot, msg, args) => {
   if(args[0] == "help"){
     const help = new Discord.RichEmbed()
       .addField('Uso:', "Yu-user ")
       .setColor(0x36393e)
       .addField('Descripción', "Muestra la información del usuario mencionado o usando la id del usuario")
       .addField('Ejemplos:', "Yu-user 322203879208910849\nYu-user 321438019653599233\nYu-user")
-      message.channel.send(help);
+      msg.channel.send(help);
       return;
     }
     
-let user = message.mentions.users.first() || message.guild.member(args.join(' ')) || message.author
-let member = message.guild.member(user)
-let roles = member.roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`);
-//let userr = message.guild.member(message.author)
-let authorroles = message.guild.member(message.author).roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => `<@&${role.id}>`)
-
-let joined = new datediff(Date.now(), member.joinedAt);
-let created = new datediff(Date.now(), user.createdAt);
-
-if (roles.length < 1) roles = ['None']
-const status = {
+let user = msg.mentions.users.first() || msg.guild.member(args.join(' ')) || msg.author
+let member = msg.guild.member(user)
+if (!member) member = msg.member;
+    
+     var userRoles
+    if (member.roles.size > 1) {
+      userRoles = oneLineCommaListsAnd`${member.roles.array().sort((a, b) => a.comparePositionTo(b)).slice(1).reverse().map(role => `**\`${role.name}\`**`)}`
+    } else {
+      userRoles = 'N/A'
+    }
+     var userStatus
+    if (member.presence.activity !== null) {
+      if (member.presence.activity.type === 'PLAYING') {
+        userStatus = `Playing **${escapeMarkdown(member.presence.activity.name)}**`
+      } else if (member.presence.activity.type === 'STREAMING') {
+        userStatus = `Streaming **${escapeMarkdown(member.presence.activity.name)}**`
+      } else if (member.presence.activity.type === 'LISTENING') {
+        userStatus = `Listening to **${escapeMarkdown(member.presence.activity.name)}**`
+      } else if (member.presence.activity.type === 'WATCHING') {
+        userStatus = `Watching **${escapeMarkdown(member.presence.activity.name)}**`
+      }
+      if (member.presence.activity.url !== null) { userStatus = `[${userStatus}](${member.presence.activity.url})` }
+    }
+  const status = {
    online: 'Online', 
    idle: 'Idle',
    dnd: 'Do Not Disturb',
    offline: 'Offline/Invisible'
  };
  let emoji;
- if (user.presence.status === "online") {
-     emoji = "<a:Online:446119385480953866>"
+ if (member.presence.status === "online") {
+     emoji = "<:online:409502042604961792>"
  }
- if (user.presence.status === "dnd") {
-     emoji = "<a:Dnd:446126900788592670>"
+ if (member.presence.status === "dnd") {
+     emoji = "<:dnd:409502091510415362>"
  }
- if (user.presence.status === "idle") {
-     emoji = "<a:Idle:446126963585974283>"
+ if (member.presence.status === "idle") {
+     emoji = "<:idle:409502137521799168>"
  }
- if (user.presence.status === "offline") {
-     emoji = "<a:Offline:446126934355738627>"
+ if (member.presence.status === "offline") {
+     emoji = "<:invisible:409502255847309313>"
  }
- 
- let game = user.presence.game && user.presence.game && user.presence.game.name
- if (!game) {
-     game = "User is not playing a game"
+if (!userStatus) {
+     userStatus = "User is not playing a game"
  }
-  let nickname
-  if (user.displayName === undefined ) nickname = 'oof!'        
-  else nickname = user.displayName  
-  
-  let botuser; 
-  if (member.user.bot === true) botuser = 'Yes'
-  else botuser = 'No'
-  
-                var lastmsg = user.lastMessage;
-                if (lastmsg === undefined) {
-                    lastmsg = "Has not said a message yet"
-                }
-        	
-          
-	let embed = new Discord.RichEmbed()
-	.setTitle("Userinfo ")
-  .setColor(0x36393e)
-  .setThumbnail(user.displayAvatarURL)
-  .addField("Username:", user.username, true)
-  .addField("Nickname", user.displayName != null ? user.displayName : "Ninguno", true)
-  .addField("ID", user.id, true)
-  .addField(`Status${emoji}`, status[user.presence.status], true)
- // .addField("Last Message", lastmsg, true)
-  .addField("Playing", `${game}`, true) 
-  .addField("Bot?", `${botuser}`, true)
-  .addField("Created Account On", `${dateformat(user.createdAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}, that is **${Math.round(created.days())} days ago!**`, true)
-  .addField(`Joined ${message.guild.name} On`, `${dateformat(member.joinedAt, "***mmmm dS, yyyy***, On a ***dddd***, ***h:MM:ss TT, Z***")}, that is **${Math.round(joined.days())} days ago!**`, true)
-  .addField("Roles", `${roles.join(' [➜](https://discord.gg/RwmuHu6) ')}`, true)
-  message.channel.send({ embed: embed })
+    
+		const embed = new MessageEmbed()
+			.setColor(member.displayHexColor)
+			.setThumbnail(member.user.displayAvatarURL())
+			.addField('❯ Name', member.user.tag, true)
+			.addField('❯ ID', member.id, true)
+			.addField('❯ Discord Join Date', member.user.createdAt.toDateString(), true)
+			.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
+			.addField('❯ Nickname', member.nickname || 'None', true)
+      .addField(`❯ Status${emoji}`, status[member.presence.status], true)
+      .addField('❯ Playing', userStatus, true)
+			.addField('❯ Bot?', member.user.bot ? 'Yes' : 'No', true)
+			.addField('❯ Highest Role',
+				member.roles.highest.id !== msg.guild.defaultRole.id ? '<@&' + member.roles.highest.id + '>': 'None', true)
+			.addField('❯ Hoist Role', member.roles.hoist ? '<@&' + member.roles.hoist.id + '>' : 'None', true)
+    .addField(`🔖 Roles - (${member.roles.size > 0 ? member.roles.size.toLocaleString() - 1 : 0})`, userRoles);
+		return msg.embed(embed);
+	}
 
-}
 module.exports.config = {
   command: "user"
 }
