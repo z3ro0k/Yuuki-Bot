@@ -1,32 +1,32 @@
 const Discord = require("discord.js");
 var bCase = 2;
+const { IdOwner } = require('../botconfig.js')
 exports.run = (client, message, args) => {
         
-        let id = message.mentions.users.first() ? message.mentions.users.first().id : args.join(' ').match(/\d{16,18}/) ? args.join(' ').match(/\d{16,18}/)[0]: null;
+        const { member, reason } = args.join(' ');
+   if(!message.guild) { message.author.id !== IdOwner
+        return message.member.hasPermission('BAN_MEMBERS') || message.author.id !== IdOwner
+    }
 
-            
-if (!message.member.hasPermission('BAN_MEMBERS')) return message.reply(':no_entry_sign: Sorry, you are not allowed to ban user on this server!');
- 
-if (!id) return message.reply('Mention someone or specify an ID!');
-let user = client.users.has(id) ? client.users.get(id) : null;
-if (user) {
+        if (member === client.user.id) return message.channel.send('Please don\'t hackban me...!');
+        if (member === message.author.id) return message.channel.send('I wouldn\'t dare hackban you...!');
 
-    message.guild.ban(user, 2);
-    
-    const embed = new Discord.RichEmbed()
-    .setTitle(`**<:bEmoji:440388028939239434>Banned | Case #${bCase = bCase + 1}**`)
-    .addField(`${user.tag}`, `**ID: ${user.id}**` )
-    .addField(`User banned`,` ${user.username} was banned successfully!`)
-    .setThumbnail(user.displayAvatarURL)
-    .setColor(0x36393e)
-   
-    let incidentchannel = message.guild.channels.find(`name`, "mod-logs");
-    if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
-    incidentchannel.send({embed});
-} else {
-    message.reply('I did not find any users');
-}
-};
+        client.users.fetch(member).then(async usr => {
+            await message.channel.send(`Are you sure you want to ban **${usr.tag}**? \`\`(y/n)\`\``);
+            const msgs = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
+                max: 1,
+                time: 30000
+            });
+
+            if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!');
+            if (['n', 'no'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!')
+
+            await message.guild.ban(member, 2);
+            return await message.channel.send(`Successfully banned **${usr.tag}**! 👋`);
+        })
+
+
+    }
 exports.config = {
   command: "hackban"
 }

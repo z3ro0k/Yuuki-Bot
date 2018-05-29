@@ -59,9 +59,9 @@ if (!member) member = msg.member;
  if (member.presence.status === "offline") {
      emoji = "<:invisible:409502255847309313>"
  }
-  if (member.presence.activity.type === 'STREAMING') {
+ /* if (member.presence.activity.type === 'STREAMING') {
      emoji = "<:stream:409502167108419637>"
- }
+ }*/
 if (!userStatus) {
      userStatus = "User is not playing a game"
  }
