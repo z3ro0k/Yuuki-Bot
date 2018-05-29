@@ -42,33 +42,12 @@ fs.readdir('./commands/', (err, files) => {
     console.log(`Command ${f} loading...`);
     bot.commands.set(cmds.config.command, cmds);
 
-  })
-  
 })
-
+})
 }
 loadCmds();
 
-bot.aliases = new Discord.Collection();
 
-fs.readdir('./commands/', (err, files) => {
-    if (err)
-        console.error(err);
-    let jsfiles = files.filter(f => f.split('.').pop() === 'js');
-    if (jsfiles.length <= 0) {
-        console.log('No commands to load!');
-        return;
-    }
-    console.log(`[Commands]\tLoaded a total amount ${files.length} Commands`);
-    jsfiles.forEach(f => {
-        let props = require(`./commands/${ f }`);
-        props.fileName = f;
-        bot.commands.set(props.config.command, props);
-        props.config.aliases.forEach(alias => {
-            bot.aliases.set(alias, props.config.command);
-        });
-    });
-});
 
 bot.on('message', message => {
   
