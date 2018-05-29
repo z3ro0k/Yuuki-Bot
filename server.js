@@ -25,6 +25,7 @@ const bot = new Discord.Client();
 
 var userAFK = [];
 
+
 function loadCmds () {
 bot.commands = new Discord.Collection();
 //
@@ -47,6 +48,28 @@ fs.readdir('./commands/', (err, files) => {
 
 }
 loadCmds();
+
+bot.aliases = new Discord.Collection();
+
+fs.readdir('./commands/', (err, files) => {
+    if (err)
+        console.error(err);
+    let jsfiles = files.filter(f => f.split('.').pop() === 'js');
+    if (jsfiles.length <= 0) {
+        console.log('No commands to load!');
+        return;
+    }
+    console.log(`[Commands]\tLoaded a total amount ${files.length} Commands`);
+    jsfiles.forEach(f => {
+        let props = require(`./commands/${ f }`);
+        props.fileName = f;
+        bot.commands.set(props.config.command, props);
+        props.config.aliases.forEach(alias => {
+            bot.aliases.set(alias, props.config.command);
+        });
+    });
+});
+
 bot.on('message', message => {
   
  
@@ -65,27 +88,11 @@ bot.on('message', message => {
   
   
   
-  if (msg === prefix + 'RELOAD') {
+ /* if (msg === prefix + 'RELOAD') {
       message.channel.send('All Comands Reload')
       loadCmds()
   } 
-  if (msg === prefix + 'AFK') {
-  if(userAFK.includes(message.author.id)){
-      message.reply("**<:AFKNEP:375862541307346954>** Ya no estas **AFK**.");
-      var index = userAFK.indexOf(message.author.id);
-      if(index !== -1){
-         userAFK.splice(index, 1);
-         
-      }
-      return;
-      
-    }
-    
-    message.reply("**<:AFKNEP:375862541307346954>** He definido tu estado en **AFK**. Si la gente te menciona en    su mensaje, les notificaré que estas en **AFK**.")
-    userAFK.push(message.author.id); 
- 
-    return;
-    }
+ */
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')
