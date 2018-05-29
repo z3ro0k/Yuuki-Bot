@@ -1,19 +1,18 @@
 const Discord = require('discord.js')
 
 exports.run = (bot, message, args, func) => { 
-  
 let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author
 let juego = user.presence.activity || {} 
-   if (user.presence.activity !== null && user.presence.type === 'LISTENING' && user.presence.name === 'Spotify' && user.presence.activity.assets !== null) {
+   if (user.presence.activity !== null && user.presence.activity.type === 'LISTENING' && user.presence.activity.name === 'Spotify' && user.presence.activity.assets !== null) {
      message.channel.send(`the user **${user.username}** is listening to music on spotify for more information use >spotify @user or >spotify`)
      return;
    }
-  if (user.presence.activity !== null && user.presence.type === 'STREAMING') {
-     const embed = new Discord.RichEmbed()
+  if (user.presence.activity !== null && user.presence.activity.type === 'STREAMING') {
+     const embed = new Discord.MessageEmbed()
       .setColor(0x7301c5)
       .setThumbnail(user.displayAvatarURL())
       .addField(`State of ${user.username}`, '<:stream:409502167108419637>Transmitting')
-      .addField(`${user.username} is transmitting to`, `${juego.name || 'Nothing'} [(Streaming URL)](${user.presence.activity.url})`)
+      .addField(`${user.username} is transmitting to`, `${juego.name || 'Nothing'} [(Streaming URL)](${user.presence.url})`)
      message.channel.send({ embed })
      return;
    }
@@ -37,13 +36,14 @@ let estados = {
 
 
 let game = user.presence.activity || {} 
-const embed = new Discord.RichEmbed()
+const embed = new Discord.MessageEmbed()
     .setColor(color[user.presence.status])
     .setThumbnail(user.displayAvatarURL)
     .addField(`State of ${user.username}`, `${estados[user.presence.status]} `)
     .addField(`${user.username} is playing to `, `${game.name || 'Nothing'} ${game.streaming ? `[(Streaming)](${game.displaygameURL})` : ''}`)
     .setTimestamp()
     message.channel.send({embed}); 
+
 }
 exports.config = {
   command: "playing"
