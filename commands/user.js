@@ -1,11 +1,13 @@
-const { MessageEmbed } = require("discord.js");
 const dateformat = require('dateformat');
 const datediff = require('date-diff')
+const { MessageEmbed,  escapeMarkdown } = require('discord.js');
+const {  oneLineCommaListsAnd } = require('common-tags')
+
 
 
 exports.run = async(bot, msg, args) => {
   if(args[0] == "help"){
-    const help = new Discord.RichEmbed()
+    const help = new MessageEmbed()
       .addField('Uso:', "Yu-user ")
       .setColor(0x36393e)
       .addField('Descripción', "Muestra la información del usuario mencionado o usando la id del usuario")
@@ -41,7 +43,8 @@ if (!member) member = msg.member;
    online: 'Online', 
    idle: 'Idle',
    dnd: 'Do Not Disturb',
-   offline: 'Offline/Invisible'
+   offline: 'Offline/Invisible',
+   streaming: 'Streaming' 
  };
  let emoji;
  if (member.presence.status === "online") {
@@ -55,6 +58,9 @@ if (!member) member = msg.member;
  }
  if (member.presence.status === "offline") {
      emoji = "<:invisible:409502255847309313>"
+ }
+  if (member.presence.activity.type === 'STREAMING') {
+     emoji = "<:stream:409502167108419637>"
  }
 if (!userStatus) {
      userStatus = "User is not playing a game"
@@ -75,7 +81,7 @@ if (!userStatus) {
 				member.roles.highest.id !== msg.guild.defaultRole.id ? '<@&' + member.roles.highest.id + '>': 'None', true)
 			.addField('❯ Hoist Role', member.roles.hoist ? '<@&' + member.roles.hoist.id + '>' : 'None', true)
     .addField(`🔖 Roles - (${member.roles.size > 0 ? member.roles.size.toLocaleString() - 1 : 0})`, userRoles);
-		return msg.embed(embed);
+		return msg.channel.send(embed);
 	}
 
 module.exports.config = {

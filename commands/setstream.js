@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
       if(!args.join(' ')) return message.channel.send(`Escriba el estado.`);
     
    bot.user.setPresence({
-          status: "DND",
+          status: "dnd",
           activity: {
             name: args.join(' '),
             type: 1,
