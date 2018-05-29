@@ -1,15 +1,25 @@
 const Discord = require('discord.js')
 const snekfetch = require('snekfetch');
-const { shorten, base64 } = require('../../util/Util');
-const { GITHUB_USERNAME, GITHUB_PASSWORD } = require('../../data/config.json')
+const { shorten, base64 } = require('../utils/Util');
+const { GITHUB_USERNAME, GITHUB_PASSWORD } = require('../data/apis.json')
 
-exports.run = async (bot, message, loadCmds, userAFK) => {
+exports.run = async (bot, msg, args) => {
+    const author = args[0]
+    const repository = args[1]
+    if(!author) {
+    msg.channel.send('Who is the author of the repository?')
+      return;
+    }
+  if(!repository) {
+    msg.channel.send('What is the name of the repository?')
+      return;
+    }
     
   try {
 			const { body } = await snekfetch
 				.get(`https://api.github.com/repos/${author}/${repository}`)
 				.set({ Authorization: `Basic ${base64(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`)}` });
-			const embed = new MessageEmbed()
+			const embed = new Discord.RichEmbed()
 				.setColor(0xFFFFFF)
 				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png', 'https://github.com/')
 				.setTitle(body.full_name)
@@ -22,12 +32,12 @@ exports.run = async (bot, message, loadCmds, userAFK) => {
 				.addField('❯ Language', body.language || '???', true)
 				.addField('❯ Creation Date', new Date(body.created_at).toDateString(), true)
 				.addField('❯ Modification Date', new Date(body.updated_at).toDateString(), true);
-			return msg.embed(embed);
+			return msg.channel.send(embed);
 		} catch (err) {
 			if (err.statusCode === 404) return msg.say('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
 module.exports.config = {
-  command: "eval"
+  command: "github"
 }
