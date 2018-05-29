@@ -3,7 +3,10 @@ const Discord = require('discord.js'),
       ms = require('ms'),
       mss = require('parse-ms')
 
-exports.run = (bot, message, loadCmds, userAFK) => {
+const { oneLine } = require('common-tags')
+const util = require('util')
+
+exports.run = async (bot, message, loadCmds, userAFK) => {
     
    var embed = new Discord.RichEmbed()
   .setTitle("Restricted")
@@ -32,8 +35,31 @@ exports.run = (bot, message, loadCmds, userAFK) => {
   }
   
 
-        const code = args.join(" ");
+       const code = args.join(" ");
       let evaled = eval(code);
+      var result = await eval(code)
+      var type
+      if (typeof result === 'object') {
+        type = `object - ${result.constructor.name}`
+      } else if (typeof result === 'function') {
+        type = oneLine`
+          function
+          ${result.name || result.length ? '-' : ''}
+          ${result.name ? `Name: ${result.name}` : ''}
+          ${result.name && result.length ? `|` : ''}
+          ${result.length ? `#Args: ${result.length}` : ''}
+        `
+        result = result.toString()
+      } else {
+        type = typeof result
+      }
+      if (typeof (result) !== 'string') {
+        result = util.inspect(result, {
+          showHidden: true,
+          compact: false,
+          depth: 0
+        })
+      }
       
                 if (code.includes('bot.token')) {
           message.delete()
@@ -57,36 +83,40 @@ exports.run = (bot, message, loadCmds, userAFK) => {
 
         if (clean(evaled).length > 1024 || code.length > 1024) {
         hastebin(`Evaled: ${code}\n\nOutput: \n\n${clean(evaled)}`, "js").then(r => {
-          var embed3 = new Discord.RichEmbed()
+          var embed3 = new Discord.MessageEmbed()
           .setTitle("Oops!")
           .setTimestamp()
           .setColor("#ffff66")
           .addField(":warning: I guess the eval was too much! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
+          .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
           message.channel.send({ embed: embed3 })
 })} else {
-        var embed2 = new Discord.RichEmbed()
+        var embed2 = new Discord.MessageEmbed()
         .setTitle('Evaled Code')
         .setColor("#00ced1")
         .setDescription("**Evaled: :inbox_tray:** \n\`\`\`js\n" + code + "\n\`\`\`\n\n**Output: :outbox_tray:**\n\n\`\`\`js\n"+ clean(evaled) + "\n\`\`\`")
-        .setThumbnail(bot.user.displayAvatarURL)
+        .setThumbnail(bot.user.displayAvatarURL())
+        .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
         message.channel.send({embed : embed2 });
 } 
     } catch (err) {
         const code = args.join(" ");
                 if ((err).length > 1024 || code.length > 1024) {
         hastebin(`Evaled: ${code}\n\nError: \n\n${(err)}`, "js").then(r => {
-          var embed3 = new Discord.RichEmbed()
+          var embed3 = new Discord.MessageEmbed()
           .setTitle("Oops!")
           .setTimestamp()
           .setColor("#f44242")
           .addField(":warning: I guess the eval was too much! It also errored! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
+           .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
           message.channel.send({ embed: embed3 })
 })}
-      var embed3 = new Discord.RichEmbed()
+      var embed3 = new Discord.MessageEmbed()
       .setTitle("ERROR:")
       .setColor("#f44242")
       .addField("Evaled: :inbox_tray:", `\`\`\`js\n${code}\n\`\`\``)
       .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+       .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
       message.channel.send({embed: embed3 });
     }
 }

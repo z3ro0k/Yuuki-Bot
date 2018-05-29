@@ -6,10 +6,8 @@ exports.run = (bot, message, args, func) => {
       return;
     }
     delete require.cache[require.resolve(`./${args[0]}.js`)];
-    message.channel.send(`<a:update:413263871365611520> The command \`${args[0]}\` has been reloaded!`).catch(e => {
-    message.channels.send(`The command \`${args[0]}\` `)
-    })
+    message.channel.send(`<a:update:413263871365611520> The command \`${args[0]}\` has been reloaded!`);
 }
-module.exports.config = {
+exports.config = {
   command: "r"
 }
