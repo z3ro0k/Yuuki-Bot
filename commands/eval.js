@@ -8,7 +8,7 @@ const util = require('util')
 
 exports.run = async (bot, message, loadCmds, userAFK) => {
     
-   var embed = new Discord.RichEmbed()
+   var embed = new Discord.MessageEmbed()
   .setTitle("Restricted")
     .setColor("#f45f42")
   .addField("<:error:401869378506719233> Acceso Denegado", "Este comando es solo para dueños del BOT!")
@@ -88,15 +88,15 @@ exports.run = async (bot, message, loadCmds, userAFK) => {
           .setTimestamp()
           .setColor("#ffff66")
           .addField(":warning: I guess the eval was too much! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
-          .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
+          .setFooter(`Type: ${type}`, message.author.displayAvatarURL())
           message.channel.send({ embed: embed3 })
 })} else {
         var embed2 = new Discord.MessageEmbed()
         .setTitle('Evaled Code')
         .setColor("#00ced1")
-        .setDescription("**Evaled: :inbox_tray:** \n\`\`\`js\n" + code + "\n\`\`\`\n\n**Output: :outbox_tray:**\n\n\`\`\`js\n"+ clean(evaled) + "\n\`\`\`")
+        .setDescription("**Input: <:input:442439882783064067>:** \n\`\`\`js\n" + code + "\n\`\`\`\n\n**Output: <:output:442439781474107395>**\n\n\`\`\`js\n"+ clean(evaled) + "\n\`\`\`")
         .setThumbnail(bot.user.displayAvatarURL())
-        .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
+        .setFooter(`Type: ${type}`, message.author.displayAvatarURL())
         message.channel.send({embed : embed2 });
 } 
     } catch (err) {
@@ -108,15 +108,15 @@ exports.run = async (bot, message, loadCmds, userAFK) => {
           .setTimestamp()
           .setColor("#f44242")
           .addField(":warning: I guess the eval was too much! It also errored! :warning: \nI generated a hastebin link instead! Here you go!", r, true)
-           .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
+           .setFooter(`Type: ${type}`, message.author.displayAvatarURL())
           message.channel.send({ embed: embed3 })
 })}
       var embed3 = new Discord.MessageEmbed()
       .setTitle("ERROR:")
       .setColor("#f44242")
-      .addField("Evaled: :inbox_tray:", `\`\`\`js\n${code}\n\`\`\``)
-      .addField("Output: :outbox_tray:", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
-       .setFooter(`Type: ${type}`, message.author.displayAvatarURL)
+      .addField("Input: <:input:442439882783064067>", `\`\`\`js\n${code}\n\`\`\``)
+      .addField("Output: <:output:442439781474107395>", `\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+       .setFooter(`Type: ${type}`, message.author.displayAvatarURL())
       message.channel.send({embed: embed3 });
     }
 }

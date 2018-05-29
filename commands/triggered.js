@@ -11,10 +11,10 @@ exports.run = async (client, message,  args) => {
 		return message.reply('I can\'t attach messages!').then(m => m.delete(5000));
 	}
 
-	let avatarurl = (message.mentions.users.size > 0 ? message.mentions.users.first().displayAvatarURL : message.author.displayAvatarURL).replace('gif', 'png')
-	if (['jpg', 'jpeg', 'gif', 'png', 'webp'].some(x => args.join(' ').includes(x))) {
-		avatarurl = args.join(' ').replace(/gif|webp/g, 'png')
-	}
+	let avatarurl = (message.mentions.users.size > 0 ? message.mentions.users.first().displayAvatarURL({ format: 'png' }) : message.author.displayAvatarURL({ format: 'png' }));
+        if (['jpg', 'jpeg', 'gif', 'png', 'webp'].some(x => args.join(' ').includes(x))) {
+            avatarurl = args.join(' ').replace(/gif|webp/g, 'png')
+        }
 
 	const base = new Jimp(options.size, options.size)
 	const avatar = await Jimp.read(avatarurl)
