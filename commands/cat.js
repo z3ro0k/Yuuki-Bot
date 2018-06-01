@@ -21,5 +21,6 @@ exports.run = async (bot, message, args) => {
   })
 }
 exports.config = {
-  command: "cat"
+  command: "cat",
+  aliases: ['gato', 'cats']
 }

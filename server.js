@@ -27,8 +27,9 @@ var userAFK = [];
 
 
 function loadCmds () {
-bot.commands = new Discord.Collection();
-//
+bot.commands = new Discord.Collection();  
+bot.aliases = new Discord.Collection();
+
 fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   
@@ -41,6 +42,9 @@ fs.readdir('./commands/', (err, files) => {
     var cmds = require (`./commands/${f}`);
     console.log(`Command ${f} loading...`);
     bot.commands.set(cmds.config.command, cmds);
+    cmds.config.aliases.forEach(alias => {
+	      bot.aliases.set(alias, cmds.config.command);
+	  });
 
 })
 })
@@ -65,13 +69,7 @@ bot.on('message', message => {
   var cmd = bot.commands.get(cont[0])
   if (cmd) cmd.run(bot, message, args, loadCmds, userAFK);
   
-  
-  
- /* if (msg === prefix + 'RELOAD') {
-      message.channel.send('All Comands Reload')
-      loadCmds()
-  } 
- */
+
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')

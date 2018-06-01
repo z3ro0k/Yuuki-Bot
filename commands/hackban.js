@@ -28,5 +28,6 @@ exports.run = (client, message, args) => {
 
     }
 exports.config = {
-  command: "hackban"
+  command: "hackban",
+  aliases: ['hb', 'hackb']
 }

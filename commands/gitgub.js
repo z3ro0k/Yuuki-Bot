@@ -39,5 +39,6 @@ exports.run = async (bot, msg, args) => {
 		}
 	}
 module.exports.config = {
-  command: "github"
+  command: "github",
+  aliases: ['github', 'githubinfo']
 }

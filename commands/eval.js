@@ -121,5 +121,6 @@ exports.run = async (bot, message, loadCmds, userAFK) => {
     }
 }
 module.exports.config = {
-  command: "eval"
+  command: "eval",
+  aliases: ['evaluar', 'e']
 }

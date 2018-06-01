@@ -26,5 +26,6 @@ var rpts = ["Sí", "No", "¿Por qué?", "Por favor", "Tal vez", "No sé", "Defin
   message.channel.send( BallEmbed );          
 }
 module.exports.config = {
- command: "8ball"
+ command: "8ball", 
+ aliases: ['8ball', '8'] 
 }

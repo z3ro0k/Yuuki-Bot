@@ -23,5 +23,6 @@ if(messageCount >= 2 && messageCount <= 100){
 } 
 }
 exports.config = {
-  command: "clean"
+  command: "clean",
+  aliases: ['limpiar', 'purgar']
 }

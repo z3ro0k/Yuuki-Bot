@@ -12,5 +12,6 @@ var rpts = ["ff00ff", "00ffff", "8600b3", "754785", "e699ff", "ff3333", "006600"
  message.channel.send({embed})  
 }
 exports.config = {
-  command: "invite"
-}
+  command: "invite",
+  aliases: ['invitacion']
+ }

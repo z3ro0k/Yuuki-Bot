@@ -44,5 +44,6 @@ exports.run = (bot, message, args, func) => {
   
 } 
 module.exports.config = {
-  command: "jumbo"
+  command: "jumbo",
+  aliases: ['jumbo', 'j', 'e']
 }

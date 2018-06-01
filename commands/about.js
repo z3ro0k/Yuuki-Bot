@@ -36,5 +36,6 @@ const embed = new Discord.RichEmbed()
 message.channel.send({embed});
 }
 module.exports.config = {
-  command: "about"
+  command: "about",
+  aliases: ['about', 'infobot']
 }

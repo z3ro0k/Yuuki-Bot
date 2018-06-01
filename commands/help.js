@@ -1,5 +1,6 @@
     module.exports.config = {
-        command: "help"
+        command: "help",
+        aliases: ['ayuda', 'halp']
     }
 
 const Discord = require("discord.js");

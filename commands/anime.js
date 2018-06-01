@@ -37,5 +37,6 @@ if(!query) {
 
 }
 module.exports.config = {
-  command: "anime"
+  command: "anime",
+  aliases: ['m-anime', 'an']
 }

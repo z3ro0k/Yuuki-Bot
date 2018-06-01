@@ -17,5 +17,6 @@ exports.run = async (bot, message, args) => {
         message.channel.send({embed});
 }
 exports.config = {
-  command: "channels"
+  command: "channels",
+  aliases: ['canales', 'canalesinfo']
 }

@@ -34,5 +34,6 @@ if (!message.guild.member(user).bannable) return message.reply('No puedo banear 
  message.channel.send(banEmbed);
 }
 module.exports.config = {
-  command: "ban"
+  command: "ban",
+  aliases: ['ban', 'bannear']
 }
