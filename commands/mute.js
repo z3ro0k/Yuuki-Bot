@@ -16,7 +16,7 @@ let miembro = message.mentions.members.first();
          
 }).then(role => {
         var canales = message.guild.channels;
-        var role = message.guild.roles.find("name", "Silenciado")
+        var role = message.guild.roles.find("name", "Muted")
         var rol = message.guild.roles.get(role.id);
   
         canales.forEach(k => k.overwritePermissions(rol.id, {
@@ -24,7 +24,7 @@ let miembro = message.mentions.members.first();
             ADD_REACTIONS: false,
             SPEAK: false
         }))
-      message.channel.send('Rol **"Silenciado"** no encontrado. El rol fue creado automáticamente.');
+      message.channel.send('Rol **"Muted"** no encontrado. El rol fue creado automáticamente.');
       
       if (!razon) {
       miembro.addRole(role).catch(console.error);
@@ -37,7 +37,7 @@ let miembro = message.mentions.members.first();
         .setColor(0xFFB400)
         message.channel.send({embed});
         } else {
-      miembro.addRole(role).catch(console.error);
+      miembro.role.add(role).catch(console.error);
       const embed = new Discord.MessageEmbed()
         .setTitle(":mute: Usuario silenciado")
         .setDescription(`El usuario **${miembro.user.username}** fue silenciado.`)

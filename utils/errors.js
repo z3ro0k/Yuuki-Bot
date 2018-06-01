@@ -3,7 +3,7 @@ const fs = require("fs");
 let config = require("../botconfig.js");
 
 module.exports.noPerms = (message, perm) => {
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setTitle("Insufficient Permission")
         .setColor(config.red)
@@ -14,7 +14,7 @@ module.exports.noPerms = (message, perm) => {
 
 module.exports.equalPerms = (message, user, perms) => {
 
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username)
         .setColor(config.red)
         .setTitle("Error")
@@ -25,7 +25,7 @@ module.exports.equalPerms = (message, user, perms) => {
 }
 
 module.exports.botuser = (message) => {
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setTitle("Error")
         .setDescription("You cannot ban a bot.")
         .setColor(config.red);
@@ -34,7 +34,7 @@ module.exports.botuser = (message) => {
 }
 
 module.exports.cantfindUser = (channel) => {
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setTitle("Error")
         .setDescription("Could not find that user.")
         .setColor(config.red);
@@ -43,7 +43,7 @@ module.exports.cantfindUser = (channel) => {
 }
 
 module.exports.noReason = (channel) => {
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setTitle("Error")
         .setDescription("Please supply a reason.")
         .setColor(config.red);

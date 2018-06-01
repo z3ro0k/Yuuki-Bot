@@ -3,7 +3,7 @@ const YoutubeDL = require('youtube-dl');
 exports.run = (bot, message, args, func) => {
 
 		if (!args.join(' ')) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
     .setColor(0x36393e)
     .setDescription(':x: **enter something to find it**')
     message.channel.send({embed})
@@ -24,7 +24,7 @@ exports.run = (bot, message, args, func) => {
 
 				info.requester = message.author.id;
 
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
       .addField('Song Name:', `[${info.title}](${info.webpage_url})`, true)
       .addField('Duration', info._duration_hms,true)
@@ -45,7 +45,7 @@ exports.run = (bot, message, args, func) => {
  
             backwards.on('collect', r => {
               message.delete()
-                const embed = new Discord.RichEmbed()
+                const embed = new Discord.MessageEmbed()
                 embed.setColor(0x36393e)
                 embed.setThumbnail(info.thumbnail)
                 embed.setDescription(`Description\n${info.description}`);
