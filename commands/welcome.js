@@ -40,7 +40,7 @@ exports.run = (bot, message, args, tools, prefix) => {
                 }).then(() => {
                 msg.delete(10000)
                 })
-              db.set(`welcomeSettings_${message.guild.id}`, '<:off:442082928323985408>Mod-logs disable')
+              db.delete(`welcomeSettings_${message.guild.id}`)//, '<:off:442082928323985408>Mod-logs disable')
             })
         })
     })

@@ -22,7 +22,7 @@ setInterval(() => {
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
-
+const tools = require('./functions.js');
 var userAFK = [];
 
 
@@ -67,7 +67,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0]) || bot.commands.get(bot.aliases.get(cont[0]));
-  if (cmd) cmd.run(bot, message, args, loadCmds, userAFK);
+  if (cmd) cmd.run(bot, message, args, loadCmds, tools);
   
 
 })

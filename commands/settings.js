@@ -10,7 +10,7 @@ exports.run = async (bot, message, args, tools) => {
   
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
-        if (!welcomeSettingsFetched) mod  = '**<:off:442082928323985408>  Not set**'
+        if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Mod-logs disable'
         else mod = welcomeSettingsFetched
   
   

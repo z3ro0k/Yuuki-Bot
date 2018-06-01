@@ -1,7 +1,8 @@
 const Discord = require('discord.js'),
       hastebin = require('hastebin-gen'),
       ms = require('ms'),
-      mss = require('parse-ms')
+      mss = require('parse-ms'),
+      db = require('quick.db')
 
 const { oneLine } = require('common-tags')
 const util = require('util')
