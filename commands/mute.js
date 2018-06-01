@@ -37,7 +37,7 @@ let miembro = message.mentions.members.first();
         .setColor(0xFFB400)
         message.channel.send({embed});
         } else {
-      miembro.role.add(role).catch(console.error);
+      miembro.roles.add(role).catch(console.error);
       const embed = new Discord.MessageEmbed()
         .setTitle(":mute: Usuario silenciado")
         .setDescription(`El usuario **${miembro.user.username}** fue silenciado.`)

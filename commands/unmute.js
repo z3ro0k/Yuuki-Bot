@@ -25,7 +25,7 @@ exports.run = async (bot, message, args) => {
         } else {
         
         message.delete();
-        miembro.removeRole(role).catch(console.error);
+        miembro.roles.remove(role).catch(console.error);
         const embed = new Discord.RichEmbed()
         .setTitle(":loud_sound: Usuario no silenciado")
         .setDescription(`El silencio de **${miembro.user.username}** fue retirado.`)
