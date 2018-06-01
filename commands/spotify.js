@@ -36,5 +36,6 @@ exports.run = (bot, message, args) => {
   
 }
 exports.config = {
-  command: "spotify"
+  command: "spotify",
+  aliases: ['spotify']
 }

@@ -26,5 +26,6 @@ var snekfetch = require('snekfetch');
 
 }
 exports.config = {
-  command: "mcc"
+  command: "mc",
+  aliases: ['mcc', 'Achievement']
 }

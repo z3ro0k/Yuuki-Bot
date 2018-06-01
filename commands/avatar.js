@@ -14,7 +14,7 @@ if(args[0] == "help"){
  if (!user.avatarURL) return message.channel.send( 'Ese usuario no tiene avatar.');
  
  
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
   .setImage(user.displayAvatarURL)
   .addField(`${user.username}'s Avatar`, '[Descargar](' + user.displayAvatarURL + ')')
   .setThumbnail(user.displayAvatarURL)

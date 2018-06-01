@@ -6,7 +6,7 @@ let user = message.mentions.users.first();
 let razon = args[1]
 let perms = message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS");
   if(args[0] == "help"){
-  const help = new Discord.RichEmbed()
+  const help = new Discord.MessageEmbed()
       .addField('Uso:', "Yu-ban <user> <razon> ")
       .setColor(0x36393e)
       .addField('Descripción', "Baneas al usuario mencionado de tu server incluye razon")
@@ -22,7 +22,7 @@ if (!message.guild.member(user).bannable) return message.reply('No puedo banear 
                                       
                                   
  message.guild.member(user).ban(razon);
-  let banEmbed = new Discord.RichEmbed()
+  let banEmbed = new Discord.MessageEmbed()
     .setDescription(`**<:bEmoji:440388028939239434>Ban | Case #${bCase = bCase + 1}**`)
     .setColor(0x36393e)
     .addField("Banned User", `${user} with ID ${user.id}`)

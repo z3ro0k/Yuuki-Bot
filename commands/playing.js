@@ -46,5 +46,6 @@ const embed = new Discord.MessageEmbed()
 
 }
 exports.config = {
-  command: "playing"
+  command: "playing",
+  aliases: ['playing', 'jugando']
 }

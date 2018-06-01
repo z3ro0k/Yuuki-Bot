@@ -11,7 +11,7 @@ exports.run = async (bot, message, args) => {
        return;
       }
   
-      const embed = new Discord.RichEmbed() 
+      const embed = new Discord.MessageEmbed() 
       .setColor(0x00AE86)
       .setDescription("Aqui esta tu gato aleatorio <:CatLove2:437761552146235402>")
       .setFooter("ﾠ")

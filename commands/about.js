@@ -5,7 +5,7 @@ const Discord = require('discord.js')
 exports.run = async (bot, message, args) => {
   
 if(args[0] == "help"){
-  const help = new Discord.RichEmbed()
+  const help = new Discord.MessageEmbed()
       .addField('Uso:', "Yu-about")
       .setColor(0x36393e)
       .addField('Descripción', "Te manda toda la informacion del bot")
@@ -16,7 +16,7 @@ if(args[0] == "help"){
 const actividad = moment.duration(bot.uptime).format(" D [dias], H [hrs], m [mins], s [secs]");
 const cpu = process.cpuUsage().system / 1024 / 1024;    
     
-const embed = new Discord.RichEmbed()
+const embed = new Discord.MessageEmbed()
 .setColor(0x66ff66)
 
 .setAuthor(`Bot: ${bot.user.username} info`, bot.user.displayAvatarURL)

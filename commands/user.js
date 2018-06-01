@@ -85,5 +85,6 @@ if (!userStatus) {
 	}
 
 module.exports.config = {
-  command: "user"
+  command: "user",
+  aliases: ['userinfo', 'usuario']
 }

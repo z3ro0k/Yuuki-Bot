@@ -19,7 +19,7 @@ exports.run = async (bot, msg, args) => {
 			const { body } = await snekfetch
 				.get(`https://api.github.com/repos/${author}/${repository}`)
 				.set({ Authorization: `Basic ${base64(`${GITHUB_USERNAME}:${GITHUB_PASSWORD}`)}` });
-			const embed = new Discord.RichEmbed()
+			const embed = new Discord.MessageEmbed()
 				.setColor(0xFFFFFF)
 				.setAuthor('GitHub', 'https://i.imgur.com/e4HunUm.png', 'https://github.com/')
 				.setTitle(body.full_name)

@@ -10,5 +10,6 @@ exports.run = async (bot, message, args) => {
           }).catch(console.error);
 }
 module.exports.config = {
-  command: "radio"
+  command: "radio",
+  aliases: ['radio', 'radio-fm']
 }

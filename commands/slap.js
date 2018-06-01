@@ -10,13 +10,13 @@ exports.run = async (bot, message, args) => {
                 if (message.content.includes(bot.user.id)) return message.reply("¿d-de verdad quieres darme una bofetada? <:TostadaSad:437761630512742400>")
                 
                 if(!user) {
-                  const embed = new Discord.RichEmbed()
+                  const embed = new Discord.MessageEmbed()
                   .setDescription(`**${bot.user.username}** le dio una bofetada a **${message.author.username}**`)
                   .setImage(`${elementos[Math.floor(elementos.length * Math.random())]}`)
                   .setColor(0xe95539)
                   message.channel.send({embed});
                 }else {
-                  const embed = new Discord.RichEmbed()
+                  const embed = new Discord.MessageEmbed()
                   .setDescription(`**${message.author.username}** le dio una bofetada a **${user.username}** D:`)
                   .setImage(`${elementos[Math.floor(elementos.length * Math.random())]}`)
                   .setColor(0xe95539)
@@ -24,5 +24,6 @@ exports.run = async (bot, message, args) => {
                 }
 }
 module.exports.config = {
-  command: "slap"
+  command: "slap",
+  aliases: ['slap']
 }

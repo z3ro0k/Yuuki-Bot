@@ -13,5 +13,6 @@ exports.run = async (bot, message, args) => {
     });
 }
 exports.config = {
-  command: "setgame"
+  command: "setgame",
+  aliases: ['setgame']
 }

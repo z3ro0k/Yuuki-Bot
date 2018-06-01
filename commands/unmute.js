@@ -37,5 +37,6 @@ exports.run = async (bot, message, args) => {
       }
   }
 module.exports.config = {
-  command: "unmute"
+  command: "unmute",
+  aliases: ['unmute', 'desmutear']
 }

@@ -18,7 +18,7 @@ if(!query) {
 				.set({ Authorization: `Basic ${base64(`${MAL_USERNAME}:${MAL_PASSWORD}`)}` });
 			const body = await xml(raw.toString());
 			const data = body.anime.entry[0];
-			const embed = new Discord.RichEmbed()
+			const embed = new Discord.MessageEmbed()
 				.setColor(0x2D54A2)
 				.setAuthor('My Anime List', 'https://i.imgur.com/5rivpMM.png', 'https://myanimelist.net/')
 				.setURL(`https://myanimelist.net/anime/${data.id[0]}`)

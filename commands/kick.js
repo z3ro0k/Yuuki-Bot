@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");
       if(args[0] == "help"){
-  const help = new Discord.RichEmbed()
+  const help = new Discord.MessageEmbed()
       .addField('Uso:', "Yu-kick <user> <razon> ")
       .setColor(0x36393e)
       .addField('Descripción', "Pateas al usuario mencionado del tu server")
@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
     let kReason = args.join(" ").slice(22);   
     if(!kReason) return message.channel.send("Please specify the reason to kick the mentioned user.");
     
-    let kickEmbed = new Discord.RichEmbed()
+    let kickEmbed = new Discord.MessageEmbed()
     .setDescription(`**<:kEmoji:440388066197110785>Kick | Case #${kCase = kCase + 1}**`)
     .setColor(0x36393e)
     .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
@@ -37,5 +37,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.config = {
-  command: "kick"
+  command: "kick",
+  aliases: ['kickear', 'patear']
 }

@@ -13,5 +13,6 @@ loadCmds()
 
 }
 module.exports.config = {
-  command: "reboot"
+  command: "reboot",
+  aliases: ['reboot', 'recargar']
 }

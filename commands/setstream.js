@@ -26,5 +26,6 @@ exports.run = async (bot, message, args) => {
    
 }
 exports.config = {
-  command: "setstream"
+  command: "setstream",
+  aliases: ['setstream', 'sst']
 }

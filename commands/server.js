@@ -5,7 +5,7 @@ const dateFormat = require('dateformat');
 
 exports.run = async(bot, message, args) => {
   if(args[0] == "help"){
-    const help = new Discord.RichEmbed()
+    const help = new Discord.MessageEmbed()
       .addField('Uso:', "Yu-server")
       .setColor(0x36393e)
       .addField('Descripción', "Muestra la información del server")
@@ -59,7 +59,7 @@ exports.run = async(bot, message, args) => {
 
     const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻ (High)', '┻━┻彡 ヽ(ಠ益ಠ)ノ彡┻━┻ (Extreme)'];
   
-  var embed = new Discord.RichEmbed()
+  var embed = new Discord.MessageEmbed()
     .setTitle(`**Server Info for ${server.name}** 👪`)
     .setColor(0x36393e)  
     .setThumbnail(icon)
@@ -76,5 +76,6 @@ exports.run = async(bot, message, args) => {
     message.channel.send({ embed: embed });
 }
 module.exports.config = {
-  command: "server"
+  command: "server",
+  aliases: ['serverinfo', 'servidor']
 }

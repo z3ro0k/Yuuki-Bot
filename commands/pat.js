@@ -8,7 +8,7 @@ exports.run = async (bot, message, args) => {
           
           if(message.content.includes(message.author.id)) return message.reply('no puedes acariciarte a ti mismo. Aunque si quieres que yo te acaricie, utiliza `ch!pat` uwu.')
           if(message.content.includes(bot.user.id)) {
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
             .setDescription(`uwu -corresponde las caricias de **${message.author.username}**-`)
             .setImage(`${elementos[Math.floor(elementos.length * Math.random())]}`)
             .setColor(0x3ac0b8)
@@ -17,7 +17,7 @@ exports.run = async (bot, message, args) => {
           }
           
           if (!user) {
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
             .setDescription(`Déjame acariciarte un poco, **${message.author.username}** uwu`)
             .setImage(`${elementos[Math.floor(elementos.length * Math.random())]}`)
             .setColor(0x3ac0b8)
@@ -25,7 +25,7 @@ exports.run = async (bot, message, args) => {
           
           }else {
           
-          const embed = new Discord.RichEmbed()
+          const embed = new Discord.MessageEmbed()
           .setDescription(`**${message.author.username}** acarició a **${user.username}** uwu`)
           .setImage(`${elementos[Math.floor(elementos.length * Math.random())]}`)
           .setColor(0x3ac0b8)
@@ -33,5 +33,6 @@ exports.run = async (bot, message, args) => {
             }
 }
 module.exports.config = {
-  command: "pat"
+  command: "pat",
+  aliases: ['pat']
 }

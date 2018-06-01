@@ -8,12 +8,13 @@ let user = message.mentions.users.first()
                     if(message.content.includes(bot.user.id)) return message.reply("n-no me golpees... por favor <:TostadaSad:437761630512742400>")
                     
                     if(!user) return message.reply('lo siento... pero yo no soy violenta... Así que debes mencionar a alguien.')
-                      const embed = new Discord.RichEmbed()
+                      const embed = new Discord.MessageEmbed()
                       .setDescription(`**${message.author.username}** le dio un golpe a **${user.username}** D':`)
                       .setImage(gifs[Math.floor(gifs.length * Math.random())])
                       .setColor(0xc72422)
                       message.channel.send({embed});
 }
 module.exports.config = {
-  command: "punch"
+  command: "punch",
+  aliases: ['punch']
 }

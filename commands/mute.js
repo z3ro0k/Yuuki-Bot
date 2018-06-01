@@ -28,7 +28,7 @@ let miembro = message.mentions.members.first();
       
       if (!razon) {
       miembro.addRole(role).catch(console.error);
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setTitle(":mute: Usuario silenciado")
         .setDescription(`El usuario **${miembro.user.username}** fue silenciado.`)
         .addField("Razón:", `Sin razón.`)
@@ -38,7 +38,7 @@ let miembro = message.mentions.members.first();
         message.channel.send({embed});
         } else {
       miembro.addRole(role).catch(console.error);
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setTitle(":mute: Usuario silenciado")
         .setDescription(`El usuario **${miembro.user.username}** fue silenciado.`)
         .addField("Razón:", `${razon}`)
@@ -51,5 +51,6 @@ let miembro = message.mentions.members.first();
   }
 }      
 exports.config = {
-  command: "mute"
+  command: "mute",
+  aliases: ['mutear', 'mute']
 }

@@ -9,5 +9,6 @@ exports.run = (bot, message, args, func) => {
     message.channel.send(`<a:update:413263871365611520> The command \`${args[0]}\` has been reloaded!`);
 }
 exports.config = {
-  command: "r"
+  command: "r",
+  aliases: ['r', 'reload']
 }

@@ -58,5 +58,6 @@ exports.run = (bot, message, args, func) => {
   }
   
 exports.config = {
-  command: "ytsearch"
+  command: "ytsearch",
+  aliases: ['ytsearch', 'buscarvideo']
 }

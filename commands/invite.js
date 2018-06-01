@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 exports.run = async (bot, message, args) => {
 var rpts = ["ff00ff", "00ffff", "8600b3", "754785", "e699ff", "ff3333", "006600", "8080ff"," 0000b3"];
  var color = rpts[Math.floor(Math.random() * rpts.length)]
- const embed = new Discord.RichEmbed()
+ const embed = new Discord.MessageEmbed()
     .setAuthor('Invitacion de: ' + bot.user.username + '#' + bot.user.discriminator)
     .setThumbnail(bot.user.avatarURL)
     .setDescription('▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔')

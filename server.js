@@ -66,7 +66,7 @@ bot.on('message', message => {
   
   if (!message.content.startsWith(prefix)) return;
   
-  var cmd = bot.commands.get(cont[0])
+  var cmd = bot.commands.get(cont[0]) || bot.commands.get(bot.aliases.get(cont[0]));
   if (cmd) cmd.run(bot, message, args, loadCmds, userAFK);
   
 

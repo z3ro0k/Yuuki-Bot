@@ -14,5 +14,6 @@ exports.run = (bot, message, args, discord) => {
   
 
 module.exports.config = {
-  command: "unhackban"
+  command: "unhackban",
+  aliases: ['unhb', 'unh']
 }

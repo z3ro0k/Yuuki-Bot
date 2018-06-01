@@ -7,5 +7,6 @@ message.channel.send(image)
 
   }
 exports.config = {
-  command: "mevale"
+  command: "mevale",
+  aliases: ['mevale']
 }
