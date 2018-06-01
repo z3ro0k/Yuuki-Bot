@@ -16,7 +16,7 @@ exports.run = async (bot, message, args, tools) => {
   
   db.fetch(`guildPrefix_${message.guild.id}`).then(guildPrefixFetch =>{
                     
-           if (!guildPrefixFetch) prefix = '~'
+           if (!guildPrefixFetch) prefix = 'Yu!'
           else prefix = guildPrefixFetch
     
     db.fetch(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
