@@ -19,7 +19,7 @@ exports.run = async(bot, message, args) => {
   let offline = server.members.filter(m => m.presence.status == 'offline')
   let dnd = server.members.filter(m => m.presence.status == 'dnd')
   let idle = server.members.filter(m => m.presence.status == 'idle')
-  let streaming = server.members.filter(s => s.presence.status === 'streaming')
+  let streaming = server.members.filter(s => s.presence.activity !== null && s.presence.activity.type === 'STREAMING')
 
     const now = new Date();
 				 dateFormat(now, '***On dddd, mmmm dS, yyyy, h:MM:ss TT***');
