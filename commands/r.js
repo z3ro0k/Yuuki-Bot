@@ -5,7 +5,7 @@ exports.run = (bot, message, args, func) => {
       message.channel.send(`:x: Provide a command name to reload.`);
       return;
     }
-    delete require.cache[require.resolve(`./${args[0]}.js`)];
+    delete require.cache[require.resolve(`./${args.join(' ')}.js`)];
     message.channel.send(`<a:update:413263871365611520> The command \`${args[0]}\` has been reloaded!`);
 }
 exports.config = {
