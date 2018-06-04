@@ -32,7 +32,8 @@
     "jimp": "^0.2.28",
     "common-tags": "^1.8.0",
     "util": "^0.10.3",
-    "fortnite": "^4.1.1"
+    "fortnite": "^4.1.1",
+    "request-promise-native": "^1.0.5"
   },
   "engines": {
     "node": "8.x"

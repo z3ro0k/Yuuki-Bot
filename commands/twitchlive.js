@@ -1,5 +1,5 @@
 const request = require('request-promise-native');
-const config  = require('../Storage/config.json');
+const config  = require('../data/apis.json');
 
 exports.run = (bot, message, args) => {
   let options = {
@@ -60,3 +60,6 @@ request(options).then(response => { console.log(response);
     });
     }).catch(e => console.log(e));
   };
+exports.config = {
+  command: "twitchlive"
+}
