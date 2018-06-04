@@ -4,17 +4,17 @@ const jsroblox = require('js-robloxapi');
 
 exports.run = (bot, message, args, func) => {
   if(!args.join(' ')){
-  func.embed(message.channel,'**Please specify a user!**')
+  func.embed(message.channel,'**Por favor, especifique un usuario!**')
   return;  
   }
   if (args.length > 1) {
-    func.embed(message.channel,"My systems are telling me Roblox usernames dont have spaces in their names");
+    func.embed(message.channel,"Mi sistemas me dicen que los nombres de usuario de Roblox no tienen espacios en sus nombres");
   return;
   }
 jsroblox.getInfo(args, (data) => {
-if (!data) return message.channel.send(`User **${args[0]}** was not found`); 
+if (!data) return message.channel.send(`Usuario **${args[0]}** no fue encontrado`); 
   
-    let pages = [`**Name**\n ${data.Name}\n**ID:**\n ${data.Id}\n **Status Online**\n ${data.Online}`, `**Total Friends:** \` ${data.TotalFriends}\`\n**Friends list:**\n ${data.ListFriends}`, `**Badges list**\n ${data.ListBadges}`, `**Groups List**\n ${data.ListGroup}`]
+    let pages = [`**Nombre**\n ${data.Name}\n**ID:**\n ${data.Id}\n **Estado en línea**\n ${data.Online}`, `**Total de amigos:** \` ${data.TotalFriends}\`\n**Lista de amigos:**\n ${data.ListFriends}`, `**Lista de insignias**\n ${data.ListBadges}`, `**Lista de grupos**\n ${data.ListGroup}`]
     let page = 1;
  
     const embed = new Discord.MessageEmbed()
@@ -38,7 +38,7 @@ if (!data) return message.channel.send(`User **${args[0]}** was not found`);
                 if (page === 1) return;
                 page--;
                 embed.setDescription(pages[page - 1]);
-                
+                embed.setImage(data.Avatar)
                 embed.setFooter(`Page ${page} of ${pages.length}`);
                 
                 msg.edit(embed);
@@ -48,10 +48,15 @@ if (!data) return message.channel.send(`User **${args[0]}** was not found`);
                 if (page === pages.length) return;
                 page++;
                 embed.setDescription(pages[page - 1]);
+                embed.setImage(data.Avatar)
                 embed.setFooter(`Page ${page} of ${pages.length}`);
                 msg.edit(embed);
         }); 
       });
     });
   });
+}
+module.exports.config = {
+  command: "roblox",
+  aliases: ['roblox', "userroblox"]
 }
