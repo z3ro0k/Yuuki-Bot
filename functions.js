@@ -43,10 +43,11 @@ module.exports = {
     }
 	
 	var upText = "Uptime: `" + days + dayText + hrs + ":" + min + ":" + sec + "`";
-	channel.send({embed:{ 
+	
+     channel.send({embed:{ 
       description: upText, 
       color: 0x36393e
     }})
-    return upText;
+    
 }
   }
