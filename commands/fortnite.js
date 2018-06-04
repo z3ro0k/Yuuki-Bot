@@ -29,10 +29,11 @@ exports.run = async (bot, message, args) => {
     let Ratio = lifetime[11]['K/d']
     
     const embed = new Discord.MessageEmbed()
-        .setColor("RANDOM")
+        .setColor(0x36393e)
         .setTitle(`Stats for ${data.username}`)
         .setDescription(`**Top Placement**\n\n\`\`\`tex Top 3s: ${top3}\nTop 5s: ${top5s}\nTop 6s: ${top6s}\nTop 12s: ${top12s}\nTop 25s: ${top25s}\`\`\``, true)
         .setThumbnail("https://vignette.wikia.nocookie.net/fortnite/images/d/d8/Icon_Founders_Badge.png")
+        
         .addField('Total Score', Score, true)
         .addField('Matches Played', Mplayed, true)
         .addField('Wins', Wins, true)
