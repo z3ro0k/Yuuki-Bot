@@ -15,7 +15,7 @@ exports.run = async (bot, message, args) => {
     
     let stats = data.stats;
     let lifetime = stats.lifetime;
-    console.log(lifetime)
+    console.log(data)
     let top3 = lifetime[0]['Top 3'];
     let top5s = lifetime[1]['Top 5s'];
     let top6s = lifetime[3]['Top 6s'];
@@ -30,10 +30,13 @@ exports.run = async (bot, message, args) => {
     
     const embed = new Discord.MessageEmbed()
         .setColor(0x36393e)
-        .setTitle(`Stats for ${data.username}`)
+        .setTitle(`Fortnite LifeTime Stats`)
         .setDescription(`**Top Placement**\n\n\`\`\`tex Top 3s: ${top3}\nTop 5s: ${top5s}\nTop 6s: ${top6s}\nTop 12s: ${top12s}\nTop 25s: ${top25s}\`\`\``, true)
         .setThumbnail("https://vignette.wikia.nocookie.net/fortnite/images/d/d8/Icon_Founders_Badge.png")
-        
+        .addField('Username', data.username, true)
+        .addField('User ID', data.id, true)
+        .addField('PlatForm', data.platform, true)
+        .addField('Profile URL', `[Click Here!](${data.url})`, true)
         .addField('Total Score', Score, true)
         .addField('Matches Played', Mplayed, true)
         .addField('Wins', Wins, true)
@@ -44,7 +47,15 @@ exports.run = async (bot, message, args) => {
         
         message.channel.send({embed: embed})
     
-  });
+  }).catch (error => {
+        message.channel.send({
+            embed: {
+                title: "ERROR!",
+                color: 0xE50000,
+                description: `The username **${username}** was not found with the platform **${platform}**`
+            }
+        })
+    })
   
 };
 exports.config = {
