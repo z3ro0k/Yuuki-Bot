@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 exports.run = async (bot, message, args) => {
 let miembro = message.mentions.members.first();
-        let role = message.guild.role.find(`name`, "Silenciado");
+        let role = message.guild.roles.find(role => role.name === 'Silenciado');
         let perms = message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS");
         let razon = args.join(' ');
 
@@ -16,7 +16,7 @@ let miembro = message.mentions.members.first();
          
 }).then(role => {
         var canales = message.guild.channels;
-        var role = message.guild.role.find("name", "Muted")
+        var role = message.guild.roles.find(role => role.name ==="Silenciado")
         var rol = message.guild.roles.get(role.id);
   
         canales.forEach(k => k.overwritePermissions(rol.id, {
