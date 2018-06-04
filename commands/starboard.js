@@ -10,8 +10,8 @@ exports.run = async (client, message, args, tools) => {
   
   // 'SET' arguments
   if (args[0] && args[0].toLowerCase() === 'set') {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter('This command requires "ADMINISTRATOR" permissions.'), message.channel.send(embed);
-    if (!message.mentions.channels.first()) return embed.setFooter('Please mention a channel "!starboard set #channel".'), message.channel.send(embed);
+    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter('Este comando requiere permisos de "ADMINISTRADOR".'), message.channel.send(embed);
+    if (!message.mentions.channels.first()) return embed.setFooter('Por favor, mencione un canal "Yu!Starboard set #channel".'), message.channel.send(embed);
     db.set(`starboard_${message.guild.id}`, { enabled: true, channel: message.mentions.channels.first().id })
     db.set(`starboardChannel_${message.guild.id}`, message.mentions.channels.first().id)
     embed.setFooter('Channel successfully set!')
@@ -20,25 +20,25 @@ exports.run = async (client, message, args, tools) => {
   
   // 'ROLE' arguments
   if (args[0] && args[0].toLowerCase() === 'role') {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter('This command requires "ADMINISTRATOR" permissions.'), message.channel.send(embed);
-    if (!args[1]) return embed.setFooter('Please specify a roleName "!starboard role [roleName | remove]".'), message.channel.send(embed);
+    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter('Este comando requiere permisos de "ADMINISTRADOR".'), message.channel.send(embed);
+    if (!args[1]) return embed.setFooter('Especifique un roleName Yu!Starboard role [roleName | remove].'), message.channel.send(embed);
     if (args[1].toLowerCase() === 'remove') {
       db.delete(`starStarter_${message.guild.id}`)
-      embed.setFooter('Role requirement successfully disabled!')
+      embed.setFooter('El requisito de función se deshabilitó correctamente.')
       return message.channel.send(embed)
     } else {
       args = args.slice(1).join(' ')
       db.set(`starStarter_${message.guild.id}`, args)
-      embed.setFooter(`Role requirement successfully set to "${args}".`)
+      embed.setFooter(`rol necesario establecido a "${args}".`)
       return message.channel.send(embed)
     }
   }
   
   let enabled = await db.fetch(`starboard_${message.guild.id}`, { target: '.enabled' })
   let requiredRole = await db.fetch(`starStarter_${message.guild.id}`)
-  if (requiredRole === null) requiredRole = '*- Not Set*'
+  if (requiredRole === null) requiredRole = '*- No establecido*'
   if (enabled === null || !enabled) {
-    embed.setFooter('Use "YU!Starboard set #channel" para establecer el canal de salida.')
+    embed.setFooter('Use YU!Starboard set #channel para establecer el canal de salida.')
     return message.channel.send(embed)
   }
   
