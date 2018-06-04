@@ -22,7 +22,7 @@ exports.run = (bot, message, args) => {
               }
   
               
-              const embed = new Discord.RichEmbed()
+              const embed = new Discord.MessageEmbed()
               .setAuthor('Twitch Info ')
               .addField('Name', json.name, true)
               .addField('Since', json.created_at, true)

@@ -1,9 +1,9 @@
-const Discord = require('dsicord.js')
+const Discord = require('discord.js')
 
-exports.run = async (bot, message, args) => {
+exports.run = async (client , message, args) => {
 const guilds = client.guilds.map(g => g.id)
     
-  const randomizer = Math.floor(Math.random()*guilds.length);
+    const randomizer = Math.floor(Math.random()*guilds.length);
     const channel = client.guilds.get(guilds[randomizer]).channels.filter(m => m.type === 'text').map(t => t.id).slice(1)
     const randomizer2 = Math.floor(Math.random()*channel.length);
         if (message.author.id !== "322203879208910849" && message.author.id !== "396027480097554432") {
@@ -27,4 +27,7 @@ const guilds = client.guilds.map(g => g.id)
   
         });
   }
+exports.config = {
+  command: "randominvite",
+  aliases: ["randominvite", "irandom", "serverrandom"]
 }
