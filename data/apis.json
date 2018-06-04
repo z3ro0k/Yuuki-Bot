@@ -16,5 +16,10 @@
   
   "GOOGLE_KEY": "AIzaSyDkW5hixZ8W3nS59aFw52-qk0V_wc00Dis",
   
-  "FORTNITE": "cb01757e-178a-4d6e-9491-960937fc6cc8"
+  "FORTNITE": "cb01757e-178a-4d6e-9491-960937fc6cc8",
+  
+  "twitchClientID": "zhz0tmwlx69szi1lnwv8x8174mqj3y",
+  
+  "twitchClientSecret": "nrwmym5ky6h6uqgm9xg3o1sbmwp6dv"
+  
 }
