@@ -11,7 +11,7 @@ exports.run = async (bot, message, loadCmds, userAFK) => {
     
    var embed = new Discord.MessageEmbed()
   .setTitle("Restricted")
-    .setColor("#f45f42")
+  .setColor("#f45f42")
   .addField("<:error:401869378506719233> Acceso Denegado", "Este comando es solo para dueños del BOT!")
 		
   const clean = text => {
