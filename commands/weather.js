@@ -18,6 +18,7 @@ exports.run = async (bot, message, args) => {
    .addField('La hora actual es de:', current.observationtime)
    .addField('La humedad actual es de:', + current.humidity +'%')
    .addField('Fecha',  current.date)
+   .setColor(0x36393e)
    .setThumbnail(current.imageUrl)
   message.channel.send({embed})
     } catch (err) {
