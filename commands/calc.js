@@ -18,8 +18,8 @@ exports.run = (bot, message) => {
        .setTitle("Math Failure!")
        .setColor(0x36393e)
        .setThumbnail("http://www.drodd.com/images15/red-x22.png")
-       .addField("Calculo incorrecto!", `Tu ecua${args}`)
-       .addField("Key:", "```md\n <Addition: +> \n <Subtraction: -> \n <Multiplication: *> \n <Division: /> \n <PEMDAS: (1+1)x1> \n```")
+       .addField("Calculo incorrecto!", `Tu ecuación ${args}`)
+       .addField("Key:", "```md\n <Adición: +> \n <Sustracción: -> \n <Multiplicación: *> \n <Division: /> \n <PEMDAS: (1+1)x1> \n```")
        message.channel.send({ embed: embed })
         return;
     };
@@ -29,8 +29,8 @@ exports.run = (bot, message) => {
     .setTitle("Math Calculated!")
     .setColor(0x36393e)
     .setThumbnail("https://lh3.googleusercontent.com/WDs87hbKj9l2bnA8rHp5DzES5vsXuf4VWR1fmvD1RyA_b_oeeiuXaMGKn0a-_aThybI=w300")
-    .addField("I have sucessfuly calculated:", `${args}`)
-    .addField("The answer is:", `${answer}`)
+    .addField("He calculado con éxito:", `${args}`)
+    .addField("La respuesta es:", `${answer}`)
     message.channel.send({ embed: embed2 })
 			
 };
