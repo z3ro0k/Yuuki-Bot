@@ -9,13 +9,30 @@ exports.run = async (bot, message, args) => {
   let username = args[0];
   let platform = args[1] || "pc";
   
-  if(!username) return message.reply('**please provide a username.**')
+  if (!args[0]) return message.channel.send({
+            embed: {
+                title: "ERROR!",
+                color: 0xE50000,
+                description: "Please include the username: **Yu!fortnite <username> [ pc | xbl | psn ]**"
+            }
+        })
+  
+  if (!['pc', 'xbl', 'psn'].includes(args[1])) return message.channel.send({
+            embed: {
+                title: "ERROR!",
+                color: 0xE50000,
+                description: "Please include the platform: **Yu!fortnite <username> [ pc | xbl | psn ]**"
+            }
+        })
+        
+    
+        
   
   let data = fortnite.user(username, platform).then(data => {
     
     let stats = data.stats;
     let lifetime = stats.lifetime;
-    console.log(data)
+  
     let top3 = lifetime[0]['Top 3'];
     let top5s = lifetime[1]['Top 5s'];
     let top6s = lifetime[3]['Top 6s'];
