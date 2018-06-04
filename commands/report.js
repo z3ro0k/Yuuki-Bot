@@ -22,7 +22,7 @@ await message.delete();
     .addField('Pruebas','[Imagen]('+ link + ')')
     .setTimestamp()
     .setColor(0x36393e)
-    bot.channels.get('393551417887162368').send({embed});
+    bot.channels.get('429467996944203778').send({embed});
     message.channel.send('**:white_check_mark: Su informe se envía correctamente, espere mientras el desarrollador responde**')
  } 
 exports.config = {
