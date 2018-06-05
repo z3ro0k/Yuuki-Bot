@@ -112,13 +112,13 @@ bot.on('messageReactionAdd', async (messageReaction, user) => {
   if (!target.enabled) return; // Not Enabled
   if (!channel) return; // No Channel
   
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
       .setTitle('Starboard')
   
   if (messageReaction.message.author.id === user.id) {
     embed.setFooter('¡No puedes reacionar a tu propio mensaje!')
-    return messageReaction.message.channel.send(embed)
+    return messageReaction.message.channel.send(embed).then(msg => {msg.delete(30000)});
   }
   
   let hasRole;
