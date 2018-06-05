@@ -118,12 +118,14 @@ bot.on('messageReactionAdd', async (messageReaction, user) => {
   
   if (messageReaction.message.author.id === user.id) {
     embed.setFooter('¡No puedes reacionar a tu propio mensaje!')
-    return messageReaction.message.channel.send(embed).then(msg => {msg.delete(30000)});
+    return messageReaction.message.channel.send(embed).then(msg => {
+      msg.delete({timeout: 10000})
+    })
   }
   
   let hasRole;
   if (requiredRole === null) hasRole = true;
-  else if (messageReaction.message.guild.members.get(user.id).roles.find('name', requiredRole)) hasRole = true;
+  else if (messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === requiredRole)) hasRole = true;
   else hasRole = false;
   
   if (item === null && hasRole) { // Starboard message not created
@@ -162,7 +164,7 @@ bot.on('messageReactionAdd', async (messageReaction, user) => {
     
     db.set(`starItem_${msgID}`, newItem)
     
-  } else if (!messageReaction.message.guild.members.get(user.id).roles.find('name', 'Moderators')) {
+  } else if (!messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === 'Moderators')) {
     embed.setFooter(`Lo sentimos, solo las personas con el rol ${requiredRole} pueden ser los primeros en destacar el mensaje.`)
     return messageReaction.message.channel.send(embed).then(msg => {
       msg.delete({timeout: 10000})
