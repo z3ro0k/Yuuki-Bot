@@ -12,6 +12,7 @@ const pokemon = args.join(' ')
     msg.channel.send({embed})
       return;
     }
+  
 try {
 		const { body } = await snekfetch.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`);
 			const id = body.id.toString().padStart(3, '0');
@@ -27,15 +28,15 @@ try {
 					${filterPokemonData(body.flavor_text_entries).flavor_text.replace(/\n|\f|\r/g, ' ')}
 				`)
 				.setThumbnail(`https://www.serebii.net/sunmoon/pokemon/${id}.png`);
-			return msg.embed(embed);
+			return msg.channel.send(embed);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.statusCode === 404) return msg.reply('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	
 
 	function filterPokemonData(arr, random = true) {
-		const filtered = arr.filter(entry => entry.language.name === 'spanish');
+		const filtered = arr.filter(entry => entry.language.name === 'es');
 		return filtered[random ? Math.floor(Math.random() * filtered.length) : 0];
 	}
 };
