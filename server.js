@@ -29,13 +29,13 @@ const db = require('quick.db')
 function loadCmds () {
 bot.commands = new Discord.Collection();  
 bot.aliases = new Discord.Collection();
-
+bot.events = new Discord.Collection();
 fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   
   var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
   if (jsfiles.length <= 0) { return console.log('No commands Found') }
-  else { console.log(jsfiles.length + ' Commands found') }
+  else { console.log('Un total de ' + jsfiles.length + ' Comandos cargados') }
   
   jsfiles.forEach((f, i) => {
     delete require.cache[require.resolve(`./commands/${f}`)]; 
@@ -50,7 +50,7 @@ fs.readdir('./commands/', (err, files) => {
 })
 }
 loadCmds();
-fs.readdir("./eventos/", (err, files) => {
+/*fs.readdir("./eventos/", (err, files) => {
     if (err) return console.error("[ERRO] " + err);
         var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
         if (jsfiles.length <= 0) { return console.log('No events Found') }
@@ -61,7 +61,26 @@ fs.readdir("./eventos/", (err, files) => {
         bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
     });
 });
-
+*/
+// Event Handler
+fs.readdir('./eventos/', async (err, files) => {
+    if (err) return console.error(err);
+    const jsfiles = files.filter(f => f.split('.').pop() === 'js');
+    if (jsfiles.length <= 0) {
+        return console.log('[eventos] No hay eventos para cargar');
+    } else {
+        console.log(`[Events] Cargando un total de ${jsfiles.length} eventos!`);
+    }
+    files.forEach(file => {
+        let eventFunction = require(`./eventos/${file}`);
+        let eventName = file.split('.')[0];
+      if(!eventFunction.run) return;
+      let run = eventFunction.run.bind(null, bot);
+        bot.events.set(eventName, run);
+        
+        bot.on(eventName, run);
+    });
+});
 var prefix = '.';
 bot.on('message', message => {
   
