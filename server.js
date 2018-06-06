@@ -106,3 +106,25 @@ bot.on('ready', () => {
     api.postUsers(bot.user.id, bot.users.size);
   }, 900000); 
 });
+const { stringify } = require('querystring');
+const { request } = require('https');
+
+const update = () => {
+const data = stringify({ server_count: bot.guilds.size });
+const req = request({
+    host: 'discordbots.org',
+    path: `/api/bots/${bot.user.id}/stats`,
+    method: 'POST',
+    headers: {
+      'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2NTk0OTc4ODgwNzc1NzgzNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTE0OTM5ODc3fQ.QFcaSEfNHj3l6VTegWbi5w7Vz52KqikAdt4KUlVvy4Y',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(data)
+    }
+  });
+  req.write(data);
+  req.end();
+};
+
+bot.on('ready', update);
+bot.on('guildCreate', update);
+bot.on('guildRemove', update);
