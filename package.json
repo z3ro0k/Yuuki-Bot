@@ -42,7 +42,8 @@
     "plexibotsapi": "^0.0.5",
     "npm-module-search": "^2.0.0",
     "humanize-duration": "^3.14.0",
-    "giphy-api": "^1.2.7"
+    "giphy-api": "^1.2.7",
+    "columnify": "^1.5.4"
   },
   "engines": {
     "node": "8.x"
