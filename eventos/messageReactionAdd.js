@@ -4,7 +4,7 @@ const tools = require('../functions.js')
 
 exports.run = async (bot, messageReaction, user) => {
 
-console.log(messageReaction)
+//console.log(messageReaction)
   if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
 
   // Fetch Data
