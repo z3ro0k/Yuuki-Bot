@@ -4,9 +4,9 @@ const { shorten, base64 } = require('../utils/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = require('../data/apis.json')
 
 exports.run = async (bot, msg, args) => {
-    const artc = args[0]
+    const artc = args.join(' ')
     const astc2 = artc => artc.replace(/#/g, '.prototype.')
-    if(!astc2) {
+    if(!artc) {
     msg.channel.send('¿Qué artículo te gustaría buscar?')
       return;
     }
@@ -15,7 +15,7 @@ exports.run = async (bot, msg, args) => {
 			const { body } = await snekfetch
 				.get('https://developer.mozilla.org/en-US/search.json')
 				.query({
-					q: astc2,
+					q: artc,
 					locale: 'es-ES',
 					highlight: false
 				});
