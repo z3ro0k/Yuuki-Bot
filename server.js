@@ -50,26 +50,14 @@ fs.readdir('./commands/', (err, files) => {
 })
 }
 loadCmds();
-/*fs.readdir("./eventos/", (err, files) => {
-    if (err) return console.error("[ERRO] " + err);
-        var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
-        if (jsfiles.length <= 0) { return console.log('No events Found') }
-        else { console.log(jsfiles.length + ' events found') }
-    files.forEach(file => {
-        let eventFunction = require(`./eventos/${file}`);       
-        let eventName = file.split(".")[0];
-        bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
-    });
-});
-*/
-// Event Handler
+function loadEvents () {
 fs.readdir('./eventos/', async (err, files) => {
     if (err) return console.error(err);
     const jsfiles = files.filter(f => f.split('.').pop() === 'js');
     if (jsfiles.length <= 0) {
         return console.log('[eventos] No hay eventos para cargar');
     } else {
-        console.log(`[Events] Cargando un total de ${jsfiles.length} eventos!`);
+        console.log(`Cargando un total de ${jsfiles.length} eventos!`);
     }
     files.forEach(file => {
         let eventFunction = require(`./eventos/${file}`);
@@ -81,6 +69,8 @@ fs.readdir('./eventos/', async (err, files) => {
         bot.on(eventName, run);
     });
 });
+}
+loadEvents();
 var prefix = '.';
 bot.on('message', message => {
   
@@ -96,7 +86,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0]) || bot.commands.get(bot.aliases.get(cont[0]));
-  if (cmd) cmd.run(bot, message, args, loadCmds, tools);
+  if (cmd) cmd.run(bot, message, args, tools, loadCmds, loadEvents);
   
 
 })
