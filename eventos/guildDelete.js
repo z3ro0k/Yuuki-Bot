@@ -15,5 +15,5 @@ const embed = new Discord.MessageEmbed()
 .setThumbnail(`${guild.iconURL()}`)
 .setColor("#ff0000")
 canal.send({ embed: embed})
-
+return;
 }

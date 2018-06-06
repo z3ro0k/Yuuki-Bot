@@ -52,15 +52,6 @@ exports.run = async(bot, message, args) => {
       return name.replace(/"/g, '')
     })
 
-    // Features
-    var features = []
-    if (guild.features.indexOf('INVITE_SPASH')) { features.push('Invite Spash') }
-    if (guild.features.indexOf('MORE_EMOJI')) { features.push('More Emojis') }
-    if (guild.features.indexOf('VERIFIED')) { features.push('Verified') }
-    if (guild.features.indexOf('VIP_REGIONS')) { features.push('VIP Regions') }
-    if (guild.features.indexOf('VANITY_URL')) { features.push('Vanity URL') }
-    for (var i = 0; i < features.length; i++) { features[i] = `• ${features[i]}` }
-
     // Roles
     var guildRoles
     if (guild.roles.size > 1) {
@@ -68,20 +59,32 @@ exports.run = async(bot, message, args) => {
     } else {
       guildRoles = 'N/A'
     }
+   let emoji;
+ if (ownerInfo.presence.status === "online") {
+     emoji = "<a:Online:446119385480953866>"
+ }
+ if (ownerInfo.presence.status === "dnd") {
+     emoji = "<a:Dnd:446126900788592670>"
+ }
+ if (ownerInfo.presence.status === "idle") {
+     emoji = "<a:Idle:446126963585974283>"
+ }
+ if (ownerInfo.presence.status === "offline") {
+     emoji = "<a:Offline:446126934355738627>"
+ }
   const embed = new Discord.MessageEmbed()
   .setColor(message.author.displayHexColor)
 	.setThumbnail(guild.iconURL() !== null ? guild.iconURL() : 'http://cdn.discordapp.com/embed/avatars/0.png')
   .setTitle(`${guild.name} - ${guildRegion}`)
   .setDescription(`**ID:** - ${guild.id}`)
   .setColor(0x36393e)
-  .addField('🔧 Owner', `**Tag:** ${escapeMarkdown(ownerInfo.tag)}\n**ID:** ${ownerInfo.id}\n**Status:** ${ownerInfo.presence.status}`, true)
+  .addField('🔧 Owner', `**Tag:** ${escapeMarkdown(ownerInfo.tag)}\n**ID:** ${ownerInfo.id}\n**Status:** ${ownerInfo.presence.status} ${emoji}`, true)
   //.addField(`🕐 Created - (${moment(guild.createdAt).fromNow()})`, `**Date:** ${moment(guild.createdAt).format('L')}\n**Time:** ${moment(guild.createdAt).format('LTS')} ${moment.tz(moment.tz.guess()).format('z')}`, true)
   .addField(`📋 Members - (${guild.members.size.toLocaleString()})`, `**<a:Online:446119385480953866>** ${guild.members.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **<a:Offline:446126934355738627>** ${guild.members.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**<a:Idle:446126963585974283>** ${guild.members.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **<a:Dnd:446126900788592670>** ${guild.members.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
   .addField(`🕵 Users - (${userFilter.size.toLocaleString()})`, `**<a:Online:446119385480953866>** ${userFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **<a:Offline:446126934355738627>** ${userFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**<a:Idle:446126963585974283>** ${userFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **<a:Dnd:446126900788592670>** ${userFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
   .addField(`🤖 Bots - (${botFilter.size.toLocaleString()})`, `**<a:Online:446119385480953866>** ${botFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **<a:Offline:446126934355738627>** ${botFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**<a:Idle:446126963585974283>** ${botFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **<a:Dnd:446126900788592670>** ${botFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
   .addField( `⌨ Channels - (${guild.channels.size.toLocaleString()})`,  `**Category:** ${guild.channels.filter(c => c.type === 'category').size.toLocaleString()}\n**Text:** ${guild.channels.filter(c => c.type === 'text').size.toLocaleString()}\n**Voice:** ${guild.channels.filter(c => c.type === 'voice').size.toLocaleString()}`, true)
   .addField('💤 AFK Channel', guild.afkChannelID !== null ? `**Name:** ${guild.afkChannel.name}\n**ID:** ${guild.afkChannel.id}\n**Timeout:** ${guild.afkTimeout} seconds` : 'N/A', true)
-  .addField('⚙ Features', features.size > 0 ? features.join('\n') : 'N/A', true)
   .addField('⚖ Verification Level', verificationLevel[guild.verificationLevel], true)
   .addField('📰 Explicit Content Filter', explicitContentFilter[guild.explicitContentFilter], true)
   .addField(`🔖 Roles - (${guild.roles.size.toLocaleString()})`,  guildRoles, false)
