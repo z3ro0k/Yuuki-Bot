@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const dateFormat = require('dateformat');
+const { escapeMarkdown } = require('discord.js');
 
 //let cooldown = new Set();
 
@@ -24,56 +25,67 @@ exports.run = async(bot, message, args) => {
     const now = new Date();
 				 dateFormat(now, '***On dddd, mmmm dS, yyyy, h:MM:ss TT***');
 
-	let region = {
-		"brazi": "Brazil** :flag_br:",
-		"eu-central": "Central Europe :flag_eu:",
-    "singapore": "Singapore** :flag_sg:",
-    "us-central": "U.S. Central** :flag_us:",
-    "sydney": "Sydney** :flag_au:",
-    "us-east": "U.S. East :flag_us:",
-    "us-south": "U.S. South :flag_us:",
-    "us-west": "U.S. West :flag_us:",
-    "eu-west": "Western Europe :flag_eu:",
-    "singapore": "Singapore :flag_sg:",
-    "london": "London :flag_gb:",
-    "japan": "Japan :flag_jp:",
-    "russia": "russia :flag_ru:",
-    "hongkong": "Hong Kong :flag_hk:"
-	}
-	let icon;
-	if (server.iconURL) {
-	    icon = server.iconURL
-	}
-	if (!server.iconURL) {
-	    icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Blue_computer_icon.svg/2000px-Blue_computer_icon.svg.png"
-	}
-	let owner = server.owner.user
-	if (!owner) {
-	    owner = "None for some reason..."
-	};
-	
-    const millis = new Date().getTime() - server.createdAt.getTime();
-    const days = millis / 1000 / 60 / 60 / 24;
+	var guild = message.guild
+    var ownerInfo = guild.owner.user
 
+    // Security
+    var verificationLevel = [
+      '**None**\n(Unrestricted)',
+      '**Low**\n(Must have verified email on account)',
+      '**Medium**\n(Must be registered on Discord for longer than 5 minutes)',
+      '**High**\n(Must be a member of the server for longer than 10 minutes)',
+      '**Very High**\n(Must have a verified phone number)'
+    ]
+    var explicitContentFilter = [
+      '**Level 1**\n(Don\'t scan any messages)',
+      '**Level 2**\n(Scan messages from members without a role)',
+      '**Level 3**\n(Scan all messages.)'
+    ]
 
+    // Member Filter
+    var userFilter = guild.members.filter(s => s.user.bot !== true)
+    var botFilter = guild.members.filter(s => s.user.bot !== false)
 
-    const verificationLevels = ['None', 'Low', 'Medium', '(╯°□°）╯︵ ┻━┻ (High)', '┻━┻彡 ヽ(ಠ益ಠ)ノ彡┻━┻ (Extreme)'];
-  
-  var embed = new Discord.MessageEmbed()
-    .setTitle(`**Server Info for ${server.name}** 👪`)
-    .setColor(0x36393e)  
-    .setThumbnail(icon)
-    .setDescription(`[>](https://discord.gg/hZACuxT)Members Online: <a:Online:446119385480953866>${online.size}\n[>](https://discord.gg/hZACuxT)Members offline: <a:Offline:446126934355738627>${offline.size}\n[>](https://discord.gg/hZACuxT)Members dnd: <a:Dnd:446126900788592670>${dnd.size}\n[>](https://discord.gg/hZACuxT)Members idle: <a:Idle:446126963585974283>${idle.size}\n[>](https://discord.gg/hZACuxT)Members streaming <a:Streaming:446126986482417676>${streaming.size}`)
-    .addField("**Guild ID** :id:", `[>](https://discord.gg/hZACuxT)${server.id}`, true)
-    .addField("**Created On** <:Verific:446119366187024394>", `[>](https://discord.gg/hZACuxT)${dateFormat(server.createdAt)}`)
-    .addField("**Region** ", `[>](https://discord.gg/hZACuxT)${region[server.region]}`, true)
-    .addField("**User Count** 👥", `[>](https://discord.gg/hZACuxT)${server.members.filter(m => m.presence.status !== 'offline').size} **Online** out of ${server.memberCount} members`, true)
-    .addField("**Owner** :prince:", `[>](https://discord.gg/hZACuxT)${owner.username}`, true)
-    .addField("**Text Channels Count** :speaker:", `[>](https://discord.gg/hZACuxT)${server.channels.filter(m => m.type === 'text').size} Text Channels`, true)
-    .addField("**Voice Channels Count** :loudspeaker:", `[>](https://discord.gg/hZACuxT)${server.channels.filter(m => m.type === 'voice').size} Voice Channels `, true)
-    .addField("**Verification Level** 📶", `[>](https://discord.gg/hZACuxT)${verificationLevels[server.verificationLevel]}`, true)
-    .addField("**Roles Count** :scroll:", `[>](https://discord.gg/hZACuxT)${server.roles.size} Roles `, true)
-    message.channel.send({ embed: embed });
+    // Region
+    var guildRegion = await guild.fetchVoiceRegions().then(regions => {
+      var name = JSON.stringify(regions.get(guild.region).name)
+      return name.replace(/"/g, '')
+    })
+
+    // Features
+    var features = []
+    if (guild.features.indexOf('INVITE_SPASH')) { features.push('Invite Spash') }
+    if (guild.features.indexOf('MORE_EMOJI')) { features.push('More Emojis') }
+    if (guild.features.indexOf('VERIFIED')) { features.push('Verified') }
+    if (guild.features.indexOf('VIP_REGIONS')) { features.push('VIP Regions') }
+    if (guild.features.indexOf('VANITY_URL')) { features.push('Vanity URL') }
+    for (var i = 0; i < features.length; i++) { features[i] = `• ${features[i]}` }
+
+    // Roles
+    var guildRoles
+    if (guild.roles.size > 1) {
+      guildRoles = `${guild._sortedRoles().array().slice(1).reverse().map(role => `**\`${role.name}\`**`)}`
+    } else {
+      guildRoles = 'N/A'
+    }
+  const embed = new Discord.MessageEmbed()
+  .setColor(message.author.displayHexColor)
+	.setThumbnail(guild.iconURL() !== null ? guild.iconURL() : 'http://cdn.discordapp.com/embed/avatars/0.png')
+  .setTitle(`${guild.name} - ${guildRegion}`)
+  .setDescription(`**ID:** - ${guild.id}`)
+  .setColor(0x36393e)
+  .addField('🔧 Owner', `**Tag:** ${escapeMarkdown(ownerInfo.tag)}\n**ID:** ${ownerInfo.id}\n**Status:** ${ownerInfo.presence.status}`, true)
+  //.addField(`🕐 Created - (${moment(guild.createdAt).fromNow()})`, `**Date:** ${moment(guild.createdAt).format('L')}\n**Time:** ${moment(guild.createdAt).format('LTS')} ${moment.tz(moment.tz.guess()).format('z')}`, true)
+  .addField(`📋 Members - (${guild.members.size.toLocaleString()})`, `**<a:Online:446119385480953866>** ${guild.members.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **<a:Offline:446126934355738627>** ${guild.members.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**<a:Idle:446126963585974283>** ${guild.members.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **<a:Dnd:446126900788592670>** ${guild.members.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
+  .addField(`🕵 Users - (${userFilter.size.toLocaleString()})`, `**<a:Online:446119385480953866>** ${userFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **<a:Offline:446126934355738627>** ${userFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**<a:Idle:446126963585974283>** ${userFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **<a:Dnd:446126900788592670>** ${userFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
+  .addField(`🤖 Bots - (${botFilter.size.toLocaleString()})`, `**<a:Online:446119385480953866>** ${botFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **<a:Offline:446126934355738627>** ${botFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**<a:Idle:446126963585974283>** ${botFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **<a:Dnd:446126900788592670>** ${botFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
+  .addField( `⌨ Channels - (${guild.channels.size.toLocaleString()})`,  `**Category:** ${guild.channels.filter(c => c.type === 'category').size.toLocaleString()}\n**Text:** ${guild.channels.filter(c => c.type === 'text').size.toLocaleString()}\n**Voice:** ${guild.channels.filter(c => c.type === 'voice').size.toLocaleString()}`, true)
+  .addField('💤 AFK Channel', guild.afkChannelID !== null ? `**Name:** ${guild.afkChannel.name}\n**ID:** ${guild.afkChannel.id}\n**Timeout:** ${guild.afkTimeout} seconds` : 'N/A', true)
+  .addField('⚙ Features', features.size > 0 ? features.join('\n') : 'N/A', true)
+  .addField('⚖ Verification Level', verificationLevel[guild.verificationLevel], true)
+  .addField('📰 Explicit Content Filter', explicitContentFilter[guild.explicitContentFilter], true)
+  .addField(`🔖 Roles - (${guild.roles.size.toLocaleString()})`,  guildRoles, false)
+    return message.channel.send(embed);
 }
 module.exports.config = {
   command: "server",
