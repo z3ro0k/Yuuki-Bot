@@ -36,7 +36,7 @@ try {
 	
 
 	function filterPokemonData(arr, random = true) {
-		const filtered = arr.filter(entry => entry.language.name === 'es');
+		const filtered = arr.filter(entry => entry.language.name === 'en');
 		return filtered[random ? Math.floor(Math.random() * filtered.length) : 0];
 	}
 };
