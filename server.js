@@ -50,7 +50,7 @@ fs.readdir('./commands/', (err, files) => {
 })
 }
 loadCmds();
-function loadEvents () {
+function eventsLoad () {
 fs.readdir('./eventos/', async (err, files) => {
     if (err) return console.error(err);
     const jsfiles = files.filter(f => f.split('.').pop() === 'js');
@@ -70,7 +70,8 @@ fs.readdir('./eventos/', async (err, files) => {
     });
 });
 }
-loadEvents();
+eventsLoad();
+
 var prefix = '.';
 bot.on('message', message => {
   
@@ -86,7 +87,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0]) || bot.commands.get(bot.aliases.get(cont[0]));
-  if (cmd) cmd.run(bot, message, args, tools, loadCmds, loadEvents);
+  if (cmd) cmd.run(bot, message, args, tools, loadCmds, eventsLoad);
   
 
 })
