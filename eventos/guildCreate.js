@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-
+const Prefix = "Yu!"
 exports.run = (bot, guild, args, tools) => {
 
 var canal = bot.channels.get('429467913531949056'); 
@@ -33,5 +33,13 @@ const embed = new Discord.MessageEmbed()
 .setColor(9823579)
 canal.send({embed})
 return;
+  bot.user.setPresence({
+          status: "dnd",
+          activity: {
+            name: prefix + `help | ${bot.guilds.size} guilds 📝 | ${bot.users.size} usuarios 👤 | Yu!invite`,
+            type: 2
+          }
+        }) 
+
 })
 }
