@@ -15,7 +15,7 @@ exports.run =  (bot, message, args) => {
     let nsfw = ['== NSFW Commands ==\n\n◈ No hay comandos NSFW por el momento']
     let botC = ['== BOT Commands ==\n\n◈ `To!report`  :: Usted envía un error que tiene el bot\n◈ `To!suggestion` :: Envía una sugerencia para agregar un comando al bot\n◈ `To!about`    :: Muestra toda la informacion del bot']
     let server = ['== Server Commands ==\n\n◈ `Yu!welcome`    ::  Activa los mod-logs para tu servidor\n◈ `To!setautorole`   ::  establecer el rol automático\n◈ `To!setchannel`    :: establece el canal a enviar los mensajes de bienvenida\n◈ `Yu!perms`         ::  Muestra los permsios que tiene el usuario mencionado o tuyos\n◈ `Yu!server`  ::  muestra información del servidor\n◈ `Yu!starboard`  ::  Establece la tabal de estrellas en tu servdidor']
-    let music = ['== Comandos de Musica ==\n\n◈ `Yu!play`    ::  Pon una canción y disfruta de ella\n◈ `Yu!queue`   :: Muestra la lista de canciones a reproducir\n◈ `Yu!search`   :: Searchs for up to 10 results.']
+    let music = ['== Comandos de Musica ==\n\n◈ `Yu!play`    ::  Ponga en fila una canción/lista de reproducción por URL o busque una canción.\n◈ `Yu!queue`   :: Muestra la lista de canciones a reproducir\n◈ `Yu!search`   :: Busca hasta 10 resultados.\n◈ `Yu!skip`   :: Salta una canción o varias canciones.\n◈ `Yu!pause`   :: Pausa la cola.\n◈ `Yu!resume`   :: Reanuda la cola.\n◈ `Yu!volumen`   :: Ajusta el volumen del bot.\n◈ `Yu!np`   :: Muestra la canción que se está reproduciendo actualmente.\n◈ `Yu!clearqueue`   :: Borra la cola actual.\n◈ `Yu!leave`   :: Deja el canal de voz y limpia la cola.\n◈ `Yu!loop`   :: Cambia el estado del bucle']
   if(args[0] === "fun" || args[0] === "Fun" || args[0] === "FUN" || args[0] === "FuN") {
     const embed = new Discord.MessageEmbed()
         .setColor(0x36393e)
@@ -69,7 +69,7 @@ exports.run =  (bot, message, args) => {
     const embed = new Discord.MessageEmbed()
         .setColor(0x36393e)
         .setFooter('Comandos de Musica')
-        .setDescription(admin);
+        .setDescription(music);
  
     return message.channel.send(embed) 
  } else {
