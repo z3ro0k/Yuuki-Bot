@@ -40,7 +40,7 @@ fs.readdir('./commands/', (err, files) => {
   jsfiles.forEach((f, i) => {
     delete require.cache[require.resolve(`./commands/${f}`)]; 
     var cmds = require (`./commands/${f}`);
-    console.log(`Command ${f} loading...`);
+    //console.log(`Command ${f} loading...`);
     bot.commands.set(cmds.config.command, cmds);
     cmds.config.aliases.forEach(alias => {
 	      bot.aliases.set(alias, cmds.config.command);
@@ -52,8 +52,11 @@ fs.readdir('./commands/', (err, files) => {
 loadCmds();
 fs.readdir("./eventos/", (err, files) => {
     if (err) return console.error("[ERRO] " + err);
+        var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
+        if (jsfiles.length <= 0) { return console.log('No events Found') }
+        else { console.log(jsfiles.length + ' events found') }
     files.forEach(file => {
-        let eventFunction = require(`./eventos/${file}`);
+        let eventFunction = require(`./eventos/${file}`);       
         let eventName = file.split(".")[0];
         bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
     });
