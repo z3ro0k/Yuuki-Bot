@@ -73,7 +73,9 @@ bot.on('message', message => {
 })
 bot.on('ready', () =>{
 console.log('Bot launched...')
+  
 bot.user.setActivity('Hello everyone!')
+  
 bot.user.setStatus('dnd')  
 });
 
