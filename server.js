@@ -1,18 +1,20 @@
 //a
+
 const http = require('http');
 const express = require('express');
 const app = express();
 
-//
+
 app.use(express.static('public'));
 
-app.get("/", function (request, response) {
-});
 
 app.get("/", (request, response) => {
   response.sendStatus(200);
 });
 
+app.get("/", function (request, response) {
+  response.sendFile(__dirname + '/index.html');
+});
 app.listen(process.env.PORT);
 
 setInterval(() => {
