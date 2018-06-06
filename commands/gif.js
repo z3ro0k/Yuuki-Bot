@@ -4,8 +4,8 @@ const Discord = require('discord.js'),
 exports.run = async (bot, message, args ,func) => {
   
   const giphy = require('giphy-api')('Bgn4zuOYf4jIAi6uUwXM3OIZcGI62rde');
-  if (!args) return  message.channel.send('No term(s) was found for me to search!.');
-  message.channel.send(':arrows_counterclockwise: Searching...')
+  if (!args) return  message.channel.send('Porfavor ingresa algun termino para buscar el gif');
+  message.channel.send(':arrows_counterclockwise: Buscando...')
   .then(m => {
     giphy.search({
     q: args,
@@ -15,7 +15,7 @@ exports.run = async (bot, message, args ,func) => {
       return console.log(err);
     }
       if(!res.data){
-      return m.edit('¡No results found!')
+      return m.edit('¡No encontre algun resultado!')
     }
       let key1 = res.data[0].url.substr(res.data[0].url.lastIndexOf('-') + 1);
       let url1 = `https://media.giphy.com/media/${key1}/giphy.gif`;
@@ -33,7 +33,7 @@ exports.run = async (bot, message, args ,func) => {
 let page = 1
 
 const embed = new Discord.MessageEmbed()
-.setAuthor("Search result of gifs for: '"+args+"'", `https://icdn4.digitaltrends.com/image/api_giphy_logo-1200x630-c-ar1.91.png`)
+.setAuthor("Resultado de búsqueda de gifs para: '"+args+"'", `https://icdn4.digitaltrends.com/image/api_giphy_logo-1200x630-c-ar1.91.png`)
 .setImage(pages[page - 1])
 .setColor(0x36393e)
 .setFooter(`Página ${page} de ${pages.length}`)
@@ -69,4 +69,8 @@ m.edit(embed).then(msg => {
     });
     });
   })
+}
+exports.config = {
+  command: "gif",
+  aliases: ["gif", "g", "giphy"]
 }
