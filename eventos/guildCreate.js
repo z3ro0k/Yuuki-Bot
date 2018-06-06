@@ -29,7 +29,7 @@ guild.channels.get(id).createInvite({
 
 }).then(invite =>  {
 var invitacionURL 
-if(!invitacionURL) invitacionURL = "No invite URL"
+if(!invitacionURL === "undefined") invitacionURL = "No invite URL"
   else invitacionURL = '[invitacion]('+ invite.url + ')'
 const embed = new Discord.MessageEmbed() 
 .setTitle("👥『New Guild』")
