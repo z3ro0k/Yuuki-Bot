@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 
 exports.run = (bot, message, args, func) => {
-var member = message.member
+var member = message.mentions.users.first() || message.guild.members.get(args.join(' ')) || message.author 
         if (message.mentions.users.array()[0]) {
             member = message.guild.members.get(message.mentions.users.array()[0].id);
         }
@@ -27,7 +27,7 @@ var member = message.member
                 message.channel.send({ embed: perms });
                 perms = new Discord.MessageEmbed()
                     .setColor(message.guild.me.displayColor)
-                    .setFooter('Perms for ' + message.author.username, message.author.avatarURL())
+                    .setFooter('Perms for ' + member.user.username, member.user.avatarURL())
                     .setTimestamp();
                 i = 0;
             }
