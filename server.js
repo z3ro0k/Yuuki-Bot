@@ -50,7 +50,14 @@ fs.readdir('./commands/', (err, files) => {
 })
 }
 loadCmds();
-
+fs.readdir("./eventos/", (err, files) => {
+    if (err) return console.error("[ERRO] " + err);
+    files.forEach(file => {
+        let eventFunction = require(`./eventos/${file}`);
+        let eventName = file.split(".")[0];
+        bot.on(eventName, (...args) => eventFunction.run(bot, ...args));
+    });
+});
 
 var prefix = '.';
 bot.on('message', message => {
