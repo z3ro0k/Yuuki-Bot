@@ -86,7 +86,7 @@ bot.on('message', message => {
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
   
-  if (!message.content.toLowerCase(prefix)) return;
+  if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0]) || bot.commands.get(bot.aliases.get(cont[0]));
   if (cmd) cmd.run(bot, message, args, tools, loadCmds, eventsLoad);
