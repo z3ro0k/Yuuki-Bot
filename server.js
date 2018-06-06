@@ -52,11 +52,11 @@ fs.readdir('./commands/', (err, files) => {
 loadCmds();
 
 
-
+var prefix = '.';
 bot.on('message', message => {
   
  
-  var prefix = '.';
+  
  
   var sender = message.author;
   var msg = message.content.toLowerCase();
@@ -74,9 +74,13 @@ bot.on('message', message => {
 bot.on('ready', () =>{
 console.log('Bot launched...')
   
-bot.user.setActivity('Hello everyone!')
-  
-bot.user.setStatus('dnd')  
+bot.user.setPresence({
+          status: "dnd",
+          activity: {
+            name: prefix + `help | ${bot.guilds.size} guilds 📝 | ${bot.users.size} usuarios 👤 | Yu!invite`,
+            type: 2
+          }
+        })  
 });
 
 bot.login('MzcwODI5Mzc5Mjc5OTEyOTcx.DdvsgQ.vEjUN5QR04xpa3JmC7dCCZehv4c')
