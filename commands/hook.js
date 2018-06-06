@@ -1,6 +1,6 @@
 let prefix = '.'
-const tools = require('../functions.js')
-exports.run = (bot, message, args, tools) => {
+const tools = require('../functions.js');
+exports.run = (bot, message, args) => {
         message.delete();
 
          if (!args.join(' ')) { return tools.hook(message.channel,'Hook Usage', `${prefix}hook <title>, <message>, [HEXcolor], [avatarURL]\n\n**<> is required\n[] is optional**`,'FC8469','https://cdn4.iconfinder.com/data/icons/global-logistics-3/512/129-512.png') // Remeber that \n means new line. This is also using a custom HEX id, and an image.

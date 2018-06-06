@@ -22,7 +22,7 @@ module.exports = {
             .then(webhook => {
 
                 // Fetches the webhook we will use for each hook
-                let foundHook = webhook.find('name', 'Webhook'); // You can rename 'Webhook' to the name of your bot if you like, people will see if under the webhooks tab of the channel.
+                let foundHook = webhook.find(hook => hook.name ==='Webhook'); // You can rename 'Webhook' to the name of your bot if you like, people will see if under the webhooks tab of the channel.
 
                 // This runs if the webhook is not found.
                 if (!foundHook) {
