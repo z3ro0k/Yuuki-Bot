@@ -95,20 +95,14 @@ bot.on('message', message => {
 //bot.login('MzcwODI5Mzc5Mjc5OTEyOTcx.DdvsgQ.vEjUN5QR04xpa3JmC7dCCZehv4c') Yuuki pruebas token
 bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
 //bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DXgWmw.e1zXkHOcrXJEY3635Pu8-cFWAgQ') //Supreme Bot token
-bot.on('channelDelete', async channel => {
-  let audit = await tools.fetchLastAudit(channel.guild);
-  if (!audit) return;
-  if (audit.action !== 'CHANNEL_DELETE') return;
-  
-  // Push to database
-  db.push(`delChannels_${channel.guild.id}`, { target: `#${audit.changes[0].old}`, user: { id: audit.executor.id, tag: `${audit.executor.username}#${audit.executor.discriminator}` }, timestamp: Date.now() })
-  
-  // Starboard
-  let starboard = await db.fetch(`starboard_${channel.guild.id}`)
-  if (starboard !== null && starboard.enabled && starboard.channel === channel.id) {
-    db.set(`starboard_${channel.guild.id}`, false, { target: '.enabled' }) 
-  }
-  
-  // Check
-  
-})
+const PlexiDevApi = require('plexibotsapi');
+let api = new PlexiDevApi('KTBGWMhGXTvz3lInW4Yora1YNjl2DsilYbxRw8dKF4fXJbzL9K');
+
+bot.on('ready', () => {
+  api.postServers(bot.user.id, bot.guilds.size);
+  api.postUsers(bot.user.id, bot.users.size); 
+  setInterval(function() {
+    api.postServers(bot.user.id, bot.guilds.size);
+    api.postUsers(bot.user.id, bot.users.size);
+  }, 900000); 
+});
