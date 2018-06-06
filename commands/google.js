@@ -123,5 +123,5 @@ exports.run = (bot, message, args) => {
 }
 exports.config = {
   command: "google",
-  aliases: ["google", "search"]
+  aliases: ["google", "gsearch"]
 }

@@ -72,7 +72,7 @@ fs.readdir('./eventos/', async (err, files) => {
 }
 eventsLoad();
 
-var prefix = '.';
+var prefix = 'Yu!';
 bot.on('message', message => {
   
  
@@ -92,7 +92,8 @@ bot.on('message', message => {
 
 })
 
-bot.login('MzcwODI5Mzc5Mjc5OTEyOTcx.DdvsgQ.vEjUN5QR04xpa3JmC7dCCZehv4c')
+//bot.login('MzcwODI5Mzc5Mjc5OTEyOTcx.DdvsgQ.vEjUN5QR04xpa3JmC7dCCZehv4c') Yuuki pruebas token
+bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
 //bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DXgWmw.e1zXkHOcrXJEY3635Pu8-cFWAgQ') //Supreme Bot token
 bot.on('channelDelete', async channel => {
   let audit = await tools.fetchLastAudit(channel.guild);
