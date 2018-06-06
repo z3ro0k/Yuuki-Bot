@@ -32,6 +32,6 @@ const embed = new Discord.MessageEmbed()
 .setThumbnail(`${guild.iconURL()}`, true)
 .setColor(9823579)
 canal.send({embed})
-
+return;
 })
 }
