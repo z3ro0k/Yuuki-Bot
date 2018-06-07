@@ -20,7 +20,7 @@ exports.run =  (bot, message, args) => {
     const embed = new Discord.MessageEmbed()
         .setColor(0x36393e)
         .setFooter(`Comandos de diversión`)
-        .setDescription('Comandos de diversion');
+        .setDescription(pages);
  
     return message.channel.send(embed) 
  }
