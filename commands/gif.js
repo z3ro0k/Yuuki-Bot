@@ -33,7 +33,7 @@ exports.run = async (bot, message, args ,func) => {
 let page = 1
 
 const embed = new Discord.MessageEmbed()
-.setAuthor("Resultado de búsqueda de gifs para: '"+args+"'", `https://icdn4.digitaltrends.com/image/api_giphy_logo-1200x630-c-ar1.91.png`)
+.setAuthor("Resultado de búsqueda de gifs para: '"+args.join(' ')+"'", `https://icdn4.digitaltrends.com/image/api_giphy_logo-1200x630-c-ar1.91.png`)
 .setImage(pages[page - 1])
 .setColor(0x36393e)
 .setFooter(`Página ${page} de ${pages.length}`)
