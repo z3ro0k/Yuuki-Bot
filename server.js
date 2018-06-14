@@ -78,7 +78,8 @@ var prefix = 'Yu!';
 bot.on('message', message => {
   
  
-  
+  bot.ownerID = '322203879208910849';
+  bot.color = 0xDFE0D2;
  
   var sender = message.author;
   var msg = message.content.toLowerCase();
