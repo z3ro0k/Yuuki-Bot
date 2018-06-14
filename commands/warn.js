@@ -5,12 +5,12 @@ let WarnCase = 12;
 let channel
 
 const db = require('quick.db')
-let warns = JSON.parse(fs.readFileSync("../data/warnings.json", "utf8"));
+let warns = JSON.parse(fs.readFileSync("./data/warnings.json", "utf8"));
 
 exports.run = (bot, message, args, func) => {
 
   
-  if(!message.member.hasPermission("MANAGE_MEMBERS")) {
+  if(!message.member.hasPermission("KICK_MEMBERS")) {
   message.reply("<:adminNep:372599923381633024> **| No tienes Permisos para usar este comando.**");
   return; 
   }
@@ -55,21 +55,25 @@ exports.run = (bot, message, args, func) => {
   canal.send({ embed });
    
   if(warns[wUser.id].warns == 3){
-    let muterole = message.guild.roles.find(`name`, "muted");
-    if(!muterole)  message.reply("The muted role was not found on the server.");
+    let muterole = message.guild.roles.find(role => role.name === "muted");
+    if(!muterole)  message.reply("El rol **muted** no existe en el servidor.");
 
     let mutetime = "10m";
-    wUser.roles.add(message.guild.roles.find('name', "muted"));
-    message.channel.send(`<@${wUser.id}> has been temporarily muted`);
+    wUser.roles.add(message.guild.roles.find(role => role.name === "muted"));
+    message.channel.send(`<@${wUser.id}> fue silenciado temporalmente!`);
 
     setTimeout(function(){
       wUser.roles.remove(muterole)
-      message.reply(`<@${wUser.id}> has been unmuted.`)
+      message.reply(`Se le ha acabado el tiempo del silencio a <@${wUser.id}> `)
     }, ms(mutetime))
   }
   if(warns[wUser.id].warns == 5){
     message.guild.member(wUser).ban(reason);
-    message.reply(`<@${wUser.id}> has been banned.`)
+    message.reply(`<@${wUser.id}> a sido baneado del servidor por pasar las 5 warns.`)
   }
 
+}
+module.exports.config = {
+  command: "warn",
+  aliases: ['warn', 'warnear']
 }

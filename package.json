@@ -43,7 +43,10 @@
     "npm-module-search": "^2.0.0",
     "humanize-duration": "^3.14.0",
     "giphy-api": "^1.2.7",
-    "columnify": "^1.5.4"
+    "columnify": "^1.5.4",
+    "mojang-api": "^0.0.2",
+    "cheerio": "^0.22.0",
+    "got": "^8.3.1"
   },
   "engines": {
     "node": "8.x"
