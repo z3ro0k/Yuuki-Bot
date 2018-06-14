@@ -1,8 +1,9 @@
-const snekfetch = require('snekfetch')
+const ascii = require('figlet');
 
 const ownerID = '322203879208910849'
 
 const Discord = require('discord.js')
+
 
 exports.run = (client, message, args, tools) => {
   
@@ -12,20 +13,20 @@ exports.run = (client, message, args, tools) => {
   message.channel.send('pasaste los 14 caracteres permitidos ...')
     return;
   }
-  snekfetch.get(`http://artii.herokuapp.com/make?text=${args.join(' ')}`).then(ascii => {
-    
-const embed = new Discord.MessageEmbed()
-.addField('Text', args.join(' '))
-.addField('Ascii Form', `\`\`\`${ascii.text}\`\`\``)
-.setColor(0x36393e)  
-  return message.channel.send({ embed: embed });
-
-  }).catch(err => {
-    var server = message.guild;
-      client.users.get(ownerID).send(`Se encontro un error con el comando **ascii**, comando usado en** ${server.name} ** por el usuario **${message.author.username}** checa la consola`);
-    //tools.embed(message.channel, '**:white_check_mark:Se le envio un reporte a mi desarollador**')
-      console.log(err)
-  });
+   ascii(args.join(' '), {
+        horizontalLayout: 'fitted',
+        verticalLayout: 'fitted'
+      },
+      function(err, data) {
+        if (err) {
+          message.reply('Something went wrong! Contact a developer. `https://discord.gg/RwmuHu6`')
+          console.error(err)
+        }
+        message.delete(1)
+        message.channel.send(data, {
+          code: 'text'
+        })
+      })
 }
 module.exports.config = {
   command: "ascii",
