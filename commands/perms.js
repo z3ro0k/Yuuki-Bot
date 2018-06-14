@@ -2,11 +2,8 @@ const Discord = require('discord.js')
 
 exports.run = (bot, message, args, func) => {
 var member = message.mentions.users.first() || message.guild.members.get(args.join(' ')) || message.author 
-        if (message.mentions.users.array()[0]) {
-            member = message.guild.members.get(message.mentions.users.array()[0].id);
-        }
 
-        var p = member.permissions.serialize(true);
+        var p = member.permissions.serialize(true) || message.author.permissions.serialize(true)
 
         var perms = new Discord.MessageEmbed()
             .setAuthor(member.user.username + '#' + member.user.discriminator, member.user.avatarURL())
