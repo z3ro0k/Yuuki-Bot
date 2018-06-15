@@ -1,0 +1,14 @@
+dependencies:
+  figlet: 1.2.0
+packages:
+  /figlet/1.2.0:
+    dev: false
+    engines:
+      node: '>= 0.4.0'
+    resolution:
+      integrity: sha1-bEZTc3j6tkkUa1phQ92gGbQwtBA=
+registry: 'https://registry.npmjs.org/'
+shrinkwrapMinorVersion: 7
+shrinkwrapVersion: 3
+specifiers:
+  figlet: ^1.2.0
