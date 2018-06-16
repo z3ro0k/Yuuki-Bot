@@ -1,16 +1,17 @@
 const { MessageEmbed } = require('discord.js');
+const { stripIndents } = require('common-tags');
 
-exports.run = async (bot, message, args) => {
-  var command = args[}
+exports.run = async (bot, msg, args) => {
+  var command = bot.commands.get(args[0]) || bot.commands.get(bot.aliases.get(args[0]))
   
   if (!command) {
 			const embed = new MessageEmbed()
 				.setTitle('Command List')
-				.setDescription(`Use ${msg.usage('<command>')} to view detailed information about a command.`)
+				.setDescription(`Use Yu!bhelp ping to view detailed information about a command.`)
 				.setColor(0x00AE86)
-				.setFooter(`${this.client.registry.commands.size} Commands`);
-			for (const group of this.client.registry.groups.values()) {
-				embed.addField(`❯ ${group.name}`, group.commands.map(cmd => cmd.name).join(', ') || 'None');
+				.setFooter(`${bot.commands.size} Commands`);
+			for (const group = bot.commands) {
+				embed.addField(`❯ ${group.command}`, group.commands.map(cmd => cmd.config.command).join(', ') || 'None');
 			}
 			try {
 				const msgs = [];
@@ -21,12 +22,10 @@ exports.run = async (bot, message, args) => {
 				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
 		}
-		return msg.say(stripIndents`
-			__Command **${command.name}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
-			${command.description}${command.details ? `\n_${command.details}_` : ''}
-			**Format**: ${msg.anyUsage(`${command.name} ${command.format || ''}`)}
-			**Aliases**: ${command.aliases.join(', ') || 'None'}
-			**Group**: ${command.group.name} (\`${command.groupID}:${command.memberName}\`)
+		return msg.channel.send(stripIndents`
+			__Command **${command.command}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
+			${command.description}**Aliases**: ${command.aliases.join(', ') || 'None'}
+			**Group**: ${command.category}\`)
 		`);
 	}
 
