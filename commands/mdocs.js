@@ -32,10 +32,6 @@ exports.run = async (bot, msg, args) => {
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
-module.exports.config = {
-  command: "mdocs",
-  aliases: ['mozillad', 'docsm']
-}
 exports.config = {
   command: "mdocs",
   aliases: ['mozillad', 'docsm'],

@@ -39,7 +39,11 @@ message.channel.send({ embed }).catch (error => {
     })
   })
 }
+
 exports.config = {
   command: "npm",
-  aliases: ["npm", "npmjs"]
-}
+  aliases: ['npm', 'npmjs'],
+  category: "info",
+  description: "Buscas un npm o package con el bot desde la pagina de Npmjs",
+  usage: "Yu!npm Discord.js"
+};

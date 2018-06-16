@@ -52,5 +52,8 @@ let miembro = message.mentions.members.first();
 }      
 exports.config = {
   command: "mute",
-  aliases: ['mutear', 'mute']
-}
+  aliases: ['mutear', 'mute'],
+  category: "mod",
+  description: "Muteas al usuario mencionado",
+  usage: "Yu!mute @To✘icGMDyt#7319"
+};

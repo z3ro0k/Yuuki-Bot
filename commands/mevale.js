@@ -8,5 +8,8 @@ message.channel.send(image)
   }
 exports.config = {
   command: "mevale",
-  aliases: ['mevale']
-}
+  aliases: ['mevale'],
+  category: "fun",
+  description: "Que hara esto?",
+  usage: "Yu!mevale"
+};
