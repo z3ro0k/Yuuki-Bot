@@ -35,7 +35,10 @@ const embed = new Discord.MessageEmbed()
 
 message.channel.send({embed});
 }
-module.exports.config = {
+exports.config = {
   command: "about",
-  aliases: ['about', 'infobot']
-}
+  aliases: ["about", "infobot"],
+  category: "system",
+  description: "Te muestra informacion del bot",
+  usage: "Yu!about"
+};

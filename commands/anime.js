@@ -36,7 +36,10 @@ if(!query) {
 		}
 
 }
-module.exports.config = {
+exports.config = {
   command: "anime",
-  aliases: ['m-anime', 'an']
-}
+  aliases: ["abm-animeout", "an"],
+  category: "search",
+  description: "Busca un anime de la pagina myanimelist.net",
+  usage: "Yu!anime Kimi no Na wa"
+};

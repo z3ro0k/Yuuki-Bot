@@ -19,7 +19,7 @@ exports.run = (client, message, args, tools) => {
       },
       function(err, data) {
         if (err) {
-          message.reply('Something went wrong! Contact a developer. `https://discord.gg/RwmuHu6`')
+          //.reply('Something went wrong! Contact a developer. `https://discord.gg/RwmuHu6`')
           console.error(err)
         }
         message.delete(1)
@@ -28,7 +28,10 @@ exports.run = (client, message, args, tools) => {
         })
       })
 }
-module.exports.config = {
+exports.config = {
   command: "ascii",
-   aliases: ["ascii", "ascii-text"]
-}
+  aliases: ["ascii", "ascii-text"],
+  category: "fun",
+  description: "convierte un tus argumentos a ascii",
+  usage: "Yu!ascii Hello  world"
+};

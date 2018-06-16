@@ -26,3 +26,10 @@ module.exports.config = {
   command: "avatar",
    aliases: ["ava"]
 }
+exports.config = {
+  command: "ascii",
+  aliases: ["ascii", "ascii-text"],
+  category: "fun",
+  description: "convierte un tus argumentos a ascii",
+  usage: "Yu!ascii Hello  world"
+};

@@ -25,7 +25,10 @@ var rpts = ["Sí", "No", "¿Por qué?", "Por favor", "Tal vez", "No sé", "Defin
     .addField('Respuesta:', rpts[Math.floor(Math.random() * rpts.length)])
   message.channel.send( BallEmbed );          
 }
-module.exports.config = {
- command: "8ball", 
- aliases: ['8ball', '8'] 
-}
+exports.config = {
+  command: "8ball",
+  aliases: ["8ball", "8"],
+  category: "fun",
+  description: "El bot responde a tu pregunta",
+  usage: "Yu!8ball Es un test?"
+};

@@ -8,5 +8,8 @@ message.channel.send(image)
 }
 exports.config = {
   command: "aplauso",
-  aliases: ['aplauso']
-}
+  aliases: ["aplauso", "aplaudir"],
+  category: "imagen",
+  description: "Que hara",
+  usage: "Yu!aplauso"
+};
