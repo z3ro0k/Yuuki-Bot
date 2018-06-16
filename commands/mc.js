@@ -27,5 +27,8 @@ var snekfetch = require('snekfetch');
 }
 exports.config = {
   command: "mc",
-  aliases: ['mcc', 'Achievement']
-}
+  aliases: ['mcc', 'Achievement'],
+  category: "fun",
+  description: "creas un Achievement de maincraft",
+  usage: "Yu!mc cookie"
+};

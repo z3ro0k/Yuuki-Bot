@@ -36,3 +36,10 @@ module.exports.config = {
   command: "mdocs",
   aliases: ['mozillad', 'docsm']
 }
+exports.config = {
+  command: "mdocs",
+  aliases: ['mozillad', 'docsm'],
+  category: "info",
+  description: "Busca informacion de alguna funcion en la documentacion de Mozilla",
+  usage: "Yu!mdocs Array()"
+};

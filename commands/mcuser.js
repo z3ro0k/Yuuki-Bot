@@ -36,10 +36,6 @@ async function getLongUUID(username) {
     return input.attribs['value'];
 }
 
-
-
-
-
 const shortuuid = await getShortUUID(username);
 const longuuid = await getLongUUID(username);
  if (!shortuuid && !longuuid) {
@@ -246,7 +242,10 @@ if (embed.length > 2000) return message.channel.send("Oops! This embed is too lo
 return message.channel.send({ embed: embed });
 }});
 };
-module.exports.config = {
+exports.config = {
   command: "mcuser",
-  aliases: ['mcuser', 'minecraftuser']
-}
+  aliases: ['mcuser', 'minecraftuser'],
+  category: "info",
+  description: "Busca a un usuario de maincraft",
+  usage: "Yu!mcuser TheWillyrex"
+};

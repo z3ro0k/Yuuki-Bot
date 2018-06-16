@@ -9,15 +9,18 @@ let elementos = ["https://i.imgur.com/F9zFLqf.gif", "https://i.imgur.com/F1LbtMM
           if(message.content.includes(message.author.id)) return message.reply('¿te besarás a ti mismo? o.O')
           if(message.content.includes(bot.user.id)) return message.reply('N-no puedo hacerlo >u<')
           
-          if (!user) return message.reply("L-lo siento >u<, pero debes mencionar a alguien.");
+          if (!user) return message.reply("lo siento >u<, pero debes mencionar a alguien.");
             
           const embed = new Discord.MessageEmbed()
           .setDescription(`**${message.author.username}** le dio un beso a **${user.username}** o////o`)
           .setImage(`${elementos[Math.floor(elementos.length * Math.random())]}`)
           .setColor(0xCA3163)
           message.channel.send({embed});
-}
-module.exports.config = {
+} 
+exports.config = {
   command: "kiss",
-  aliases: ['besar']
-}
+  aliases: ['kiss', 'besar'],
+  category: "fun",
+  description: "Besas al usuario mencionado",
+  usage: "Yu!kiss @ToXicGMDyt#7319 "
+};
