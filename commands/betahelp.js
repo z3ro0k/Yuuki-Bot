@@ -10,7 +10,7 @@ exports.run = async (bot, msg, args) => {
 				.setDescription(`Use Yu!bhelp ping to view detailed information about a command.`)
 				.setColor(0x00AE86)
 				.setFooter(`${bot.commands.size} Commands`);
-			for (const group in bot.commands.config) {
+			for (const group in bot.commands) {
 				embed.addField(`❯ ${group.commands}`, group.commands.map(cmd => cmd.config.command).join(', ') || 'None');
 			}
 			try {
@@ -22,9 +22,9 @@ exports.run = async (bot, msg, args) => {
 			}
 		}
 		return msg.channel.send(stripIndents`
-			__Command **${command.command}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
-			${command.description}**Aliases**: ${command.aliases.join(', ') || 'None'}
-			**Group**: ${command.category}\`)
+			__Command **${command.config.command}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
+			${command.config.description} **Aliases**: ${command.config.aliases.join(', ') || 'None'}
+			**Group**: (\`${command.config.category}\`)
 		`);
 	}
 
