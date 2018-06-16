@@ -10,14 +10,13 @@ exports.run = async (bot, msg, args) => {
 				.setDescription(`Use Yu!bhelp ping to view detailed information about a command.`)
 				.setColor(0x00AE86)
 				.setFooter(`${bot.commands.size} Commands`);
-			for (const group = bot.commands) {
-				embed.addField(`❯ ${group.command}`, group.commands.map(cmd => cmd.config.command).join(', ') || 'None');
+			for (const group in bot.commands.config) {
+				embed.addField(`❯ ${group.commands}`, group.commands.map(cmd => cmd.config.command).join(', ') || 'None');
 			}
 			try {
-				const msgs = [];
-				msgs.push(await msg.direct({ embed }));
-				if (msg.channel.type !== 'dm') msgs.push(await msg.say('📬 Sent you a DM with information.'));
-				return msgs;
+				//const msgs = [];
+				msg.author.send({ embed });
+				if (msg.channel.type !== 'dm') return await msg.reply('�� Sent you a DM with information.');
 			} catch (err) {
 				return msg.reply('Failed to send DM. You probably have DMs disabled.');
 			}
