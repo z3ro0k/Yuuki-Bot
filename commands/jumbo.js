@@ -34,7 +34,10 @@ message.channel.send(image)
   
 } 
 }
-module.exports.config = {
+exports.config = {
   command: "jumbo",
-  aliases: ['jumbo', 'j', 'e']
-}
+  aliases: ['jumbo', 'j', 'e'],
+  category: "fun",
+  description: "El bot agranda el emoji proposionado",
+  usage: "Yu!emoji :Doge:"
+};
