@@ -13,5 +13,8 @@ var rpts = ["ff00ff", "00ffff", "8600b3", "754785", "e699ff", "ff3333", "006600"
 }
 exports.config = {
   command: "invite",
-  aliases: ['invitacion']
- }
+  aliases: ["inv", "h"],
+  category: "mod",
+  description: "El bot crea un WebHook",
+  usage: "Yu!hook"
+};

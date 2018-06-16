@@ -1,9 +1,9 @@
 exports.config = {
   command: "help",
-  aliases: ["ayuda", "comman"],
-  category: "mod",
-  description: "Bannea a un usuario usando su ID",
-  usage: "Yu!hackban 322203879208910849"
+  aliases: ["ayuda", "commands"],
+  category: "info",
+  description: "Te muestra la lista de los comandos de Yuuki",
+  usage: "Yu!help"
 };
 const Discord = require("discord.js");
 

@@ -1,4 +1,4 @@
-let prefix = '.'
+let prefix = 'Yu!'
 const tools = require('../functions.js');
 exports.run = (bot, message, args) => {
         message.delete();
@@ -9,7 +9,11 @@ exports.run = (bot, message, args) => {
 
         tools.hook(message.channel, hookArgs[0], hookArgs[1], hookArgs[2], hookArgs[3]); // This is where it actually calls the hook.
 }
+
 exports.config = {
   command: "hook",
-  aliases: ["hook", "h"]
-}
+  aliases: ["hook", "h"],
+  category: "mod",
+  description: "El bot crea un WebHook",
+  usage: "Yu!hook"
+};
