@@ -22,5 +22,8 @@ exports.run = async (bot, message, args) => {
 }
 exports.config = {
   command: "cat",
-  aliases: ['gato', 'cats']
-}
+  aliases: ["gato", "cats"],
+  category: "fun",
+  description: "El bot te mandara un gato aleatorio",
+  usage: "Yu!cat"
+};

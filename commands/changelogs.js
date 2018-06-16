@@ -13,20 +13,20 @@ function parseTime(milliseconds) {
     obj = ms(Date.now() - milliseconds);
 
   // Check Days
-  if (obj.days === 1) string += ` ${obj.days} day `
-  else if (obj.days > 1) string += ` ${obj.days} days `
+  if (obj.days === 1) string += ` ${obj.days} día `
+  else if (obj.days > 1) string += ` ${obj.days} dias `
 
   // Check Hours
-  if (obj.hours === 1) string += `${obj.hours} hour `
-  else if (obj.hours > 1) string += `${obj.hours} hours `
+  if (obj.hours === 1) string += `${obj.hours} hora `
+  else if (obj.hours > 1) string += `${obj.hours} horas `
 
   // Check Minutes
-  if (obj.minutes === 1) string += `${obj.minutes} minute `
-  else if (obj.minutes > 1) string += `${obj.minutes} minutes `
+  if (obj.minutes === 1) string += `${obj.minutes} minuto `
+  else if (obj.minutes > 1) string += `${obj.minutes} minutos `
 
   // Append Text
-  if (string === '') string = 'Just now'
-  else string += 'ago'
+  if (string === '') string = 'Justo ahora'
+  else string += 'hace'
 
   return string;
 
@@ -43,7 +43,7 @@ exports.run = async (client, message, args, tools) => {
 
   // If none found, return
   if (entries === null) {
-    embed.setFooter('No entries found!');
+    embed.setFooter('¡Entradas no encontradas!');
     return message.channel.send(embed);
   }
 
@@ -57,7 +57,7 @@ exports.run = async (client, message, args, tools) => {
   }
 
   // Configure Embed
-  embed.setTitle(`Server Changelog (${entries.length})`)
+  embed.setTitle(`Registro de cambios del Bot (${entries.length})`)
     .setDescription(changelog)
 
   // Send Embed
@@ -66,5 +66,8 @@ exports.run = async (client, message, args, tools) => {
 }
 exports.config = {
   command: "changelogs",
-  aliases: ["changelogs", "actualizacion"]
-}
+  aliases: ["changelogs", "actualizacion"],
+  category: "info",
+  description: "Te manda el registro de cambios del bot",
+  usage: "Yu!changelogs"
+};

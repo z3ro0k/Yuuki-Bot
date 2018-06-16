@@ -9,7 +9,6 @@ exports.run = (bot, message) => {
         return;
     }
 
-
     let answer;
     try {
         answer = math.eval(args);
@@ -36,5 +35,8 @@ exports.run = (bot, message) => {
 };
 exports.config = {
   command: "calc",
-  aliases: ["calc", "calculadora", "calcular"]
-}
+  aliases: ["calc", "calculadora", "calcular"],
+  category: "info",
+  description: "Calcula o suma una ecuación",
+  usage: "Yu!calc 1+1"
+};

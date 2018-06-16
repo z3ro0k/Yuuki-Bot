@@ -18,5 +18,8 @@ exports.run = async (bot, message, args) => {
 }
 exports.config = {
   command: "channels",
-  aliases: ['canales', 'canalesinfo']
-}
+  aliases: ["channels", "channelsize"],
+  category: "info",
+  description: "Te manda la lista de canalales del servidor",
+  usage: "Yu!channels"
+};
