@@ -22,7 +22,11 @@ if(messageCount >= 2 && messageCount <= 100){
 
 } 
 }
+
 exports.config = {
   command: "clean",
-  aliases: ['limpiar', 'purgar']
-}
+  aliases: ["limpiar", "purgar"],
+  category: "mod",
+  description: "Limpia una cantidad de mensajes",
+  usage: "Yu!clean"
+};

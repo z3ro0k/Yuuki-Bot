@@ -28,7 +28,10 @@ exports.run = async (bot, message, args) => {
       code: 'css'
     })
   }
-module.exports.config = {
-  command: "guilds",
-  aliases: ['guilds']
-}
+exports.config = {
+  command: "guild",
+  aliases: ["guild", "guilds"],
+  category: "info",
+  description: "Te manda la lista de servidores donde esta Yuuki",
+  usage: "Yu!guilds"
+};

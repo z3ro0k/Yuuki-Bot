@@ -13,5 +13,8 @@ randomPuppy().then(url =>{
 }
 exports.config = {
   command: "dog",
-  aliases: ['perro', 'perros']
-}
+  aliases: ["dogs", "perro"],
+  category: "fun",
+  description: "Manda un perro aleatori",
+  usage: "Yu!dog"
+};

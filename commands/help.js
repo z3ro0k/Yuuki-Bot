@@ -1,8 +1,10 @@
-    module.exports.config = {
-        command: "help",
-        aliases: ['ayuda', 'halp']
-    }
-
+exports.config = {
+  command: "help",
+  aliases: ["ayuda", "comman"],
+  category: "mod",
+  description: "Bannea a un usuario usando su ID",
+  usage: "Yu!hackban 322203879208910849"
+};
 const Discord = require("discord.js");
 
 exports.run =  (bot, message, args) => {

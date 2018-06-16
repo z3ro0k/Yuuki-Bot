@@ -121,7 +121,10 @@ exports.run = async (bot, message, loadCmds, userAFK) => {
       message.channel.send({embed: embed3 });
     }
 }
-module.exports.config = {
+exports.config = {
   command: "eval",
-  aliases: ['evaluar', 'ev']
-}
+  aliases: ["evaluar", "ev"],
+  category: "system",
+  description: "Evalua un codijo de JS",
+  usage: "Yu!eval [...code]"
+};

@@ -29,5 +29,8 @@ exports.run = (client, message, args) => {
     }
 exports.config = {
   command: "hackban",
-  aliases: ['hb', 'hackb']
-}
+  aliases: ["hb", "hackb"],
+  category: "mod",
+  description: "Bannea a un usuario usando su ID",
+  usage: "Yu!hackban 322203879208910849"
+};

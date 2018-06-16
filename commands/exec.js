@@ -19,7 +19,7 @@ exports.run = async(client, message, args, level) => {
 exports.config = {
   command: "exec",
   aliases: ["exec"],
-  category: "System",
-  description: "Executes command prompt code",
+  category: "system",
+  description: "Ejecuta un código de símbolo del sistema",
   usage: "exec [...code]"
 };

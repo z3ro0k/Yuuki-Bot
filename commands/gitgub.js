@@ -34,11 +34,14 @@ exports.run = async (bot, msg, args) => {
 				.addField('❯ Modification Date', new Date(body.updated_at).toDateString(), true);
 			return msg.channel.send(embed);
 		} catch (err) {
-			if (err.statusCode === 404) return msg.say('Could not find any results.');
+			if (err.statusCode === 404) return msg.channel.send('Could not find any results.');
 			return msg.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
 		}
 	}
-module.exports.config = {
+exports.config = {
   command: "github",
-  aliases: ['github', 'githubinfo']
-}
+  aliases: ["github", "githubinfo"],
+  category: "search",
+  description: "Busca un repositorio en GitHub",
+  usage: "Yu!github AlexisMV Yuuki-Bot"
+};

@@ -77,5 +77,8 @@ exports.run = async (bot, message, args) => {
 };
 exports.config = {
   command: "fortnite",
-  aliases: ["fortnite", "fort"]
+  aliases: ["fortnite", "fort"],
+  category: "info",
+  description: "Busca información de un usuario de fortnite",
+  usage: "Yu!fortnite MrNedinator pc"
 };

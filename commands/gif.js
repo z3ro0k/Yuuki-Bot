@@ -72,5 +72,8 @@ m.edit(embed).then(msg => {
 }
 exports.config = {
   command: "gif",
-  aliases: ["gif", "g", "giphy"]
-}
+  aliases: ["gif", "g", "giphy"],
+  category: "search",
+  description: "Busca un gif en giphy",
+  usage: "Yu!gif Love"
+};
