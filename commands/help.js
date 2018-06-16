@@ -1,7 +1,8 @@
 
 const Discord = require("discord.js");
-    let pages = ['== Comandos de Diversion ==\n\n◈ `Yu!ping`     ::  Muestra la lactancia de los mesanjes del bot y la api de discord\n◈ `Yu!avatar`   ::  Muestra tu avatar o la del usuario mencionado\n◈ `Yu!ascii`    ::  Convierte un tezt a ASCII\n◈ `Yu!calc`     ::  Calcula un aecuacion o suma\n◈ `To!emojis`   ::  Muestra los emojis que hay en el server\n◈ `Yu!playing`  ::  Muestra el jugando del usuario mencionado\n◈ `Yu!jumbo`    ::  Agranda un emoji owo\n◈ `Yu!hug`  ::  abraza al usuario mencionado\n◈ `Yu!fortnite` ::  Muestra información sobre usuarios específicos de Fortnite\n◈ `Yu!cat`      ::  Envía una imagen de un gato!\n◈ `Yu!dog`      ::  Envía una imagen de un perro!'];
-    let info = ['== Info Commands ==\n\n ◈ `Yu!spotify`  ::  Muestra la canción que estás escuchando en spotify el usuario mencionado\n◈ `Yu!weather`  ::  Muestra información sobre una ciudad\n◈ `Yu!help`     ::  Muestra todos los comandos disponibles\n◈ `Yu!npm`      ::  busca un paquete para agregar a tu bot\n◈ `Yu!user` ::  muestre su información o la del usuario mencionado\n◈ `Yu!ytsearch` ::  buscar canciones de youtube con el bot\n◈ `Yu!google`   ::  Busca algo en google\n◈ `Yu!mcuser`   ::  ¡Obtén la información de un usuario de minecraft!\n◈ `Yu!roblox`   ::  busca un usuario roblox y obtén información']
+const { stripIndents } = require('common-tags');
+    let pages = ['◈ `Yu!ping`◈ `Yu!avatar` ◈ `Yu!ascii`◈ `Yu!calc◈ `To!emojis` ◈ `Yu!playing` ◈ `Yu!jumbo` ◈ `Yu!hug` ◈ `Yu!fortnite` ◈ `Yu!cat` ◈ `Yu!dog`'];
+    let info = ['◈ `Yu!spotify`  ::  Muestra la canción que estás escuchando en spotify el usuario mencionado\n◈ `Yu!weather`  ::  Muestra información sobre una ciudad\n◈ `Yu!help`     ::  Muestra todos los comandos disponibles\n◈ `Yu!npm`      ::  busca un paquete para agregar a tu bot\n◈ `Yu!user` ::  muestre su información o la del usuario mencionado\n◈ `Yu!ytsearch` ::  buscar canciones de youtube con el bot\n◈ `Yu!google`   ::  Busca algo en google\n◈ `Yu!mcuser`   ::  ¡Obtén la información de un usuario de minecraft!\n◈ `Yu!roblox`   ::  busca un usuario roblox y obtén información']
     let admin = ['== Admin Commands ==\n\n◈ `Yu!hook`    :: envía un weekhook con tus argumentos\n◈ `Yu!settings`  ::  muestra la configuración actual del bot en su servidor\n◈ `Yu!tmute` ::  Silenciar al usuario mencionado por x tiempo\n◈ `Yu!warn`    ::  Advierte al usuario mencionado\n◈ `Yu!warnlist` ::  Muestra la lista de warns del usuario mencionado \n◈ `Yu!clean`    ::  borras mensajes con el bot']
     let nsfw = ['== NSFW Commands ==\n\n◈ No hay comandos NSFW por el momento']
     let botC = ['== BOT Commands ==\n\n◈ `Yu!report`  :: Usted envía un error que tiene el bot\n◈ `Yu!suggestion` :: Envía una sugerencia para agregar un comando al bot\n◈ `Yu!about`    :: Muestra toda la informacion del bot']
@@ -12,21 +13,39 @@ exports.run =  async (bot, message, args) => {
 
     var command = bot.commands.get(args[0]) || bot.commands.get(bot.aliases.get(args[0]))
    await message.delete();
-
+if(!command) {
     const embed = new Discord.MessageEmbed()
-      .setDescription(`<:helpNEP3:372992359287488512>**Mis categorias son**<:helpNEP3:372992359287488512>`)
-      .addField("== Comandos de Diversion ==","Muestra los comandos para divertirse un rato")
-      .addField("Yu!help info","Muestra los comandos para informarte")
+      .setDescription(`<:helpNEP3:372992359287488512>**Mis comandos son **<:helpNEP3:372992359287488512>`)
+      .addField("== Comandos de Diversion ==", pages)
+     // .addField("== Info Commands ==", info)
       .addField("Yu!help music","Muestra los comandos de musica")
       .addField("Yu!help botc", "Muestra los comandos del bot")
       .addField("Yu!help server", "Muestra los comandos de los mod-logs")
       .addField("Yu!help nsfw", "Muestra los comandos +18")
       .setFooter(`${bot.commands.size} Commands`, bot.user.displayAvatarURL())
-      .setColor(0x36393e)
- 
-return  message.channel.send({embed})  
- 
-}
+      .setColor(0x36393e) 
+  			try {
+				//const msgs = [];
+				message.author.send({ embed });
+				if (message.channel.type !== 'dm') return await message.reply('�� Sent you a DM with information.');
+			} catch (err) {
+				return message.reply('Failed to send DM. You probably have DMs disabled.');
+			}
+		}
+  const embed = new Discord.MessageEmbed()
+  .addFiled("Comando:", `**${command.config.command}**`)
+  .addField("Alias:", `${command.config.aliases.join(', ') || 'None'}`)
+  .addField("Categoria:", `(\`${command.config.category}\`)`)
+  .addField("Descripción:", `**${command.config.description}**`)
+  
+  
+  
+ return message.channel.send(stripIndents`
+			__Command **${command.config.command}**__${command.guildOnly ? ' (Usable only in servers)' : ''}
+			${command.config.description} **Aliases**: ${command.config.aliases.join(', ') || 'None'}
+			**Group**: (\`${command.config.category}\`)
+		`);
+	}
 exports.config = {
   command: "help",
   aliases: ["ayuda", "commands"],
