@@ -27,15 +27,12 @@ if(!command) {
       .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
 
-  			try {
-				//const msgs = [];
 				message.author.send({ embed });
-        //message.author.send( musice );
-				if (message.channel.type !== 'dm') return await message.reply('�� Te envié un DM con la lista de mis comandos');
-			} catch (err) {
+				 message.reply('�� Te envié un DM con la lista de mis comandos');
+			
 				return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
-			}
-		}
+
+		} else {
   const embed2 = new Discord.MessageEmbed()
   .addField("Comando:", `**${command.config.command}**`)
   .addField("Alias:", `${command.config.aliases.join(', ') || 'None'}`)
@@ -43,6 +40,7 @@ if(!command) {
   .addField("Descripción:", `**${command.config.description}**`) 
   .setThumbnail(bot.user.displayAvatarURL())
  return message.channel.send( embed2 );
+    }
 	}
 exports.config = {
   command: "help",
