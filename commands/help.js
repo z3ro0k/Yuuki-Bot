@@ -4,9 +4,9 @@ const { stripIndents } = require('common-tags');
     let pages = ['◈ `Yu!ping` ◈ `Yu!avatar` ◈ `Yu!ascii`◈ `Yu!calc◈` `Yu!emojis` ◈ `Yu!playing` ◈ `Yu!jumbo` ◈ `Yu!hug` ◈ `Yu!fortnite` ◈ `Yu!cat` ◈ `Yu!dog`'];
     let info = ['◈ `Yu!spotify` ◈ `Yu!weather` ◈ `Yu!help` ◈ `Yu!npm` ◈ `Yu!user` ◈ `Yu!ytsearch` ◈ `Yu!google` ◈ `Yu!mcuser` ◈ `Yu!roblox`']
     let admin = ['◈ `Yu!hook` ◈ `Yu!settings` ◈ `Yu!tmute` ◈ `Yu!warn` ◈ `Yu!warnlist` ◈ `Yu!clean`']
-    let nsfw = ['== NSFW Commands ==\n\n◈ No hay comandos NSFW por el momento']
-    let botC = ['== BOT Commands ==\n\n◈ `Yu!report`  :: Usted envía un error que tiene el bot\n◈ `Yu!suggestion` :: Envía una sugerencia para agregar un comando al bot\n◈ `Yu!about`    :: Muestra toda la informacion del bot']
-    let server = ['== Server Commands ==\n\n◈ `Yu!welcome`    ::  Activa los mod-logs para tu servidor\n◈ `To!setautorole`   ::  establecer el rol automático\n◈ `To!setchannel`    :: establece el canal a enviar los mensajes de bienvenida\n◈ `Yu!perms`         ::  Muestra los permsios que tiene el usuario mencionado o tuyos\n◈ `Yu!server`  ::  muestra información del servidor\n◈ `Yu!starboard`  ::  Establece la tabal de estrellas en tu servdidor']
+    let nsfw = ['◈ No hay comandos NSFW por el momento']
+    let botC = ['◈ `Yu!report` ◈ `Yu!suggestion` ◈ `Yu!about`  ◈ `Yu!changelogs`']
+    let server = ['◈ `Yu!welcome` ◈ `To!setautorole` ◈ `To!setchannel` ◈ `Yu!perms` ◈ `Yu!server` ◈ `Yu!starboard`']
     let music = ['== Comandos de Musica ==\n\n◈ `Yu!play`    ::  Ponga en fila una canción/lista de reproducción por URL o busque una canción.\n◈ `Yu!queue`   :: Muestra la lista de canciones a reproducir\n◈ `Yu!search`   :: Busca hasta 10 resultados.\n◈ `Yu!skip`   :: Salta una canción o varias canciones.\n◈ `Yu!pause`   :: Pausa la cola.\n◈ `Yu!resume`   :: Reanuda la cola.\n◈ `Yu!volumen`   :: Ajusta el volumen del bot.\n◈ `Yu!np`   :: Muestra la canción que se está reproduciendo actualmente.\n◈ `Yu!clearqueue`   :: Borra la cola actual.\n◈ `Yu!leave`   :: Deja el canal de voz y limpia la cola.\n◈ `Yu!loop`   :: Cambia el estado del bucle']
 
 exports.run =  async (bot, message, args) => {
@@ -19,9 +19,9 @@ if(!command) {
       .addField("== Comandos de Diversion ==", pages)
       .addField("== Comandos de información ==", info)
       .addField("== Comandos de administración ==", admin)
-      .addField("Yu!help botc", "Muestra los comandos del bot")
-      .addField("Yu!help server", "Muestra los comandos de los mod-logs")
-      .addField("Yu!help nsfw", "Muestra los comandos +18")
+      .addField("== BOT Commands ==", botC)
+      .addField("== Server Commands ==", server)
+      .addField("== NSFW Commands ==", nsfw)
       .setFooter(`${bot.commands.size} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
   			try {
