@@ -49,7 +49,7 @@ exports.run = (bot, message, args, func) => {
   .addField("Number of Warnings", warns[wUser.id].warns)
   .addField("Reason", reason);
 
-  let canal = message.guild.channels.get(channel => channel.name === 'mod-logs')
+  let canal =/* message.guild.channels.get(channel => channel.name === 'server-logs')*/ message.channel
   if(!canal) return message.reply("Couldn't find channel");
 
   canal.send({ embed });
