@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const { stripIndents } = require('common-tags');
     let pages = ['◈ `Yu!ping` ◈ `Yu!avatar` ◈ `Yu!ascii`◈ `Yu!calc◈` `Yu!emojis` ◈ `Yu!playing` ◈ `Yu!jumbo` ◈ `Yu!hug` ◈ `Yu!fortnite` ◈ `Yu!cat` ◈ `Yu!dog`'];
     let info = ['◈ `Yu!spotify` ◈ `Yu!weather` ◈ `Yu!help` ◈ `Yu!npm` ◈ `Yu!user` ◈ `Yu!ytsearch` ◈ `Yu!google` ◈ `Yu!mcuser` ◈ `Yu!roblox`']
-    let admin = ['== Admin Commands ==\n\n◈ `Yu!hook`    :: envía un weekhook con tus argumentos\n◈ `Yu!settings`  ::  muestra la configuración actual del bot en su servidor\n◈ `Yu!tmute` ::  Silenciar al usuario mencionado por x tiempo\n◈ `Yu!warn`    ::  Advierte al usuario mencionado\n◈ `Yu!warnlist` ::  Muestra la lista de warns del usuario mencionado \n◈ `Yu!clean`    ::  borras mensajes con el bot']
+    let admin = ['◈ `Yu!hook` ◈ `Yu!settings` ◈ `Yu!tmute` ◈ `Yu!warn` ◈ `Yu!warnlist` ◈ `Yu!clean`']
     let nsfw = ['== NSFW Commands ==\n\n◈ No hay comandos NSFW por el momento']
     let botC = ['== BOT Commands ==\n\n◈ `Yu!report`  :: Usted envía un error que tiene el bot\n◈ `Yu!suggestion` :: Envía una sugerencia para agregar un comando al bot\n◈ `Yu!about`    :: Muestra toda la informacion del bot']
     let server = ['== Server Commands ==\n\n◈ `Yu!welcome`    ::  Activa los mod-logs para tu servidor\n◈ `To!setautorole`   ::  establecer el rol automático\n◈ `To!setchannel`    :: establece el canal a enviar los mensajes de bienvenida\n◈ `Yu!perms`         ::  Muestra los permsios que tiene el usuario mencionado o tuyos\n◈ `Yu!server`  ::  muestra información del servidor\n◈ `Yu!starboard`  ::  Establece la tabal de estrellas en tu servdidor']
@@ -17,8 +17,8 @@ if(!command) {
     const embed = new Discord.MessageEmbed()
       .setDescription(`<:helpNEP3:372992359287488512>**Mis comandos son **<:helpNEP3:372992359287488512>\nUse Yu!help comando para ver información detallada sobre el comando.`)
       .addField("== Comandos de Diversion ==", pages)
-     // .addField("== Info Commands ==", info)
-      .addField("Yu!help music","Muestra los comandos de musica")
+      .addField("== Comandos de información ==", info)
+      .addField("== Comandos de administración ==", admin)
       .addField("Yu!help botc", "Muestra los comandos del bot")
       .addField("Yu!help server", "Muestra los comandos de los mod-logs")
       .addField("Yu!help nsfw", "Muestra los comandos +18")
