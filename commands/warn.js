@@ -19,7 +19,7 @@ exports.run = (bot, message, args, func) => {
   message.reply("Porfavor mencionar a un usuario para warnear");
   return;  
   }
-  if(wUser.hasPermission("MANAGE_MESSAGES")) {
+  if(wUser.hasPermission("KICK_MEMBERS")) {
   message.reply("No puedo warnear al usuario mencionado");
   return; 
   }
