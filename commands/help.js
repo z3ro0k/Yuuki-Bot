@@ -12,7 +12,7 @@ const { stripIndents } = require('common-tags');
 exports.run =  async (bot, message, args) => {
 
     var command = bot.commands.get(args[0]) || bot.commands.get(bot.aliases.get(args[0]))
-   await message.delete();
+  // await message.delete();
 
 if(!command) {
 
@@ -27,10 +27,10 @@ if(!command) {
       .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
 
-				message.author.send({ embed });
-				 message.reply('�� Te envié un DM con la lista de mis comandos');
+			return message.channel.send({ embed });
+				 //message.reply('�� Te envié un DM con la lista de mis comandos');
 			
-				return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
+				//return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
 
 		} else {
   const embed2 = new Discord.MessageEmbed()
