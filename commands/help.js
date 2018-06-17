@@ -22,6 +22,7 @@ if(!command) {
       .addField("== BOT Commands ==", botC)
       .addField("== Server Commands ==", server)
       .addField("== NSFW Commands ==", nsfw)
+      .addField("== Music Commands ==", "Yu!help")
       .setFooter(`${bot.commands.size} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
   			try {
