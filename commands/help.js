@@ -13,6 +13,7 @@ exports.run =  async (bot, message, args) => {
 
     var command = bot.commands.get(args[0]) || bot.commands.get(bot.aliases.get(args[0]))
    await message.delete();
+
 if(!command) {
     const embed = new Discord.MessageEmbed()
       .setDescription(`<:helpNEP3:372992359287488512>**Mis comandos son **<:helpNEP3:372992359287488512>\nUse Yu!help comando para ver información detallada sobre el comando.`)
@@ -22,12 +23,17 @@ if(!command) {
       .addField("== BOT Commands ==", botC)
       .addField("== Server Commands ==", server)
       .addField("== NSFW Commands ==", nsfw)
-      .addField("== Music Commands ==", "Yu!help")
-      .setFooter(`${bot.commands.size} Commands`, bot.user.displayAvatarURL())
+      .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
+          const musice = new Discord.MessageEmbed()
+      .setDescription(`<:helpNEP3:372992359287488512>**Mis comandos de musica **<:helpNEP3:372992359287488512>\n\n ${music}`)
+      .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
+      .setColor(0x36393e) 
+    
   			try {
 				//const msgs = [];
 				message.author.send({ embed });
+        message.author.send( musice );
 				if (message.channel.type !== 'dm') return await message.reply('�� Te envié un DM con la lista de mis comandos');
 			} catch (err) {
 				return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
