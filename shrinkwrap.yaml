@@ -2173,6 +2173,7 @@ packages:
       uws: ^9.14.0
       zlib-sync: ^0.1.0
     resolution:
+      registry: 'https://registry.npmjs.org/'
       tarball: 'https://codeload.github.com/hydrabolt/discord.js/tar.gz/1cdee7b48a13f571f563e7d8fe474908b64c4a5b'
     version: 12.0.0-dev
 registry: 'https://registry.npmjs.org/'
