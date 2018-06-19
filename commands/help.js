@@ -27,7 +27,7 @@ try {
       .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
 
-			return message.author.send({ embed });
+			message.author.send({ embed });
 				 message.reply('�� Te envié un DM con la lista de mis comandos');
 } catch (e) {		
 				return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
