@@ -59,6 +59,7 @@ exports.run = async (client, message, args, tools) => {
   // Configure Embed
   embed.setTitle(`Registro de cambios del Bot (${entries.length})`)
     .setDescription(changelog)
+    .setThumbnail('http://media.getsitecontrol.com/main/preset-images/Ballicons+Gifs+512/13-email.gif')
 
   // Send Embed
   message.channel.send(embed)
