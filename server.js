@@ -76,7 +76,8 @@ eventsLoad();
 
 var prefix = 'Yu!';
 bot.on('message', message => {
-  
+ 
+  if (message.channel.type != 'text') return;
  
   bot.ownerID = '322203879208910849';
   bot.color = 0xDFE0D2;

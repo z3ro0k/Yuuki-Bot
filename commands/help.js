@@ -15,7 +15,7 @@ exports.run =  async (bot, message, args) => {
   // await message.delete();
 
 if(!command) {
-
+try {
      const embed = new Discord.MessageEmbed()
       .setDescription(`<:helpNEP3:372992359287488512>**Mis comandos son **<:helpNEP3:372992359287488512>\nUse Yu!help comando para ver información detallada sobre el comando.`)
       .addField("== Comandos de Diversion ==", pages)
@@ -27,11 +27,11 @@ if(!command) {
       .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
 
-			return message.channel.send({ embed });
-				 //message.reply('�� Te envié un DM con la lista de mis comandos');
-			
-				//return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
-
+			return message.author.send({ embed });
+				 message.reply('�� Te envié un DM con la lista de mis comandos');
+} catch (e) {		
+				return message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.');
+  }
 		} else {
   const embed2 = new Discord.MessageEmbed()
   .addField("Comando:", `**${command.config.command}**`)
