@@ -6,16 +6,7 @@ const {  oneLineCommaListsAnd } = require('common-tags')
 
 
 exports.run = async(bot, msg, args) => {
-  if(args[0] == "help"){
-    const help = new MessageEmbed()
-      .addField('Uso:', "Yu-user ")
-      .setColor(0x36393e)
-      .addField('Descripción', "Muestra la información del usuario mencionado o usando la id del usuario")
-      .addField('Ejemplos:', "Yu-user 322203879208910849\nYu-user 321438019653599233\nYu-user")
-      msg.channel.send(help);
-      return;
-    }
-    
+   
 let user = msg.mentions.users.first() || msg.guild.member(args.join(' ')) || msg.author
 let member = msg.guild.member(user)
 if (!member) member = msg.member;
