@@ -41,7 +41,7 @@ request(options).then(response => { console.log(response);
       url: response.stream.preview.large
     };
     footer = {
-      text: 'Yuuji Twitch Live Command'
+      text: 'Yuuki Twitch Live Command'
     };
 
     message.channel.send({

@@ -20,7 +20,7 @@ exports.run = (bot, message, args) => {
       .addField('Song Name', trackName, true)  
       .addField('Author', trackAuthor, true)
       .addField('Album', trackAlbum, true)
-      .addField('Listen to Track:', '[Spotify URL Track](' + trackURL + ')', true)
+      .addField('Listen to Track:', '[`Spotify URL Track`](' + trackURL + ')', true)
       .setFooter(`Spotify Music Command`, 'https://cdn.discordapp.com/attachments/408560900254203905/410956731812937739/spotify4.png')
  
     message.channel.send(embed).then(m => {

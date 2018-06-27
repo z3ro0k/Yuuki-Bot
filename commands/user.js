@@ -28,7 +28,7 @@ if (!member) member = msg.member;
       } else if (member.presence.activity.type === 'WATCHING') {
         userStatus = `Watching **${escapeMarkdown(member.presence.activity.name)}**`
       }
-      if (member.presence.activity.url !== null) { userStatus = `[${userStatus}](${member.presence.activity.url})` }
+      if (member.presence.activity.url !== null) { userStatus = `[\`${userStatus}\`](${member.presence.activity.url})` }
     }
   const status = {
    online: 'Online', 
