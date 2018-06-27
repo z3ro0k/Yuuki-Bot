@@ -53,7 +53,7 @@ exports.run = async (bot, message, args) => {
         .addField('Username', data.username, true)
         .addField('User ID', data.id, true)
         .addField('PlatForm', data.platform, true)
-        .addField('Profile URL', `[Click Here!](${data.url})`, true)
+        .addField('Profile URL', `[\`Click Here!\`](${data.url})`, true)
         .addField('Total Score', Score, true)
         .addField('Matches Played', Mplayed, true)
         .addField('Wins', Wins, true)
