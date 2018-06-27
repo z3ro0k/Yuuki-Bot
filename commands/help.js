@@ -26,7 +26,7 @@ if(!command) {
       .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
      
-			message.author.send({ embed }).catch(e => { 
+			return message.author.send({ embed }).catch(e => { 
          message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.')
       return;
       });
