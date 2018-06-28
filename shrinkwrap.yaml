@@ -33,7 +33,7 @@ dependencies:
   random-puppy: 1.1.0
   request: 2.87.0
   request-promise-native: 1.0.5
-  snekfetch: 4.0.2
+  snekfetch: 4.0.4
   util: 0.10.4
   weather-js: 2.0.0
   youtube-dl: 1.12.2
@@ -1783,6 +1783,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-oAOHvakkGjzhwdawoRRVpjGSBUTIuLJHluSbTWpC1FjOLwvvL/rZMCJEfEf8RIlsnXB3Kci/yAAc8osa0+AFlQ==
+  /snekfetch/4.0.4:
+    dev: false
+    resolution:
+      integrity: sha512-dyycG9fvwtSJqKPfMVOpXt+60qvMGe7vWLwOJDiSJaiAx+hs2EnFChG2bXCWn7ulz+zGzrHdN9/yeEb0YqEPww==
   /sort-keys/2.0.0:
     dependencies:
       is-plain-obj: 1.1.0
@@ -2214,7 +2218,7 @@ specifiers:
   random-puppy: ^1.1.0
   request: ^2.87.0
   request-promise-native: ^1.0.5
-  snekfetch: ^4.0.1
+  snekfetch: ^4.0.0
   util: ^0.10.4
   weather-js: ^2.0.0
   youtube-dl: ^1.12.2
