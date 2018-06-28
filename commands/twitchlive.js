@@ -35,6 +35,16 @@ request(options).then(response => { console.log(response);
         name: 'Viewers',
         value: response.stream.viewers,
         inline: true
+      },
+      {
+        name: 'Followers',
+        value: response.stream.followers,
+        inline: true
+      },
+      {
+        name: 'Views',
+        value: response.stream.views,
+        inline: true
       }
     ];
     image = {
@@ -56,7 +66,7 @@ request(options).then(response => { console.log(response);
         timestamp: new Date(response.stream.created_at)
       }
     }).catch(e => {
-      console.log.error(e);
+      console.log(e);
     });
     }).catch(e => console.log(e));
   };
