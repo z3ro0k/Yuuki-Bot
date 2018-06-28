@@ -16,13 +16,11 @@ exports.run = (bot, message, args) => {
         fetch('https://api.twitch.tv/kraken/channels/' +args.join(' ') + '?client_id=' + apiKey)
           .then(res => {
               return res.json();
-          fetch('https://api.twitch.tv/kraken/streams/' +args.join(' ') + '?client_id=' + apiKey)
-              .then(res => {
-                return res.json();
-                  }).then(json2 => {
-                    if (json.status === 404) {
+          }).then(json2 => {
+              if (json.status === 404) {
                   return message.reply(`Channel: \`\`${args.join(' ')}\`\` does not exist.`).catch(e => console.log(e));
               }
+  
               
               const embed = new Discord.MessageEmbed()
               .setAuthor('Twitch Info ')
@@ -33,12 +31,11 @@ exports.run = (bot, message, args) => {
               .addField('Channel link', json2.url, true)
               .addField('**Has partner?**', json2.partner)
               .setColor(0x36393e)
-              .setThumbnail(json2.channel.logo);
+              .setThumbnail('https://i.imgur.com/gYf1BEK.png');
 
               message.channel.send({embed}).catch(e => console.log(e));
           }).catch(e => console.log(e));
     });
-  });
   };
 exports.config = {
   command: "twitchstats",
