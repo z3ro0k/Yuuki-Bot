@@ -38,12 +38,12 @@ request(options).then(response => { console.log(response);
       },
       {
         name: 'Followers',
-        value: response.stream.followers,
+        value: response.stream.channel.followers,
         inline: true
       },
       {
         name: 'Views',
-        value: response.stream.views,
+        value: response.stream.channel.views,
         inline: true
       }
     ];
