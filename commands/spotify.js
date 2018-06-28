@@ -23,9 +23,7 @@ exports.run = (bot, message, args) => {
       .addField('Listen to Track:', '[`Spotify URL Track`](' + trackURL + ')', true)
       .setFooter(`Spotify Music Command`, 'https://cdn.discordapp.com/attachments/408560900254203905/410956731812937739/spotify4.png')
  
-    message.channel.send(embed).then(m => {
-      m.react('<:spotify:410957293971177472>')
-    })
+    message.channel.send(embed)
     
   } else { 
     
