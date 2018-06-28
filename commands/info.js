@@ -50,7 +50,6 @@ exports.run = async (bot, message, args) => {
           'value': stripIndents`
             Language: **JavaScript** (NodeJS)
             Library: **discord.js** (v${require('discord.js/package.json').version})
-            Framework: **discord.js-commando** (v${require('discord.js-commando/package.json').version})
             Bot Version: **${require(`${process.cwd()}/package.json`).version}**
           `,
           'inline': false
@@ -68,7 +67,7 @@ exports.run = async (bot, message, args) => {
         {
           'name': 'Discord Stats',
           'value': stripIndents`
-            ${this.client.shard ? `Shards: **${this.client.shard.count}**\n` : ''}Guilds: **${totalGuilds}**
+            ${bot.shard ? `Shards: **${bot.shard.count}**\n` : ''}Guilds: **${totalGuilds}**
             Channels: **${totalChannels}**
             Users: **${totalUsers}**
           `,

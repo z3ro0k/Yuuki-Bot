@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 exports.run = (client, message, args, func) => {
-   
+var command = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]))   
     if (!args.join(' ')) {
       message.channel.send(`:x: Provide a command name to reload.`);
       return;
@@ -23,7 +23,7 @@ exports.run = (client, message, args, func) => {
   //embed.setThumbnail(client.user.displayAvatarURL())
   // Delete from cache
   try {
-    delete require.cache[require.resolve(`./${args[0]}.js`)];
+    delete require.cache[require.resolve(`../commands/${args[0]}.js`)];
   } catch (e) {
     // Modify Embed (Error Fallback)
     embed.setFooter(`Unable to reload: ${args[0]}`);
