@@ -1,7 +1,7 @@
 const db = require('quick.db');
 const Discord = require('discord.js');
 const ms = require('parse-ms');
-
+const exec = require('child_process').exec;
 module.exports = { 
   
     hook: function(channel, title, message, color, avatar) { // This function uses quite a few options. The last 2 are optional.
@@ -237,6 +237,54 @@ module.exports = {
          
        },100)
 
+    },
+  getInfo: function() {
+        let client = this;
+
+        let info = {};
+
+        return new Promise((fulfill, reject) => {
+            function getVersion() {
+                exec('git rev-parse --short=4 HEAD', function (error, version) {
+                    if (error) {
+                        client.logger.error(`Error getting version ${error}`);
+                        info.version = 'unknown';
+                    } else {
+                        info.version = version.trim();
+                    }
+
+                    getMessage();
+                });
+            }
+
+            function getMessage() {
+                exec('git log -1 --pretty=%B', function (error, message) {
+                    if (error) {
+                        client.logger.error(`Error getting commit message ${error}`);
+                        info.message = "Could not get last commit message.";
+                    } else {
+                        info.message = message.trim();
+                    }
+
+                    getTimestamp();
+                });
+            }
+
+            function getTimestamp() {
+                exec('git log -1 --date=short --pretty=format:%ci', function (error, timestamp) {
+                    if (error) {
+                        client.logger.error(`Error getting creation time ${error}`);
+                        info.timestamp = "Not available";
+                    } else {
+                        info.timestamp = timestamp;
+                    }
+
+                    fulfill(info);
+                });
+            }
+
+            getVersion();
+        });
     }
   
 }

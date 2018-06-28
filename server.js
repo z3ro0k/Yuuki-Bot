@@ -27,7 +27,7 @@ const bot = new Discord.Client();
 const tools = require('./functions.js');
 const db = require('quick.db')
 
-
+bot.tools = require('./functions.js');
 function loadCmds () {
 bot.commands = new Discord.Collection();  
 bot.aliases = new Discord.Collection();
