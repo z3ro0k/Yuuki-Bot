@@ -15,7 +15,7 @@ exports.run = async (bot, messageReaction, user) => {
   
   // Return Statements
   if (!target.enabled) return; // Not Enabled
-  if (!channel) return; // No Channel
+  if (!channel === null) return;// No Channel
   
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
