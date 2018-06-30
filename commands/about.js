@@ -16,7 +16,7 @@ const embed = new Discord.MessageEmbed()
 .addField(`<:Libraries:442442996705918987> Libreria`, `Discord ${Discord.version} (Js)`, true)
 
 .addField(`<:cloud:447518353972658207> Memoria`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
-.addField("CPU Usage", `${Math.round(cpu * 100) / 100}%`, true)
+.addField("<:CPU:462586915783180298> CPU Usage", `${Math.round(cpu * 100) / 100}%`, true)
 .addField(`<:relog:447518519752523776> Tiempo de actividad`, `${actividad}`, true)
 .addField("<:wEmoji:440388223017943042> Comandos ", bot.commands.size + 11, true)
 .addField("<:doc:448784570188562433> Eventos", bot.events.size, true)
