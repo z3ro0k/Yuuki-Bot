@@ -103,8 +103,9 @@ bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
 const { stringify } = require('querystring');
 const { request } = require('https');
 
-const update = () => {
+const dblupdate = () => {
 const data = stringify({ server_count: bot.guilds.size });
+  
 const req = request({
     host: 'discordbots.org',
     path: `/api/bots/${bot.user.id}/stats`,
@@ -119,16 +120,6 @@ const req = request({
   req.end();
 };
 
-const lupdate = () => {
-const { post, get } = require("snekfetch");
-  post(`https://listcord.com/api/bot/${bot.user.id}/guilds`)
-     .set("token", '402bKuIVcNr2x1pekyYIeoV4TK~AMOOr_AQko3CSqMC')
-     .send({ guilds: bot.guilds.size })
-}
-bot.on('ready', update);
-bot.on('guildCreate', update);
-bot.on('guildRemove', update);
-
-bot.on('ready', lupdate);
-bot.on('guildCreate', lupdate);
-bot.on('guildRemove', lupdate);
+bot.on('ready', dblupdate);
+bot.on('guildCreate', dblupdate);
+bot.on('guildRemove', dblupdate);
