@@ -119,6 +119,16 @@ const req = request({
   req.end();
 };
 
+const lupdate = () => {
+const { post, get } = require("snekfetch");
+  post(`https://listcord.com/api/bot/${bot.user.id}/guilds`)
+     .set("token", '402bKuIVcNr2x1pekyYIeoV4TK~AMOOr_AQko3CSqMC')
+     .send({ guilds: bot.guilds.size })
+}
 bot.on('ready', update);
 bot.on('guildCreate', update);
 bot.on('guildRemove', update);
+
+bot.on('ready', lupdate);
+bot.on('guildCreate', lupdate);
+bot.on('guildRemove', lupdate);
