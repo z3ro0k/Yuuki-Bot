@@ -3,8 +3,6 @@ const datediff = require('date-diff')
 const { MessageEmbed,  escapeMarkdown } = require('discord.js');
 const {  oneLineCommaListsAnd } = require('common-tags')
 
-
-
 exports.run = async(bot, msg, args) => {
    
 let user = msg.mentions.users.first() || msg.guild.member(args.join(' ')) || msg.author
