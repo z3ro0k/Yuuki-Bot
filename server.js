@@ -123,3 +123,21 @@ const req = request({
 bot.on('ready', dblupdate);
 bot.on('guildCreate', dblupdate);
 bot.on('guildRemove', dblupdate);
+
+const lupdate = async ()  => {
+
+const snekfetch = require("snekfetch");
+
+await snekfetch.post(`https://listcord.com/api/bot/${bot.user.id}/guilds`)
+    .set("token", "402bKuIVcNr2x1pekyYIeoV4TK~AMOOr_AQko3CSqMC")
+    .send({ guilds: bot.guilds.size })
+    .then(() => console.log("Successfully posted guild count to listcord.com"))
+    .catch(error => {
+        //Error.captureStackTrace(error);
+        console.error(error);
+    });
+}
+
+bot.on('ready', lupdate);
+bot.on('guildCreate', lupdate);
+bot.on('guildRemove', lupdate);
