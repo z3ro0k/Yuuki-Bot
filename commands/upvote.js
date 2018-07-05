@@ -30,7 +30,7 @@ exports.run = async (client, message, args ) => {
     
     let embed = new Discord.MessageEmbed()
    .setTitle('Vote System')
-   .setDescription(`**Vote system Características**\n• El bot sera más conocido.\n• Para que el bot cresca Cuenta con ${client.guilds.size} guilds actuales\n• ¡Obtienes más características increíbles todos los días!`)
+   .setDescription(`**Vote system Características**\n• El bot sera más conocido.\n• Para que el bot cresca Cuenta con **${client.guilds.size}** guilds actuales\n• ¡Obtienes más características increíbles todos los días!`)
    .addField('DBL Information',  `Upvotes: ${emoji}${body.points}\nCertified Bot: ${certified}\nLinks: ${body.invite.length !== 0 ? `[\`Invite\`](${body.invite}) | ` : ""}${body.website.length !== 0 ? `[\`Website\`](${body.website}) | ` : "" }${body.support.length !== 0 ? `[\`Support Server\`](https://discord.gg/${body.support})` : ""}`)
    .addField('Listcord Information',  `Upvotes: ${emoji}${body2.votes}\nInvites: ${body2.invites}\nLinks: [\`Invite\`](${body2.invite}) | [\`Website\`](${body2.website}) |  [\`Support Server\`](https://discord.gg/${body2.support})`)
    .setColor(0x36393e)
