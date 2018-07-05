@@ -2,9 +2,11 @@ const Discord = require('discord.js')
 exports.run = async (client, message, args ) => {
   
 	 let emoji = client.emojis.find(e => e.name === 'Upvote');
-   let embed = new Discord.MessageEmbed()
+  
+  
+    let embed = new Discord.MessageEmbed()
    .setTitle('Vote System')
-   .addField('Para que sirve', '• El bot sera más conocido.')
+   .setDara que sirve', '• El bot sera más conocido.')
    .addField('• Para que el bot cresca', 'Cuenta con ' + client.guilds.size + ' guilds actuales')
    .addField(`${emoji}`, '• ¡Obtienes más características increíbles todos los días!')
    .addField('Discord BOts List', a)
