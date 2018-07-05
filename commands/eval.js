@@ -6,7 +6,7 @@ const Discord = require('discord.js'),
 
 const { oneLine } = require('common-tags')
 const util = require('util')
-
+const apis = require('../data/apis.json')
 exports.run = async (bot, message, loadCmds, userAFK) => {
     
    var embed = new Discord.MessageEmbed()
