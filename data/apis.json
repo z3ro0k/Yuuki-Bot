@@ -20,6 +20,9 @@
   
   "twitchClientID": "zhz0tmwlx69szi1lnwv8x8174mqj3y",
   
-  "twitchClientSecret": "nrwmym5ky6h6uqgm9xg3o1sbmwp6dv"
+  "twitchClientSecret": "nrwmym5ky6h6uqgm9xg3o1sbmwp6dv",
+  
+  "DBLAPI": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMzMzA3MTE5NTc2NTM0MjIyOSIsImJvdCI6dHJ1ZSwiaWF0IjoxNTE4OTEzMzU2fQ.1rgXSViJAPrfOTD6Le5jB5cCg7JFY7PH94XPNNUvygM"
+  
   
 }
