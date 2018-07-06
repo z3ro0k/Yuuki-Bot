@@ -35,7 +35,7 @@ exports.run = async (bot, message, args) => {
       content: columnify(shardInfoArray, {
         columnSplitter: ' │ '
       }),
-      code: ''
+      code: 'js'
     })
   }
 module.exports.config = {
