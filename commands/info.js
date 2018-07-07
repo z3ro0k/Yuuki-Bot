@@ -88,7 +88,7 @@ exports.run = async (bot, message, args) => {
        }).setFooter(moment().format('LLLL'));
 
         if ('message' in info) {
-            embed.addField('Last Commitmessage', info.message, false);
+            embed.addField('Last Commit Message', info.message, false);
         }
 
         if ('timestamp' in info) {
