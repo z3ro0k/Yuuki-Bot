@@ -14,18 +14,18 @@ exports.run = async(bot, message, args) => {
       message.channel.send(help);
       return;
     }
-  let server = bot.guilds.get(args.join(' ')) || message.guild
+  let guild = bot.guilds.get(args.join(' ')) || message.guild
   let sender = message.author
-  let online = server.members.filter(m => m.presence.status == 'online')
+/*  let online = server.members.filter(m => m.presence.status == 'online')
   let offline = server.members.filter(m => m.presence.status == 'offline')
   let dnd = server.members.filter(m => m.presence.status == 'dnd')
   let idle = server.members.filter(m => m.presence.status == 'idle')
   let streaming = server.members.filter(s => s.presence.activity !== null && s.presence.activity.type === 'STREAMING')
-
+*/
     const now = new Date();
 				 dateFormat(now, '***On dddd, mmmm dS, yyyy, h:MM:ss TT***');
 
-	var guild = message.guild
+	//var guild = message.guild
     var ownerInfo = guild.owner.user
 
     // Security
