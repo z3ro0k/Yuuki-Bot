@@ -26,7 +26,7 @@ function parseTime(milliseconds) {
 
   // Append Text
   if (string === '') string = 'Justo ahora'
-  else string += 'hace'
+  else string += 'hace' 
 
   return string;
 
