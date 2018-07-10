@@ -24,9 +24,8 @@ function parseTime(milliseconds) {
   if (obj.minutes === 1) string += `${obj.minutes} minuto `
   else if (obj.minutes > 1) string += `${obj.minutes} minutos `
 
-  // Append Text
   if (string === '') string = 'Justo ahora'
-  else string += 'hace' 
+  else string = 'hace' += string 
 
   return string;
 
