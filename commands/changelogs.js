@@ -13,8 +13,8 @@ function parseTime(milliseconds) {
     obj = ms(Date.now() - milliseconds);
 
   // Check Days
-  if (obj.days === 1) string += ` ${obj.days} día `
-  else if (obj.days > 1) string += ` ${obj.days} dias `
+  if (obj.days === 1) string += `${obj.days} día `
+  else if (obj.days > 1) string += `${obj.days} dias `
 
   // Check Hours
   if (obj.hours === 1) string += `${obj.hours} hora `
@@ -25,7 +25,7 @@ function parseTime(milliseconds) {
   else if (obj.minutes > 1) string += `${obj.minutes} minutos `
 
   if (string === '') string = 'Justo ahora'
-  else string = 'hace' += string 
+  else string = 'hace ' + string 
 
   return string;
 
