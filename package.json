@@ -10,7 +10,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "cheerio": "^0.22mc.0",
+    "cheerio": "^0.22.0",
     "columnify": "^1.5.4",
     "common-tags": "^1.8.0",
     "crypto": "^1.0.1",
