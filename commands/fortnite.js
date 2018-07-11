@@ -5,7 +5,6 @@ const fortnite = new Client(key.FORTNITE)
 
 exports.run = async (bot, message, args) => {
    message.delete();
-  if(message.author.id != "322203879208910849") return;
   let username = args[0];
   let platform = args[1] || "pc";
   
