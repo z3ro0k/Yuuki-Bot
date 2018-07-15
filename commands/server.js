@@ -87,7 +87,7 @@ exports.run = async(bot, message, args) => {
   .addField('💤 AFK Channel', guild.afkChannelID !== null ? `**Name:** ${guild.afkChannel.name}\n**ID:** ${guild.afkChannel.id}\n**Timeout:** ${guild.afkTimeout} seconds` : 'N/A', true)
   .addField('⚖ Verification Level', verificationLevel[guild.verificationLevel], true)
   .addField('📰 Explicit Content Filter', explicitContentFilter[guild.explicitContentFilter], true)
-  .addField(`🔖 Roles - (${guild.roles.size.toLocaleString()})`,  guildRoles, false)
+ // .addField(`🔖 Roles - (${guild.roles.size.toLocaleString()})`,  guildRoles, false)
     return message.channel.send(embed);
 }
 module.exports.config = {
