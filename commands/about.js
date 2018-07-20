@@ -7,11 +7,12 @@ exports.run = async (bot, message, args) => {
 
 const actividad = moment.duration(bot.uptime).format(" D [dias], H [hrs], m [mins], s [secs]");
 const cpu = process.cpuUsage().system / 1024 / 1024;    
+   let emoji = bot.emojis.find(e => e.name === 'Upvote');
  var dev
     try { dev = bot.users.get('322203879208910849').tag } catch (e) { dev = 'PoeticAzurex#9169' }
   
 const embed = new Discord.MessageEmbed()
-.setColor(0x66ff66)
+.setColor(0x36393e)
 .setAuthor(`Información de ${bot.user.username} `, bot.user.displayAvatarURL())
 .addField(`<:Owner:442443039915507743> Dueño`, dev, true)
 .addField(`<:Version:442442898651217922> Version`, `2.6.0`, true)
@@ -26,7 +27,7 @@ const embed = new Discord.MessageEmbed()
 .addField(`<:doc:448784570188562433> Canales`, `${bot.channels.size.toLocaleString()}`, true)
 .addField('<:partnerbot:447295492200595457> WebSite', '[Click aquí](https://brayanmaldonado9.wixsite.com/yuuki)', true)
 .addField('<:Astart:441067034554662932> Prefix', 'Yu!', true)
-.addField('',)
+.addField(`${emoji} Vota por el bot`, 'Usa Yu!vote', true)
 
 message.channel.send({embed});
 }
