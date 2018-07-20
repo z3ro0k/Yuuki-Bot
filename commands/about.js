@@ -7,23 +7,26 @@ exports.run = async (bot, message, args) => {
 
 const actividad = moment.duration(bot.uptime).format(" D [dias], H [hrs], m [mins], s [secs]");
 const cpu = process.cpuUsage().system / 1024 / 1024;    
-    
+ var dev
+    try { dev = bot.users.get('322203879208910849').tag } catch (e) { dev = 'PoeticAzurex#9169' }
+  
 const embed = new Discord.MessageEmbed()
 .setColor(0x66ff66)
-
-.setAuthor(`Información de ${bot.user.username} `, bot.user.displayAvatarURL)
-.addField(`<:Owner:442443039915507743> Owner`, '@ToXicGMDyt#7319', true)
+.setAuthor(`Información de ${bot.user.username} `, bot.user.displayAvatarURL())
+.addField(`<:Owner:442443039915507743> Dueño`, dev, true)
 .addField(`<:Version:442442898651217922> Version`, `2.6.0`, true)
 .addField(`<:Libraries:442442996705918987> Libreria`, `Discord ${Discord.version} (Js)`, true)
-
 .addField(`<:cloud:447518353972658207> Memoria`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
 .addField("<:CPU:462586915783180298> CPU Usage", `${Math.round(cpu * 100) / 100}%`, true)
 .addField(`<:relog:447518519752523776> Tiempo de actividad`, `${actividad}`, true)
 .addField("<:wEmoji:440388223017943042> Comandos ", bot.commands.size + 11, true)
 .addField("<:doc:448784570188562433> Eventos", bot.events.size, true)
-.addField(`<:Servers:442443125005352962> Guilds`, `${bot.guilds.size.toLocaleString()}`, true)
-.addField(`<:members:442439950747697164> Members`, `${bot.users.size.toLocaleString()}`, true)
-.addField(`<:doc:448784570188562433> Channels`, `${bot.channels.size.toLocaleString()}`, true)
+.addField(`<:Servers:442443125005352962> Servidores`, `${bot.guilds.size.toLocaleString()}`, true)
+.addField(`<:members:442439950747697164> Miembros`, `${bot.users.size.toLocaleString()}`, true)
+.addField(`<:doc:448784570188562433> Canales`, `${bot.channels.size.toLocaleString()}`, true)
+.addField('<:partnerbot:447295492200595457> WebSite', '[Click aquí](https://brayanmaldonado9.wixsite.com/yuuki)', true)
+.addField('<:Astart:441067034554662932> Prefix', 'Yu!', true)
+.addField('',)
 
 message.channel.send({embed});
 }
