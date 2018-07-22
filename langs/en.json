@@ -35,5 +35,24 @@
     "WebSite": "WebSite",
     "Vote": "Vote for the bot" ,
     "use": "Use Yu!vote"
+  },
+  "dbl": {
+    "men": "**<:Not:463200957396680714> Mention a bot.**",
+    "uB": "**<:Not:463200957396680714> You're not a bot.**"
+  },
+  "dbli": {
+    "title": "Discord Bots List Information",
+    "ID": "ID",
+    "name": "Bot Name",
+    "tag": "Discriminator",
+    "L": "Library",
+    "prefix": "Prefix",
+    "upvotes": "Upvotes",
+    "guilds": "Server Count",
+    "CB": "Certified Bot",
+    "Tags": "Tags",
+    "owner": "Owner(s)",
+    "SD": "Short description",
+    "Links": "Links"
   }
 }

@@ -45,7 +45,14 @@
     "ID": "ID",
     "name": "Nombre del Bot",
     "tag": "Discriminador",
+    "L": "Liberia",
+    "prefix": "Prefijo",
+    "upvotes": "Votos",
+    "guilds": "Número de Servidores",
+    "CB": "Bot certificado",
+    "Tags": "Tags",
+    "owner": "Dueño(s)",
     "SD": "Descripción breve",
-    "L": "Liberia"
+    "Links": "Links"
   }
 }
