@@ -19,5 +19,21 @@
     "preg": "Question",
     "res": "Answer",
     "ress": ["Yes", "Not", "Why?", "Please", "Perhaps", "I don't know", "Definitely.", "¡of course!", "Of course you don't"]
+  },
+  "about": {
+    "owner": "Owner",
+    "L": "Library",
+    "CPU": "CPU Usage",
+    "C": "Commands",
+    "guilds": "Servers",
+    "Ca": "Channels",
+    "Prefix": "Prefix",
+    "v": "Version",
+    "M": "Memory",
+    "uptime": "Activity time",
+    "E": "Events",
+    "Mem": "Members",
+    "WebSite": "WebSite",
+    "Vote": "Vote for the bot" 
   }
 }
