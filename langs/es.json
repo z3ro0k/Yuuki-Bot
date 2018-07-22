@@ -14,6 +14,12 @@
       "langR2": "Por favor, introduzca un tipo de idioma válido!"
     },
   "BALL": {
-    "usage": ["<:Not:463805182648778783>  | " , ", el uso correcto es:  `Yu!8ball <pregunta>`\n◈ | e.g. `Yu!8ball ¿Es deliciosa la sopa de papa?`\n◈ | Obtén más ayuda utilizando `Yu!help 8ball`"]
+    "usage": ["<:Not:463805182648778783> | " , ", el uso correcto es:  `Yu!8ball <pregunta>`\n◈ | e.g. `Yu!8ball ¿Es deliciosa la sopa de papa?`\n◈ | Obtén más ayuda utilizando `Yu!help 8ball`"],
+    "preg": "Pregunta",
+    "res": "Respuesta",
+    "ress": ["Sí", "No", "¿Por qué?", "Por favor", "Tal vez", "No sé", "Definitivamente?", " ¡Claro! " ," Por supuesto que no "]
+  },
+  "about": {
+  
   }
 }
