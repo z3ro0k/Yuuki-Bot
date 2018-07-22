@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 exports.run = async (bot, message, prefix, func) => { 
 
-  await message.deelte();
+ // await message.delete();
 
   let msg =  message.content.slice(prefix.length).trim().split("|");
   let razon = msg[0];
