@@ -35,5 +35,17 @@
     "WebSite": "WebSite",
     "Vote": "Vota por el bot",
     "use": "Usa Yu!vote"
+  },
+  "dbl": {
+    "men": "**<:Not:463200957396680714> Menciona a un bot**",
+    "uB": "**<:Not:463200957396680714> Tu no eres un bot**"
+  },
+  "dbli": {
+    "title": "Información de Discord Bots List",
+    "ID": "ID",
+    "name": "Nombre del Bot",
+    "tag": "Discriminador",
+    "SD": "Descripción breve",
+    "L": "Liberia"
   }
 }

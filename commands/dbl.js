@@ -4,18 +4,20 @@ const apis = require('../data/apis.json')
 const db = require('quick.db')
 exports.run = async (bot ,message, args, func) => { 
   let bott = message.mentions.users.first() || bot.users.get(args[0]) 
-  var langg
+  
+ var langg
  const idioma = await db.fetch(`guildLang_${message.guild.id}`)
  if (idioma === null) langg = 'es'
-  else langg = idioma       
+ else langg = idioma       
+  
  const lang = require(`../langs/${langg}.json`) 
  
   if (!args[0]) {
-        bot.tools.embed(message.channel, '**<:Not:463200957396680714> Menciona a un bot**');
+        bot.tools.embed(message.channel, lang.dbl.men);
         return;
     } else 
     if (bott == message.author) {
-         bot.tools.embed(message.channel, '**<:Not:463200957396680714> Tu no eres un bot**')
+         bot.tools.embed(message.channel, lang.dbl.uB)
         return;
     } else
   if(!bott.bot) {
