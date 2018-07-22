@@ -66,8 +66,8 @@
     "c14": "pasaste los 14 caracteres permitidos..."
   },
   "ban": {
-    "men": "Debe mencionar a alguien <:bEmoji:440388028939239434>",
-    "reazon": "Escriba un razón, `Yu!ban @username [razón]`",
-    "noBP": "No puedo banear al usuario mencionado.'"
+    "men": "<:Not:463805182648778783> | Debe mencionar a alguien <:bEmoji:440388028939239434>",
+    "reazon": "<:Not:463805182648778783> | Escriba un razón, `Yu!ban @username [razón]`",
+    "noBP": "<:Not:463805182648778783> | No puedo banear al usuario mencionado."
   }
 }
