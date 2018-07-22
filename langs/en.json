@@ -2,10 +2,9 @@
    
    "title": "Command Usage",
    "Error": ["❎ | Oh no, there's been a mistake: ", ". Please try again later."],
-    "titleComp": "Complete :white_check_mark:",
-    "unknownChannel": "Unknown channel.",
-    "unknownRole": ["Unknown role in "," pair."
-    ],
+   "titleComp": "Complete :white_check_mark:",
+   "info": "Information from ",
+    "click": "Click Here",
     "lang": {
         "langUpdate": "Language updated.",
         "translate": "If you want Yuuki in a language that isn't on the list above, you can help translate Yuuki on [Github](https://yuuki.github.io)"
@@ -34,6 +33,7 @@
     "E": "Events",
     "Mem": "Members",
     "WebSite": "WebSite",
-    "Vote": "Vote for the bot" 
+    "Vote": "Vote for the bot" ,
+    "use": "Use Yu!vote"
   }
 }

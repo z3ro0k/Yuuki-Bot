@@ -3,7 +3,7 @@
     "title": "Uso del comando",
     "Error": ["❎ | Oh no, ha ocurrido un error: ", ". Inténtalo de nuevo más tarde."],
     "titleComp": "Completado :white_check_mark:",
-    "unknownChannel": "Canal desconocido.",
+    "info": "Información de ",
     "click": "Click Aqui",
     "lang": {
         "langUpdate": "Idioma actualizado.",
@@ -33,6 +33,7 @@
     "E": "Eventos",
     "Mem": "Miembros",
     "WebSite": "WebSite",
-    "Vote": "Vota por el bot" 
+    "Vote": "Vota por el bot",
+    "use": "Usa Yu!vote"
   }
 }
