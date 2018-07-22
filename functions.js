@@ -4,31 +4,26 @@ const ms = require('parse-ms');
 const exec = require('child_process').exec;
 module.exports = { 
   
-    hook: function(channel, title, message, color, avatar) { // This function uses quite a few options. The last 2 are optional.
+    hook: function(channel, title, message, color, avatar) { 
 
-        // Reassign default parameters - If any are blank.
         if (!channel) return console.log('Channel not specified.');
         if (!title) return console.log('Title not specified.');
         if (!message) return console.log('Message not specified.');
-        if (!color) color = '0x36393e'; // This is an optional variable. Therefore the default HEX color will be whatever you post there. Mine will be d9a744
-        if (!avatar) avatar = 'https://cdn4.iconfinder.com/data/icons/technology-devices-1/500/speech-bubble-128.png' // This is also an optional variable, you can change the default to any icon.
-
-        // We want to remove spaces from color & url, since they might have it on the sides.
+        if (!color) color = '0x36393e'; 
+        if (!avatar) avatar = 'https://cdn4.iconfinder.com/data/icons/technology-devices-1/500/speech-bubble-128.png' 
+      
         color = color.replace(/\s/g, '');
         avatar = avatar.replace(/\s/g, '');
 
-        // This is the start of creating the webhook
-        channel.fetchWebhooks() // This gets the webhooks in the channel
+        channel.fetchWebhooks() 
             .then(webhook => {
 
-                // Fetches the webhook we will use for each hook
-                let foundHook = webhook.find(hook => hook.name ==='Webhook'); // You can rename 'Webhook' to the name of your bot if you like, people will see if under the webhooks tab of the channel.
+                let foundHook = webhook.find(hook => hook.name ==='Webhook'); 
 
-                // This runs if the webhook is not found.
                 if (!foundHook) {
                     channel.createWebhook('Webhook', 'https://cdn4.iconfinder.com/data/icons/technology-devices-1/500/speech-bubble-128.png') // Make sure this is the same thing for when you search for the webhook. The png image will be the default image seen under the channel. Change it to whatever you want.
                         .then(webhook => {
-                            // Finally send the webhook
+                            
                             webhook.send('', {
                                 "username": title,
                                 "avatarURL": avatar,
@@ -288,7 +283,7 @@ module.exports = {
     },
    getLang: function(guild) {
      var langg
-     var lang = db.fetch(`guildLang_${guild}`)
+     var lang = db.fetch(`guildLang_${guild.id}`)
      if (lang === null) langg = 'en'
      else lang = lang       
    } 
