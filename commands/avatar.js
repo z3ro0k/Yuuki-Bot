@@ -1,19 +1,27 @@
 const Discord = require('discord.js')
-
-exports.run = (bot, message, args, func) => {
+const db = require('quick.db')
+exports.run = async (bot, message, args, func) => {
+   var langg
+ const idioma = await db.fetch(`guildLang_${message.guild.id}`)
+ if (idioma === null) langg = 'es'
+  else langg = idioma       
+ const lang = require(`../langs/${langg}.json`)
+ 
 let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author 
 
- if (!user.avatarURL) return message.channel.send('Ese usuario no tiene avatar.');
+ if (!user.avatarURL) return message.channel.send(`${lang.noA[0]}**${user.tag}**${lang.noA[1]}`);
  
  
   const embed = new Discord.MessageEmbed()
   .setImage(user.displayAvatarURL({ size: 2048 }))
-  .addField(`${user.username}'s Avatar`, '[Descargar](' + user.displayAvatarURL() + ')')
+  .addField(`${user.username}'s Avatar`, `[${lang.Dow}](${user.displayAvatarURL()})`)
   .setThumbnail(user.displayAvatarURL({ size: 2048 }))
   .setFooter(`Avatar de ${user.tag}`, user.displayAvatarURL())
   .setColor(0x36393e)
  message.channel.send({embed})
+  
   }
+
 exports.config = {
   command: "avatar",
   aliases: ["avatar", "avat"],

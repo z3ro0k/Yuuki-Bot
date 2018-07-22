@@ -6,16 +6,18 @@ exports.run = async (bot, messageReaction, user) => {
 
 //console.log(messageReaction)
   if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
-
+  
+  // Return Statements
+  if (!target.enabled) return; // Not Enabled
+  if (!channel === null) return;// No Channel
+  
   // Fetch Data
   let item = await db.fetch(`starItem_${messageReaction.message.id}`)
   let target = await db.fetch(`starboard_${messageReaction.message.guild.id}`)
   let requiredRole = await db.fetch(`starStarter_${messageReaction.message.guild.id}`)
   let channel = messageReaction.message.guild.channels.get(target.channel) || false;
   
-  // Return Statements
-  if (!target.enabled) return; // Not Enabled
-  if (!channel === null) return;// No Channel
+
   
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)

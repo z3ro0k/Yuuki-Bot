@@ -4,7 +4,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args, tools) => {
   
-var langg
+ var langg
  const idioma = await db.fetch(`guildLang_${message.guild.id}`)
  if (idioma === null) langg = 'es'
   else langg = idioma       

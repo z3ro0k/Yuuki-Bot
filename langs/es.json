@@ -6,6 +6,7 @@
     "info": "Información de ",
     "click": "Click Aqui",
     "noA": ["El Usuario ", " no tiene avatar."],
+    "Dow": "Descargar",
     "lang": {
         "langUpdate": "Idioma actualizado.",
         "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"
@@ -59,5 +60,8 @@
   "ASCII": {
     "args": "Escribe algo para transformarlo en texto ascii",
     "c14": "pasaste los 14 caracteres permitidos..."
+  },
+  "ban": {
+    
   }
 }
