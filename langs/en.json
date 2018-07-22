@@ -13,5 +13,8 @@
     "langR": {
       "langR1": "What is the language to set up Yuuki",
       "langR2": "Please enter a valid language type!"
-    }
+    },
+  "BALL": {
+    "usage": ["<:Not:463805182648778783>  | " , ", the correct usage is: `Yu!8ball <pregunta>`\n◈ | e.g. `Yu!8ball Is potato soup yummy?`\n◈ | Get more help using `Yu!help 8ball`"]
+  }
 }

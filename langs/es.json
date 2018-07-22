@@ -13,7 +13,7 @@
       "langR1": "Cual es el idioma a establecer a Yuuki",
       "langR2": "Por favor, introduzca un tipo de idioma válido!"
     },
-  "8BALL": {
-    "usage": ["<:Not:463805182648778783>" , ", el uso correcto es:  `Yu!8ball <pregunta>`"]
+  "BALL": {
+    "usage": ["<:Not:463805182648778783>  | " , ", el uso correcto es:  `Yu!8ball <pregunta>`\n◈ | e.g. `Yu!8ball ¿Es deliciosa la sopa de papa?`\n◈ | Obtén más ayuda utilizando `Yu!help 8ball`"]
   }
 }
