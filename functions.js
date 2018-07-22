@@ -285,6 +285,11 @@ module.exports = {
 
             getVersion();
         });
-    }
-  
+    },
+   getLang: function(guild) {
+     var langg
+     var lang = db.fetch(`guildLang_${guild}`)
+     if (lang === null) langg = 'en'
+     else lang = lang       
+   } 
 }
