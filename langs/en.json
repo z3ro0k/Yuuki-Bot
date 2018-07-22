@@ -64,6 +64,7 @@
   "ban": {
     "men": "<:Not:463805182648778783> | You must mention someone <:bEmoji:440388028939239434>",
     "reazon": "<:Not:463805182648778783> | Write down a reason `Yu!ban @username [reason]`",
-    "noBP": "<:Not:463805182648778783> | I cannot ban the mentioned user."
+    "noBP": "<:Not:463805182648778783> | I cannot ban the mentioned user.",
+    "noC": "**<:Not:463805182648778783> | Please create a channel with the name `mod-logs`.**"
   }
 }

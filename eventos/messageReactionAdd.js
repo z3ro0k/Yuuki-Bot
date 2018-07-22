@@ -8,7 +8,7 @@ exports.run = async (bot, messageReaction, user) => {
   if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
   
   // Return Statements  
-  if (!channel === null) return;// No Channel
+  
   
   // Fetch Data
   let item = await db.fetch(`starItem_${messageReaction.message.id}`)
@@ -18,6 +18,7 @@ exports.run = async (bot, messageReaction, user) => {
   
   // Return Statements
  if (!target.enabled) return; // Not Enabled
+ if (!channel === null) return;// No Channel
   
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)

@@ -25,7 +25,7 @@ if(!razon) return message.channel.send(lang.ban.reazon);
 if (!message.guild.member(user).bannable) return message.reply(lang.ban.noBP);
          
   const modlog = message.guild.channels.find(channel => channel.name === 'mod-logs');
-  if (!modlog) return message.channel.send('**Please create a channel with the name `mod-logs`**')
+  if (!modlog) return message.channel.send(lang.ban.noC)
                                   
  message.guild.member(user).ban(razon);
   let banEmbed = new Discord.MessageEmbed()
