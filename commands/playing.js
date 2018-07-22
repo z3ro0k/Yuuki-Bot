@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const db = require('quick.db')
 
 exports.run = (bot, message, args, func) => { 
 let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author

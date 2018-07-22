@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const got = require('got');
 const cheerio = require('cheerio')
-//const prefixes = require('../Storage/serverPrefixes.json');
+const db = require('quick.db')
+
 const MojangAPI = require('mojang-api')
 
 exports.run = async (bot, message) => {

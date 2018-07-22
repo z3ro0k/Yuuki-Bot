@@ -2,6 +2,7 @@ const snekfetch = require("snekfetch");
 var npm = require("npm-module-search");
 const Discord = require('discord.js');
 const humanizeduration = require("humanize-duration");
+const db = require('quick.db')
 
 exports.run = (bot, message, args, func) => {
   

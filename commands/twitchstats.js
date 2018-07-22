@@ -1,6 +1,7 @@
 const config  = require('../data/apis.json');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const db = require('quick.db')
 
 exports.run = (bot, message, args) => {
 

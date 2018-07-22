@@ -1,5 +1,6 @@
 const request = require('request-promise-native');
 const config  = require('../data/apis.json');
+const db = require('quick.db')
 
 exports.run = (bot, message, args) => {
   let options = {

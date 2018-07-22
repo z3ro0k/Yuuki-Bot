@@ -2,6 +2,7 @@ const columnify = require('columnify')
 const moment = require('moment')
 require('moment-duration-format')
 const Discord = require('discord.js')
+const db = require('quick.db')
 
 exports.run = async (bot, message, args) => {
 

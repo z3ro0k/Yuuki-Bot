@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const jsroblox = require('js-robloxapi');
-
+const db = require('quick.db')
 
 exports.run = (bot, message, args, func) => {
   if(!args.join(' ')){

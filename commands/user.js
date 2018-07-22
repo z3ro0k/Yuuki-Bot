@@ -2,6 +2,7 @@ const dateformat = require('dateformat');
 const datediff = require('date-diff')
 const { MessageEmbed,  escapeMarkdown } = require('discord.js');
 const {  oneLineCommaListsAnd } = require('common-tags')
+const db = require('quick.db')
 
 exports.run = async(bot, msg, args) => {
    

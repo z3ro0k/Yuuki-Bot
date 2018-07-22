@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const errors = require("../utils/errors.js");
 let kCase = 1;
+const db = require('quick.db')
+
 module.exports.run = async (bot, message, args) => {
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");

@@ -1,5 +1,7 @@
 const Discord = require('discord.js')
 const { IdOwner } = require('../botconfig.js')
+const db = require('quick.db')
+
 exports.run = async (bot, message, args) => {
    if(message.author.id !== IdOwner) return;
 

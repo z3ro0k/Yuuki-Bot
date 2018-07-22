@@ -1,5 +1,6 @@
 const Discord = require('discord.js'),
       tools = require('../functions.js')
+const db = require('quick.db')
 
 exports.run = async (bot, message, args ) => {
 message.channel.send(calcUptime())

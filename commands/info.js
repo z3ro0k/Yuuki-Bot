@@ -1,6 +1,8 @@
 const { stripIndents } = require('common-tags')
 const { escapeMarkdown } = require('discord.js')
 const { MessageEmbed } = require('discord.js');
+const db = require('quick.db')
+
 const moment = require('moment');
 
 exports.run = async (bot, message, args) => {

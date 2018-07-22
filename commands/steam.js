@@ -2,6 +2,7 @@
 const { MessageEmbed } = require('discord.js');
 const snekfetch = require('snekfetch');
 const { stripIndents } = require('common-tags');
+const db = require('quick.db')
 
 exports.run = async(bot, msg, args, func) => {
 const game = args.join(' ')

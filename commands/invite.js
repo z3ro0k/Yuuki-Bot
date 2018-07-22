@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const db = require('quick.db')
 
 exports.run = async (bot, message, args) => {
 var rpts = ["ff00ff", "00ffff", "8600b3", "754785", "e699ff", "ff3333", "006600", "8080ff"," 0000b3"];

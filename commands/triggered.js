@@ -1,4 +1,5 @@
 const Jimp = require('jimp')
+const db = require('quick.db')
 const GIFEncoder = require('gifencoder')
 
 const options = {

@@ -1,5 +1,6 @@
 let prefix = 'Yu!'
 const tools = require('../functions.js');
+const db = require('quick.db')
 exports.run = (bot, message, args) => {
         message.delete();
 

@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const dateFormat = require('dateformat');
 const { escapeMarkdown } = require('discord.js');
+const db = require('quick.db')
 
 //let cooldown = new Set();
 

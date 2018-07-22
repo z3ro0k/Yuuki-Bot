@@ -1,6 +1,8 @@
 const osu = require("node-osu");
 const osuApi = new osu.Api('73c795727fcbb1169f1df8ed8b3f7c51c2282a08');
 const Discord = require('discord.js')
+const db = require('quick.db')
+
 exports.run = async (bot, message, args) => {
     function numberWithCommas(x) {
         const parts = x.toString().split(".");

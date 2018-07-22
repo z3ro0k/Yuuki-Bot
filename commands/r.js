@@ -1,4 +1,6 @@
 const Discord = require('discord.js')
+const db = require('quick.db')
+
 exports.run = (client, message, args, func) => {
 var command = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]))   
     if (!args.join(' ')) {

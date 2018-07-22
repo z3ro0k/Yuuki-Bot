@@ -1,5 +1,7 @@
 const Discord = require('discord.js')
 const apis = require('../data/apis.json')
+const db = require('quick.db')
+
 exports.run = async (client, message, args ) => {
   
 	 let emoji = client.emojis.find(e => e.name === 'Upvote');
