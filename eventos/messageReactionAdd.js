@@ -7,8 +7,7 @@ exports.run = async (bot, messageReaction, user) => {
 //console.log(messageReaction)
   if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
   
-  // Return Statements
-  if (!target.enabled) return; // Not Enabled
+  // Return Statements  
   if (!channel === null) return;// No Channel
   
   // Fetch Data
@@ -17,7 +16,8 @@ exports.run = async (bot, messageReaction, user) => {
   let requiredRole = await db.fetch(`starStarter_${messageReaction.message.guild.id}`)
   let channel = messageReaction.message.guild.channels.get(target.channel) || false;
   
-
+  // Return Statements
+ if (!target.enabled) return; // Not Enabled
   
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)

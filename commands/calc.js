@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const math = require('math-expression-evaluator');
-
+const db = require('quick.db')
 
 exports.run = (bot, message) => {
     const args = message.content.split(" ").slice(1).join(" ")

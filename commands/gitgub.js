@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const snekfetch = require('snekfetch');
 const { shorten, base64 } = require('../utils/Util');
 const { GITHUB_USERNAME, GITHUB_PASSWORD } = require('../data/apis.json')
+const db = require('quick.db')
 
 exports.run = async (bot, msg, args) => {
     const author = args[0]

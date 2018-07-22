@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const { oneLineTrim } = require('common-tags')
 const columnify = require('columnify')
- 
+ const db = require('quick.db')
 exports.run = async (bot, message, args) => {
  var guilds = bot.guilds
  

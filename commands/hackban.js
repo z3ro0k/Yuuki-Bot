@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 var bCase = 2;
 const { IdOwner } = require('../botconfig.js')
+const db = require('quick.db')
+
 exports.run = (client, message, args) => {
         
         const { member, reason } = args.join(' ');
@@ -20,7 +22,7 @@ exports.run = (client, message, args) => {
 
             if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!');
             if (['n', 'no'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!')
-
+ //msg.guild.members.ban(id, { days, reason });
             await message.guild.ban(member, 2);
             return await message.channel.send(`Successfully banned **${usr.tag}**! 👋`);
         })

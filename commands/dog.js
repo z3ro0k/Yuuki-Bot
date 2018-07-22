@@ -1,5 +1,6 @@
 const randomPuppy = require('random-puppy');
 const Discord = require('discord.js')
+const db = require('quick.db')
 
 exports.run = async (bot, message, args) => {
   

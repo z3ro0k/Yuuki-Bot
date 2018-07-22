@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const request = require('request');
+const db = require('quick.db')
 
 exports.run = async (bot, message, args) => {
 

@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const key = require('../data/apis.json')
 const Client = require('fortnite')
 const fortnite = new Client(key.FORTNITE)
+const db = require('quick.db')
 
 exports.run = async (bot, message, args) => {
    message.delete();
