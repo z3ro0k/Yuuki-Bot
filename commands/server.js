@@ -25,12 +25,12 @@ exports.run = async(bot, message, args) => {
     var ownerInfo = guild.owner.user
 
     // Security
-    var verificationLevel = [
-      '**None**\n(Unrestricted)',
-      '**Low**\n(Must have verified email on account)',
-      '**Medium**\n(Must be registered on Discord for longer than 5 minutes)',
-      '**High**\n(Must be a member of the server for longer than 10 minutes)',
-      '**Very High**\n(Must have a verified phone number)'
+   var verificationLevel = [
+      '**None**',
+      '**Low**',
+      '**Medium**',
+      '**(╯°□°）╯︵ ┻━┻**',
+      '**┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻**'
     ]
     var explicitContentFilter = [
       '**Level 1**\n(Don\'t scan any messages)',
@@ -100,7 +100,7 @@ exports.run = async(bot, message, args) => {
     // Roles
     var guildRoles
     if (guild.roles.size > 1) {
-      guildRoles = `${guild._sortedRoles().array().slice(1).reverse().map(role => `**\`${role.name}\`**`)}`
+      guildRoles = `${guild._sortedRoles().array().slice(1).reverse().map(role => role)}`
     } else {
       guildRoles = 'N/A'
     }
@@ -128,6 +128,7 @@ exports.run = async(bot, message, args) => {
   .addField(`<:wEmoji:440388223017943042> Bots - (${botFilter.size.toLocaleString()})`, `**Online:** ${botFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **Offline:** ${botFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**Idle:** ${botFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **DND:** ${botFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
   .addField(`<:doc:448784570188562433> Channels - (${guild.channels.size.toLocaleString()})`,  `**Category:** ${guild.channels.filter(c => c.type === 'category').size.toLocaleString()}\n**Text:** ${guild.channels.filter(c => c.type === 'text').size.toLocaleString()}\n**Voice:** ${guild.channels.filter(c => c.type === 'voice').size.toLocaleString()}`, true)
   .addField('<:Astart:441067034554662932> AFK Channel', guild.afkChannelID !== null ? `**Name:** ${guild.afkChannel.name}\n**ID:** ${guild.afkChannel.id}\n**Timeout:** ${guild.afkTimeout} seconds` : 'N/A', true)
+  .addField(`<:members:442439950747697164> Active Members: ${server.activity.length}`, `Daily: ${server.daily.length}\nWeekly: ${server.weekly.length}\nMonthly: ${server.monthly.length}`, true)
   .addField('<:Verific:446119366187024394> Verification Level', verificationLevel[guild.verificationLevel], true)
   .addField('<:cloud:447518353972658207> Explicit Content Filter', explicitContentFilter[guild.explicitContentFilter], true)
   .addField(`Emojis: ${server.emojis}`, `${server.allEmojis.length > 1024 ? "The emoji list is too long to list." : server.allEmojis}`, true)
