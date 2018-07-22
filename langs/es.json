@@ -7,6 +7,10 @@
     "click": "Click Aqui",
     "noA": ["El Usuario ", " no tiene avatar."],
     "Dow": "Descargar",
+    "noP": {
+      "ban": "<:Not:463200957396680714> **| No tienes Permisos para usar este comando.**",
+      "kick": "Escriba un razón, `Yu!ban @username [razón]`"
+    },
     "lang": {
         "langUpdate": "Idioma actualizado.",
         "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"
@@ -62,6 +66,6 @@
     "c14": "pasaste los 14 caracteres permitidos..."
   },
   "ban": {
-    
+    "men": "Debe mencionar a alguien <:bEmoji:440388028939239434>"
   }
 }

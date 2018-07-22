@@ -8,7 +8,7 @@ let perms = message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS");
 
 if(!perms) return message.channel.send("<:adminNep:372599923381633024> **| No tienes Permisos para usar este comando.**");
      
-if (message.mentions.users.size < 1) return message.reply("Debe mencionar a alguien <:bEmoji:440388028939239434> ").catch(console.error);
+if (message.mentions.users.size < 1) return message.reply("Debe mencionar a alguien <:bEmoji:440388028939239434>").catch(console.error);
 if(!razon) return message.channel.send('Escriba un razón, `Yu!ban @username [razón]`');
 if (!message.guild.member(user).bannable) return message.reply('No puedo banear al usuario mencionado.');
                                       
