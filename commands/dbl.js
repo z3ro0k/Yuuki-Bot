@@ -52,10 +52,10 @@ try {
       .addField(lang.dbli.upvotes, body.points, true)
       .addField(lang.dbli.guilds, body.server_count, true)
       .addField(lang.dbli.CB, certified, true)
-      .addField(lang.dbli.tags, body.tags.join(', '), true)
+      .addField(lang.dbli.Tags, body.tags.join(', '), true)
       .addField(lang.dbli.owner, `<@${body.owners.join(">, <@")}>`, true)
       .addField(lang.dbli.SD, body.shortdesc, true)
-      .addField(lang.dbli.link, `${body.invite.length !== 0 ? `[Invite](${body.invite}) | ` : ""}${body.website.length !== 0 ? `[Website](${body.website}) | ` : "" }${body.support.length !== 0 ? `[Support Server](https://discord.gg/${body.support})` : ""}`, true)
+      .addField(lang.dbli.Links, `${body.invite.length !== 0 ? `[Invite](${body.invite}) | ` : ""}${body.website.length !== 0 ? `[Website](${body.website}) | ` : "" }${body.support.length !== 0 ? `[Support Server](https://discord.gg/${body.support})` : ""}`, true)
       .setTimestamp()
       message.channel.send({ embed });
   } catch(err) {

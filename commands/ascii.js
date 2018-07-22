@@ -1,16 +1,18 @@
 const ascii = require('figlet');
-
-const ownerID = '322203879208910849'
-
 const Discord = require('discord.js')
+const db = require('quick.db')
 
-
-exports.run = (client, message, args, tools) => {
+exports.run = async (client, message, args, tools) => {
   
+var langg
+ const idioma = await db.fetch(`guildLang_${message.guild.id}`)
+ if (idioma === null) langg = 'es'
+  else langg = idioma       
+ const lang = require(`../langs/${langg}.json`) 
   
-  if (!args.join(' ')) return message.channel.send('Escribe algo para transformarlo en texto ascii')
+  if (!args.join(' ')) return message.channel.send(lang.ASCII.args)
   if(message.content.split(' ').slice(1).join(' ').length > 14) {
-  message.channel.send('pasaste los 14 caracteres permitidos ...')
+  message.channel.send(lang.ASCII.c14)
     return;
   }
    ascii(args.join(' '), {
@@ -19,7 +21,6 @@ exports.run = (client, message, args, tools) => {
       },
       function(err, data) {
         if (err) {
-          //.reply('Something went wrong! Contact a developer. `https://discord.gg/RwmuHu6`')
           console.error(err)
         }
         message.delete(1)

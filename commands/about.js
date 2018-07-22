@@ -14,7 +14,7 @@ const cpu = process.cpuUsage().system / 1024 / 1024;
  var dev
     try { dev = bot.users.get('322203879208910849').tag } catch (e) { dev = 'PoeticAzurex#9169' }
   
-  var langg
+ var langg
  const idioma = await db.fetch(`guildLang_${message.guild.id}`)
  if (idioma === null) langg = 'es'
   else langg = idioma       

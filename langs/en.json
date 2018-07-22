@@ -4,7 +4,9 @@
    "Error": ["❎ | Oh no, there's been a mistake: ", ". Please try again later."],
    "titleComp": "Complete :white_check_mark:",
    "info": "Information from ",
-    "click": "Click Here",
+   "click": "Click Here",
+   "noA": ["The User ", " has no avatar."],
+   "Dow": "Download",
     "lang": {
         "langUpdate": "Language updated.",
         "translate": "If you want Yuuki in a language that isn't on the list above, you can help translate Yuuki on [Github](https://yuuki.github.io)"
@@ -54,5 +56,9 @@
     "owner": "Owner(s)",
     "SD": "Short description",
     "Links": "Links"
+  }, 
+  "ASCII": {
+    "args": "Write something to transform it into ascii text.",
+    "c14": "you passed the 14 characters allowed...."
   }
 }

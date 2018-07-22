@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 exports.run = (bot, message, args, func) => {
 let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author 
 
- if (!user.avatarURL) return message.channel.send( 'Ese usuario no tiene avatar.');
+ if (!user.avatarURL) return message.channel.send('Ese usuario no tiene avatar.');
  
  
   const embed = new Discord.MessageEmbed()

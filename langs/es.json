@@ -5,6 +5,7 @@
     "titleComp": "Completado :white_check_mark:",
     "info": "Información de ",
     "click": "Click Aqui",
+    "noA": ["El Usuario ", " no tiene avatar."],
     "lang": {
         "langUpdate": "Idioma actualizado.",
         "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"
@@ -54,5 +55,9 @@
     "owner": "Dueño(s)",
     "SD": "Descripción breve",
     "Links": "Links"
+  }, 
+  "ASCII": {
+    "args": "Escribe algo para transformarlo en texto ascii",
+    "c14": "pasaste los 14 caracteres permitidos..."
   }
 }
