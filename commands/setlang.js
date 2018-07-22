@@ -11,7 +11,7 @@ exports.run = async (client, message, args, tools) => {
  const lang = require(`../langs/${langg}.json`) 
  
  let setLang = args[0] 
- if(setLang) {
+ if(!setLang) {
  return message.channel.send({
             embed: {
                 title: "ERROR!",
@@ -20,6 +20,7 @@ exports.run = async (client, message, args, tools) => {
             }
         })
  }
+  
  if (!['en', 'es'].includes(args[0])) return message.channel.send({
             embed: {
                 title: "ERROR!",
