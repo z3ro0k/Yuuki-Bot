@@ -7,15 +7,7 @@ const db = require('quick.db')
 //let cooldown = new Set();
 
 exports.run = async(bot, message, args) => {
-  if(args[0] == "help"){
-    const help = new Discord.MessageEmbed()
-      .addField('Uso:', "Yu-server")
-      .setColor(0x36393e)
-      .addField('Descripción', "Muestra la información del server")
-      .addField('Ejemplos:', "Yu-server 322209371704786945\nYu-server 312846399731662850\nYu-server")
-      message.channel.send(help);
-      return;
-    }
+
   let guild = bot.guilds.get(args.join(' ')) || message.guild
   let sender = message.author
 
@@ -119,16 +111,17 @@ exports.run = async(bot, message, args) => {
  }
   const embed = new Discord.MessageEmbed()
   .setColor(message.author.displayHexColor)
-  .setTitle(`${guild.name} - ${guildRegion}`, guild.iconURL() !== null ? guild.iconURL() : 'http://cdn.discordapp.com/embed/avatars/0.png')
+  .setThumbnail(guild.iconURL() !== null ? guild.iconURL() : 'http://cdn.discordapp.com/embed/avatars/0.png')
+  .setTitle(`${guild.name} - ${guildRegion}`)
   .setDescription(`**ID:** - ${guild.id}`)
   .addField('<:Owner:442443039915507743> Owner', `**Tag:** ${escapeMarkdown(ownerInfo.tag)}\n**ID:** ${ownerInfo.id}\n**Status:** ${ownerInfo.presence.status}`, true)
   .addField(`<:relog:447518519752523776> Created - (${moment(guild.createdAt).fromNow()})`, `**Date:** ${moment(guild.createdAt).format('L')}\n**Time:** ${moment(guild.createdAt).format('LTS')}`, true)
   .addField(`<:members:442439950747697164> Members - (${guild.members.size.toLocaleString()})`, `**Online:** ${guild.members.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **Offline:** ${guild.members.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**Idle:** ${guild.members.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **DND:** ${guild.members.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
   .addField(`<:Servers:442443125005352962> Users - (${userFilter.size.toLocaleString()})`, `**Online:** ${userFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **Offline:** ${userFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**Idle:** ${userFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **DND:** ${userFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
   .addField(`<:wEmoji:440388223017943042> Bots - (${botFilter.size.toLocaleString()})`, `**Online:** ${botFilter.filter(s => s.user.presence.status === 'online').size.toLocaleString()} | **Offline:** ${botFilter.filter(s => s.user.presence.status === 'offline').size.toLocaleString()}\n**Idle:** ${botFilter.filter(s => s.user.presence.status === 'idle').size.toLocaleString()} | **DND:** ${botFilter.filter(s => s.user.presence.status === 'dnd').size.toLocaleString()}`, true)
+  .addField(`<:members:442439950747697164> Active Members: ${server.activity.length}`, `Daily: ${server.daily.length}\nWeekly: ${server.weekly.length}\nMonthly: ${server.monthly.length}`, true)
   .addField(`<:doc:448784570188562433> Channels - (${guild.channels.size.toLocaleString()})`,  `**Category:** ${guild.channels.filter(c => c.type === 'category').size.toLocaleString()}\n**Text:** ${guild.channels.filter(c => c.type === 'text').size.toLocaleString()}\n**Voice:** ${guild.channels.filter(c => c.type === 'voice').size.toLocaleString()}`, true)
   .addField('<:Astart:441067034554662932> AFK Channel', guild.afkChannelID !== null ? `**Name:** ${guild.afkChannel.name}\n**ID:** ${guild.afkChannel.id}\n**Timeout:** ${guild.afkTimeout} seconds` : 'N/A', true)
-  .addField(`<:members:442439950747697164> Active Members: ${server.activity.length}`, `Daily: ${server.daily.length}\nWeekly: ${server.weekly.length}\nMonthly: ${server.monthly.length}`, true)
   .addField('<:Verific:446119366187024394> Verification Level', verificationLevel[guild.verificationLevel], true)
   .addField('<:cloud:447518353972658207> Explicit Content Filter', explicitContentFilter[guild.explicitContentFilter], true)
   .addField(`Emojis: ${server.emojis}`, `${server.allEmojis.length > 1024 ? "The emoji list is too long to list." : server.allEmojis}`, true)
