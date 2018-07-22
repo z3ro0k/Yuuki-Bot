@@ -1,1 +1,16 @@
-{}
+{
+    
+    "title": "Uso del comando",
+    "Error": ["❎ | Oh no, ha ocurrido un error: ", ". Inténtalo de nuevo más tarde."],
+    "titleComp": "Completado :white_check_mark:",
+    "unknownChannel": "Canal desconocido.",
+    "unknownRole": ["Rol desconocido en "," par."],
+    "lang": {
+        "langUpdate": "Idioma actualizado.",
+        "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"
+    },
+    "langR": {
+      "langR1": "Cual es el idioma a establecer a Yuuki",
+      "langR2": "Por favor, introduzca un tipo de idioma válido!"
+    }
+}
