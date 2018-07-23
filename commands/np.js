@@ -19,7 +19,7 @@ exports.run = async (clint, message, args, queue) => {
     if (!serverQueue) return message.channel.send("¡No hay nada tocando!");
 
     var songN
-    if(!serverQueue.songs[1].title === undefined) songN = 'Nothing'
+    if(serverQueue >= 1) songN = 'Nothing'
     else songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
   
     const np = new Discord.MessageEmbed()
