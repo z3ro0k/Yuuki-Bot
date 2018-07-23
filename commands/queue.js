@@ -20,7 +20,7 @@ exports.run = async (client, message, args, queue) => {
     let index = 0;
     if (!serverQueue) return message.channel.send('¡No estoy tocando musica! Agregar algunas canciones para tocar usando: A!play `<Música>`');
     const dur = `${serverQueue.songs[0].durationh}:${serverQueue.songs[0].durationm}:${serverQueue.songs[0].durations}`
-    const songs = `${serverQueue.songs.map(song => `${song.title} - request by: ${serverQueue.songs[0].request}`).join('\n')}`;
+    const songs = `${serverQueue.songs.map(song => `${song.title} - request by: ${song.request}`).join('\n')}`;
 
     if (songs.length > 1024 || songs.length > 1024) {
         hastebin(`All queue Songs: \n\n${songs}`, "js").then(r => {
@@ -28,7 +28,7 @@ exports.run = async (client, message, args, queue) => {
                 .setTitle("Canciones en la cola")
                 .setDescription(`[\`Queue List\`](${r})`)
                 .addField('Tocando ahora:', serverQueue.songs[0].title + ' - Request: ' + serverQueue.songs[0].request + ' | Duration: ' + dur)
-                .setFooter('Astronaut Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
+                .setFooter('Yuuki Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
                 .setColor(0x36393e)
 
             return message.channel.send({
@@ -36,12 +36,17 @@ exports.run = async (client, message, args, queue) => {
             });
         })
     } else {
-        const queueInfo = new Discord.MessageEmbed()
-
+      var songN
+    if(serverQueue) songN = 'Nothing'
+    else songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
+       
+    const queueInfo = new Discord.MessageEmbed()
+    
             .setTitle("Canciones en la cola")
-            .setDescription(`${serverQueue.songs.map(song => `[${song.title}](${serverQueue.songs[0].url}) - request by: ${serverQueue.songs[0].request} `).slice(0, 16).join('\n')}`)
+            .setDescription(`${serverQueue.songs.map(song => `[${song.title}](${serverQueue.songs[0].url}) - request by: ${serverQueue.songs[0].request} `).slice(1, 16).join('\n')}`)
             .addField('Tocando ahora:', serverQueue.songs[0].title + ' - Request:' + serverQueue.songs[0].request + ' | Duration: ' + dur)
-            .setFooter('Hisa Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
+            .addField('Siguiente canción', songN)
+            .setFooter('Yuuki Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
             .setColor(0x36393e)
 
         return message.channel.send({

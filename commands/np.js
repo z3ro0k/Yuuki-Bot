@@ -19,8 +19,8 @@ exports.run = async (clint, message, args, queue) => {
     if (!serverQueue) return message.channel.send("¡No hay nada tocando!");
 
     var songN
-    if(serverQueue >= 1) songN = 'Nothing'
-    else songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
+    if(serverQueue >= 1) songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
+    else songN = 'Nothing'
   
     const np = new Discord.MessageEmbed()
         .setAuthor(`Reproduciendo ahora`, message.guild.iconURL)
