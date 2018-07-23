@@ -36,16 +36,16 @@ exports.run = async (client, message, args, queue) => {
             });
         })
     } else {
-     /* var songN
-     if(serverQueue >= 0) songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
-    else songN = 'Nothing'
-       */
+     var songN
+     if(serverQueue !== 1) songN = 'Nothing'
+    else songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
+       
     const queueInfo = new Discord.MessageEmbed()
     
             .setTitle("Canciones en la cola")
             .setDescription(`${serverQueue.songs.map(song => `[${song.title}](${serverQueue.songs[0].url}) - request by: ${serverQueue.songs[0].request} `).slice(1, 10).join('\n')}`)
             .addField('Tocando ahora:', serverQueue.songs[0].title + ' - Request:' + serverQueue.songs[0].request + ' | Duration: ' + dur)
-            .addField('Siguiente canción', `${serverQueue.songs < 0 ? "Nothing." : [serverQueue.songs[1].title](serverQueue.songs[1].url)}`)
+            .addField('Siguiente canción', songN)
             .setFooter('Yuuki Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
             .setColor(0x36393e)
 
