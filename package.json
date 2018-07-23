@@ -47,7 +47,12 @@
     "snekfetch": "^4.0.0",
     "util": "^0.10.4",
     "weather-js": "^2.0.0",
-    "youtube-dl": "^1.12.2"
+    "youtube-dl": "^1.12.2",
+    "ytdl-core": "^0.21.1",
+    "simple-youtube-api": "^5.0.2",
+    "opusscript": "^0.0.6",
+    "node-gyp": "^3.7.0",
+    "youtube-info": "^1.2.0"
   },
   "engines": {
     "node": "8.x"

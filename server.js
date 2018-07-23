@@ -24,6 +24,9 @@ const tools = require('./functions.js');
 const db = require('quick.db')
 
 bot.tools = require('./functions.js');
+/*global Set, Map*/
+const queue = new Map();
+
 function loadCmds () {
 bot.commands = new Discord.Collection();  
 bot.aliases = new Discord.Collection();
@@ -87,7 +90,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0].toLowerCase()) || bot.commands.get(bot.aliases.get(cont[0].toLowerCase()));
-  if (cmd) cmd.run(bot, message, args, tools, loadCmds, eventsLoad);
+  if (cmd) cmd.run(bot, message, args, tools, queue, loadCmds, eventsLoad);
   
 
 })
