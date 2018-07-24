@@ -125,7 +125,7 @@ exports.run = async(bot, message, args) => {
   .addField('<:Verific:446119366187024394> Verification Level', verificationLevel[guild.verificationLevel], true)
   .addField('<:cloud:447518353972658207> Explicit Content Filter', explicitContentFilter[guild.explicitContentFilter], true)
   .addField(`Emojis: ${server.emojis}`, `${server.allEmojis.length > 1024 ? "The emoji list is too long to list." : server.allEmojis}`, true)
-  .addField(`🔖 Roles - (${guild.roles.size.toLocaleString()})`,  guildRoles, false)
+  .addField(`🔖 Roles - (${guild.roles.size.toLocaleString()})`,   `${guildRoles.length > 1024 ? "The role list is too long to list." : guildRoles}`, false)
     .setColor(0x36393e)
     return message.channel.send(embed);
 }
