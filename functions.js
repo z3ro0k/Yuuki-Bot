@@ -223,15 +223,18 @@ module.exports = {
 
   },
 
-  langU: function(channel, guild, newLang) {
+  langU: async function(channel, guild, newLang) {
 
-   const lang = db.provider.set(guild.id, 'lang', newLang);
-    channel = channel.channel || channel;
-    //const lang = require(`../langs/${langg}.json`) 
-
+  db.set(`guildLang_${guild.id}`, newLang)
+  var lang
+  const idioma2 = await db.fetch(`guildLang_${guild.id}`)
+  if (idioma2 === null) lang = 'es'
+  else lang = idioma2
+  
+   const lang2 = require(`../langs/${lang}.json`) 
     const embed = new MessageEmbed()
-      .setTitle('Updated Lang')
-      .setDescription(`The lang in the guild ${guild.name} is mow tho ${lang}`)
+      .setTitle(newLang.titleComp + '\n'+ newLang.lang.langUpdate)
+      .setDescription(newLang.lang.translate)
       .setColor(0x1db954);
     channel.send({embed});
 
