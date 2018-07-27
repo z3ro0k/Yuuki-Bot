@@ -2,6 +2,7 @@ const db = require('quick.db');
 const Discord = require('discord.js');
 const ms = require('parse-ms');
 const exec = require('child_process').exec;
+const { MessageEmbed } = require('discord.js');
 module.exports = { 
   
     hook: function(channel, title, message, color, avatar) { 
@@ -288,14 +289,16 @@ module.exports = {
      else lang = lang       
    },
 
-  getLang: function(channel, guild, lang) {
-
-    lang = db.provider.get(guild.id, 'lang')
+  getLang: async function(channel, guild, lang) {
+     var langg
+    lang = await db.fetch(`guildLang_${guild.id}`)
+     if (lang === null) langg = 'en'
+     else langg = lang
     channel = channel.channel || channel;
 
     const embed = new MessageEmbed()
       .setTitle('Current Lang')
-      .setDescription(`The current lang in the guild ${guild.name} is ${lang}`)
+      .setDescription(`The current lang in the guild ${guild.name} is ${langg}`)
       .setColor(0x1db954);
     channel.send({embed});
 

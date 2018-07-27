@@ -11,6 +11,9 @@
       "ban": "<:Not:463200957396680714> **| No tienes Permisos para usar este comando.**",
       "kick": ""
     },
+    "func": {
+      "actual": ["El lenguaje actual en el servidor", "es"]
+      },
     "lang": {
         "langUpdate": "Idioma actualizado.",
         "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"
