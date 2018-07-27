@@ -12,14 +12,10 @@ exports.run = async (client, message, args, tools) => {
  
  let setLang = args[0] 
  if(!setLang) {
- return message.channel.send({
-            embed: {
-                title: "ERROR!",
-                color: 0xE50000,
-                description: lang.langR.langR1
-            }
-        })
- }
+ 
+   client.tools.getLang(message.channel, message.guild)
+   
+ } else {
   
  if (!['en', 'es'].includes(args[0])) return message.channel.send({
             embed: {
@@ -42,6 +38,7 @@ else langg = idioma2
     .setTitle(newLang.titleComp + '\n'+ newLang.lang.langUpdate)
    .setDescription(newLang.lang.translate)
 message.channel.send(embed)
+ }
 }
 exports.config = {
   command: "setlang",
