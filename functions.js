@@ -286,5 +286,31 @@ module.exports = {
      var lang = db.fetch(`guildLang_${guild.id}`)
      if (lang === null) langg = 'en'
      else lang = lang       
-   } 
+   },
+
+  getLang: function(channel, guild, lang) {
+
+    lang = db.provider.get(guild.id, 'lang')
+    channel = channel.channel || channel;
+
+    const embed = new MessageEmbed()
+      .setTitle('Current Lang')
+      .setDescription(`The current lang in the guild ${guild.name} is ${lang}`)
+      .setColor(0x1db954);
+    channel.send({embed});
+
+  },
+
+  langU: function(channel, guild, newLang) {
+
+   const lang = db.provider.set(guild.id, 'lang', newLang);
+    channel = channel.channel || channel;
+
+    const embed = new MessageEmbed()
+      .setTitle('Updated Lang')
+      .setDescription(`The lang in the guild ${guild.name} is mow tho ${lang}`)
+      .setColor(0x1db954);
+    channel.send({embed});
+
+  }   
 }
