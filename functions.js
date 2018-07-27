@@ -226,15 +226,16 @@ module.exports = {
   langU: async function(channel, guild, newLang) {
 
   db.set(`guildLang_${guild.id}`, newLang)
-  var lang
-  const idioma2 = await db.fetch(`guildLang_${guild.id}`)
-  if (idioma2 === null) lang = 'es'
-  else lang = idioma2
   
-   const lang2 = require(`../langs/${lang}.json`) 
+  var langg
+  const idioma2 = await db.fetch(`guildLang_${guild.id}`)
+  if (idioma2 === null) langg = 'es'
+  else langg = idioma2
+  
+   const lang = require(`./langs/${langg}.json`) 
     const embed = new MessageEmbed()
-      .setTitle(newLang.titleComp + '\n'+ newLang.lang.langUpdate)
-      .setDescription(newLang.lang.translate)
+      .setTitle(lang.titleComp + '\n'+ lang.lang.langUpdate)
+      .setDescription(lang.lang.translate)
       .setColor(0x1db954);
     channel.send({embed});
 
