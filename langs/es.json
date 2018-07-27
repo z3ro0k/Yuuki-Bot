@@ -14,6 +14,10 @@
     "func": {
       "actual": ["El lenguaje actual en el servidor", "es"]
       },
+    "langu": {
+      "name": "Español",
+      "title": "Lenguaje"
+    },
     "lang": {
         "langUpdate": "Idioma actualizado.",
         "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"

@@ -151,89 +151,6 @@ module.exports = {
         if (!isNaN(timer)) {msg.delete({timeout: timer})};
       })
     },
-  
-    pages: function(message, pages, config) {
-      
-      let page = 1;
-  
-    const embed = new Discord.MessageEmbed()
-      .setColor(0xffffff)
-      .setFooter(`Page ${page} of ${pages.length}`)
-      .setDescription(pages[page-1])
-
-    message.channel.send(embed).then(msg => {
-      
-      msg.react('⏪').then( r => {
-        msg.react('⏩')
-        
-        // Create Filters
-        const backwardsFilter = (reaction, user) => reaction.emoji.name === '⏪' && user.id === message.author.id;
-        const forwardsFilter = (reaction, user) => reaction.emoji.name === '⏩' && user.id === message.author.id;
-        
-        const backwards = msg.createReactionCollector(backwardsFilter, { time: 60000 });
-        const forwards = msg.createReactionCollector(forwardsFilter, { time: 60000 });
-        
-        backwards.on('collect', r => {
-          if (page === 1) return;
-          page--;
-          embed.setDescription(pages[page-1])
-          embed.setFooter(`Page ${page} of ${pages.length}`)
-          msg.edit(embed)
-        });
-        
-        forwards.on('collect', r => {
-          if (page === pages.length) return;
-          page++;
-          embed.setDescription(pages[page-1])
-          embed.setFooter(`Page ${page} of ${pages.length}`)
-          msg.edit(embed)
-        });
-        
-      })
-      
-    })
-      
-    },
-  
-    setChannels: function(message) {
-      
-       const embed = new Discord.MessageEmbed()
-        .setColor(0x1db954)
-        .setTitle('Optional Channels')
-        .setDescription('**Want to join a channel? Type:**\n`~join #`\n\n**To leave, type the following in the channel:**\n`~leave`')
-       
-       let joinList = [];
-       setTimeout(function() {
-       db.fetchArray(`officialChannels_${message.guild.id}`).then(o => {
-         let officialChannels = '';
-         o.shift()
-         let index = o.length;
-         for (var i = 0; i < o.length; i++) {
-          joinList.push(o[i])
-          officialChannels += `**${i+1}** [❱](https://discord.io/plexidev) ${message.guild.channels.get(o[i]).name.charAt(0).toUpperCase() + message.guild.channels.get(o[i]).name.slice(1).replace('nsfw', 'NSFW')}`
-          //if (message.guild.channels.get(o[i]).topic) officialChannels += ` **-** ${message.guild.channels.get(o[i]).topic}`
-          officialChannels += '\n\n'
-         }
-         if (o.length > 0) embed.addField('Official Channels', officialChannels,true);
-         db.fetchArray(`publicChannels_${message.guild.id}`).then(p => {
-           let publicChannels = '';
-           p.shift()
-           for (var i = 0; i < p.length; i++) {
-            joinList.push(p[i])
-            publicChannels += `**${i+1+index}** [❱](https://discord.io/plexidev) ${message.guild.channels.get(p[i]).name.charAt(0).toUpperCase() + message.guild.channels.get(p[i]).name.slice(1).replace('nsfw', 'NSFW')}`
-            //if (message.guild.channels.get(p[i]).topic) publicChannels += ` **-** ${message.guild.channels.get(p[i]).topic}`
-            publicChannels += '\n\n'
-           }
-           if (p.length > 0) embed.addField('Community Channels', publicChannels,true);
-           embed.setFooter('Have an idea for an optional channel? Message a staff member!')
-           message.guild.channels.get('409922524948987924').messages.fetch('412707175950057474').then(msg => msg.edit(embed));
-           db.setArray(`joinList_${message.guild.id}`, joinList)
-         })
-       })
-         
-       },100)
-
-    },
   getInfo: function() {
         let client = this;
 
@@ -289,16 +206,18 @@ module.exports = {
      else lang = lang       
    },
 
-  getLang: async function(channel, guild, lang) {
+  getLang: async function(channel, guild, idioma) {
      var langg
-    lang = await db.fetch(`guildLang_${guild.id}`)
-     if (lang === null) langg = 'en'
-     else langg = lang
+    idioma = await db.fetch(`guildLang_${guild.id}`)
+     if (idioma === null) langg = 'en'
+     else langg = idioma
+    const lang = require(`./langs/${langg}.json`) 
+    
     channel = channel.channel || channel;
 
     const embed = new MessageEmbed()
-      .setTitle('Current Lang')
-      .setDescription(`The current lang in the guild ${guild.name} is ${langg}`)
+      .setTitle('awa')
+      .setDescription(`${lang.func.actual[0]} **${guild.name}** ${lang.func.actual[1]} **${lang.langu.name}**`)
       .setColor(0x1db954);
     channel.send({embed});
 
@@ -308,6 +227,7 @@ module.exports = {
 
    const lang = db.provider.set(guild.id, 'lang', newLang);
     channel = channel.channel || channel;
+    //const lang = require(`../langs/${langg}.json`) 
 
     const embed = new MessageEmbed()
       .setTitle('Updated Lang')
