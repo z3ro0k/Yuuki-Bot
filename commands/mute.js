@@ -9,8 +9,8 @@ let miembro = message.mentions.members.first();
 
         if(!perms) return message.channel.send("No tienes el rango requerido para usar este comando.");
         if(message.mentions.users.size < 1) return message.reply("Debes mencionar a alguien para silenciarlo.").catch(console.error);
-        if(!role) {
-        message.guild.createRole({
+      if(!role) {
+      message.guild.createRole({
       name: 'Silenciado',
       color: '#747474',
       position: 1
