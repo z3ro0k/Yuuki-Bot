@@ -1,9 +1,14 @@
 const Discord = require("discord.js");
 const errors = require("../utils/errors.js");
-let kCase = 1;
 const db = require('quick.db')
 
 module.exports.run = async (bot, message, args) => {
+  
+    const casenumbers = new db.table('CASENUMBERs')
+    const guildcasenumber = await casenumbers.fetch(`case_${message.guild.id}`)
+    const a = guildcasenumber
+    const b = a + 1
+    casenumbers.set(`case_${message.guild.id}`, b)
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");
 
@@ -15,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
     if(!kReason) return message.channel.send("Por favor, especifique la razón para patear al usuario mencionado.");
     
     let kickEmbed = new Discord.MessageEmbed()
-    .setDescription(`**<:kEmoji:440388066197110785>Kick | Case #${kCase = kCase + 1}**`)
+    .setDescription(`**<:kEmoji:440388066197110785>Kick | Case #${guildcasenumber}**`)
     .setColor(0x36393e)
     .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
     .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
