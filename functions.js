@@ -221,12 +221,12 @@ module.exports = {
    
   Lang: async function(guild) {
      var langg
-    var idioma = await db.fetch(`guildLang_${guild.id}`)
+     var idioma = await db.fetch(`guildLang_${guild.id}`)
      if (idioma === null) langg = 'en'
      else langg = idioma
     const lang = require(`./langs/${langg}.json`) 
     
-    return lang
+    return langg
   },
 
   langU: async function(channel, guild, newLang) {

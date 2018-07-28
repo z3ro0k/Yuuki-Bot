@@ -1,13 +1,9 @@
 const { MessageEmbed } = require('discord.js'),
-  db = require('quick.db'),
-  ms = require('parse-ms');
+  db = require('quick.db')
 
-exports.run = async (client, message, args, tools) => {
+exports.run = async (client, message, args) => {
 
- var langg
- const idioma = await db.fetch(`guildLang_${message.guild.id}`)
- if (idioma === null) langg = 'es'
-  else langg = idioma       
+ var langg = await client.tools.Lang(message.guild)    
  const lang = require(`../langs/${langg}.json`) 
  
  let setLang = args[0] 
@@ -31,7 +27,7 @@ exports.run = async (client, message, args, tools) => {
 }
 exports.config = {
   command: "setlang",
-  aliases: ["setidioma", "setlang"],
+  aliases: ["setidioma", "lang"],
   category: "beta",
   description: " ",
   usage: " "
