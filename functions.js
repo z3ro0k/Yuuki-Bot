@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const ms = require('parse-ms');
 const exec = require('child_process').exec;
 const { MessageEmbed } = require('discord.js');
-const bot = require('./server.js').client
+const bot = require('./server.js').bot
 const fs = require('fs')
 module.exports = { 
   
@@ -242,7 +242,7 @@ module.exports = {
     channel.send({embed});
 
   },
- loadCmds: function() {
+ loadCmds: function(bot) {
 bot.commands = new Discord.Collection();  
 bot.aliases = new Discord.Collection();
 bot.events = new Discord.Collection();
@@ -265,7 +265,7 @@ fs.readdir('./commands/', (err, files) => {
   })
 },
   
-eventsLoad: function () {
+eventsLoad: function(bot) {
 fs.readdir('./eventos/', async (err, files) => {
     if (err) return console.error(err);
     const jsfiles = files.filter(f => f.split('.').pop() === 'js');

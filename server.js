@@ -20,7 +20,6 @@ setInterval(() => {
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
-const tools = require('./functions.js');
 const db = require('quick.db')
 
 bot.tools = require('./functions.js');
@@ -28,17 +27,16 @@ bot.tools = require('./functions.js');
 /*global Set, Map*/
 const queue = new Map();
 
-bot.tools.loadCmds()
-
+bot.tools.loadCmds(bot)
+bot.tools.eventsLoad(bot)
+bot.ownerID = '322203879208910849';
+bot.color = 0xfcc7fb;
 
 var prefix = 'Yu!';
 bot.on('message', message => {
  
   if (message.channel.type != 'text') return;
- 
-  bot.ownerID = '322203879208910849';
-  bot.color = 0xDFE0D2;
- 
+  
   var sender = message.author;
   var msg = message.content.toLowerCase();
   
@@ -48,7 +46,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0].toLowerCase()) || bot.commands.get(bot.aliases.get(cont[0].toLowerCase()));
-  if (cmd) cmd.run(bot, message, args, queue, tools);
+  if (cmd) cmd.run(bot, message, args, queue);
   
 
 })

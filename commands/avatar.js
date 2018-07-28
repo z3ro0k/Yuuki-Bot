@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
-exports.run = async (bot, message, args, func) => {
+exports.run = async (bot, message, args) => {
    var langg
  const idioma = await db.fetch(`guildLang_${message.guild.id}`)
  if (idioma === null) langg = 'es'

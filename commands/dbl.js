@@ -2,7 +2,7 @@ const snekfetch = require("snekfetch");
 const Discord = require('discord.js') 
 const apis = require('../data/apis.json')
 const db = require('quick.db')
-exports.run = async (bot ,message, args, func) => { 
+exports.run = async (bot ,message, args) => { 
   let bott = message.mentions.users.first() || bot.users.get(args[0]) 
   
  var langg

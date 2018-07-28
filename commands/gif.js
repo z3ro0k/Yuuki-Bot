@@ -1,7 +1,7 @@
 const Discord = require('discord.js'),
       db = require('quick.db')
 
-exports.run = async (bot, message, args ,func) => {
+exports.run = async (bot, message, args) => {
   
   const giphy = require('giphy-api')('Bgn4zuOYf4jIAi6uUwXM3OIZcGI62rde');
   if (!args) return  message.channel.send('Porfavor ingresa algun termino para buscar el gif');

@@ -31,7 +31,7 @@ function parseTime(milliseconds) {
 
 }
 
-exports.run = async (client, message, args, tools) => {
+exports.run = async (client, message, args) => {
 
   // Fetch Changelog Entries
   let entries = await db.fetch('changelog');
