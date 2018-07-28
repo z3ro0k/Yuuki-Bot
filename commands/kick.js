@@ -22,11 +22,11 @@ module.exports.run = async (bot, message, args) => {
     let kickEmbed = new Discord.MessageEmbed()
     .setDescription(`**<:kEmoji:440388066197110785>Kick | Case #${guildcasenumber}**`)
     .setColor(0x36393e)
-    .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
-    .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
-    .addField("Kicked In", message.channel)
-    .addField("Reason", kReason)
-    .addField("Time", message.createdAt)
+    .addField("Kicked User", `${kUser} with ID ${kUser.id}`, true)
+    .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`, true)
+    .addField("Kicked In", message.channel, true)
+    .addField("Reason", kReason ,true)
+    .addField("Time", message.createdAt, true)
      
     let kickChannel = message.guild.channels.find(c => c.name === "mod-logs");
     if(!kickChannel) return message.channel.send("No se puede encontrar el canal `mod-logs` porfavor crealo para mandar los incidetes ahi");
