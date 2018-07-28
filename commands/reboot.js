@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send({embed: embed});
     return;
     }
-if(args[0] === 'commands' || args[0] === 'comandos'){
+if(args[0].toLowerCase() === 'commands' || args[0].toLowerCase() === 'comandos' || args[0].toLowerCase() === 'c'){
  return message.channel.send('<a:loader:458776406512369664> Rebooting Commands').then(m => {
     
     setTimeout(() => {
@@ -27,7 +27,7 @@ m.channel.send(loadC)
   });
   
 }
-if(args[0] === 'events' || args[0] === 'eventos'){
+if(args[0] === 'events'.toLowerCase() || args[0] === 'eventos'.toLowerCase() || args[0] === 'e'.toLowerCase() ){
  return message.channel.send('<a:loader:458776406512369664> Rebooting Events').then(m => {
     
     setTimeout(() => {

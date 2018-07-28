@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
-const prefix = "Yu!"
-exports.run = (bot, guild, args, tools) => {
+
+exports.run = (bot, guild, args) => {
 
 var canal = bot.channels.get('429467913531949056'); 
 let user = guild.members.size;
@@ -19,7 +19,7 @@ return;
   bot.user.setPresence({
           status: "dnd",
           activity: {
-            name: prefix + `help | ${bot.guilds.size} guilds 📝 | ${bot.users.size} usuarios 👤 | Yu!invite`,
+            name: `Yu!help | ${bot.guilds.size} guilds 📝 | ${bot.users.size} usuarios 👤 | Yu!invite`,
             type: 2
           }
         }) 

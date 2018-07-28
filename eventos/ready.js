@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const prefix = 'Yu!'
-exports.run = (bot, guild, args, tools) => {
+exports.run = (bot, guild, args) => {
 
 console.log('Bot launched...')
  

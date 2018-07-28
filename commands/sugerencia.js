@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
 
-exports.run = async (bot, message, prefix, func) => { 
+exports.run = async (bot, message, prefix) => { 
 
  // await message.delete();
 

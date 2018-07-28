@@ -2,13 +2,13 @@ const Discord = require('discord.js')
 const jsroblox = require('js-robloxapi');
 const db = require('quick.db')
 
-exports.run = (bot, message, args, func) => {
+exports.run = (bot, message, args) => {
   if(!args.join(' ')){
-  func.embed(message.channel,'**Por favor, especifique un usuario!**')
+  bot.tools.embed(message.channel,'**Por favor, especifique un usuario!**')
   return;  
   }
   if (args.length > 1) {
-    func.embed(message.channel,"Mi sistemas me dicen que los nombres de usuario de Roblox no tienen espacios en sus nombres");
+     bot.tools.embed(message.channel,"Mi sistemas me dicen que los nombres de usuario de Roblox no tienen espacios en sus nombres");
   return;
   }
 jsroblox.getInfo(args, (data) => {

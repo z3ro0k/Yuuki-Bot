@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const YoutubeDL = require('youtube-dl');
 const db = require('quick.db')
 
-exports.run = (bot, message, args, func) => {
+exports.run = (bot, message, args) => {
 
 		if (!args.join(' ')) {
     const embed = new Discord.MessageEmbed()

@@ -4,7 +4,7 @@
 const db = require('quick.db'),
   Discord = require('discord.js');
 
-exports.run = async (client, message, args, tools) => {
+exports.run = async (client, message, args) => {
 
   // Compile Information
   let timestamp = Date.now(),

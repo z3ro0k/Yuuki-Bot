@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const Prefix = "Yu!"
-exports.run = (bot, guild, args, tools) => {
+exports.run = (bot, guild, args) => {
 
 var canal = bot.channels.get('429467913531949056'); 
 let user = guild.members.size;
@@ -28,7 +28,7 @@ const embed = new Discord.MessageEmbed()
 .addField(`Owner:`, `${guild.members.get(guild.ownerID).user.username}#${guild.members.get(guild.ownerID).user.discriminator}`, true)
 .addField(`Total servers`,`${bot.guilds.size}`,true)
 .addField(`Total users`,`${bot.users.size}`,true)
-.addField('Invite', invitacionURL)
+.addField('Invite', invitacionURL || 'No invite URL')
 .setThumbnail(`${guild.iconURL()}`, true)
 .setColor(9823579)
 canal.send({embed})
@@ -36,7 +36,7 @@ return;
   bot.user.setPresence({
           status: "dnd",
           activity: {
-            name: prefix + `help | ${bot.guilds.size} guilds 📝 | ${bot.users.size} usuarios 👤 | Yu!invite`,
+            name: `Yu!help | ${bot.guilds.size} guilds 📝 | ${bot.users.size} usuarios 👤 | Yu!invite`,
             type: 2
           }
         }) 

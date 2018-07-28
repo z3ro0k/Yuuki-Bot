@@ -1,7 +1,7 @@
 const db = require('quick.db')
 const A = require('discord.js');
 
-exports.run = (bot, message, args, tools, prefix) => {
+exports.run = (bot, message, args) => {
 
 
     const emoji1 = '🇳'

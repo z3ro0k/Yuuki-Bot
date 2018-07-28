@@ -238,7 +238,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle(lang.titleComp + '\n'+ lang.lang.langUpdate)
       .setDescription(lang.lang.translate)
-      .setColor(0x1db954);
+      .setColor(bot.color);
     channel.send({embed});
 
   },

@@ -1,7 +1,7 @@
 const Discord = require('discord.js'),
       db = require('quick.db')
       
-exports.run = async (bot, message, args, tools) => {
+exports.run = async (bot, message, args) => {
   let mod
   let prefix
   let channel
