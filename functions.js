@@ -201,13 +201,7 @@ module.exports = {
             getVersion();
         });
     },
-   getLang: function(guild) {
-     var langg
-     var lang = db.fetch(`guildLang_${guild.id}`)
-     if (lang === null) langg = 'en'
-     else lang = lang       
-   },
-
+   
   getLang: async function(channel, guild, idioma) {
      var langg
     idioma = await db.fetch(`guildLang_${guild.id}`)
@@ -220,9 +214,19 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle('awa')
       .setDescription(`${lang.func.actual[0]} **${guild.name}** ${lang.func.actual[1]} **${lang.langu.name}**`)
-      .setColor(0x1db954);
+      .setColor(0xfcc7fb);
     channel.send({embed});
 
+  },
+   
+  Lang: async function(guild) {
+     var langg
+    var idioma = await db.fetch(`guildLang_${guild.id}`)
+     if (idioma === null) langg = 'en'
+     else langg = idioma
+    const lang = require(`./langs/${langg}.json`) 
+    
+    return lang
   },
 
   langU: async function(channel, guild, newLang) {
@@ -238,7 +242,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle(lang.titleComp + '\n'+ lang.lang.langUpdate)
       .setDescription(lang.lang.translate)
-      .setColor(bot.color);
+      .setColor(0xfcc7fb);
     channel.send({embed});
 
   },
