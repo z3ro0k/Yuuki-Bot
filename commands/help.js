@@ -23,7 +23,7 @@ if(!command) {
       .addField("== BOT Commands ==", botC)
       .addField("== Server Commands ==", server)
       .addField("== NSFW Commands ==", nsfw)
-      .setFooter(`${bot.commands.size + 11} Commands`, bot.user.displayAvatarURL())
+      .setFooter(`${bot.commands.size } Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
      
 			return message.author.send({ embed }).catch(e => { 
