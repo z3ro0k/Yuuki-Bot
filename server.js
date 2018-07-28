@@ -28,52 +28,8 @@ bot.tools = require('./functions.js');
 /*global Set, Map*/
 const queue = new Map();
 
-function loadCmds () {
-bot.commands = new Discord.Collection();  
-bot.aliases = new Discord.Collection();
-bot.events = new Discord.Collection();
-fs.readdir('./commands/', (err, files) => {
-  if (err) console.error(err);
-  
-  var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
-  if (jsfiles.length <= 0) { return console.log('No commands Found') }
-  else { console.log('Un total de ' + jsfiles.length + ' Comandos cargados') }
-  
-  jsfiles.forEach((f, i) => {
-    delete require.cache[require.resolve(`./commands/${f}`)]; 
-    var cmds = require (`./commands/${f}`);
-    //console.log(`Command ${f} loading...`);
-    bot.commands.set(cmds.config.command, cmds);
-    cmds.config.aliases.forEach(alias => {
-	      bot.aliases.set(alias, cmds.config.command);
-	  });
+bot.tools.loadCmds()
 
-})
-})
-}
-loadCmds();
-
-function eventsLoad () {
-fs.readdir('./eventos/', async (err, files) => {
-    if (err) return console.error(err);
-    const jsfiles = files.filter(f => f.split('.').pop() === 'js');
-    if (jsfiles.length <= 0) {
-        return console.log('[eventos] No hay eventos para cargar');
-    } else {
-        console.log(`Cargando un total de ${jsfiles.length} eventos!`);
-    }
-    files.forEach(file => {
-        let eventFunction = require(`./eventos/${file}`);
-        let eventName = file.split('.')[0];
-      if(!eventFunction.run) return;
-      let run = eventFunction.run.bind(null, bot);
-        bot.events.set(eventName, run);
-        
-        bot.on(eventName, run);
-    });
-});
-}
-eventsLoad();
 
 var prefix = 'Yu!';
 bot.on('message', message => {
@@ -92,7 +48,7 @@ bot.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   
   var cmd = bot.commands.get(cont[0].toLowerCase()) || bot.commands.get(bot.aliases.get(cont[0].toLowerCase()));
-  if (cmd) cmd.run(bot, message, args, queue, tools, loadCmds, eventsLoad);
+  if (cmd) cmd.run(bot, message, args, queue, tools);
   
 
 })
