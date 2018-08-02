@@ -2,7 +2,7 @@ const dateformat = require('dateformat');
 const datediff = require('date-diff')
 const { MessageEmbed,  escapeMarkdown } = require('discord.js');
 const {  oneLineCommaListsAnd } = require('common-tags')
-const db = require('quick.db')
+const { fromNow } =  require('../../utils/Util');
 
 exports.run = async(bot, msg, args) => {
    
@@ -10,70 +10,56 @@ let user = msg.mentions.users.first() || msg.guild.member(args.join(' ')) || msg
 let member = msg.guild.member(user)
 if (!member) member = msg.member;
     
-     var userRoles
-    if (member.roles.size > 1) {
-      userRoles = oneLineCommaListsAnd`${member.roles.array().sort((a, b) => a.comparePositionTo(b)).slice(1).reverse().map(role => `**\`${role.name}\`**`)}`
-    } else {
-      userRoles = 'N/A'
-    }
-     var userStatus
+    var userStatus
     if (member.presence.activity !== null) {
       if (member.presence.activity.type === 'PLAYING') {
-        userStatus = `Playing **${escapeMarkdown(member.presence.activity.name)}**`
+        userStatus = `Playing **${(member.presence.activity.name)}**`
       } else if (member.presence.activity.type === 'STREAMING') {
-        userStatus = `Streaming **${escapeMarkdown(member.presence.activity.name)}**`
+        userStatus = `Streaming **${(member.presence.activity.name)}**`
       } else if (member.presence.activity.type === 'LISTENING') {
-        userStatus = `Listening to **${escapeMarkdown(member.presence.activity.name)}**`
+        userStatus = `Listening to **${(member.presence.activity.name)}**`
       } else if (member.presence.activity.type === 'WATCHING') {
-        userStatus = `Watching **${escapeMarkdown(member.presence.activity.name)}**`
+        userStatus = `Watching **${(member.presence.activity.name)}**`
       }
-      if (member.presence.activity.url !== null) { userStatus = `[\`${userStatus}\`](${member.presence.activity.url})` }
+      if (member.presence.activity.url !== null) { userStatus = `[${userStatus}](${member.presence.activity.url})` }
     }
-  const status = {
-   online: 'Online', 
-   idle: 'Idle',
-   dnd: 'Do Not Disturb',
-   offline: 'Offline/Invisible',
-   streaming: 'Streaming' 
- };
- let emoji;
- if (member.presence.status === "online") {
-     emoji = "<:online:409502042604961792>"
- }
- if (member.presence.status === "dnd") {
-     emoji = "<:dnd:409502091510415362>"
- }
- if (member.presence.status === "idle") {
-     emoji = "<:idle:409502137521799168>"
- }
- if (member.presence.status === "offline") {
-     emoji = "<:invisible:409502255847309313>"
- }
- /* if (member.presence.activity.type === 'STREAMING') {
-     emoji = "<:stream:409502167108419637>"
- }*/
-if (!userStatus) {
+      if (!userStatus) {
      userStatus = "User is not playing a game"
- }
-    
-		const embed = new MessageEmbed()
-			.setColor(member.displayHexColor)
-			.setThumbnail(member.user.displayAvatarURL())
-			.addField('❯ Name', member.user.tag, true)
-			.addField('❯ ID', member.id, true)
-			.addField('❯ Discord Join Date', member.user.createdAt.toDateString(), true)
-			.addField('❯ Server Join Date', member.joinedAt.toDateString(), true)
-			.addField('❯ Nickname', member.nickname || 'None', true)
-      .addField(`❯ Status${emoji}`, status[member.presence.status], true)
-      .addField('❯ Playing', userStatus, true)
-			.addField('❯ Bot?', member.user.bot ? 'Yes' : 'No', true)
-			.addField('❯ Highest Role',
-				member.roles.highest.id !== msg.guild.defaultRole.id ? '<@&' + member.roles.highest.id + '>': 'None', true)
-			.addField('❯ Hoist Role', member.roles.hoist ? '<@&' + member.roles.hoist.id + '>' : 'None', true)
-    .addField(`🔖 Roles - (${member.roles.size > 0 ? member.roles.size.toLocaleString() - 1 : 0})`, userRoles);
-		return msg.channel.send(embed);
-	}
+   }
+        if (member.user.bot) {
+            var author = member.user.tag + ' [BOT]'
+        } else {
+            var author = member.user.tag
+        }
 
+        if (!member.nickname) {
+            var nickname = '`N/A`'
+        } else {
+            var nickname = member.nickname
+        }
+
+        const allowed = Object.entries(member.permissions.serialize()).filter(([perm, allowed]) => allowed).map(([perm]) => "`" + perms[perm]+ "`").join(',   ');
+
+             var userRoles
+        if (member.roles.size > 1) {
+            userRoles = `${member.roles.array().sort((a, b) => a.comparePositionTo(b)).slice(1).reverse().map(role => `**\`${role.name}\`**`)}`
+          } else {
+            userRoles = 'N/A'
+              }
+
+        const embed = new MessageEmbed()
+            .setAuthor(author, member.user.displayAvatarURL({ format: 'png' }))
+            .setDescription(userStatus)
+            .setColor(member.displayHexColor)
+            .setThumbnail(member.user.displayAvatarURL())
+            .setFooter(`Requested by ${msg.author.tag}`, msg.author.displayAvatarURL())
+            .addField('❯\u2000\Information', `•\u2000\**ID:** ${member.user.id}\n\•\u2000\**Status:** ${member.user.presence.status ? member.user.presence.status : '`N/A`'}\n\•\u2000\**Created:** ${moment(member.user.createdAt).format('MMMM Do YYYY')} \`(${fromNow(member.user.createdAt)})\``)
+            .addField('❯\u2000\Server Membership', `•\u2000\**Nickname:** ${nickname}\n\•\u2000\**Joined:** ${moment(member.joinedAt).format('MMMM Do YYYY')} \`(${fromNow(member.joinedAt)})\``, true)
+            .addField('❯\u2000\**Role Infomation**', `•\u2000\**Highest Role:** ${member.roles.highest.id !== msg.guild.defaultRole.id ? '<@&' + member.roles.highest.id + '>': 'None'}\n\•\u2000\**Hoist Role:** ${member.roles.hoist ? '<@&' + member.roles.hoist.id + '>' : 'None'}`, true)
+            .addField(`❯\u2000\**Roles** [${member.roles.size > 0 ? member.roles.size.toLocaleString() - 1 : 0}]`, '•\u2000' + userRoles, true)
+            .addField(`❯\u2000\**Permissions**`, allowed ? `•\u2000${allowed}` : '•\u2000\None')
+        return msg.channel.send(`User information for **${member.user.username}**#${member.user.discriminator}`, { embed: embed });
+    }
 module.exports.config = {
   command: "user",
   aliases: ['userinfo', 'usuario']
