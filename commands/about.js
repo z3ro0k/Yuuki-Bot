@@ -23,7 +23,7 @@ const cpu = process.cpuUsage().system / 1024 / 1024;
 const embed = new Discord.MessageEmbed()
 .setColor(0x36393e)
 .setAuthor(`${lang.info} ${bot.user.username} `, bot.user.displayAvatarURL())
-.addField(`<:Owner:442443039915507743> ${lang.about.owner}`, dev, true)
+.addField(`<:Owner:442443039915507743> ${lang.about.owner}`, `║\n╚═${dev}`, true)
 .addField(`<:Version:442442898651217922> ${lang.about.v}`, `2.6.0`, true)
 .addField(`<:Libraries:442442996705918987> ${lang.about.L}`, `Discord ${Discord.version} (Js)`, true)
 .addField(`<:cloud:447518353972658207> ${lang.about.M}`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
