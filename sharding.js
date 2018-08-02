@@ -1,7 +1,7 @@
 const {ShardingManager} = require('discord.js');
 const config = require('./data/apis.json');
 
-const manager = new ShardingManager(`${__dirname}/server.js`, {token: config.TOKEN});
+const manager = new ShardingManager(`${__dirname}/yuuki.js`, {token: config.TOKEN});
 
 manager.on('shardCreate', shard => console.log(`Successfully launched shard ${shard.id}`));
 

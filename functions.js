@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const ms = require('parse-ms');
 const exec = require('child_process').exec;
 const { MessageEmbed } = require('discord.js');
-const bot = require('./server.js').bot
+const bot = require('./yuuki.js').bot
 const fs = require('fs')
 module.exports = { 
   
