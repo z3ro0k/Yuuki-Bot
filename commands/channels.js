@@ -29,11 +29,11 @@ exports.run = async (bot, message, args) => {
 
             );
 
-            if(description.length >= 1024 || description.length >= 1024) return message.channel.send('Too much channels in this server! I couldn\'t send the information!');            
+           // if(description.length > 1024 ||  description.length > 1024 ) return message.channel.send('');            
 
             const embed = new Discord.MessageEmbed()
                 .setAuthor(`Channels in ${message.guild.name} [${message.guild.channels.size}]`, message.guild.iconURL())
-                .setDescription(description)
+                .setDescription(`${description.length > 1024 ? "Too much channels in this server! I couldn\'t send the information!" : description}`)
                 .setThumbnail(message.guild.iconURL())
                 .setFooter(`Permissions shown for ${message.author.tag}`, message.author.displayAvatarURL())
                 .setColor('#8B9EB7');
