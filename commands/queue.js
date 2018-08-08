@@ -52,7 +52,6 @@ exports.run = async (client, message, args, queue) => {
 					**Progress:**
 					${!currentSong.playing ? 'Paused: ' : ''}${Song.timeString(currentTime)} /
 					${currentSong.lengthString}
-					//(${currentSong.timeLeft(currentTime)} left)
 				`}`)
             .addField('Siguiente canción', songN)
             .setFooter('Yuuki Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
