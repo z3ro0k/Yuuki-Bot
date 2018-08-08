@@ -11,6 +11,8 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube(key),
     hastebin = require('hastebin-gen')
 
+const Song = require('../utils/Util.js');
+
 exports.run = async (client, message, args, queue) => {
 
     const args1 = message.content.split(' ');
@@ -36,6 +38,8 @@ exports.run = async (client, message, args, queue) => {
             });
         })
     } else {
+      const currentSong = serverQueue.songs[0];
+        const currentTime = currentSong.dispatcher ? currentSong.dispatcher.time / 1000 : 0;
      var songN
      if(serverQueue !== 1) songN = 'Nothing'
     else songN = `[${serverQueue.songs[1].title}](${serverQueue.songs[1].url})\nRequest: ${serverQueue.songs[1].request}`
@@ -44,7 +48,12 @@ exports.run = async (client, message, args, queue) => {
     
             .setTitle("Canciones en la cola")
             .setDescription(`${serverQueue.songs.map(song => `[${song.title}](${serverQueue.songs[0].url}) - request by: ${serverQueue.songs[0].request} `).slice(1, 10).join('\n')}`)
-            .addField('Tocando ahora:', serverQueue.songs[0].title + ' - Request:' + serverQueue.songs[0].request + ' | Duration: ' + dur)
+            .addField('Tocando ahora:', `${!isNaN(currentSong.id) ? `${currentSong.title}`: `[${currentSong.title}](${`https://www.youtube.com/watch?v=${currentSong.id}`})`} ${`
+					**Progress:**
+					${!currentSong.playing ? 'Paused: ' : ''}${Song.timeString(currentTime)} /
+					${currentSong.lengthString}
+					//(${currentSong.timeLeft(currentTime)} left)
+				`}`)
             .addField('Siguiente canción', songN)
             .setFooter('Yuuki Music beta commands', 'https://cdn.discordapp.com/emojis/414841539978854425.png')
             .setColor(0x36393e)

@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const { IMGUR_KEY } = process.env;
 const yes = ['yes', 'y', 'ye', 'yeah', 'yup', 'yea'];
 const no = ['no', 'n', 'nah', 'nope'];
+const { oneLineTrim } = require('common-tags');
 
 class Util {
 	static wait(ms) {
@@ -128,6 +129,20 @@ class Util {
 		if (no.includes(choice)) return false;
 		return false;
 	}
+  static  timeLeft(currentTime) {
+        return this.constructor.timeString(this.length - currentTime);
+    }
+  
+  static timeString(seconds, forceHours = false) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor(seconds % 3600 / 60);
+
+        return oneLineTrim`
+			${forceHours || hours >= 1 ? `${hours}:` : ''}
+			${hours >= 1 ? `0${minutes}`.slice(-2) : minutes}:
+			${`0${Math.floor(seconds % 60)}`.slice(-2)}
+		`;
+    }
 }
 
 module.exports = Util;
