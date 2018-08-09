@@ -42,15 +42,15 @@ let id = body.map(u => u.id)
   if (!id.includes(msg.author.id)) {
     msg.channel.send({embed: notUpvoter});
   } else {
-    channel.send({embed: feedbackE}).then(msg.channel.send("Thank you for your Feedback!"));
+    channel.send({embed: feedbackE}).then(msg.channel.send("Gracias por su opinión!"));
   }
   //console.log(body)
   })
 };
 
-exports.conf = {
-    name: 'feedback',
-     aliases: [],
+exports.config = {
+    command: 'feedback',
+    aliases: [],
     description: "You can give the devs your feedback on the bot! And suggest new things for it! [upvoter only]",
     usage: "",
     usageDelim: ""
