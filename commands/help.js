@@ -26,7 +26,9 @@ if(!command) {
       .setFooter(`${bot.commands.size } Commands`, bot.user.displayAvatarURL())
       .setColor(0x36393e) 
      
-			return message.author.send({ embed }).catch(e => { 
+			 message.channel.send("Te envie mi lista de comandos a tu DMs").then(m => {
+    return message.author.send({ embed })
+      }).catch(e => { 
          message.reply('Error al enviar DM Probablemente tengas DMs deshabilitados.')
       return;
       });
@@ -35,7 +37,7 @@ if(!command) {
   const embed2 = new Discord.MessageEmbed()
   .addField("Comando:", `**${command.config.command}**`)
   .addField("Alias:", `${command.config.aliases.join(', ') || 'None'}`)
-  .addField("Categoria:", `(\`${command.config.category}\`)`)
+  .addField("Categoria:", `(\`${command.config.category || "None" }\`)` )
   .addField("Descripción:", `**${command.config.description}**`) 
   .setThumbnail(bot.user.displayAvatarURL())
  return message.channel.send( embed2 );
