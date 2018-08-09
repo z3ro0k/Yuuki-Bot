@@ -9,8 +9,9 @@ exports.run = async (bot, message, args) => {
   let autoRole
   let starboardChannel
   
-  var langg = await client.tools.Lang(message.guild)    
+  var langg = await bot.tools.Lang(message.guild)    
  const lang = require(`../langs/${langg}.json`) 
+ 
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
         if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Mod-logs disable'
@@ -40,7 +41,7 @@ exports.run = async (bot, message, args) => {
 const settings = new Discord.MessageEmbed()
 .setAuthor('Settings', 'https://cdn.discordapp.com/emojis/393126289214537738.png')
 .setDescription('Esta es la página de configuración para **Yuuki**. Todos los ajustes se enumeran aquí. \nPuede ver los comandos y su estado actual')
-.addField('Language:', 'Español', true)
+.addField(lang.langu.title , lang.langu.name , true)
 .addField('prefix:', prefix, true)
 .addField('Command:', prefix +'lang <idioma>', true)
 .addField('Command', prefix +'sprefix <newprefix>', true)

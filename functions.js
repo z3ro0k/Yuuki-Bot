@@ -68,53 +68,6 @@ module.exports = {
       })
     },
     
-    check: async function(guild, executorID, target) {
-      
-      // Fetch Limits
-      let server = await db.fetch(`serverLimits_${guild.id}`)
-      let user = await db.fetch(`userLimits_${guild.id}`)
-      
-      // Verify Data
-      if (user === null) user = {};
-      if (!user.removalsPerMinute) user.removalsPerMinute = 2;
-      if (!user.removalsPerHour) user.removalsPerHour = 10;
-      if (!user.deletionsPerHour) user.deletionsPerHour = 5;
-      if (!user.pingsPerHour) user.pingsPerHour = 20;
-      
-      // Fetch Target(s)
-      if (target === 'removals') {
-        let removals = await db.fetch(`removals_${executorID}`)
-        console.log(removals)
-        let removalsPM = removals.slice(parseInt(`-${user.removalsPerMinute}`)).reverse();
-        let removalsPH = removals.slice(parseInt(`-${user.removalsPerHour}`)).reverse();
-        
-        if (removalsPM[user.removalsPerMinute] && Date.now() - removalsPM[user.removalsPerMinute-1].timestamp < 60000) { // Run if reached limit
-          guild.members.get(executorID).roles.set([])
-          let msg = '';
-          for (var i in removalsPM) msg += `\`${exports.parseTime(removalsPM[i].timestamp)}\` | **${removalsPM[i].user.tag}** *kicked/banned* **${removalsPM[i].target}**\n`;
-          const embed = new Discord.MessageEmbed()
-            .setColor(0xC85C5C)
-            .setTitle('Ban/Kick limit reached')
-            .addField('Recent Actions', msg, true)
-            .addField('Limit Reached By', user.tag)
-            .addField('Bot Action Taken', 'Roles Removed', true)
-          guild.owner.send(embed)
-        } else if (removalsPH[user.removalsPerHour] && Date.now() - removalsPH[user.removalsPerHour-1].timestamp < 3.6e+6) {
-          guild.members.get(executorID).roles.set([])
-          let msg = '';
-          for (var i in removalsPH) msg += `\`${exports.parseTime(removalsPH[i].timestamp)}\` | **${removalsPH[i].user.tag}** *kicked/banned* **${removalsPH[i].target}**\n`;
-          const embed = new Discord.MessageEmbed()
-            .setColor(0xC85C5C)
-            .setTitle('Ban/Kick limit reached')
-            .addField('Recent Actions', msg, true)
-            .addField('Limit Reached By', user.tag)
-            .addField('Bot Action Taken', 'Roles Removed', true)
-        }
-        
-      }
-      
-    },
-  
     parseTime: function(milliseconds) {
       var string = '';
       var obj = ms(Date.now() - milliseconds);
@@ -288,7 +241,8 @@ fs.readdir('./eventos/', async (err, files) => {
         bot.on(eventName, run);
       });
   });
-}
-
-
+},
+  gPrefix: async function() {
+  
+  }
 }
