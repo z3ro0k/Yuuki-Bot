@@ -243,10 +243,10 @@ fs.readdir('./eventos/', async (err, files) => {
   },
   GuildPrefix: async function(guild) {
      var prefix
-     var iokse = await db.fetch(`guildPrefix_${guild.id}`)
+     var prefijo = await db.fetch(`guildPrefix_${guild.id}`)
 
-     if (prefix === null) prefix = 'Yu!'
-     else prefix = iokse
+     if (prefijo === null) prefix = 'Yu!'
+     else prefix = prefijo
 
     return prefix
   },

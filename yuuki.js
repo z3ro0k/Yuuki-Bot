@@ -16,27 +16,28 @@ app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
 }, 280000);
-//DESDE AQUI EMPIEZA A ESCRIBIR EL CODIGO PARA SU BOT
+
+
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
 const db = require('quick.db')
 
-bot.tools = require('./functions.js');
-
 /*global Set, Map*/
 const queue = new Map();
 
+bot.tools = require('./functions.js');
 bot.tools.loadCmds(bot)
 bot.tools.eventsLoad(bot)
 bot.ownerID = '322203879208910849';
 bot.color = 0xfcc7fb;
 
-var prefix = 'Yu!';
-bot.on('message', message => {
- 
+bot.on('message', async (message) => {
+
+
   if (message.channel.type != 'text') return;
   
+  var prefix = await bot.tools.GuildPrefix(message.guild)
   var sender = message.author;
   var msg = message.content.toLowerCase();
   
@@ -48,12 +49,9 @@ bot.on('message', message => {
   var cmd = bot.commands.get(cont[0].toLowerCase()) || bot.commands.get(bot.aliases.get(cont[0].toLowerCase()));
   if (cmd) cmd.run(bot, message, args, queue);
   
-
 })
 
-//bot.login('MzcwODI5Mzc5Mjc5OTEyOTcx.DdvsgQ.vEjUN5QR04xpa3JmC7dCCZehv4c') Yuuki pruebas token
 bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
-//bot.login('Mzk2NTA1Mjc3MjYxOTM4Njg5.DXgWmw.e1zXkHOcrXJEY3635Pu8-cFWAgQ') //Supreme Bot token
 
 const { stringify } = require('querystring');
 const { request } = require('https');
