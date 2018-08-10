@@ -8,7 +8,7 @@
     "Dow": "Descargar",
     "noP": {
       "ban": "<:Not:463200957396680714> **| No tienes Permisos para usar este comando.**",
-      "kick": ""
+      "kick": "<:Not:463200957396680714> **| No tienes Permisos para usar este comando.**"
     },
     "func": {
       "actual": ["El lenguaje actual en el servidor", "es"]
@@ -23,7 +23,7 @@
     },
     "prefix": {
         "prefixUpdate": "Prefijo actualizado.",
-        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a **${prefix}** si deseas cambiar el prefix usa de nuevo **${prefix}sprefix <Prefijo>**
+        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a **${prefix}** si deseas cambiar el prefix usa de nuevo **${prefix}sprefix <Prefijo>**"
     },
     "langR": {
       "langR1": "Cual es el idioma a establecer a Yuuki",

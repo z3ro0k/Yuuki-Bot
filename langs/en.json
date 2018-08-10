@@ -7,7 +7,18 @@
    "click": "Click Here",
    "noA": ["The User ", " has no avatar."],
    "Dow": "Download",
-    
+  "noP": {
+      "ban": "<:Not:463200957396680714> **| You do not have permission to use this command.**",
+      "kick": "<:Not:463200957396680714> **| You do not have permission to use this command.**"
+    },
+    "lang": {
+        "langUpdate": "Language updated.",
+        "translate": "If you want Yuuki in a language that isn't on the list above, you can help translate Yuuki on [Github](https://yuuki.github.io)"
+    },
+    "prefix": {
+        "prefixUpdate": "Updated prefix.",
+        "translate": "The prefix on the server **${guild.name}** has been updated to **${prefix}** if you want to change the prefix use again **${prefix}sprefix <Prefix>**"
+    },
     "langR": {
       "langR1": "What is the language to set up Yuuki",
       "langR2": "Please enter a valid language type!"
