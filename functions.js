@@ -242,7 +242,13 @@ fs.readdir('./eventos/', async (err, files) => {
       });
   });
 },
-  gPrefix: async function() {
-  
+  GuildPrefix: async function(guild) {
+     var prefix
+     var iokse = await db.fetch(`guildPrefix_${guild.id}`)
+
+     if (prefix === null) prefix = 'Yu!'
+     else prefix = iokse
+
+    return prefix
   }
 }
