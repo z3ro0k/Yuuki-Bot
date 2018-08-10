@@ -23,7 +23,7 @@
     },
     "prefix": {
         "prefixUpdate": "Prefijo actualizado.",
-        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a ${prefix} si deseas cambiar el prefix usa de nuevo ${prefix}sprefix <Prefijo>"
+        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a **${prefix}** si deseas cambiar el prefix usa de nuevo **${prefix}sprefix <Prefijo>**
     },
     "langR": {
       "langR1": "Cual es el idioma a establecer a Yuuki",

@@ -266,7 +266,7 @@ const prefix = newPrefix
 
     const embed = new MessageEmbed()
       .setTitle(lang.titleComp + '\n'+ lang.prefix.prefixUpdate)
-      .setDescription(lang.prefix.translate.replace('${prefix}', prefix))
+      .setDescription(lang.prefix.translate.replace('${prefix}', prefix).replace('${prefix}', prefix).replace('${guild.name}', guild.name))
       .setColor(0xfcc7fb);
     channel.send({embed});
   }
