@@ -11,7 +11,8 @@
       "kick": "<:Not:463200957396680714> **| No tienes Permisos para usar este comando.**"
     },
     "func": {
-      "actual": ["El lenguaje actual en el servidor", "es"]
+      "actual": ["El lenguaje actual en el servidor", "es"],
+      "prefix": "El prefix actual en el servidor **${guild.name}** es **${prefix}**"
       },
     "langu": {
       "name": "Español",
@@ -23,7 +24,8 @@
     },
     "prefix": {
         "prefixUpdate": "Prefijo actualizado.",
-        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a **${prefix}** si deseas cambiar el prefix usa de nuevo **${prefix}sprefix <Prefijo>**"
+        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a **${prefix}** si deseas cambiar el prefix usa de nuevo **${prefix}sprefix <Prefijo>**",
+        "title": "prefijo Actual"
     },
     "langR": {
       "langR1": "Cual es el idioma a establecer a Yuuki",
