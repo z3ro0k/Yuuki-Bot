@@ -235,7 +235,7 @@ fs.readdir('./eventos/', async (err, files) => {
   
    const lang = require(`./langs/${langg}.json`) 
     const embed = new MessageEmbed()
-      .setTitle(lang.titleComp + '\n'+ lang.lang.langUpdate)
+      .setTitle(lang.titleComp + ' '+ lang.lang.langUpdate)
       .setDescription(lang.lang.translate)
       .setColor(0xfcc7fb);
     channel.send({embed});
@@ -252,9 +252,10 @@ fs.readdir('./eventos/', async (err, files) => {
   },
   GetGuildPrefix: async function(channel, guild) {
      var prefix
-     var iokse = await db.fetch(`guildPrefix_${guild.id}`)
-     if (prefix === null) prefix = 'Yu!'
-     else prefix = iokse
+
+     var prefijo = await db.fetch(`guildPrefix_${guild.id}`)
+     if (prefijo === null) prefix = 'Yu!'
+     else prefix = prefijo
     
     var langg,
     idioma = await db.fetch(`guildLang_${guild.id}`)
@@ -265,8 +266,8 @@ fs.readdir('./eventos/', async (err, files) => {
     channel = channel.channel || channel;
     
     const embed = new MessageEmbed()
-      .setTitle('awa')
-      .setDescription(`${lang.func.actual[0]} **${guild.name}** ${lang.func.actual[1]} **${lang.langu.name}**`)
+      .setTitle(lang.prefix.title)
+      .setDescription(lang.func.prefix.replace('${prefix}', prefix).replace('${guild.name}', guild.name))
       .setColor(0xfcc7fb);
     channel.send({embed});
 
@@ -286,8 +287,8 @@ fs.readdir('./eventos/', async (err, files) => {
    const prefix = newPrefix
 
     const embed = new MessageEmbed()
-      .setTitle(lang.titleComp + '\n'+ lang.prefix.prefixUpdate)
-      .setDescription(lang.func.prefix.replace('${prefix}', prefix).replace('${guild.name}', guild.name))
+      .setTitle(lang.titleComp + ' '+ lang.prefix.prefixUpdate)
+      .setDescription(lang.prefix.translate.replace('${prefix}', prefix).replace('${prefix}', prefix).replace('${guild.name}', guild.name))
       .setColor(0xfcc7fb);
 
     channel.send({embed});

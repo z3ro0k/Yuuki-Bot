@@ -3,31 +3,20 @@ const { MessageEmbed } = require('discord.js'),
 
 exports.run = async (client, message, args) => {
 
- var langg = await client.tools.Lang(message.guild)    
- const lang = require(`../langs/${langg}.json`) 
+ let Prefix = args[0] 
+ if(!Prefix) {
  
- let setLang = args[0] 
- if(!setLang) {
- 
-   client.tools.getLang(message.channel, message.guild)
+   client.tools.GetGuildPrefix(message.channel, message.guild)
    
  } else {
-  
- if (!['en', 'es'].includes(args[0])) return message.channel.send({
-            embed: {
-                title: "ERROR!",
-                color: 0xE50000,
-                description: lang.langR.langR2
-            }
-        })
-  
-  const setL = setLang
-  client.tools.langU(message.channel, message.guild, setL)
+   
+  const setP = Prefix
+   client.tools.UpdateGuildPrefix(message.channel, message.guild, setP)
  }
 }
 exports.config = {
-  command: "setlang",
-  aliases: ["setidioma", "lang"],
+  command: "sprefix",
+  aliases: ["setprefix", "prefix", "newprefix"],
   category: "beta",
   description: " ",
   usage: " "

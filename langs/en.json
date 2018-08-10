@@ -17,7 +17,8 @@
     },
     "prefix": {
         "prefixUpdate": "Updated prefix.",
-        "translate": "The prefix on the server **${guild.name}** has been updated to **${prefix}** if you want to change the prefix use again **${prefix}sprefix <Prefix>**"
+        "translate": "The prefix on the server **${guild.name}** has been updated to **${prefix}** if you want to change the prefix use again **${prefix}sprefix <Prefix>**",
+        "title": "Current Prefix"
     },
     "langR": {
       "langR1": "What is the language to set up Yuuki",
