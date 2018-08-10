@@ -1,5 +1,4 @@
-{
-    
+{    
     "title": "Uso del comando",
     "Error": ["❎ | Oh no, ha ocurrido un error: ", ". Inténtalo de nuevo más tarde."],
     "titleComp": "Completado :white_check_mark:",
@@ -21,6 +20,10 @@
     "lang": {
         "langUpdate": "Idioma actualizado.",
         "translate": "Si quieres Yuuki en un idioma que todavía no está en la lista de arriba, puedes ayudar a traducir Yuuki en [Github](https://yuuki.github.io)"
+    },
+    "prefix": {
+        "prefixUpdate": "Prefijo actualizado.",
+        "translate": "El prefijo en el servidor **${guild.name}** a sido actualizado a ${prefix} si deseas cambiar el prefix usa de nuevo ${prefix}sprefix <Prefijo>"
     },
     "langR": {
       "langR1": "Cual es el idioma a establecer a Yuuki",

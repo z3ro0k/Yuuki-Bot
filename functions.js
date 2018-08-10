@@ -154,7 +154,49 @@ module.exports = {
             getVersion();
         });
     },
-   
+ loadCmds: function(bot) {
+bot.commands = new Discord.Collection();  
+bot.aliases = new Discord.Collection();
+bot.events = new Discord.Collection();
+fs.readdir('./commands/', (err, files) => {
+  if (err) console.error(err);
+  
+  var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
+  if (jsfiles.length <= 0) { return console.log('No commands Found') }
+  else { console.log('Un total de ' + jsfiles.length + ' Comandos cargados') }
+  
+  jsfiles.forEach((f, i) => {
+    delete require.cache[require.resolve(`./commands/${f}`)]; 
+    var cmds = require (`./commands/${f}`);
+    //console.log(`Command ${f} loading...`);
+    bot.commands.set(cmds.config.command, cmds);
+    cmds.config.aliases.forEach(alias => {
+	      bot.aliases.set(alias, cmds.config.command);
+	    });
+    })
+  })
+},
+  
+eventsLoad: function(bot) {
+fs.readdir('./eventos/', async (err, files) => {
+    if (err) return console.error(err);
+    const jsfiles = files.filter(f => f.split('.').pop() === 'js');
+    if (jsfiles.length <= 0) {
+        return console.log('[eventos] No hay eventos para cargar');
+    } else {
+        console.log(`Cargando un total de ${jsfiles.length} eventos!`);
+    }
+    files.forEach(file => {
+        let eventFunction = require(`./eventos/${file}`);
+        let eventName = file.split('.')[0];
+      if(!eventFunction.run) return;
+      let run = eventFunction.run.bind(null, bot);
+        bot.events.set(eventName, run);
+        
+        bot.on(eventName, run);
+      });
+  });
+},
   getLang: async function(channel, guild, idioma) {
      var langg
     idioma = await db.fetch(`guildLang_${guild.id}`)
@@ -199,49 +241,6 @@ module.exports = {
     channel.send({embed});
 
   },
- loadCmds: function(bot) {
-bot.commands = new Discord.Collection();  
-bot.aliases = new Discord.Collection();
-bot.events = new Discord.Collection();
-fs.readdir('./commands/', (err, files) => {
-  if (err) console.error(err);
-  
-  var jsfiles = files.filter(f => f.split('.').pop() === 'js'); 
-  if (jsfiles.length <= 0) { return console.log('No commands Found') }
-  else { console.log('Un total de ' + jsfiles.length + ' Comandos cargados') }
-  
-  jsfiles.forEach((f, i) => {
-    delete require.cache[require.resolve(`./commands/${f}`)]; 
-    var cmds = require (`./commands/${f}`);
-    //console.log(`Command ${f} loading...`);
-    bot.commands.set(cmds.config.command, cmds);
-    cmds.config.aliases.forEach(alias => {
-	      bot.aliases.set(alias, cmds.config.command);
-	    });
-    })
-  })
-},
-  
-eventsLoad: function(bot) {
-fs.readdir('./eventos/', async (err, files) => {
-    if (err) return console.error(err);
-    const jsfiles = files.filter(f => f.split('.').pop() === 'js');
-    if (jsfiles.length <= 0) {
-        return console.log('[eventos] No hay eventos para cargar');
-    } else {
-        console.log(`Cargando un total de ${jsfiles.length} eventos!`);
-    }
-    files.forEach(file => {
-        let eventFunction = require(`./eventos/${file}`);
-        let eventName = file.split('.')[0];
-      if(!eventFunction.run) return;
-      let run = eventFunction.run.bind(null, bot);
-        bot.events.set(eventName, run);
-        
-        bot.on(eventName, run);
-      });
-  });
-},
   GuildPrefix: async function(guild) {
      var prefix
      var iokse = await db.fetch(`guildPrefix_${guild.id}`)
@@ -250,5 +249,26 @@ fs.readdir('./eventos/', async (err, files) => {
      else prefix = iokse
 
     return prefix
+  },
+  UpdateGuildPrefix: async function(channel, guild, newPrefix) {
+
+  channel = channel.channel || channel;
+
+     db.set(`guildPrefix_${guild.id}`, newPrefix)
+  
+  var langg
+  const idioma2 = await db.fetch(`guildLang_${guild.id}`)
+  if (idioma2 === null) langg = 'es'
+  else langg = idioma2
+  
+   const lang = require(`./langs/${langg}.json`) 
+const prefix = newPrefix
+
+    const embed = new MessageEmbed()
+      .setTitle(lang.titleComp + '\n'+ lang.prefix.prefixUpdate)
+      .setDescription(lang.prefix.translate.replace('${prefix}', prefix))
+      .setColor(0xfcc7fb);
+    channel.send({embed});
   }
+
 }
