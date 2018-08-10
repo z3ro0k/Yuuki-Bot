@@ -19,7 +19,7 @@ exports.run = async (bot, message, args, queue) => {
     var embed = new Discord.MessageEmbed()
         .setTitle("Restricted")
         .setColor("#f45f42")
-        .addField("<:error:401869378506719233> Acceso Denegado", "Este comando es solo para dueños del BOT!")
+        .addField("<:error:401869378506719233> Access Denied", "Este comando es solo para dueños del BOT!")
 
     const clean = text => {
         if (typeof(text) === "string")
