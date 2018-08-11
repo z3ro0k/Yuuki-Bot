@@ -25,6 +25,7 @@ const bot = new Discord.Client({
     disableEveryone: true,
     invite: "https://discord.gg/4rzxMBT"
 });
+
 const db = require('quick.db')
 
 /*global Set, Map*/

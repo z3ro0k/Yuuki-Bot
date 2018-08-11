@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
-exports.run = (client, member) => {
+exports.run = async (client, member) => {
   
-   let channelID = client.tools.getWelcomeChannel(member.guild)
+   let channelID = await client.tools.getWelcomeChannel(member.guild)
    
    var sourceChannel = member.guild.channels.get(channelID)
   if(!sourceChannel) return;
@@ -9,7 +9,7 @@ exports.run = (client, member) => {
  const botUser = member.user.bot
  
   if(member.user.bot) {
-  const borole //= client.provider.get(member.guild.id, 'botrole') 
+  const borole = client.provider.get(member.guild.id, 'botrole') 
   if (!borole || borole.toLowerCase() === 'none');
         else { 
             try { 

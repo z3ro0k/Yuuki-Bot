@@ -300,5 +300,13 @@ fs.readdir('./eventos/', async (err, files) => {
     if (channel === null) canal = '**<:off:442082928323985408>  Not set**'
      else canal = channel
     return canal
+  }, 
+  autoRoleUsers: async function(guild) {
+  db.fetch(`autoRoleU_${guild.id}`)
+    var role
+    const channel = await db.fetch(`autoRoleU_${guild.id}`)
+    if (channel === null) role = '**<:off:442082928323985408>  Not set**'
+     else role = channel
+    return role
   }
 }
