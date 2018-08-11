@@ -40,9 +40,8 @@ exports.run = async (client, member) => {
 
         }
 let text
- const textjoin = client.provider.get(member.guild.id, 'TextJ')
-    if(textjoin === undefined) text = `${member.user} (**${member.user.tag}**) has joined the server\nThere are now **${member.guild.members.size}** users within this server!`
-    else text = textjoin.replace('{user:tag}', member.user.tag).replace('{server:membercount}', member.guild.memberCount).replace('{server:name}', member.guild.name).replace('{user:mention}', member.user).replace('{user:username}', member.user.username)
+ const textjoin = await client.tools.welcomeText(member.guild) 
+  text = textjoin.replace('{user:tag}', member.user.tag).replace('{server:membercount}', member.guild.memberCount).replace('{server:name}', member.guild.name).replace('{user:mention}', member.user).replace('{user:username}', member.user.username)
 
   var embed = new MessageEmbed()
 	    .setAuthor("User Joined", 'https://cdn.discordapp.com/emojis/417574812295364609.png')

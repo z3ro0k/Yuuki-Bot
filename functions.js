@@ -317,8 +317,8 @@ fs.readdir('./eventos/', async (err, files) => {
   },
   welcomeText: async function(guild) {  
     var text
-    const rolename = await  db.fetch(`joinMessage_${guild.id}`)
-    if (rolename === null) text = '**<:off:442082928323985408>  Not set**'
+    const rolename = await db.fetch(`joinMessage_${guild.id}`)
+    if (rolename === null) text = 'Bienvenido **{user:tag}** a **{server:name}** ya somos un total de **{server:membercount} de miembros*** en el servidor'
      else text = rolename
     return text
   }
