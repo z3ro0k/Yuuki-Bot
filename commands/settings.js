@@ -13,12 +13,15 @@ exports.run = async (bot, message, args) => {
 
   if (!message.guild.channels.get(ChannelID)) Logs = '**<:off:442082928323985408>  Not set**'
   else Logs = message.guild.channels.get(ChannelID)  
+  
+  //if
+  
       
   let autoRoleU = await bot.tools.autoRoleUsers(message.guild)
-  var User = '<:onn:442082974037573641> ' + autoRoleU
+  var User = autoRoleU
   
   let autoRoleB = await bot.tools.autoRoleBots(message.guild)
-  var Bots = '<:onn:442082974037573641> ' + autoRoleB
+  var Bots = autoRoleB
   
   var langg = await bot.tools.Lang(message.guild)    
  const lang = require(`../langs/${langg}.json`) 
@@ -46,8 +49,8 @@ const settings = new Discord.MessageEmbed()
 .addField('Anti Invite', "Coming Soon..", true)
 .addField('Command:', prefix+'welcome', true)
 .addField('Command:', prefix+'antiinvite <false/true>', true)
-.addField('Welcome Logs', channel, true)
-.addField('Mod-Logs', Logs , true)
+.addField('Welcome Logs', Logs, true)
+.addField('Mod-Logs', channel , true)
 .addField('Command:', prefix + 'welcomelogs #channel',true)
 .addField('Command:', prefix + 'modlogs #channel',true)
 .addField('Autorole Users', User, true)
