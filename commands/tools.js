@@ -10,7 +10,7 @@ if(!tool) {
   return;
 }
   try {
-  client.tools.tool()
+  client.tools.tool
   } catch(e) {
   message.channel.send("error when executing the function " + tool + "\nError: ```" +  e + "```")
   return;

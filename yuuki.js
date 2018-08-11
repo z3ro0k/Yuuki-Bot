@@ -20,7 +20,11 @@ setInterval(() => {
 
 const Discord = require('discord.js');
 const fs = require('fs');
-const bot = new Discord.Client();
+const bot = new Discord.Client({ 
+    owner: "322203879208910849",
+    disableEveryone: true,
+    invite: "https://discord.gg/4rzxMBT"
+});
 const db = require('quick.db')
 
 /*global Set, Map*/

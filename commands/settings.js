@@ -4,7 +4,7 @@ const Discord = require('discord.js'),
 exports.run = async (bot, message, args) => {
 
   let mod
-  let prefix
+  let prefix = await bot.tools.GuildPrefix(message.guild)
   let channel
   let autoRole
   let starboardChannel
@@ -16,12 +16,6 @@ exports.run = async (bot, message, args) => {
 
         if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Mod-logs disable'
         else mod = welcomeSettingsFetched
-  
-  
-  db.fetch(`guildPrefix_${message.guild.id}`).then(guildPrefixFetch =>{
-                    
-           if (!guildPrefixFetch) prefix = 'Yu!'
-          else prefix = guildPrefixFetch
     
     db.fetch(`messageChannel_${message.guild.id}`).then(channelIDFetched => {
 
@@ -58,7 +52,6 @@ message.channel.send(settings)
           })          
         })
       })
-    })
   })
 }
 module.exports.config = {
