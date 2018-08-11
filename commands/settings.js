@@ -6,8 +6,13 @@ exports.run = async (bot, message, args) => {
   let mod
   let prefix = await bot.tools.GuildPrefix(message.guild)
   let channel
-  let autoRole
   let starboardChannel
+  
+  let autoRoleU = await bot.tools.autoRoleUsers(message.guild)
+  var User = '<:onn:442082974037573641> ' + autoRoleU
+  
+  let autoRoleB = await bot.tools.autoRoleBots(message.guild)
+  var Bots = '<:onn:442082974037573641> ' + autoRoleB
   
   var langg = await bot.tools.Lang(message.guild)    
  const lang = require(`../langs/${langg}.json`) 
@@ -21,11 +26,7 @@ exports.run = async (bot, message, args) => {
 
         if (!message.guild.channels.get(channelIDFetched)) channel = '**<:off:442082928323985408>  Not set**'
         else channel = message.guild.channels.get(channelIDFetched)     
-        
-      db.fetch(`autoRole_${message.guild.id}`).then(autoRoleFetched => {
 
-                    if (!autoRoleFetched) autoRole = '**<:off:442082928323985408>  Not set**'
-                    else autoRole = '<:onn:442082974037573641> ' + autoRoleFetched
         db.fetch(`starboardChannel_${message.guild.id}`).then(stardboardIDFetchd => {
               if(!stardboardIDFetchd) starboardChannel = '**<:off:442082928323985408>  Not set**'
               else starboardChannel = '<:onn:442082974037573641> <#' + stardboardIDFetchd + '>'
@@ -43,7 +44,8 @@ const settings = new Discord.MessageEmbed()
 .addField('Channel', channel, true)
 .addField('Command:', prefix+'welcome', true)
 .addField('Command:', prefix + 'setlogs #channel',true)
-.addField('Autorole', autoRole, true)
+.addField('Autorole Users', User, true)
+.addField('Autorole Bots', Bots, true)
 .addField('StarBoard', starboardChannel, true)
 .addField('Command:', prefix + 'sautorole <rolename>', true)
 .addField('Command:', prefix + 'starboard set #channel', true)
@@ -52,7 +54,7 @@ message.channel.send(settings)
           })          
         })
       })
-  })
+  
 }
 module.exports.config = {
   command: "settings", 
