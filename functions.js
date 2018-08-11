@@ -302,11 +302,24 @@ fs.readdir('./eventos/', async (err, files) => {
     return canal
   }, 
   autoRoleUsers: async function(guild) {
-  db.fetch(`autoRoleU_${guild.id}`)
     var role
-    const channel = await db.fetch(`autoRoleU_${guild.id}`)
-    if (channel === null) role = '**<:off:442082928323985408>  Not set**'
-     else role = channel
+    const rolename = await db.fetch(`autoRoleU_${guild.id}`)
+    if (rolename === null) role = '**<:off:442082928323985408>  Not set**'
+     else role = rolename
     return role
+  },
+  autoRoleBots: async function(guild) {
+    var role
+    const rolename = await db.fetch(`autoRoleB_${guild.id}`)
+    if (rolename === null) role = '**<:off:442082928323985408>  Not set**'
+     else role = rolename
+    return role
+  },
+  welcomeText: async function(guild) {  
+    var text
+    const rolename = await  db.fetch(`joinMessage_${guild.id}`)
+    if (rolename === null) text = '**<:off:442082928323985408>  Not set**'
+     else text = rolename
+    return text
   }
 }

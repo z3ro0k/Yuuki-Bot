@@ -9,7 +9,7 @@ exports.run = async (client, member) => {
  const botUser = member.user.bot
  
   if(member.user.bot) {
-  const borole = client.provider.get(member.guild.id, 'botrole') 
+  const borole = await client.tools.autoRoleBots(member.guild)
   if (!borole || borole.toLowerCase() === 'none');
         else { 
             try { 
@@ -28,7 +28,7 @@ exports.run = async (client, member) => {
 	 return sourceChannel.send({ embed: embed }) 
   }
 
-  const autoRUID = client.provider.get(member.guild.id, 'autorU')  
+  const autoRUID = await client.tools.autoRoleUsers(member.guild) 
   if (!autoRUID || autoRUID.toLowerCase() === 'none');
         else { 
 
