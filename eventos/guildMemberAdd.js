@@ -1,14 +1,15 @@
 const { MessageEmbed } = require('discord.js')
 exports.run = (client, member) => {
   
-   let channelID = client.provider.get(member.guild.id, 'logC')
+   let channelID = client.tools.getWelcomeChannel(member.guild)
+   
    var sourceChannel = member.guild.channels.get(channelID)
   if(!sourceChannel) return;
   
  const botUser = member.user.bot
  
   if(member.user.bot) {
-  const borole = client.provider.get(member.guild.id, 'botrole') 
+  const borole //= client.provider.get(member.guild.id, 'botrole') 
   if (!borole || borole.toLowerCase() === 'none');
         else { 
             try { 

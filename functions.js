@@ -5,6 +5,7 @@ const exec = require('child_process').exec;
 const { MessageEmbed } = require('discord.js');
 const bot = require('./yuuki.js').bot
 const fs = require('fs')
+
 module.exports = { 
   
     hook: function(channel, title, message, color, avatar) { 
@@ -292,5 +293,12 @@ fs.readdir('./eventos/', async (err, files) => {
       .setColor(0xfcc7fb);
 
     channel.send({embed});
+  }, 
+  getWelcomeChannel: async function(guild) {
+    var canal
+    const channel = await db.fetch(`messageChannel_${guild.id}`)
+    if (channel === null) canal = '**<:off:442082928323985408>  Not set**'
+     else canal = channel
+    return canal
   }
 }

@@ -4,8 +4,12 @@ const tools = require('../functions.js');
 const { IdOwner } = require('../botconfig.js');
 
 exports.run = async (bot, message, args) => {
-  const perms = message.member.hasPermission('ADMINISTRATOR') 
+const ids = bot.options.owner
+  const perms = ids.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
+  
+  
  let off = await db.fetch(`welcomeSettings_${message.guild.id}`);
+  
     if (off !== '<:onn:442082974037573641>Mod-logs enable' ) {
         
         const embed = new MessageEmbed()
