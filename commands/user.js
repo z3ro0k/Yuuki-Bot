@@ -4,10 +4,10 @@ const { fromNow } =  require('../utils/utils.js');
 const perms = require('../utils/json/permissions.json');
 
 exports.run = async(bot, msg, args) => {
-   
-let user = msg.mentions.users.first() || bot.tools.getUser(msg, args.join(' ')) || msg.author
-let member = msg.guild.member(user)
-if (!member) member = msg.member;
+let member = {};
+	if(msg.mentions.users.first()) member = msg.mentions.users.first();
+	else if(args.join(' ') && bot.tools.getUser(msg, args.join(' '))) member = bot.tools.getUser(msg, args.join(' ')).user;
+	else member = msg.author;
     
     var userStatus
     if (member.presence.activity !== null) {
@@ -25,7 +25,7 @@ if (!member) member = msg.member;
       if (!userStatus) {
      userStatus = "User is not playing a game"
    }
-        if (member.user.bot) {
+        if (member.bot) {
             var author = member.user.tag + ' [BOT]'
         } else {
             var author = member.user.tag
