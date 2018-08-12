@@ -7,8 +7,11 @@ exports.run = async (bot, message, args) => {
   else langg = idioma       
  const lang = require(`../langs/${langg}.json`)
  
-let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author 
-
+//let user = message.mentions.users.first() || bot.users.get(args[0]) || message.author 
+let user = {};
+	if(message.mentions.users.first()) user = message.mentions.users.first();
+	else if(args.join(' ') && bot.tools.getUser(message, args.join(' '))) user = bot.tools.getUser(message, args.join(' ')).user;
+	else user = message.author;
  if (!user.avatarURL) return message.channel.send(`${lang.noA[0]}**${user.tag}**${lang.noA[1]}`);
  
  

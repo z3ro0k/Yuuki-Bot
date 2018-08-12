@@ -68,6 +68,17 @@ module.exports = {
         if (!isNaN(timer)) {msg.delete({timeout: timer})};
       })
     },
+  getUser: function(message, search) {
+	let members = message.guild.members.filter(member => {
+		if(member.user.username.toLowerCase().includes(search.toLowerCase())) return true;
+		if(member.nickname && member.nickname.toLowerCase().includes(search.toLowerCase())) return true;
+		if(member.id === search) return true;
+		return false;
+	});
+
+	if(members.last()) return members.last();
+	return false;
+},
     
     parseTime: function(milliseconds) {
       var string = '';
