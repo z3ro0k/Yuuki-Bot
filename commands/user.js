@@ -5,28 +5,27 @@ const perms = require('../utils/json/permissions.json');
 
 exports.run = async(bot, msg, args) => {
    
-let user = {};
-	if(msg.mentions.users.first()) user = msg.mentions.users.first();
-	else if(args.join(' ') && bot.tools.getUser(msg, args.join(' '))) user = bot.tools.getUser(msg, args.join(' ')).user;
-	else user = msg.author;
+let user = msg.mentions.users.first() || msg.guild.member(args.join(' ')) || msg.author
+let member = msg.guild.member(user)
+if (!member) member = msg.member;
     
     var userStatus
-    if (user.presence.activity !== null) {
-      if (user.presence.activity.type === 'PLAYING') {
-        userStatus = `Playing **${(user.presence.activity.name)}**`
-      } else if (user.presence.activity.type === 'STREAMING') {
-        userStatus = `Streaming **${(user.presence.activity.name)}**`
-      } else if (user.presence.activity.type === 'LISTENING') {
-        userStatus = `Listening to **${(user.presence.activity.name)}**`
-      } else if (user.presence.activity.type === 'WATCHING') {
-        userStatus = `Watching **${(user.presence.activity.name)}**`
+    if (member.presence.activity !== null) {
+      if (member.presence.activity.type === 'PLAYING') {
+        userStatus = `Playing **${(member.presence.activity.name)}**`
+      } else if (member.presence.activity.type === 'STREAMING') {
+        userStatus = `Streaming **${(member.presence.activity.name)}**`
+      } else if (member.presence.activity.type === 'LISTENING') {
+        userStatus = `Listening to **${(member.presence.activity.name)}**`
+      } else if (member.presence.activity.type === 'WATCHING') {
+        userStatus = `Watching **${(member.presence.activity.name)}**`
       }
-      if (user.presence.activity.url !== null) { userStatus = `[${userStatus}](${user.presence.activity.url})` }
+      if (member.presence.activity.url !== null) { userStatus = `[${userStatus}](${member.presence.activity.url})` }
     }
       if (!userStatus) {
      userStatus = "User is not playing a game"
    }
-        if (user.user.bot) {
+        if (member.user.bot) {
             var author = member.user.tag + ' [BOT]'
         } else {
             var author = member.user.tag
