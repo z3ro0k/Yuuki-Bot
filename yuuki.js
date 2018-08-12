@@ -59,11 +59,13 @@ bot.on('message', async (message) => {
 
 bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
 
+var dbl = async () => {
+await bot.tools.post_dbl(bot)
+} 
+bot.on('ready', dbl);
+bot.on('guildCreate', dbl);
+bot.on('guildRemove', dbl);
 
-/*bot.on('ready', bot.tools.post_dbl(bot));
-bot.on('guildCreate', bot.tools.post_dbl(bot));
-bot.on('guildRemove', bot.tools.post_dbl(bot));
-*/
 const lupdate = async ()  => {
 
 const snekfetch = require("snekfetch");
