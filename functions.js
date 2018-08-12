@@ -295,11 +295,11 @@ fs.readdir('./eventos/', async (err, files) => {
     channel.send({embed});
   }, 
   getLogsChannel: async function(guild) {
-    var canal
-    const channel = await db.fetch(`messageChannel_${guild.id}`)
-    if (channel === null) canal = '**<:off:442082928323985408>  Not set**'
-     else canal = channel
-    return canal
+    var Canal
+    const Lchannel = await db.fetch(`messageChannel_${guild.id}`)
+    if (Lchannel === null) Canal = '**<:off:442082928323985408>  Not set**'
+     else Canal = Lchannel
+    return Canal
   }, 
   getWelcomeChannel: async function(guild) {
     var canal
