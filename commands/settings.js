@@ -45,20 +45,27 @@ const settings = new Discord.MessageEmbed()
 .setDescription('Esta es la página de configuración para **Yuuki**. Todos los ajustes se enumeran aquí. \nPuede ver los comandos y su estado actual')
 .addField(lang.langu.title , lang.langu.name , true)
 .addField('prefix:', prefix, true)
+
 .addField('Command:', prefix +'lang <idioma>', true)
 .addField('Command', prefix +'sprefix <newprefix>', true)
+
 .addField('Welcome Settings', mod, true)
 .addField('Anti Invite', "Coming Soon..", true)
+
 .addField('Command:', prefix+'welcome', true)
 .addField('Command:', prefix+'antiinvite <false/true>', true)
 .addField('Welcome Logs', Logs, true)
 .addField('Mod-Logs', channel , true)
+
 .addField('Command:', prefix + 'welcomelogs #channel',true)
 .addField('Command:', prefix + 'modlogs #channel',true)
+
 .addField('Autorole Users', User, true)
 .addField('Autorole Bots', Bots, true)
+
 .addField('Command:', prefix + 'roleusers <rolename>', true)
 .addField('Command:', prefix + 'rolebots <rolename>', true)
+
 .addField('StarBoard', starboardChannel, true)
 .addField('Command:', prefix + 'starboard set #channel', true)
 .addField('Texto de bienvenida', textjoin)

@@ -2,10 +2,11 @@ const db = require('quick.db')
 const { MessageEmbed } = require('discord.js')
 exports.run = async (bot, message, args) => {
   
-   const perms = client.op.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
+   const perms = bot.options.owner.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
+   
   let prefix = await bot.tools.GuildPrefix(message.guild)
   
-    if (!message.member.hasPermission('ADMINISTRATOR')) return  bot.tools.embed(message.channel, '**This command requires the Administrator role**') 
+    if (!perms) return  bot.tools.embed(message.channel, '**This command requires the Administrator role**') 
     
   if (!args.join(" ") && args.join(" ").toUpperCase() !== 'NONE') { 
     
