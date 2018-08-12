@@ -40,8 +40,8 @@ exports.run = async (bot, msg, args) => {
 		}
 	}
 exports.config = {
-  command: "github",
-  aliases: ["github", "githubinfo"],
+  command: "repository",
+  aliases: ["repository", "repository"],
   category: "search",
   description: "Busca un repositorio en GitHub",
   usage: "Yu!github AlexisMV Yuuki-Bot"
