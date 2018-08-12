@@ -25,7 +25,7 @@ let member = {};
       if (!userStatus) {
      userStatus = "User is not playing a game"
    }
-        if (member.user.bot) {
+        if (member.bot) {
             var author = member.user.tag + ' [BOT]'
         } else {
             var author = member.user.tag
