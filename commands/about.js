@@ -38,7 +38,7 @@ const embed = new Discord.MessageEmbed()
 .addField(`<:partnerbot:447295492200595457> WebSite`, `**└──**[\`${lang.click}\`](https://brayanmaldonado9.wixsite.com/yuuki)`, true)
 .addField(`<:Astart:441067034554662932> ${lang.about.Prefix}`, '**└──**`Yu!`', true)
 .addField(`${emoji} ${lang.about.Vote}`, `**└──**\`${lang.about.use}\``, true)
-.setFooter(`© ${new Date().getFullYear()} ${bot.settings.author}`)
+.setFooter(`© ${new Date().getFullYear()} ${bot.options.author} | ${bot.options.invite}`)
 
 message.channel.send({embed});
 }
