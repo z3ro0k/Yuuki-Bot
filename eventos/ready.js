@@ -5,7 +5,7 @@ exports.run = (client, guild, args) => {
 	console.log('Bot launched...')
 
 	setInterval(() => {
-		client.tools.updateGuild();
+		client.tools.post_dbl(client)
 		console.log("Stats send to bots list", "debug")
     }, 1800000);
 
@@ -26,9 +26,9 @@ exports.run = (client, guild, args) => {
 			});
 	
 
-		setTimeout(() => {
+		setInterval(()  => {
 			rotateGames(++i);
-		}, 10000);
+		}, 4000);
 	}
 	rotateGames(0);
 };
