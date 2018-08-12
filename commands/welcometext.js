@@ -1,7 +1,10 @@
 const db = require('quick.db')
 const { MessageEmbed } = require('discord.js')
 exports.run = async (bot, message, args) => {
-
+  
+   const perms = client.op.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
+  let prefix = await bot.tools.GuildPrefix(message.guild)
+  
     if (!message.member.hasPermission('ADMINISTRATOR')) return  bot.tools.embed(message.channel, '**This command requires the Administrator role**') 
     
   if (!args.join(" ") && args.join(" ").toUpperCase() !== 'NONE') { 
@@ -12,6 +15,7 @@ exports.run = async (bot, message, args) => {
         .setTitle('El texto de bienvenida actual es el siguiente')
         .setDescription(textjoin)
         .addField('Ajustes',`{server:name} = ${message.guild.name}\n{server:membercount} = ${message.guild.members.size} members\n{user:mention} = ${message.member.user}\n{user:username} = ${message.member.user.username}\n{user:tag} = ${message.member.user.tag}`)
+        .setFooter(`Para cambiar el texto usa ${prefix}welcometext <su mensaje>`) 
         .setThumbnail()
       message.channel.send({embed})
     return;
