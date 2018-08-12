@@ -27,7 +27,7 @@ if (!message.guild.member(user).bannable) return message.reply(lang.ban.noBP);
   const modlog = message.guild.channels.find(channel => channel.name === 'mod-logs');
   if (!modlog) return message.channel.send(lang.ban.noC)
                                   
- message.guild.member(user).ban(razon);
+ message.guild.member(user).ban({"reason": `Banned by ${message.author.username}#${message.author.discriminator}`, "days":1});
   let banEmbed = new Discord.MessageEmbed()
     .setDescription(`**<:bEmoji:440388028939239434>Ban | Case #${guildcasenumber}**`)
     .setColor(0x36393e)

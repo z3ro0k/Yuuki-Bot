@@ -27,7 +27,7 @@ const embed = new Discord.MessageEmbed()
 .addField(`<:Owner:442443039915507743> ${lang.about.owner}`, `**└──**\`${dev}\``, true)
 .addField(`<:Version:442442898651217922> ${lang.about.v}`, `**└──**\`2.6.0\``, true)
 .addField(`<:Libraries:442442996705918987> ${lang.about.L} Discord.js`, `**└──**\`v${Discord.version}\``, true)
-.addField(`<:cloud:447518353972658207> ${lang.about.M}`, `**└──**\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\``, true)
+.addField(`<:cloud:447518353972658207> ${lang.about.M}`, `**└──**\`${bytesToSize(process.memoryUsage().rss, 3)}\``, true)
 .addField(`<:CPU:462586915783180298> ${lang.about.CPU}`, `**└──**\`${Math.round(cpu * 100) / 100}%\``, true)
 .addField(`<:relog:447518519752523776> ${lang.about.uptime}`, `**└──**\`${actividad}\``, true)
 .addField(`<:wEmoji:440388223017943042> ${lang.about.C}`, `**└──**\`${bot.commands.size}\`` , true)
@@ -41,6 +41,13 @@ const embed = new Discord.MessageEmbed()
 
 message.channel.send({embed});
 }
+var unit = ["", "K", "M", "G", "T", "P"];
+	function bytesToSize(input, precision) {
+		var index = Math.floor(Math.log(input) / Math.log(1024));
+		if(unit >= unit.length) return `${input} B`;
+		return `${(input / Math.pow(1024, index)).toFixed(precision)} ${unit[index]}B`;
+	}
+
 exports.config = {
   command: "about",
   aliases: ["about", "infobot"],

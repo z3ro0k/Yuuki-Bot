@@ -5,7 +5,7 @@ const perms = require('../utils/json/permissions.json');
 
 exports.run = async(bot, msg, args) => {
    
-let user = msg.mentions.users.first() || msg.guild.member(args.join(' ')) || msg.author
+let user = msg.mentions.users.first() || bot.tools.getUser(msg, args.join(' ')) || msg.author
 let member = msg.guild.member(user)
 if (!member) member = msg.member;
     
