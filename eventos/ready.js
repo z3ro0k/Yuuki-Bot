@@ -12,7 +12,7 @@ exports.run = async (client, guild, args) => {
 				}
 			});
   
-	function rotateGames(i) {
+	function rotateGames() {
 			let games = [`¿Necesita ayuda? Yu!help`,`with ${client.options.author}`,`en ${client.guilds.size} servers`, 'Multilanguage Coming Soon :D'];
     
 			client.user.setPresence({
