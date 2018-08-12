@@ -59,6 +59,23 @@ module.exports = {
             })
 
     },
+ post_dbl = function() {
+	request.post({
+		url: `https://discordbots.org/api/bots/${client.user.id}/stats`,
+		headers: {
+			"content-type": "application/json",
+			Authorization: client.settings.dbl
+		},
+		json: true,
+		body: {
+			server_count: client.guilds.size,
+			shard_id: client.options.shardId,
+			shard_count: client.options.shardCount
+		}
+	}, (err) => {
+		if(err) system.log(err, "error");
+	});
+};
     embed: function(channel, message, timer) {
       channel = channel.channel || channel;
       channel.send({embed:{
