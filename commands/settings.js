@@ -5,16 +5,25 @@ exports.run = async (bot, message, args) => {
 
   let mod
   let prefix = await bot.tools.GuildPrefix(message.guild)
-  let channel
-  let Logs
+  
+  
+  
+  
   let starboardChannel
   
+  /*Welcome Logs channel*/
   let ChannelID = await bot.tools.getWelcomeChannel(message.guild)
-
+  
+  let Logs
   if (!message.guild.channels.get(ChannelID)) Logs = '**<:off:442082928323985408>  Not set**'
   else Logs = message.guild.channels.get(ChannelID)  
   
-  //if
+  /*Mod Logs channel*/
+  let channelLogsID = await bot.tools.getLogsChannel(message.guild)
+  
+  let Mlogs
+  if (!message.guild.channels.get(channelLogsID)) Mlogs = '**<:off:442082928323985408>  Not set**'
+  else Mlogs = message.guild.channels.get(ChannelID) 
   
       
   let autoRoleU = await bot.tools.autoRoleUsers(message.guild)
@@ -23,7 +32,7 @@ exports.run = async (bot, message, args) => {
   let autoRoleB = await bot.tools.autoRoleBots(message.guild)
   var Bots = autoRoleB
   
-  var langg = await bot.tools.Lang(message.guild)    
+ var langg = await bot.tools.Lang(message.guild)    
  const lang = require(`../langs/${langg}.json`) 
  
   const textjoin = await bot.tools.welcomeText(message.guild) 
@@ -54,8 +63,9 @@ const settings = new Discord.MessageEmbed()
 
 .addField('Command:', prefix+'welcome', true)
 .addField('Command:', prefix+'antiinvite <false/true>', true)
+
 .addField('Welcome Logs', Logs, true)
-.addField('Mod-Logs', channel , true)
+.addField('Mod-Logs', Mlogs , true)
 
 .addField('Command:', prefix + 'welcomelogs #channel',true)
 .addField('Command:', prefix + 'modlogs #channel',true)
@@ -68,6 +78,7 @@ const settings = new Discord.MessageEmbed()
 
 .addField('StarBoard', starboardChannel, true)
 .addField('Command:', prefix + 'starboard set #channel', true)
+
 .addField('Texto de bienvenida', textjoin)
 .setColor(0x36393e)
 message.channel.send(settings)

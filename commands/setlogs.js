@@ -32,7 +32,7 @@ const ids = bot.options.owner
 
     
     db.set(`messageChannel_${message.guild.id}`, newChannel).then(i => {
-        tools.embed(message.channel, `**Successfully updated logging channel to ${message.mentions.channels.first()}**`) // Finally, send in chat that they updated the channel.
+        tools.embed(message.channel, `**Successfully updated logging channel to #${message.mentions.channels.first().name}**`) // Finally, send in chat that they updated the channel.
     })
   }
 } 
