@@ -5,14 +5,16 @@ const ImageRegex = /(?:([^:/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:png|jpe?g|gif
 const LinkRegex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 
 exports.run = async (bot, message, args) => {
-    var prefix =  await bot.tools.GuildPrefix(message.guild) 
+    //var prefix =  await bot.tools.GuildPrefix(message.guild) 
     
-let messageCount = parseInt(args.join(' '));
+
 
 var perms = message.member.hasPermission("MANAGE_MESSAGES");
 if(!perms) return message.channel.send(":x: |  No tienes permisos suficientes para ejecutar este comando.");
 
-  
+  try {
+    
+    let messageCount = args.join(' ')
   if(!messageCount) {
     message.channel.send(`Please provide me a set number of messages to prune!`)
     return; 
@@ -24,19 +26,19 @@ if(!perms) return message.channel.send(":x: |  No tienes permisos suficientes pa
   if (messageCount < 100 && messageCount > 0) return true;
       return message.channel.send('I can\'t delete more than 99 messages at once!');
   
-    try {
-     const messages = await message.channel.messages.fetch({ limit: messageCount });
-     await message.channel.bulkDelete(messages.size, true);
-     return message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${messages.size} ${messages.size == 1 ? 'message!' : 'messages!'}`)
-
+    
+    //const messages = await message.channel.messages.fetch({ limit: messageCount });
+    //  message.channel.bulkDelete(messageCount);
+    // return message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${messageCount} ${messageCount == 1 ? 'message!' : 'messages!'}`)
+    message.channel.bulkDelete(messageCount).then(() => {
+      message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${messageCount} ${messageCount == 1 ? 'message!' : 'messages!'}`).then(msg => msg.delete({ timeout: 5000 }));
+  });
      } catch (err) {
         console.log(err)
       return message.channel.send('❎ | These messages are too old to be deleted! I can only delete messages within two weeks!');
 
      }
-   message.channel.bulkDelete(messageCount).then(() => {
-      message.channel.send(`Cleared \`${args.join(' ')} \` messages.`).then(msg => msg.delete(5000));
-  });
+   
 }
 
 exports.config = {
