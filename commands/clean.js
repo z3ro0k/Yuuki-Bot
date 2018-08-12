@@ -27,12 +27,10 @@ if(!perms) return message.channel.send(":x: |  No tienes permisos suficientes pa
       return message.channel.send('I can\'t delete more than 99 messages at once!');
   
     
-    //const messages = await message.channel.messages.fetch({ limit: messageCount });
-    //  message.channel.bulkDelete(messageCount);
-    // return message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${messageCount} ${messageCount == 1 ? 'message!' : 'messages!'}`)
-    message.channel.bulkDelete(messageCount).then(() => {
-      message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${messageCount} ${messageCount == 1 ? 'message!' : 'messages!'}`).then(msg => msg.delete({ timeout: 5000 }));
-  });
+    const messages = await message.channel.messages.fetch({ limit: messageCount });
+                await message.channel.bulkDelete(messages.size, true);
+    return message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${messageCount} ${messageCount == 1 ? 'message!' : 'messages!'}`)
+    
      } catch (err) {
         console.log(err)
       return message.channel.send('❎ | These messages are too old to be deleted! I can only delete messages within two weeks!');
