@@ -23,7 +23,7 @@ exports.run = async (bot, message, args) => {
   
   let Mlogs
   if (!message.guild.channels.get(channelLogsID)) Mlogs = '**<:off:442082928323985408>  Not set**'
-  else Mlogs = message.guild.channels.get(ChannelID) 
+  else Mlogs = message.guild.channels.get(channelLogsID) 
   
       
   let autoRoleU = await bot.tools.autoRoleUsers(message.guild)
