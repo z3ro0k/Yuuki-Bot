@@ -26,6 +26,8 @@ exports.run = async (bot, message, args) => {
   var langg = await bot.tools.Lang(message.guild)    
  const lang = require(`../langs/${langg}.json`) 
  
+  const textjoin = await bot.tools.welcomeText(message.guild) 
+  
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
         if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Mod-logs disable'
@@ -59,6 +61,7 @@ const settings = new Discord.MessageEmbed()
 .addField('Command:', prefix + 'rolebots <rolename>', true)
 .addField('StarBoard', starboardChannel, true)
 .addField('Command:', prefix + 'starboard set #channel', true)
+.addField('Texto de bienvenida', textjoin)
 .setColor(0x36393e)
 message.channel.send(settings)
           })          
