@@ -5,6 +5,13 @@ const exec = require('child_process').exec;
 const { MessageEmbed } = require('discord.js');
 const bot = require('./yuuki.js').bot
 const fs = require('fs')
+var request = require("request");
+
+
+var system = module.exports = {};
+
+system.update = {};
+system.post = {};
 
 module.exports = { 
   
@@ -59,23 +66,31 @@ module.exports = {
             })
 
     },
- post_dbl = function() {
-	request.post({
-		url: `https://discordbots.org/api/bots/${client.user.id}/stats`,
-		headers: {
-			"content-type": "application/json",
-			Authorization: client.settings.dbl
-		},
-		json: true,
-		body: {
-			server_count: client.guilds.size,
-			shard_id: client.options.shardId,
-			shard_count: client.options.shardCount
-		}
-	}, (err) => {
-		if(err) system.log(err, "error");
-	});
-};
+  system: function() {
+
+	system.post.post_dbl();
+
+},
+ post_dbl: function(client) {
+   
+const { stringify } = require('querystring');
+const { request } = require('https');
+   
+const data = stringify({ server_count: client.guilds.size });  
+   
+const req = request({
+    host: 'discordbots.org',
+    path: `/api/bots/365949788807757834/stats`,
+    method: 'POST',
+    headers: {
+      'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2NTk0OTc4ODgwNzc1NzgzNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTE0OTM5ODc3fQ.QFcaSEfNHj3l6VTegWbi5w7Vz52KqikAdt4KUlVvy4Y',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(data)
+    }
+  });
+  req.write(data);
+  req.end();
+},
     embed: function(channel, message, timer) {
       channel = channel.channel || channel;
       channel.send({embed:{
