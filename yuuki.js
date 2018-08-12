@@ -42,7 +42,7 @@ bot.on('message', async (message) => {
 
   if (message.channel.type != 'text') return;
   
-  var prefix = await bot.tools.GuildPrefix(message.guild)
+  var prefix =  await bot.tools.GuildPrefix(message.guild) 
   var sender = message.author;
   var msg = message.content.toLowerCase();
   
