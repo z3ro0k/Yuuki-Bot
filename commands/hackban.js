@@ -19,21 +19,20 @@ exports.run = (client, message, args) => {
       if(!reason) return message.channel.send('What is the reason?\n');
       
   
-        try {
-            banMember(args[0], args[1] ? args.slice(1).join(' ') : "No reason provided.");
-        } catch(err) {
-            msg.channel.createMessage('User wasn\'t found.');
-        }
-            return await message.channel.send(`Successfully banned **${usr.tag}**! 👋`);
 
-         function banMember(id, reason) {
-            msg.channel.guild.banMember(id, 7, `[${msg.author.username}#${msg.author.discriminator}] ${reason}`)
-                .then((m) => {
-                    msg.channel.send(`Successfully banned **<@${id}>**! 👋`);
-                })
-                .catch(e => {
-                    msg.channel.createMessage(`Error has occured while banning <@${id}>. :<`);
-                });
+        client.users.fetch(member).then(async usr => {
+            await message.channel.send(`Are you sure you want to ban **${usr.tag}**? \`\`(y/n)\`\``);
+            const msgs = await message.channel.awaitMessages(res => res.author.id === message.author.id, {
+                max: 1,
+                time: 30000
+            });
+
+            if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!');
+            if (['n', 'no'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!')
+ 
+            await message.guild.members.ban(usr.id, { days, reason });
+            return await message.channel.send(`Successfully banned **${usr.tag}**! 👋`);
+        })
 
 
     }
