@@ -43,7 +43,19 @@ bot.on('message', async (message) => {
 
   if (message.channel.type != 'text') return;
   
-  var prefix =  await bot.tools.GuildPrefix(message.guild) 
+  var prefixx =  await bot.tools.GuildPrefix(message.guild) 
+  
+  const mentionPrefix = new RegExp(`^<@!?${bot.user.id}> `)
+            .exec(message.content);
+        const prefixes = ['yuuki ', `${mentionPrefix}`, 'Yu!', prefixx];
+        let prefix = false;
+
+        for (const i of prefixes) {
+            if (message.content.startsWith(i)) prefix = i;
+        }
+
+        if (!prefix) return;
+  
   var sender = message.author;
   var msg = message.content.toLowerCase();
   
