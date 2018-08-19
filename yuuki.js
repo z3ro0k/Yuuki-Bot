@@ -27,6 +27,7 @@ const bot = new Discord.Client({
     author: "PoeticAzurnex"
 });
 
+const idioticApi = require("idiotic-api");
 const db = require('quick.db')
 
 /*global Set, Map*/
@@ -37,6 +38,8 @@ bot.tools.loadCmds(bot)
 bot.tools.eventsLoad(bot)
 bot.ownerID = '322203879208910849';
 bot.color = 0xfcc7fb;
+
+bot.idiotAPI = new idioticApi.Client('OuuLWREjnx5BNhGl1B7C', { dev: true });
 
 bot.on('message', async (message) => {
 
