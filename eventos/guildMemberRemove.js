@@ -1,10 +1,10 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageAttachment  } = require('discord.js')
 exports.run = async (client, member) => {
 
   let channelID = await client.tools.getWelcomeChannel(member.guild)  
    var sourceChannel = member.guild.channels.get(channelID)
   if(!sourceChannel) return;
- 
+ /*
   if(member.user.bot) {
   var embed = new MessageEmbed()
 	    .setAuthor("Bot Left")
@@ -28,5 +28,6 @@ exports.run = async (client, member) => {
       .setThumbnail(member.user.displayAvatarURL())
       .setFooter(member.guild.name, member.guild.iconURL())
 	 return sourceChannel.send({ embed: embed })
-  
+  */
+  sourceChannel.send(new MessageAttachment(await client.idiotAPI.goodbye("anime", member.user.bot, member.user.displayAvatarURL({ format: "png", size: 128 }), encodeURIComponent(member.user.tag), null, null))).catch(console.error);
 }
