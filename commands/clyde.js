@@ -7,7 +7,7 @@ exports.run = async (bot, msg, args ) => {
  const text = args.join(" ");
     const { body } = await get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`);
 
-    return loadingMessage.edit({
+    return msg.channel.send({
       embed: {
         "title": "Click here if the image failed to load.",
         "url": body.message,
@@ -16,16 +16,16 @@ exports.run = async (bot, msg, args ) => {
           "url": body.message
         },
         "footer": {
-          "icon_url": message.author.displayAvatarURL({ format: "png", size: 32 }),
-          "text": `Requested by ${message.author.tag} | Powered by NekoBot API`
+          "icon_url": msg.author.displayAvatarURL({ format: "png", size: 32 }),
+          "text": `Requested by ${msg.author.tag} | Powered by NekoBot API`
         }
       }
     });
 }
 exports.config = {
-  command: "mc",
-  aliases: ['mcc', 'Achievement'],
+  command: "clyde",
+  aliases: [],
   category: "fun",
-  description: "creas un Achievement de maincraft",
+  description: "Have Clyde say something",
   usage: "Yu!mc cookie"
 };
