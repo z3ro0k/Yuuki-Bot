@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
-exports.run = (client, member) => {
-  
-   let channelID = client.provider.get(member.guild.id, 'logC')
+exports.run = async (client, member) => {
+
+  let channelID = await client.tools.getWelcomeChannel(member.guild)  
    var sourceChannel = member.guild.channels.get(channelID)
   if(!sourceChannel) return;
  
@@ -15,10 +15,10 @@ exports.run = (client, member) => {
       .setFooter(member.guild.name, member.guild.iconURL())
 	 return sourceChannel.send({ embed: embed }) 
   } 
+  
   let text
- const textl = client.provider.get(member.guild.id, 'TextL')
-    if(textl === undefined) text = `${member.user} (**${member.user.tag}**) has joined the server\nThere are now **${member.guild.members.size}** users within this server!`
-    else text = textl.replace('{user:tag}', member.user.tag).replace('{server:membercount}', member.guild.memberCount).replace('{server:name}', member.guild.name).replace('{user:mention}', member.user).replace('{user:username}', member.user.username)
+ const textjoin = await client.tools.leaveText(member.guild) 
+  text = textjoin.replace('{user:tag}', member.user.tag).replace('{server:membercount}', member.guild.memberCount).replace('{server:name}', member.guild.name).replace('{user:mention}', member.user).replace('{user:username}', member.user.username)
 
 	var embed = new MessageEmbed()
 	    .setAuthor("User Left")

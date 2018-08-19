@@ -375,7 +375,7 @@ fs.readdir('./eventos/', async (err, files) => {
   leaveText: async function(guild) {  
     var text
     const texto = await db.fetch(`leaveMessage_${guild.id}`)
-    if (texto === null) text = 'Bienvenido **{user:tag}** a **{server:name}** ya somos un total de **{server:membercount} de miembros*** en el servidor'
+    if (texto === null) text = 'Good bye, **{user:tag}** You are now leaving **{server:name}**!'
      else text = texto
     return text
   }
