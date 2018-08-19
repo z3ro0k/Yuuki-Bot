@@ -1,29 +1,15 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
+const { MessageAttachment } = require("discord.js");
 
-exports.run = async (bot, message, args ) => {
-let razon = args.join(' ');
-let msg = args.join(' ')
-var snekfetch = require('snekfetch');
+exports.run = async (bot, msg, args ) => {
+  
+ var text = args.join(" ");
+    if (msg.mentions.users.size !== 0) text = text.replace(/<@!?\d+>/, "").replace(/\n/g, " ").trim();
+    if (!text) return msg.channel.send("You must give an achievement description.");
+    if (text.length > 22) return msg.channel.send("I can only handle a maximum of 22 characters");
 
-  let [title, contents] = args.join(' ').split(" | ")
-  if(!contents) {
-    [title, contents] = ["Achievement Get!", title];
-  }
-  let rnd = Math.floor((Math.random() * 39) + 1);
-  if(args.join(' ').toLowerCase().includes("burn")) rnd = 38;
-  if(args.join(' ').toLowerCase().includes("cookie")) rnd = 21;
-  if(args.join(' ').toLowerCase().includes("cake")) rnd = 10;
-
-  if (!args.join(' ')) {
-      message.channel.send('Porfavor pon algo para transformarlo a un achievement');
-      return
-      }
-  if(title.length > 22 || contents.length > 22) return message.channel.send("Max Length: 22 Characters. Soz.").then(message.delete.bind(message), 2000);
-  const url = `https://www.minecraftskinstealer.com/achievement/a.php?i=${rnd}&h=${encodeURIComponent(title)}&t=${encodeURIComponent(contents)}`;
-  snekfetch.get(url)
-   .then(r=>message.channel.send("", {files:[{attachment: r.body}]}));
-  message.delete();
+    return msg.channel.send(new MessageAttachment(await bot.idiotAPI.achievement((msg.mentions.users.first() || msg.author).displayAvatarURL({ format:"png", size:32 }), text), "achievement.png"));
 
 }
 exports.config = {
