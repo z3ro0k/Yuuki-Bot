@@ -109,7 +109,7 @@
         "noArgs": "Porfavor ingresa algun termino para buscar el gif",
         "search": ":arrows_counterclockwise: Buscando...",
         "noTerms": "¡No encontre algun resultado!",
-        "Title": "Resultado de búsqueda de gifs para: ",
-        "page:" "Página ${page} de ${pages.length}"
+        "Title": "Resultado de búsqueda de gifs para:",
+        "page:" "Página {{page}} de {{pagesL}}"
     }
 }
