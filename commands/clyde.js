@@ -10,8 +10,7 @@ exports.run = async (bot, msg, args ) => {
   const lang = require(`../langs/${langg}.json`) 
   
     if (!text) return msg.channel.send(lang.clyde.args);
-    if (text.length > 44) return msg.channel.send(lang.clyde.args44);
-  
+    if (text.length > 60) return msg.channel.send(lang.clyde.args60)  
     const { body } = await get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`);
 
     return msg.channel.send({
