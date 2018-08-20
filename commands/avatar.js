@@ -19,7 +19,6 @@ let user = {};
   .setImage(user.displayAvatarURL({ size: 2048 }))
   .addField(`${user.username}'s Avatar`, `[${lang.Dow}](${user.displayAvatarURL()})`)
   .setThumbnail(user.displayAvatarURL({ size: 2048 }))
-  .setFooter(`Avatar de ${user.tag}`, user.displayAvatarURL())
   .setColor(0x36393e)
  message.channel.send({embed})
   
