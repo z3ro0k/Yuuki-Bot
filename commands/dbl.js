@@ -21,7 +21,7 @@ exports.run = async (bot ,message, args) => {
         return;
     } else
   if(!bott.bot) {
-      bot.tools.embed(message.channel, '**<:Not:463200957396680714> No uuuu **')
+      bot.tools.embed(message.channel, `**<:Not:463200957396680714> No uuuu **`)
         return;
   }
  

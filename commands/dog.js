@@ -8,7 +8,7 @@ randomPuppy().then(url =>{
   const dog = new Discord.MessageEmbed()
   .setImage(url)
   .setThumbnail(url)
-  .setDescription('Tu perro random esta aqui<a:Perrosalu2:442155932495904768>')
+  .setDescription('Tu perro random esta aqui <a:Perrosalu2:442155932495904768>')
       message.channel.send(dog);
 })
 }
