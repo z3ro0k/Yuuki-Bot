@@ -5,15 +5,18 @@ const { MessageAttachment } = require("discord.js");
 
 exports.run = async (bot, msg, args ) => {
  const text = args.join(" ");
- 
-    if (!text) return msg.channel.send("You must give an achievement description.");
-    if (text.length > 22) return msg.channel.send("I can only handle a maximum of 22 characters");
+  
+  var langg = await bot.tools.Lang(msg.guild)    
+  const lang = require(`../langs/${langg}.json`) 
+  
+    if (!text) return msg.channel.send(lang.clyde.args);
+    if (text.length > 44) return msg.channel.send(lang.clyde.args44);
   
     const { body } = await get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`);
 
     return msg.channel.send({
       embed: {
-        "title": "Click here if the image failed to load.",
+        "title": lang.clyde.NoLoad,
         "url": body.message,
         "color": 6192321,
         "image": {

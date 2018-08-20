@@ -19,10 +19,11 @@ if(!perms) return message.channel.send(lang.noP.ban);
 	if(count < 2) return false;
 	if(count > 99) count = 99;
 	message.delete();
+  let TextS = lang.clean.succMessage
 	message.channel.bulkDelete(count + 1, true).then(
-		
+
    // message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${message.content.split(" ")[1]} ${message.content.split(" ")[1] == 1 ? 'message!' : 'messages!'}`)
-    message.channel.send(`(${lang.clean.succMessage}).replace('{{username}}', ${message.author.username}).replace('{{total}}', ${message.content.split(" ")[1]})`)
+    message.channel.send(TextS.replace('{{username}}', message.author.username).replace('{{total}}', message.content.split(" ")[1]))
 
   ).catch(err => {
     

@@ -102,7 +102,7 @@
    },
    "clyde": {
      "args": "Debes dar una descripción para Clyde",
-     "args22": "Sólo puedo manejar un máximo de 22 caracteres",
+     "args44": "Sólo puedo manejar un máximo de 44 caracteres",
      "NoLoad": "Haga clic aquí si la imagen no se ha cargado."  
    },
     "Gif": {
