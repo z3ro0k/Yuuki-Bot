@@ -5,10 +5,12 @@ const ImageRegex = /(?:([^:/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*\.(?:png|jpe?g|gif
 const LinkRegex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 
 exports.run = async (bot, message, args) => {
-    //var prefix =  await bot.tools.GuildPrefix(message.guild) 
+  
+  var langg = await bot.tools.Lang(message.guild)    
+  const lang = require(`../langs/${langg}.json`) 
     
 var perms = message.member.hasPermission("MANAGE_MESSAGES");
-if(!perms) return message.channel.send(":x: |  No tienes permisos suficientes para ejecutar este comando.");
+if(!perms) return message.channel.send(lang.noP.ban);
 
  
 	if(!message.content.split(" ")[1]) return false;
@@ -18,11 +20,16 @@ if(!perms) return message.channel.send(":x: |  No tienes permisos suficientes pa
 	if(count > 99) count = 99;
 	message.delete();
 	message.channel.bulkDelete(count + 1, true).then(
-		//message.channel.send(`:ok_hand: ${message.content.split(" ")[1]} messages has been deleted.`)
-    message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${message.content.split(" ")[1]} ${message.content.split(" ")[1] == 1 ? 'message!' : 'messages!'}`)
-	).catch(err => {
+		
+   // message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${message.content.split(" ")[1]} ${message.content.split(" ")[1] == 1 ? 'message!' : 'messages!'}`)
+    message.channel.send(`(${lang.clean.succMessage}).replace('{{username}}', ${message.author.username}).replace('{{total}}', ${message.content.split(" ")[1]})`)
+
+  ).catch(err => {
+    
 		if(err.code === 10008) {
-			return message.channel.send(":x: - Un bot sólo puede borrar mensajes que tengan menos de 14 días de antigüedad.");
+      
+			return message.channel.send(lang.clean.error);
+      
 		} else {
 			return console.log(err, "error");
 		}
