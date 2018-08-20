@@ -22,7 +22,7 @@ if(!perms) return message.channel.send(":x: |  No tienes permisos suficientes pa
     message.channel.send(`🍇 | **${message.author.username}**, successfully pruned ${message.content.split(" ")[1]} ${message.content.split(" ")[1] == 1 ? 'message!' : 'messages!'}`)
 	).catch(err => {
 		if(err.code === 10008) {
-			return message.channel.send(":x: - A bot can only bulk delete messages that are under 14 days old.");
+			return message.channel.send(":x: - Un bot sólo puede borrar mensajes que tengan menos de 14 días de antigüedad.");
 		} else {
 			return console.log(err, "error");
 		}

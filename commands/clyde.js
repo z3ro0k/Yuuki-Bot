@@ -5,6 +5,11 @@ const { MessageAttachment } = require("discord.js");
 
 exports.run = async (bot, msg, args ) => {
  const text = args.join(" ");
+  
+  if (msg.mentions.users.size !== 0) text = text.replace(/<@!?\d+>/, "").replace(/\n/g, " ").trim();
+    if (!text) return msg.channel.send("You must give an achievement description.");
+    if (text.length > 22) return msg.channel.send("I can only handle a maximum of 22 characters");
+  
     const { body } = await get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`);
 
     return msg.channel.send({
