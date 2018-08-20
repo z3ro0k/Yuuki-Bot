@@ -2,10 +2,14 @@ const Discord = require('discord.js');
 const math = require('math-expression-evaluator');
 const db = require('quick.db')
 
-exports.run = (bot, message) => {
+exports.run = async (bot, message) => {
+  
+   var langg = await bot.tools.Lang(message.guild)    
+   const lang = require(`../langs/${langg}.json`) 
+ 
     const args = message.content.split(" ").slice(1).join(" ")
     if (args.length < 1) {
-        message.channel.send('Debe proporcionar una ecuación para resolver en la calculadora')
+        message.channel.send(lang.calculated.noArgs)
         return;
     }
 
@@ -14,10 +18,10 @@ exports.run = (bot, message) => {
         answer = math.eval(args);
     } catch (err) {
        var embed = new Discord.MessageEmbed()
-       .setTitle("Math Failure!")
+       .setTitle(lang.calculated.errorTitle)
        .setColor(0x36393e)
        .setThumbnail("http://www.drodd.com/images15/red-x22.png")
-       .addField("Calculo incorrecto!", `Tu ecuación ${args}`)
+       .addField(lang.calculated.ErrorM, `Tu ecuación ${args}`)
        .addField("Key:", "```md\n <Adición: +> \n <Sustracción: -> \n <Multiplicación: *> \n <Division: /> \n <PEMDAS: (1+1)x1> \n```")
        message.channel.send({ embed: embed })
         return;
@@ -25,11 +29,11 @@ exports.run = (bot, message) => {
   
     message.delete();
     var embed2 = new Discord.MessageEmbed()
-    .setTitle("Math Calculated!")
+    .setTitle(lang.calculated.sussT)
     .setColor(0x36393e)
     .setThumbnail("https://lh3.googleusercontent.com/WDs87hbKj9l2bnA8rHp5DzES5vsXuf4VWR1fmvD1RyA_b_oeeiuXaMGKn0a-_aThybI=w300")
-    .addField("He calculado con éxito:", `${args}`)
-    .addField("La respuesta es:", `${answer}`)
+    .addField(lang.calculated.firtsField, `${args}`)
+    .addField(lang.calculated.secondField, `${answer}`)
     message.channel.send({ embed: embed2 })
 			
 };

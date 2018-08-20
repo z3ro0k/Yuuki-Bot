@@ -56,7 +56,8 @@
   },
   "dbl": {
     "men": "**<:Not:463200957396680714> Menciona a un bot**",
-    "uB": "**<:Not:463200957396680714> Tu no eres un bot**"
+    "uB": "**<:Not:463200957396680714> Tu no eres un bot**",
+    "nB": "**<:Not:463200957396680714> El usuario {{user}} no es un bot"  
   },
   "dbli": {
     "title": "Información de Discord Bots List",
@@ -82,5 +83,33 @@
     "reazon": "**<:Not:463805182648778783> | Escriba un razón, `Yu!ban @username [razón]`**",
     "noBP": "**<:Not:463805182648778783> | No puedo banear al usuario mencionado.**",
     "noC": "**<:Not:463805182648778783> | Por favor, cree un canal con el nombre `mod-logs`.**"
-  }
+  },
+   "calculated": {
+     "noArgs": "Debe proporcionar una ecuación para resolver en la calculadora",
+     "errorTitle": "¡Fallo matemático!",
+     "ErrorM": "Calculo incorrecto!",
+     "sussT": "Matemática Calculada!",
+     "firtsField": "He calculado con éxito:",
+     "secondField": "La respuesta es:"    
+   },
+   "dogandcat": {
+     "CatMessage": "Aqui esta tu gato aleatorio <:Cat:429724283003207681>",
+     "DogMessage": "Tu perro random esta aqui"
+   },
+   "clean": {
+     "error": "<:Not:463805182648778783>  | Un bot sólo puede borrar mensajes que tengan menos de 14 días de antigüedad.",
+     "succMessage": "🍇 | **{{username}}**, podada con éxito {{total}} messages!"  
+   },
+   "clyde": {
+     "args": "Debes dar una descripción para Clyde",
+     "args22": "Sólo puedo manejar un máximo de 22 caracteres",
+     "NoLoad": "Haga clic aquí si la imagen no se ha cargado."  
+   },
+    "Gif": {
+        "noArgs": "Porfavor ingresa algun termino para buscar el gif",
+        "search": ":arrows_counterclockwise: Buscando...",
+        "noTerms": "¡No encontre algun resultado!",
+        "Title": "Resultado de búsqueda de gifs para: ",
+        "page:" "Página ${page} de ${pages.length}"
+    }
 }
