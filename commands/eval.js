@@ -13,7 +13,7 @@ const {
 const util = require('util')
 const apis = require('../data/apis.json');
 const snekfetch = require('snekfetch');
-
+const get = require('snekfetch');
 exports.run = async (bot, message, args, queue) => {
 
     var embed = new Discord.MessageEmbed()
