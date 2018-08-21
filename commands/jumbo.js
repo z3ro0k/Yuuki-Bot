@@ -1,29 +1,32 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
 
-exports.run = (bot, message, args, func) => {
+exports.run = async (bot, message, args, func) => {
+  
+  var langg = await bot.tools.Lang(message.guild)    
+  const lang = require(`../langs/${langg}.json`) 
   
   if (args.length < 1) {
-       message.channel.send('Please, provide an emoji to expand it');
+       message.channel.send(lang.jumbo.Nemoji);
        return;
     }
 
     if (args[0].charCodeAt(0) >= 55296) {
-        message.channel.send('You can not expand the built-in discord emoji.');
+        message.channel.send(lang.jumbo.Demoji);
         return;
     }
 
     const match = args[0].match(/<:[a-zA-Z0-9_-]+:(\d{18})>/);
 
     if (!match || !match[1]) {
-       message.channel.send('Provide a valid emoji.');
+       message.channel.send(lang.jumbo.Iemoji);
       return;
     }
 
     const emoji = bot.emojis.get(match[1]);
 
     if (!emoji) {
-       message.channel.send('¡This emoji could not be identified!');
+       message.channel.send(lang.jumbo.Ni);
       return;
     }
 

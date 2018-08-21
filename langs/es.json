@@ -110,7 +110,7 @@
         "search": ":arrows_counterclockwise: Buscando...",
         "noTerms": "¡No encontre algun resultado!",
         "Title": "Resultado de búsqueda de gifs para: ",
-        "page:" "Página {{page}} de {{pagesL}}"
+        "page": "Página {{page}} de {{pagesL}}"
     },
      "Github": {
         "nF": "No encontrado",
