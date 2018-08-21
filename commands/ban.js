@@ -21,8 +21,9 @@ let perms = message.member.hasPermission("BAN_MEMBERS");
 if(!perms) return message.channel.send(lang.noP.ban);
      
 if (message.mentions.users.size < 1) return message.reply(lang.ban.men).catch(console.error);
-if(!razon) return message.channel.send(lang.ban.reazon);
-if (!message.guild.member(user).bannable) return message.reply(lang.ban.noBP);
+if(!razon) return message.channel.send('lang.kick.reazon');
+  
+if (!message.guild.member(user).bannable) return message.reply(lang.kick.noBP);
          
   const modlog = message.guild.channels.find(channel => channel.name === 'mod-logs');
   if (!modlog) return message.channel.send(lang.ban.noC)

@@ -23,7 +23,12 @@ module.exports.run = async (bot, message, args) => {
     let kReason = args.join(" ").slice(22);   
     if(!kReason) return message.channel.send("Por favor, especifique la razón para patear al usuario mencionado.");
     
-    let kickEmbed = new Discord.MessageEmbed()
+  var idC = await bot.tools.getLogsChannel(message.guild)
+  
+  let kickChannel = message.guild.channels.find(c => c.id === idC);
+  if(!kickChannel) return message.channel.send(lang.kick.noC);
+    
+  let kickEmbed = new Discord.MessageEmbed()
     .setDescription(`**<:kEmoji:440388066197110785>Kick | Case #${guildcasenumber}**`)
     .setColor(0x36393e)
     .addField("Kicked User", `${kUser} with ID ${kUser.id}`, true)
@@ -32,8 +37,6 @@ module.exports.run = async (bot, message, args) => {
     .addField("Reason", kReason ,true)
     .addField("Time", message.createdAt, true)
      
-    let kickChannel = message.guild.channels.find(c => c.name === "mod-logs");
-    if(!kickChannel) return message.channel.send("No se puede encontrar el canal `mod-logs` porfavor crealo para mandar los incidetes ahi");
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
