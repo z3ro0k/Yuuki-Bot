@@ -57,7 +57,8 @@
   },
   "dbl": {
     "men": "**<:Not:463200957396680714> Mention a bot.**",
-    "uB": "**<:Not:463200957396680714> You're not a bot.**"
+    "uB": "**<:Not:463200957396680714> You're not a bot.**",
+    "nB": "**<:Not:463200957396680714> The user {{user}} is not a bot" 
   },
   "dbli": {
     "title": "Discord Bots List Information",
@@ -83,5 +84,33 @@
     "reazon": "<:Not:463805182648778783> | Write down a reason `Yu!ban @username [reason]`",
     "noBP": "<:Not:463805182648778783> | I cannot ban the mentioned user.",
     "noC": "**<:Not:463805182648778783> | Please create a channel with the name `mod-logs`.**"
-  }
+  },
+   "calculated": {
+     "noArgs": "You must provide an equation to solve in the calculator",
+     "errorTitle": "Math failure!",
+     "ErrorM": "Incorrect calculation!",
+     "sussT": "Calculated Math!",
+     "firtsField": "I've calculated successfully:",
+     "secondField": "The answer is:"    
+   },
+   "dogandcat": {
+     "CatMessage": "Here's your random cat. <:Cat:429724283003207681>",
+     "DogMessage": "Your random dog is here."
+   },
+   "clean": {
+     "error": "<:Not:463805182648778783>  | A bot can only delete messages that are less than 14 days old.",
+     "succMessage": "🍇 | **{{{username}}**, successfully pruned {{total}} messages!"  
+   },
+   "clyde": {
+     "args": "You must give a description for Clyde",
+     "args60": "I can only handle a maximum of 60 characters",
+     "NoLoad": "Click here if the image failed to load"  
+   },
+    "Gif": {
+        "noArgs": "Please enter a term to search for the gif",
+        "search": ":arrows_counterclockwise: Searching...",
+        "noTerms": "I couldn't find any results!",
+        "Title": "Search result of gifs for: ",
+        "page": "Page {{page}} of {{pagesL}}"
+    }
 }
