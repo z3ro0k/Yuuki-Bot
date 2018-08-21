@@ -21,7 +21,7 @@ exports.run = async (bot, message) => {
        .setTitle(lang.calculated.errorTitle)
        .setColor(0x36393e)
        .setThumbnail("http://www.drodd.com/images15/red-x22.png")
-       .addField(lang.calculated.ErrorM, `Tu ecuación ${args}`)
+       .addField(lang.calculated.ErrorM, `${args}`)
        .addField("Key:", "```md\n <Adición: +> \n <Sustracción: -> \n <Multiplicación: *> \n <Division: /> \n <PEMDAS: (1+1)x1> \n```")
        message.channel.send({ embed: embed })
         return;
