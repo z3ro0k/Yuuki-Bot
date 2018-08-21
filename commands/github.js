@@ -24,7 +24,7 @@ let name = args[0]
     embed.addField("Location", contenu.location || 'Not Set', true)
     embed.addField('Company', contenu.company || 'Nothing', true)  
     embed.addField(contenu.public_repos + " public repos", "[Check them](https://github.com/" + name + "?tab=repositories)", true)	
-		embed.addField("Links", `${contenu.blog === null ? "Web Not set" : '[Website](' + contenu.blog  + ')'} | [Github](https://github.com/${contenu.nama}') `)	
+		embed.addField("Links", `${contenu.blog === null ? "Web Not set" : '[Website](' + contenu.blog  + ')'} | [Github](https://github.com/${contenu.login}') `)	
 		embed.setThumbnail(contenu.avatar_url)
 		embed.setTimestamp()
 		message.channel.send({embed});
