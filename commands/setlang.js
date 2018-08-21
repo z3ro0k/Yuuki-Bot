@@ -12,7 +12,11 @@ exports.run = async (client, message, args) => {
    client.tools.getLang(message.channel, message.guild)
    
  } else {
+   const ids = client.options.owner
+  const perms = ids.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
   
+  if(!perms) return message.channel.send(lang.noP.ban);
+   
  if (!['en', 'es'].includes(args[0])) return message.channel.send({
             embed: {
                 title: "ERROR!",
