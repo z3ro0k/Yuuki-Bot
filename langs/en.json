@@ -1,5 +1,4 @@
-{
-   
+{   
    "title": "Command Usage",
    "Error": ["❎ | Oh no, there's been a mistake: ", ". Please try again later."],
    "titleComp": "Complete :white_check_mark:",
@@ -112,5 +111,43 @@
         "noTerms": "I couldn't find any results!",
         "Title": "Search result of gifs for: ",
         "page": "Page {{page}} of {{pagesL}}"
-    }
+    },
+     "Github": {
+        "nF": "Not Found",
+        "nE": "The user does not exist",
+        "args": "Please provide a username/org",
+         "infoEmbed": {
+             "f": "Followers",
+             "F": "Following",
+             "C": "Created on",
+             "L": "Localization",
+             "Com": "Company",
+             "rP": "Public Repos",
+              "WebN": "Web Not set up" 
+           }
+       },  
+      "hackban": {
+          "user": "Which user do you want to hackbanear enter their id?",
+          "uB": "Please don't ban me....!",
+          "uA": "I wouldn't dare hack you....!",
+          "days": "How many days do I have to wait to delete the message history (max: 7)?",
+          "reason": "What's the motive?",
+          "cancel": "Command Cancelled!",
+          "succ": "Banned successfully at **{{user}}**! 👋"
+     },
+    "hook": {
+        "messageD": "{{prefix}}hook <title>, <message>, [HEXcolor], [avatarURL]\n\n**<> is required\n[] is optional**" 
+    },
+    "jumbo": {
+        "Nemoji": "Please provide an emoji to expand it",
+        "Demoji": "I can't expand built-in discord emojis.",
+        "Iemoji": "Please provide a valid emoji.",
+        "Ni": "I can't identify the emoji!"
+    },
+  "kick": {
+    "men": "**<:Not:463805182648778783> | You must mention someone**",
+    "reazon": "**<:Not:463805182648778783> | Write the reason, `{{prefix}}kick @username [razón]`**",
+    "noBP": "**<:Not:463805182648778783> | I can't kick the user mentioned.**",
+    "noC": "**<:Not:463805182648778783> | Please set up the channel to send the mod-logs**"
+  }
 }
