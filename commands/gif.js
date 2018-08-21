@@ -7,6 +7,7 @@ exports.run = async (bot, message, args) => {
   
   const giphy = require('giphy-api')('Bgn4zuOYf4jIAi6uUwXM3OIZcGI62rde');
   
+  var args = args.join(' ')
   if (!args) return  message.channel.send(lang.Gif.noArgs);
   message.channel.send(lang.Gif.search)
   .then(m => {
@@ -37,10 +38,10 @@ let page = 1
 let pag = lang.Gif.page
 
 const embed = new Discord.MessageEmbed()
-.setAuthor(lang.Gif.Title + args.join(' '), `https://icdn4.digitaltrends.com/image/api_giphy_logo-1200x630-c-ar1.91.png`)
+.setAuthor(lang.Gif.Title + args, `https://icdn4.digitaltrends.com/image/api_giphy_logo-1200x630-c-ar1.91.png`)
 .setImage(pages[page - 1])
 .setColor(0x36393e)
-.setFooter(pag.replace)
+.setFooter(pag.replace('{{page}}', page).replace('{{pagesL}}', pages.length))
 m.edit(embed).then(msg => {
  
         msg.react('⏪').then(r => {
@@ -56,7 +57,7 @@ m.edit(embed).then(msg => {
                 if (page === 1) return;
                 page--;
                 embed.setImage(pages[page - 1]);
-                embed.setFooter(`Página ${page} de ${pages.length}`);
+                embed.setFooter(pag.replace('{{page}}', page).replace('{{pagesL}}', pages.length))
                 msg.edit(embed);
             });
  
@@ -65,7 +66,7 @@ m.edit(embed).then(msg => {
                 page++;
                 embed.setImage(pages[page - 1]);
                 //embed.setThumbnail(message.author.displayAvatarURL())
-                embed.setFooter(`Página ${page} de ${pages.length}`);
+                embed.setFooter(pag.replace('{{page}}', page).replace('{{pagesL}}', pages.length))
                 msg.edit(embed);
             });
         });
