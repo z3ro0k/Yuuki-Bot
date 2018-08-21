@@ -8,9 +8,8 @@ exports.run = async (bot, message, args) => {
  
  const embed = new MessageEmbed()
      .setDescription(`Estoy en ${guilds} y cuento con ${users} usuarios`)
- 
-   
-    message.channel.send()
+     .setColor(0x36393e) 
+    message.channel.send(embed)
   }
 exports.config = {
   command: "guild",
