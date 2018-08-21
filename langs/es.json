@@ -98,7 +98,7 @@
    },
    "clean": {
      "error": "<:Not:463805182648778783>  | Un bot sólo puede borrar mensajes que tengan menos de 14 días de antigüedad.",
-     "succMessage": "🍇 | **{{username}}**, podada con éxito {{total}} messages!"  
+     "succMessage": "🍇 | **{{username}}**, eliminados con éxito {{total}} messages!"  
    },
    "clyde": {
      "args": "Debes dar una descripción para Clyde",
