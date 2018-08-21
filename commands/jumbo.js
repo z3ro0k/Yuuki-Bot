@@ -2,9 +2,6 @@ const Discord = require('discord.js')
 const db = require('quick.db')
 
 exports.run = (bot, message, args, func) => {
-   const Discord = require('discord.js')
-
-exports.run = (bot, message, args, func) => {
   
   if (args.length < 1) {
        message.channel.send('Please, provide an emoji to expand it');
@@ -34,7 +31,6 @@ exports.run = (bot, message, args, func) => {
 message.channel.send(image)
   
 } 
-}
 exports.config = {
   command: "jumbo",
   aliases: ['jumbo', 'j', 'e'],

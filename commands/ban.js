@@ -16,7 +16,7 @@ exports.run = async (bot, message, args) => {
  
 let user = message.mentions.users.first();
 let razon = args[1]
-let perms = message.member.hasPermission("MANAGE_ROLES_OR_PERMISSIONS");
+let perms = message.member.hasPermission("BAN_MEMBERS");
 
 if(!perms) return message.channel.send(lang.noP.ban);
      

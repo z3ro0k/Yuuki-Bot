@@ -4,13 +4,17 @@ const db = require('quick.db')
 
 module.exports.run = async (bot, message, args) => {
   
+    var langg = await bot.tools.Lang(message.guild)    
+    const lang = require(`../langs/${langg}.json`) 
+    
     const casenumbers = new db.table('CASENUMBERs')
     const guildcasenumber = await casenumbers.fetch(`case_${message.guild.id}`)
     const a = guildcasenumber
     const b = a + 1
     casenumbers.set(`case_${message.guild.id}`, b)
 
-    if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");
+    let perms = message.member.hasPermission("KCIK_MEMBERS");
+    if(!perms) return message.channel.send(lang.noP.ban);
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return errors.cantfindUser(message.channel);
