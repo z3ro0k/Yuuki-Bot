@@ -1,0 +1,153 @@
+{    
+    "title": "Uso do comando",
+    "Error": ["❎ | Ah não, ocorreu um erro: ", ". Tente novamente mais tarde."],
+    "titleComp": "Concluído :white_check_mark:",
+    "info": "Informação de ",
+    "click": "Clique aqui",
+    "noA": ["O usuário ", " não tem foto de perfil."],
+    "Dow": "Baixar",
+    "noP": {
+      "ban": "<:Not:463200957396680714> **| Você não tem permissões para usar este comando.**",
+      "kick": "<:Not:463200957396680714> **| Você não tem permissões para usar este comando.**"
+    },
+    "func": {
+      "actual": ["O idioma atual no servidor", "é"],
+      "prefix": "O prefix atual no servidor **${guild.name}** é **${prefix}**"
+      },
+    "langu": {
+      "name": "Português",
+      "title": "Idioma"
+    },
+    "lang": {
+        "langUpdate": "Idioma atualizado.",
+        "translate": "Se você quiser Yuuki em um idioma que não esteja na lista acima, você pode ajudar a traduzir o Yuuki em [Github] (https://yuuki.github.io)"
+    },
+    "prefix": {
+        "prefixUpdate": "Prefixo atualizado.",
+        "translate": "O prefixo no servidor **${guild.name}** foi atualizado para **${prefix}** se você quiser alterar o prefixo use novamente **${prefix}sprefix <prefixo>**",
+        "title": "Prefixo atual"
+    },
+    "langR": {
+      "langR1": "Qual é a linguagem para estabelecer Yuuki?",
+      "langR2": "Por favor, introduzca un idioma válido!"
+    },
+  "BALL": {
+    "usage": ["<:Not:463805182648778783> | " , ", o uso correto é:  `Yu!8ball <questão>`\n◈ | p. ex. `Yu!8ball A sopa de batata é deliciosa?`\n◈ | Obtenha mais ajuda usando `Yu!help 8ball`"],
+    "preg": "Questão",
+    "res": "Resposta",
+    "ress": ["Sim", "Não", "Por quê?", "Por favor", "Talvez", "Não sei", "Definitivamente?", "¡Claro!" ,"Claro que não"]
+  },
+  "about": {
+    "owner": "Proprietário",
+    "L": "Pacote",
+    "CPU": "Uso da CPU",
+    "C": "Comandos",
+    "guilds": "Servidores",
+    "Ca": "Canais",
+    "Prefix": "Prefixo",
+    "v": "Versão",
+    "M": "Memória",
+    "uptime": "Tempo de atividade",
+    "E": "Eventos",
+    "Mem": "Membros",
+    "WebSite": "Site web",
+    "Vote": "Vote no bot",
+    "use": "Use Yu!vote"
+  },
+  "dbl": {
+    "men": "**<:Not:463200957396680714> Mencione um bot**",
+    "uB": "**<:Not:463200957396680714> Você não é um bot**",
+    "nB": "**<:Not:463200957396680714> O usuário {{user}} não é um bot"  
+  },
+  "dbli": {
+    "title": "Informação da DBL",
+    "ID": "ID",
+    "name": "Nome do bot",
+    "tag": "Discriminador",
+    "L": "Pacote",
+    "prefix": "Prefixo",
+    "upvotes": "Votos",
+    "guilds": "Número de servidores",
+    "CB": "Bot certificado",
+    "Tags": "Rótulos",
+    "owner": "Proprietário(s)",
+    "SD": "Breve descrição",
+    "Links": "Links"
+  }, 
+  "ASCII": {
+    "args": "Escreva algo para transformá-lo em texto ascii",
+    "c14": "Você passou os 14 caracteres permitidos!"
+  },
+  "ban": {
+    "men": "**<:Not:463805182648778783> | Você deve mencionar alguém <:bEmoji:440388028939239434>**",
+    "reazon": "**<:Not:463805182648778783> | Escreva um motivo, `{{prefix}}ban @username [motivo]`**",
+    "noBP": "**<:Not:463805182648778783> | Eu não posso proibir o usuário mencionado.**",
+    "noC": "**<:Not:463805182648778783> | Por favor crie o canal para enviar os mod-logs"
+  },
+   "calculated": {
+     "noArgs": "Você deve fornecer uma equação para resolver na calculadora!a",
+     "errorTitle": "¡Falha matemática!",
+     "ErrorM": "Cálculo incorreto!",
+     "sussT": "Matemática Calculada!",
+     "firtsField": "Eu calculei com sucesso:",
+     "secondField": "A resposta é:"    
+   },
+   "dogandcat": {
+     "CatMessage": "Aqui está o seu gato aleatório <:Cat:429724283003207681>",
+     "DogMessage": "Seu cachorro aleatório está aqui"
+   },
+   "clean": {
+     "error": "<:Not:463805182648778783>  | Um bot só pode eliminar mensagens com menos de 14 dias.",
+     "succMessage": "🍇 | **{{username}}**, eliminado com sucesso {{total}} mensagens!"  
+   },
+   "clyde": {
+     "args": "Você deve dar uma descrição para Clyde",
+    "args60": "Eu só posso lidar com um máximo de 60 caracteres",
+     "NoLoad": "Clique aqui se a imagem não foi carregada."  
+   },
+    "Gif": {
+        "noArgs": "Por favor, insira um termo para pesquisar o gif",
+        "search": ":arrows_counterclockwise: Pesquisando...",
+        "noTerms": "¡Eu não encontrei nenhum resultado!",
+        "Title": "Resultado da pesquisa de gifs para: ",
+        "page:" "Página {{page}} de {{pagesL}}"
+    },
+     "Github": {
+        "nF": "Nao encontrado",
+        "nE": "O usuário não existe!",
+        "args": "Por favor, forneça um nome de usuário/organização",
+         "infoEmbed": {
+             "f": "Seguidores",
+             "F": "A seguir",
+             "C": "Criado em",
+             "L": "Localização",
+             "Com": "Negócio",
+             "rP": "Repositórios públicos",
+              "WebN": "Site não estabelecido" 
+           }
+       },  
+      "hackban": {
+          "user": "¿Qual usuário você quer hackbane? Digite seu id!",
+          "uB": "¡Por favor, não me bani...!",
+          "uA": "Eu não ousaria te hackear...!",
+          "days": "¿Quantos dias deve esperar para limpar o histórico de mensagens? (máx: 7)",
+          "reason": "¿Qual é o motivo?",
+          "cancel": "¡Comando Cancelado!",
+          "succ": "Banido com sucesso para **{{user}}**! 👋"
+     },
+    "hook": {
+        "messageD": "{{prefix}}hook <titulo>, <mensagem>, [HEXcolor], [avatarURL]\n\n**<> = se precisa\n[] = é opcional**" 
+    },
+    "jumbo": {
+        "Nemoji": "Por favor, forneça um emoji para expandi-lo",
+        "Demoji": "Eu não posso expandir emojis de discord incorporados.",
+        "Iemoji": "Forneça um emoji válido.",
+        "Ni": "¡Eu não consigo identificar o emoji!"
+    },
+  "kick": {
+    "men": "**<:Not:463805182648778783> | Você deve mencionar alguém!**",
+    "reazon": "**<:Not:463805182648778783> | Escreva um motivo, `{{prefix}}kick @username [motivo]`**",
+    "noBP": "**<:Not:463805182648778783> | Eu não posso tirar o usuário mencionado.**",
+    "noC": "**<:Not:463805182648778783> | Por favor, crie o canal para enviar os mod-logs**"
+  }
+}

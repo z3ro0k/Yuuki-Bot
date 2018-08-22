@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
   
   if(!perms) return message.channel.send(lang.noP.ban);
    
- if (!['en', 'es'].includes(args[0])) return message.channel.send({
+ if (!['en', 'es', 'pt'].includes(args[0])) return message.channel.send({
             embed: {
                 title: "ERROR!",
                 color: 0xE50000,
