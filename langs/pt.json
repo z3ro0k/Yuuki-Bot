@@ -20,7 +20,7 @@
     },
     "lang": {
         "langUpdate": "Idioma atualizado.",
-        "translate": "Se você quiser Yuuki em um idioma que não esteja na lista acima, você pode ajudar a traduzir o Yuuki em [Github] (https://yuuki.github.io)"
+        "translate": "Se você quiser Yuuki em um idioma que não esteja na lista acima, você pode ajudar a traduzir o Yuuki em [Github](https://yuuki.github.io)"
     },
     "prefix": {
         "prefixUpdate": "Prefixo atualizado.",
@@ -110,7 +110,7 @@
         "search": ":arrows_counterclockwise: Pesquisando...",
         "noTerms": "¡Eu não encontrei nenhum resultado!",
         "Title": "Resultado da pesquisa de gifs para: ",
-        "page:" "Página {{page}} de {{pagesL}}"
+        "page": "Página {{page}} de {{pagesL}}"
     },
      "Github": {
         "nF": "Nao encontrado",
