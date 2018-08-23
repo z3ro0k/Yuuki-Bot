@@ -1,6 +1,7 @@
 const db = require('quick.db')
 exports.run = (bot, message, args, discord) => {
   let id = args.join(' ');
+  if(!id) return message.channel.send()
   if (!message.member.hasPermission(["BAN_MEMBERS"], false, true, true)) return message.channel.send(`You don't have permission to use this command.`);
   let member = bot.fetchUser(id)
   .then(user => {
