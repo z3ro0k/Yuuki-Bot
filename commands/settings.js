@@ -76,10 +76,10 @@ const settings = new Discord.MessageEmbed()
 .addField('Command:', prefix + 'rolebots <rolename>', true)
 
 .addField('StarBoard', starboardChannel, true)
-.addField('Command:', prefix + 'starboard set #channel', true)
+.addField('Coming Soon..', "Imagen", true)
 
-.addField('Coming Soon..', "Imagen")
-.addField(' ', prefix + 'wtype <image/embed> ')
+.addField('Command:', prefix + 'starboard set #channel', true)
+.addField('Coming Soon..', prefix + 'wtype <image/embed> ', true)
 
 .addField('Texto de bienvenida', textjoin)
 .setColor(0x36393e)
