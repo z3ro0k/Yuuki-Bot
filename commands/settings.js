@@ -8,7 +8,6 @@ exports.run = async (bot, message, args) => {
   
   
   
-  
   let starboardChannel
   
   /*Welcome Logs channel*/
@@ -39,7 +38,7 @@ exports.run = async (bot, message, args) => {
   
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
-        if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Mod-logs disable'
+        if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Welcome logs disable'
         else mod = welcomeSettingsFetched
    
 
