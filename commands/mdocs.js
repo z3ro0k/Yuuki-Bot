@@ -14,7 +14,7 @@ exports.run = async (bot, msg, args) => {
     
   try {
 			const { body } = await snekfetch
-				.get('https://developer.mozilla.org/en-US/search.json')
+				.get('https://developer.mozilla.org/es-ES/search.json')
 				.query({
 					q: artc,
 					locale: 'es-ES',
