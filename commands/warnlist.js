@@ -1,9 +1,9 @@
 const db = require('quick.db');
 const Discord = require('discord.js')
-const send = require('discord.js')
+
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission("KICK_MEMBERS")) return send(message.channel, "Sorry, but you do not have valid permissions! If you believe this is an error, contact an owner.")
+    if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Sorry, but you do not have valid permissions! If you believe this is an error, contact an owner.")
 
     let user = message.mentions.users.first()
     if (!user) return message.channel.send('**Please mention a user!**')
@@ -15,7 +15,6 @@ module.exports.run = async (client, message, args) => {
 
         if (!args[1]) return message.channel.send(`**Please specify which warning do you want to see! This user have ${i} warnings!**`)
       
-        if (i === 5) return message.channel.send(`**Please specify which warning do you want to see! This user have ${i} warnings!**`)
     })
 
 
