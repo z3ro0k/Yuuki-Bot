@@ -35,7 +35,7 @@
     "usage": ["<:Not:463805182648778783> | " , ", the correct usage is: `Yu!8ball <question>`\n◈ | e.g. `Yu!8ball Is potato soup yummy?`\n◈ | Get more help using `Yu!help 8ball`"],
     "preg": "Question",
     "res": "Answer",
-    "ress": ["Yes", "Not", "Why?", "Please", "Perhaps", "I don't know", "Definitely.", "¡of course!", "Of course you don't"]
+    "ress": ["Yes", "Not", "Why?", "Please", "Perhaps", "I don't know", "Definitely.", "Of course!", "Of course not"]
   },
   "about": {
     "owner": "Owner",
@@ -50,13 +50,13 @@
     "uptime": "Activity time",
     "E": "Events",
     "Mem": "Members",
-    "WebSite": "WebSite",
+    "WebSite": "Website",
     "Vote": "Vote for the bot" ,
     "use": "Use Yu!vote"
   },
   "dbl": {
     "men": "**<:Not:463200957396680714> Mention a bot.**",
-    "uB": "**<:Not:463200957396680714> You're not a bot.**",
+    "uB": "**<:Not:463200957396680714> You are not a bot.**",
     "nB": "**<:Not:463200957396680714> The user {{user}} is not a bot" 
   },
   "dbli": {
@@ -115,7 +115,7 @@
      "Github": {
         "nF": "Not Found",
         "nE": "The user does not exist",
-        "args": "Please provide a username/org",
+        "args": "Please provide a username/organization",
          "infoEmbed": {
              "f": "Followers",
              "F": "Following",
@@ -127,16 +127,16 @@
            }
        },  
       "hackban": {
-          "user": "Which user do you want to hackbanear enter their id?",
+          "user": "Which user do you want to hackban? Provide their id",
           "uB": "Please don't ban me....!",
           "uA": "I wouldn't dare hack you....!",
           "days": "How many days do I have to wait to delete the message history (max: 7)?",
-          "reason": "What's the motive?",
+          "reason": "What's the reason?",
           "cancel": "Command Cancelled!",
-          "succ": "Banned successfully at **{{user}}**! 👋"
+          "succ": "**{{user}}** has been sucessfully banned! 👋"
      },
     "hook": {
-        "messageD": "{{prefix}}hook <title>, <message>, [HEXcolor], [avatarURL]\n\n**<> is required\n[] is optional**" 
+        "messageD": "{{prefix}}hook <title>, <message>, [HEXcolor], [avatarURL]\n\n**<> = Required\n[] = Optional**" 
     },
     "jumbo": {
         "Nemoji": "Please provide an emoji to expand it",

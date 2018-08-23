@@ -30,8 +30,7 @@ exports.run = async (bot, message, args) => {
        const embed = new MessageEmbed()
         .setTitle('Texto de salida actualizado con éxito a')
         .setDescription(i)
-        //.addField('Ajustes',`{server:name} = ${message.guild.name}\n{server:membercount} = ${message.guild.members.size} members\n{user:mention} = ${message.member.user}\n{user:username} = ${message.member.user.username}\n{user:tag} = ${message.member.user.tag}`)
-        .setThumbnail()
+        .setThumbnail(message.guild.iconURL())
       message.channel.send({embed})
     })
 
