@@ -11,23 +11,12 @@ app.get("/", (request, response) => {
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/index.html');
 });
+app.listen(process.env.PORT);
 
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
 }, 280000);
-/* ========================Glitch send status===============================*/
 
-const path = require('path');
-
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(50451, () => {
-  console.info('Running on port 50451');
-});
-app.use('/api/discord', require('./api/discord'));
-/*==============================dashboard=====================================*/
 
 const Discord = require('discord.js');
 const fs = require('fs');
