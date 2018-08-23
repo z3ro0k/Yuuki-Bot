@@ -48,6 +48,8 @@ module.exports.run = async (client, message, args) => {
     if (args[1] === '1') return message.channel.send(embed1)
     if (args[1] === '2') return message.channel.send(embed1)
     if (args[1] === '3') return message.channel.send(embed1)
+    if (args[1] === '4') return message.channel.send(embed1)
+    if (args[1] === '5') return message.channel.send(embed1)
 
     else {
         message.channel.send(embed4)
