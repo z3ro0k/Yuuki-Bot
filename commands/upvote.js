@@ -38,7 +38,7 @@ exports.run = async (client, message, args ) => {
     var certified = body.certifiedBot
     if(certified === false) certified = '<:Not:463805182648778783> No'
     if(certified === true) certified = '<:Certified:464296361899327498> Yes'
-    console.log(body3)
+    //console.log(body3)
     let embed = new Discord.MessageEmbed()
    .setTitle('Vote System')
    .setDescription(`**Vote system Características**\n• El bot sera más conocido.\n• Para que el bot cresca Cuenta con **${client.guilds.size}** guilds actuales\n• ¡Obtienes más características increíbles todos los días!`)
