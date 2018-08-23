@@ -8,7 +8,7 @@ exports.run = async (bot, msg, args) => {
         petImg = await patFetch.json();
       
      var member = msg.mentions.users.first() || msg.guild.members.get(args.join(' ')) 
-     if(member.id === msg.author.id) return msg.channel.send()
+    // if(member.id === msg.author.id) return msg.channel.send()
      
       return msg.embed({
         description: member
