@@ -6,6 +6,20 @@ exports.run = async (bot, message, args) => {
    
   let prefix = await bot.tools.GuildPrefix(message.guild)
   
+ let type = await db.fetch(`welcomeType_${message.guild.id}`);
+  
+    if (type !== 'embed' ) {
+        
+        const embed = new MessageEmbed()
+        .setTitle('<:off:442082928323985408>Mod-logs desactivados')
+        .setColor(0x36393e)
+        .setThumbnail('https://cdn.discordapp.com/emojis/442082928323985408.png')
+        .setDescription('Por favor activa los mod-logs antes de usar este comando, usa: `Yu!welcome`')
+        message.channel.send({ embed: embed });
+
+
+    } else {
+      
     if (!perms) return  bot.tools.embed(message.channel, '**This command requires the Administrator role**') 
     
   if (!args.join(" ") && args.join(" ").toUpperCase() !== 'NONE') { 
@@ -34,7 +48,7 @@ exports.run = async (bot, message, args) => {
         .setThumbnail()
       message.channel.send({embed})
     })
-
+  }
 }
 exports.config = {
   command: "welcometext",
