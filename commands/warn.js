@@ -61,13 +61,13 @@ exports.run = async (bot, message, args, func) => {
    
   if(num1 === 3){
     let muterole = message.guild.roles.find(role => role.name === "Muted");
-    if(!muterole)  message.reply("El rol **Muted** no existe en el servidor.");
+    if(!muterole)  return message.reply("El rol **Muted** no existe en el servidor.");
 
     let mutetime = "10m";
     user.roles.add(message.guild.roles.find(role => role.name === "Muted"));
     
     const MuteEmbed = new Discord.MessageEmbed()
-        .setDescription(` El usuario **${user.username}** fue temporalmente silenciado por \`10m\' por alcanzar 3 warns`)
+        .setDescription(` El usuario **${user.userusername}** fue temporalmente silenciado por \`10m\' por alcanzar 3 warns`)
         .setColor(0x36393e)
     modlog.send(MuteEmbed);
 
