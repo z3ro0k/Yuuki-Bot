@@ -56,6 +56,6 @@ const search = await snekfetch
 		}
 	};
 exports.config = {
-  command: "steam",
-  aliases: ['steam','gamesteam']
+  command: "steam-game",
+  aliases: ['gamesteam']
 }
