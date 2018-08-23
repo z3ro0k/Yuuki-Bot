@@ -9,6 +9,7 @@ exports.run = async (bot, msg, args) => {
         kissImg = await kissFetch.json();
 var member = msg.mentions.users.first() || msg.guild.members.get(args.join(' ')) 
   //console.log(member)
+if(member.id === msg.author.id) return msg.channel.send()
  return msg.channel.send({ embed: {
         description: member
           ? `${member.username}! You were kissed by ${msg.member.displayName} 💋!` : `${msg.member.displayName} you must feel alone... Have a 🐈`,
