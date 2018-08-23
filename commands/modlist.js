@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js')
 const isStaff = (msg) => {
 	let permissions = msg.permissions.serialize();
 	return permissions.KICK_MEMBERS ||
@@ -26,7 +27,9 @@ const getStatus = (msg, map = true) => {
 exports.run = (client, message) => {
 	let mods = message.guild.members.array().filter(msg => isStaff(msg) && !msg.user.bot).sort((a, b) => sortMap[getStatus(a, false)] > sortMap[getStatus(b, false)]);
 	mods = mods.map(msg => `${getStatus(msg)} **${msg.user.username}#${msg.user.discriminator}**`);
-	message.channel.send([`Moderators for **${message.guild.name}** :\n`].concat(mods));
+  const embed = new MessageEmbed()
+    .setDescription([`Moderators for **${message.guild.name}** :\n`].concat(mods))
+	message.channel.send(embed);
 };
 
 exports.config = {

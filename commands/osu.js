@@ -9,7 +9,7 @@ exports.run = async (bot, message, args) => {
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return parts.join(".");
     }
-  
+  if(!args.join(' ')) return
     osuApi.getUser({u: args.join(" ")}).then(user => {
         const pais = user.country;
         message.channel.startTyping();
