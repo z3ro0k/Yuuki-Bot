@@ -60,12 +60,16 @@ exports.run = async (bot, message, args, func) => {
         user.send(`**You have been warned in ${message.guild.name}: ${reason}!**`)
    
   if(num1 === 3){
-    let muterole = message.guild.roles.find(role => role.name === "muted");
-    if(!muterole)  message.reply("El rol **muted** no existe en el servidor.");
+    let muterole = message.guild.roles.find(role => role.name === "Muted");
+    if(!muterole)  message.reply("El rol **Muted** no existe en el servidor.");
 
     let mutetime = "10m";
-    user.roles.add(message.guild.roles.find(role => role.name === "muted"));
-    message.channel.send(`<@${user.id}> fue silenciado temporalmente!`);
+    user.roles.add(message.guild.roles.find(role => role.name === "Muted"));
+    
+    const MuteEmbed = new Discord.MessageEmbed()
+        .setDescription(` El usuario **${user.username}** fue temporalmente silenciado por \`10m\' por alcanzar 3 warns`)
+        .setColor(0x36393e)
+    modlog.send(MuteEmbed);
 
     setTimeout(function(){
       user.roles.remove(muterole)
@@ -75,7 +79,10 @@ exports.run = async (bot, message, args, func) => {
   if(num1 === 5){
     var days = '7'
     await message.guild.members.ban(user.id, { days, reason });
-    message.reply(`<@${user.id}> a sido baneado del servidor por pasar las 5 warns.`)
+     const MuteEmbed = new Discord.MessageEmbed()
+        .setDescription(` El usuario **${user.user.username}** a sido baneado del servidor por pasar las 5 warns.`)
+        .setColor(0x36393e)
+    modlog.send(MuteEmbed);
    }
   }
 }
