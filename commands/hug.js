@@ -21,6 +21,6 @@ var member = msg.mentions.users.first() || msg.guild.members.get(args.join(' '))
     }
 }
 module.exports.config = {
-  command: "slap",
-  aliases: ['slap']
+  command: "hug",
+  aliases: ['hug']
 }
