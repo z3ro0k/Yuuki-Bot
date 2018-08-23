@@ -50,7 +50,7 @@ bot.on('message', async (message) => {
   
   const mentionPrefix = new RegExp(`^<@!?${bot.user.id}> `)
             .exec(message.content);
-        const prefixes = ['yuuki ', `${mentionPrefix}`, 'Yu!', prefixx];
+        const prefixes = ['yuuki ', `${mentionPrefix}`, prefixx];
         let prefix = false;
 
         for (const i of prefixes) {
