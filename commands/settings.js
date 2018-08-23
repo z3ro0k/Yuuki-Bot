@@ -38,7 +38,7 @@ exports.run = async (bot, message, args) => {
   
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
-        if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Welcome logs disable'
+        if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Welcome-logs disable'
         else mod = welcomeSettingsFetched
    
 
@@ -77,6 +77,9 @@ const settings = new Discord.MessageEmbed()
 
 .addField('StarBoard', starboardChannel, true)
 .addField('Command:', prefix + 'starboard set #channel', true)
+
+.addField(' ', "Imagen")
+.addField(' ', prefix + 'wtype <image/embed> ')
 
 .addField('Texto de bienvenida', textjoin)
 .setColor(0x36393e)
