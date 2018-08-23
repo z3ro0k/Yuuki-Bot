@@ -2,24 +2,23 @@ const Discord = require('discord.js')
 const db = require('quick.db')
 const fetch = require('node-fetch')
       
-exports.run = async (bot, message, args) => {
+exports.run = async (bot, msg, args) => {
   
+    try {
   const kissFetch = await fetch('https://nekos.life/api/v2/img/kiss'),
         kissImg = await kissFetch.json();
-
-  
- return msg.embed({
+var member = msg.mentions.users.first() || msg.guild.members.get(args.join(' ')) 
+  //console.log(member)
+ return msg.channel.send({ embed: {
         description: member
-          ? `${member.displayName}! You were kissed by ${msg.member.displayName} 💋!` : `${msg.member.displayName} you must feel alone... Have a 🐈`,
+          ? `${member.username}! You were kissed by ${msg.member.displayName} 💋!` : `${msg.member.displayName} you must feel alone... Have a 🐈`,
         image: {url: member ? kissImg.url : 'http://gifimage.net/wp-content/uploads/2017/06/anime-cat-gif-17.gif'},
         color: msg.guild ? msg.guild.me.displayColor : 10610610
-      }, `<@${member ? member.id : msg.author.id}>`);
+      }}/*, `<@${member ? member.id : msg.author.id}>`*/);
   
     } catch (err) {
-      stopTyping(msg);
-
+    console.log(err)
       return msg.reply('something went wrong getting a kiss image 💔');
-    }
   }
 } 
 exports.config = {
