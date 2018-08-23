@@ -78,7 +78,7 @@ const settings = new Discord.MessageEmbed()
 .addField('StarBoard', starboardChannel, true)
 .addField('Command:', prefix + 'starboard set #channel', true)
 
-.addField(' ', "Imagen")
+.addField('Coming Soon..', "Imagen")
 .addField(' ', prefix + 'wtype <image/embed> ')
 
 .addField('Texto de bienvenida', textjoin)
