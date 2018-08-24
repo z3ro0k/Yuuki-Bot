@@ -15,7 +15,7 @@ if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
   
     let msgID = messageReaction.message.id;
     
-    // Configure Database
+    
     await db.subtract(`starItem_${msgID}`, 1, { target: '.reactions' })
     let newItem = await db.fetch(`starItem_${msgID}`)
     if (newItem.reactants instanceof Array) newItem.reactants.splice(newItem.reactants.indexOf(user.tag), 1)

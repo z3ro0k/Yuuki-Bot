@@ -4,21 +4,17 @@ const tools = require('../functions.js')
 
 exports.run = async (bot, messageReaction, user) => {
 
-//console.log(messageReaction)
-  if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
+
+  if (messageReaction.emoji.toString() !== '⭐') return; 
   
-  // Return Statements  
-  
-  
-  // Fetch Data
+
   let item = await db.fetch(`starItem_${messageReaction.message.id}`)
   let target = await db.fetch(`starboard_${messageReaction.message.guild.id}`)
   let requiredRole = await db.fetch(`starStarter_${messageReaction.message.guild.id}`)
   let channel = messageReaction.message.guild.channels.get(target.channel) || false;
   
-  // Return Statements
- if (!target.enabled) return; // Not Enabled
- if (!channel === null) return;// No Channel
+ if (!target.enabled) return; 
+ if (!channel === null) return;
   
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
@@ -36,7 +32,7 @@ exports.run = async (bot, messageReaction, user) => {
   else if (messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === requiredRole)) hasRole = true;
   else hasRole = false;
   
-  if (item === null && hasRole) { // Starboard message not created
+  if (item === null && hasRole) { 
     db.set(`starItem_${messageReaction.message.id}`, { reactions: 1, reactants: [user.tag], message: { id: messageReaction.message.id, content: messageReaction.message.content }, author: { id: messageReaction.message.author.id, tag: messageReaction.message.author.tag } })
     
       embed.setDescription(messageReaction.message.content)
@@ -56,7 +52,7 @@ exports.run = async (bot, messageReaction, user) => {
     console.log(item)
     let msgID = messageReaction.message.id;
     
-    // Configure Database
+
     await db.add(`starItem_${msgID}`, 1, { target: '.reactions' })
     let newItem = await db.fetch(`starItem_${msgID}`)
     newItem.reactants.push(user.tag)
@@ -72,7 +68,7 @@ exports.run = async (bot, messageReaction, user) => {
     
     db.set(`starItem_${msgID}`, newItem)
     
-  } else if (!messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === 'Moderators')) {
+  } else if (!messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === 'Moderators' || '+' || 'Mods')) {
     embed.setFooter(`Lo sentimos, solo las personas con el rol ${requiredRole} pueden ser los primeros en destacar el mensaje.`)
     return messageReaction.message.channel.send(embed).then(msg => {
       msg.delete({timeout: 10000})
