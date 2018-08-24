@@ -20,7 +20,7 @@ if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
     let newItem = await db.fetch(`starItem_${msgID}`)
     if (newItem.reactants instanceof Array) newItem.reactants.splice(newItem.reactants.indexOf(user.tag), 1)
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
       .setTitle('Starboard')
       .setDescription(newItem.message.content)
