@@ -5,7 +5,7 @@ exports.run = async (client, member) => {
    
    var sourceChannel = member.guild.channels.get(channelID)
   if(!sourceChannel) return;
-  /*
+  
  const botUser = member.user.bot
  
   if(member.user.bot) {
@@ -18,14 +18,14 @@ exports.run = async (client, member) => {
                 console.log("Bot Role: A guild tried to auto-role an invalid role to someone.") 
             }
         }
-  var embed = new MessageEmbed()
+  /*var embed = new MessageEmbed()
 	    .setAuthor("Bot Joined", 'https://cdn.discordapp.com/emojis/360209976012308494.png')
 	    .setColor(0x36393e)
 	    .setTimestamp()
 	    .setDescription(`The bot ${member.user} (**${member.user.tag}**) has joined the server\nThere are now **${member.guild.members.size}** users within this server!`)
       .setThumbnail(member.user.displayAvatarURL())
       .setFooter(member.guild.name, member.guild.iconURL())
-	 return sourceChannel.send({ embed: embed }) 
+	 return sourceChannel.send({ embed: embed }) */
   }
 
   const autoRUID = await client.tools.autoRoleUsers(member.guild) 
@@ -39,6 +39,7 @@ exports.run = async (client, member) => {
             }
 
         }
+  /*
 let text
  const textjoin = await client.tools.welcomeText(member.guild) 
   text = textjoin.replace('{user:tag}', member.user.tag).replace('{server:membercount}', member.guild.memberCount).replace('{server:name}', member.guild.name).replace('{user:mention}', member.user).replace('{user:username}', member.user.username)
