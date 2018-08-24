@@ -11,7 +11,7 @@ let name = args[0]
 	req('https://api.github.com/users/' + name, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0' }}, (e, r, b)=> {
 		let contenu = JSON.parse(b)
 		if(contenu.message === "Not Found") {
-			message.channel.send(lang.Github.nE)
+		return	message.channel.send(lang.Github.nE)
 		} if (!name) {
 			message.channel.send(lang.Github.args)
 		} else {
