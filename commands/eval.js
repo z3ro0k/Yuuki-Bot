@@ -16,8 +16,7 @@ const snekfetch = require('snekfetch');
 const get = require('snekfetch');
 exports.run = async (bot, message, args, queue) => {
 
-  const DBL = require("dblapi.js");
-  const dbl = new DBL(apis.DBLAPI, bot);
+  
   
     var embed = new Discord.MessageEmbed()
         .setTitle("Restricted")

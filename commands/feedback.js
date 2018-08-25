@@ -8,18 +8,14 @@ exports.run = async (client, msg) => {
  const feedback = msg.content.split(' ').slice(1).join(' ');
  const avatar = client.users.get('322203879208910849').avatarURL({ format: 'png', size: 2048 });
  const user = client.users.get('322203879208910849').tag     
-    var options = {
-                method: 'GET',
-                url: `https://discordbots.org/api/bots/${client.user.id}/votes?onlyids=1`,
-                json: true,
-                headers: {
-                   Authorization: `${dbotstoken}`
-                }
-            };  
-  request(options, function(error, response, body) {
+ 
+ if (!feedback) return msg.channel.send(`Requiero retroalimentación. Por favor, di algo sobre mí :D`);
+  
+  client.dbl.hasVoted(msg.author.id).then(voted => {
    
-  if (!feedback) return msg.channel.send(`Requiero retroalimentación. Por favor, di algo sobre mí :D`);
-      
+  
+  if (voted === true)  {
+    
   var feedbackE = new Discord.MessageEmbed()
     .setTitle(msg.author.tag + ' suggested:')
     .setColor(0x36393E)
@@ -29,6 +25,11 @@ exports.run = async (client, msg) => {
     .addField('Server:', `${msg.guild.name} [${msg.guild.id}]`, true)
     .addField('Channel:', `${msg.channel.name} [${msg.channel.id}]`, true);
       
+     return channel.send({embed: feedbackE}).then(msg.channel.send("Gracias por su opinión!"));
+    
+  }
+  if (voted === false) {
+    
   var notUpvoter = new Discord.MessageEmbed()
     .setAuthor(msg.author.tag, msg.author.displayAvatarURL())
     .setURL('https://discordbots.org/bot/365949788807757834')
@@ -36,16 +37,12 @@ exports.run = async (client, msg) => {
     .addField("No has subestimado al Bot de Yuuki!", "Mis desarrolladores lo han hecho para que sólo los votantes puedan usar la retroalimentación!")
     .addField("Vota Aqui:", "https://discordbots.org/bot/365949788807757834")
     .setFooter(`Mi desarollador principal es, ${user} hizo el deseo ejecutivo de hacer esto!!`, avatar);
+    
+   return msg.channel.send({embed: notUpvoter});
 
-let id = body.map(u => u.id)
+  } 
 
-  if (!id.includes(msg.author.id)) {
-    msg.channel.send({embed: notUpvoter});
-  } else {
-    channel.send({embed: feedbackE}).then(msg.channel.send("Gracias por su opinión!"));
-  }
-  //console.log(body)
-  })
+ }); 
 };
 
 exports.config = {

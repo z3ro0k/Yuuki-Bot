@@ -20,6 +20,7 @@ setInterval(() => {
 
 const Discord = require('discord.js');
 const fs = require('fs');
+const apis = require('./data/apis.json')
 const bot = new Discord.Client({ 
     owner: "322203879208910849",
     disableEveryone: true,
@@ -34,6 +35,9 @@ const db = require('quick.db')
 const queue = new Map();
 let cooldown = new Set();
 
+const DBL = require("dblapi.js");
+
+
 bot.tools = require('./functions.js');
 bot.tools.loadCmds(bot)
 bot.tools.eventsLoad(bot)
@@ -41,10 +45,10 @@ bot.ownerID = '322203879208910849';
 bot.color = 0xfcc7fb;
 
 bot.idiotAPI = new idioticApi.Client('OuuLWREjnx5BNhGl1B7C', { dev: true });
+bot.dbl = new DBL(apis.DBLAPI, bot);
 
 bot.on('message', async (message) => {
 
-  c
 
   if (message.channel.type != 'text') return;
   
