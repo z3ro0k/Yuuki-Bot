@@ -5,8 +5,7 @@ const isStaff = (msg) => {
 		permissions.BAN_MEMBERS ||
 		permissions.ADMINISTRATOR ||
 		permissions.MANAGE_CHANNELS ||
-		permissions.MANAGE_GUILD ||
-		permissions.MANAGE_MESSAGES;
+		permissions.MANAGE_GUILD 
 };
 
 const statusMap = {
@@ -28,13 +27,13 @@ exports.run = async (client, message) => {
   var langg = await client.tools.Lang(message.guild)    
     const lang = require(`../langs/${langg}.json`) 
     
-    var message = lang.modslist.title
+    var text = lang.modslist.title
     
 	let mods = message.guild.members.array().filter(msg => isStaff(msg) && !msg.user.bot).sort((a, b) => sortMap[getStatus(a, false)] > sortMap[getStatus(b, false)]);
 	mods = mods.map(msg => `${getStatus(msg)} **${msg.user.username}#${msg.user.discriminator}**`);
   
   const embed = new MessageEmbed()
-    .setDescription([`weones`].concat(mods))
+    .setDescription([`${text.replace('{{guild}}', message.guild.name)}`].concat(mods))
 	message.channel.send(embed);
 };
 
