@@ -7,7 +7,7 @@ exports.run = async (bot, message, args) => {
  var users = bot.users.size
  
  const embed = new MessageEmbed()
-     .setDescription(`Estoy en ${guilds} y cuento con ${users} usuarios`)
+     .setDescription(`Estoy en ${guilds} servidores y cuento con ${users} usuarios`)
      .setColor(0x36393e) 
     message.channel.send(embed)
   }

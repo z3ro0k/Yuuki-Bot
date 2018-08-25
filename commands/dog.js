@@ -4,11 +4,14 @@ const db = require('quick.db')
 
 exports.run = async (bot, message, args) => {
   
+   var langg = await bot.tools.Lang(message.guild)    
+  const lang = require(`../langs/${langg}.json`) 
+  
 randomPuppy().then(url =>{
   const dog = new Discord.MessageEmbed()
   .setImage(url)
   .setThumbnail(url)
-  .setDescription('Tu perro random esta aqui <a:Perrosalu2:442155932495904768>')
+  .setDescription(lang.dogandcat.DogMessage)
       message.channel.send(dog);
 })
 }

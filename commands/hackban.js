@@ -3,20 +3,23 @@ var bCase = 2;
 const { IdOwner } = require('../botconfig.js')
 const db = require('quick.db')
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
         
+   var langg = await client.tools.Lang(message.guild)    
+  const lang = require(`../langs/${langg}.json`) 
+  
         const member = args[0]
         const days = args[1]
         const reason = args[2]
         
-     if(!message.guild) { message.author.id !== IdOwner
+     if(!message.guild) { 
         return message.member.hasPermission('BAN_MEMBERS') || message.author.id !== IdOwner
     }
-      if(!member) return message.channel.send('Which user do you want to hackban?\n');
-      if (member === client.user.id) return message.channel.send('Please don\'t hackban me...!');
-      if (member === message.author.id) return message.channel.send('I wouldn\'t dare hackban you...!');
-      if(!days) return message.channel.send('How much days to delete message history? (max: 7)\n');
-      if(!reason) return message.channel.send('What is the reason?\n');
+      if(!member) return message.channel.send(lang.hackban.user);
+      if (member === client.user.id) return message.channel.send(lang.hackban.uB);
+      if (member === message.author.id) return message.channel.send(lang.hackban.uA);
+      if(!days) return message.channel.send(lang.hackban.days);
+      if(!reason) return message.channel.send(lang.hackban.reason);
       
   
 
@@ -27,11 +30,11 @@ exports.run = (client, message, args) => {
                 time: 30000
             });
 
-            if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!');
-            if (['n', 'no'].includes(msgs.first().content.toLowerCase())) return message.channel.send('Cancelled command!')
+            if (!msgs.size || !['y', 'yes'].includes(msgs.first().content.toLowerCase())) return message.channel.send(lang.hackban.cancel);
+            if (['n', 'no'].includes(msgs.first().content.toLowerCase())) return message.channel.send(lang.hackban.cancel)
  
             await message.guild.members.ban(usr.id, { days, reason });
-            return await message.channel.send(`Successfully banned **${usr.tag}**! 👋`);
+            return await message.channel.send(lang.hackban.succ);
         })
 
 

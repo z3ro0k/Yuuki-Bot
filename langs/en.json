@@ -1,153 +1,366 @@
-{   
-   "title": "Command Usage",
-   "Error": ["❎ | Oh no, there's been a mistake: ", ". Please try again later."],
-   "titleComp": "Complete :white_check_mark:",
-   "info": "Information from ",
-   "click": "Click Here",
-   "noA": ["The User ", " has no avatar."],
-   "Dow": "Download",
-  "noP": {
-      "ban": "<:Not:463200957396680714> **| You do not have permission to use this command.**",
-      "kick": "<:Not:463200957396680714> **| You do not have permission to use this command.**"
-    },
-    "lang": {
-        "langUpdate": "Language updated.",
-        "translate": "If you want Yuuki in a language that isn't on the list above, you can help translate Yuuki on [Github](https://yuuki.github.io)"
-    },
-    "prefix": {
-        "prefixUpdate": "Updated prefix.",
-        "translate": "The prefix on the server **${guild.name}** has been updated to **${prefix}** if you want to change the prefix use again **${prefix}sprefix <Prefix>**",
-        "title": "Current Prefix"
-    },
-    "langR": {
-      "langR1": "What is the language to set up Yuuki",
-      "langR2": "Please enter a valid language type!"
-    },
-    "func": {
-      "actual": ["The current language on the server", "is"],
-      "prefix": "The current prefix on the server **${guild.name}** is **${prefix}**"
+{  
+   "title":"Command Usage",
+   "Error":[  
+      "❎ | Oh no, there's been a mistake: ",
+      ". Please try again later."
+   ],
+   "titleComp":"Complete :white_check_mark:",
+   "info":"Information from ",
+   "click":"Click Here",
+   "noA":[  
+      "The User ",
+      " has no avatar."
+   ],
+   "Dow":"Download",
+   "noP":{  
+      "ban":"<:Not:463200957396680714> **| You do not have permission to use this command.**",
+      "kick":"<:Not:463200957396680714> **| You do not have permission to use this command.**"
+   },
+   "lang":{  
+      "langUpdate":"Language updated.",
+      "translate":"If you want Yuuki in a language that isn't on the list above, you can help translate Yuuki on [Github](https://yuuki.github.io)"
+   },
+   "prefix":{  
+      "prefixUpdate":"Updated prefix.",
+      "translate":"The prefix on the server **${guild.name}** has been updated to **${prefix}** if you want to change the prefix use again **${prefix}sprefix <Prefix>**",
+      "title":"Current Prefix"
+   },
+   "langR":{  
+      "langR1":"What is the language to set up Yuuki",
+      "langR2":"Please enter a valid language type!"
+   },
+   "func":{  
+      "actual":[  
+         "The current language on the server",
+         "is"
+      ],
+      "prefix":"The current prefix on the server **${guild.name}** is **${prefix}**"
+   },
+   "langu":{  
+      "name":"English",
+      "title":"Language"
+   },
+   "BALL":{  
+      "usage":[  
+         "<:Not:463805182648778783> | ",
+         ", the correct usage is: `Yu!8ball <question>`\n◈ | e.g. `Yu!8ball Is potato soup yummy?`\n◈ | Get more help using `Yu!help 8ball`"
+      ],
+      "preg":"Question",
+      "res":"Answer",
+      "ress":[  
+         "Yes",
+         "Not",
+         "Why?",
+         "Please",
+         "Perhaps",
+         "I don't know",
+         "Definitely.",
+         "Of course!",
+         "Of course not"
+      ]
+   },
+   "about":{  
+      "owner":"Owner",
+      "L":"Library",
+      "CPU":"CPU Usage",
+      "C":"Commands",
+      "guilds":"Servers",
+      "Ca":"Channels",
+      "Prefix":"Prefix",
+      "v":"Version",
+      "M":"Memory",
+      "uptime":"Activity time",
+      "E":"Events",
+      "Mem":"Members",
+      "WebSite":"Website",
+      "Vote":"Vote for the bot",
+      "use":"Use Yu!vote"
+   },
+   "dbl":{  
+      "men":"**<:Not:463200957396680714> Mention a bot.**",
+      "uB":"**<:Not:463200957396680714> You are not a bot.**",
+      "nB":"**<:Not:463200957396680714> The user {{user}} is not a bot"
+   },
+   "dbli":{  
+      "title":"Discord Bots List Information",
+      "ID":"ID",
+      "name":"Bot Name",
+      "tag":"Discriminator",
+      "L":"Library",
+      "prefix":"Prefix",
+      "upvotes":"Upvotes",
+      "guilds":"Server Count",
+      "CB":"Certified Bot",
+      "Tags":"Tags",
+      "owner":"Owner(s)",
+      "SD":"Short description",
+      "Links":"Links"
+   },
+   "ASCII":{  
+      "args":"Write something to transform it into ascii text.",
+      "c14":"you passed the 14 characters allowed...."
+   },
+   "ban":{  
+      "men":"<:Not:463805182648778783> | You must mention someone <:bEmoji:440388028939239434>",
+      "reazon":"<:Not:463805182648778783> | Write down a reason `Yu!ban @username [reason]`",
+      "noBP":"<:Not:463805182648778783> | I cannot ban the mentioned user.",
+      "noC":"**<:Not:463805182648778783> | Please create a channel with the name `mod-logs`.**"
+   },
+   "calculated":{  
+      "noArgs":"You must provide an equation to solve in the calculator",
+      "errorTitle":"Math failure!",
+      "ErrorM":"Incorrect calculation!",
+      "sussT":"Calculated Math!",
+      "firtsField":"I've calculated successfully:",
+      "secondField":"The answer is:"
+   },
+   "dogandcat":{  
+      "CatMessage":"Here's your random cat. <:Cat:429724283003207681>",
+      "DogMessage":"Your random dog is here."
+   },
+   "clean":{  
+      "error":"<:Not:463805182648778783>  | A bot can only delete messages that are less than 14 days old.",
+      "succMessage":"🍇 | **{{{username}}**, successfully pruned {{total}} messages!"
+   },
+   "clyde":{  
+      "args":"You must give a description for Clyde",
+      "args60":"I can only handle a maximum of 60 characters",
+      "NoLoad":"Click here if the image failed to load"
+   },
+   "Gif":{  
+      "noArgs":"Please enter a term to search for the gif",
+      "search":":arrows_counterclockwise: Searching...",
+      "noTerms":"I couldn't find any results!",
+      "Title":"Search result of gifs for: ",
+      "page":"Page {{page}} of {{pagesL}}"
+   },
+   "Github":{  
+      "nF":"Not Found",
+      "nE":"The user does not exist",
+      "args":"Please provide a username/organization",
+      "infoEmbed":{  
+         "f":"Followers",
+         "F":"Following",
+         "C":"Created on",
+         "L":"Localization",
+         "Com":"Company",
+         "rP":" Public Repos",
+         "WebN":"Web Not set up"
+      }
+   },
+   "hackban":{  
+      "user":"Which user do you want to hackban? Provide their id",
+      "uB":"Please don't ban me....!",
+      "uA":"I wouldn't dare hack you....!",
+      "days":"How many days do I have to wait to delete the message history (max: 7)?",
+      "reason":"What's the reason?",
+      "cancel":"Command Cancelled!",
+      "succ":"**{{user}}** has been sucessfully banned! 👋"
+   },
+   "hook":{  
+      "messageD":"{{prefix}}hook <title>, <message>, [HEXcolor], [avatarURL]\n\n**<> = Required\n[] = Optional**"
+   },
+   "jumbo":{  
+      "Nemoji":"Please provide an emoji to expand it",
+      "Demoji":"I can't expand built-in discord emojis.",
+      "Iemoji":"Please provide a valid emoji.",
+      "Ni":"I can't identify the emoji!"
+   },
+   "kick":{  
+      "men":"**<:Not:463805182648778783> | You must mention someone**",
+      "reazon":"**<:Not:463805182648778783> | Write the reason, `{{prefix}}kick @username [razón]`**",
+      "noBP":"**<:Not:463805182648778783> | I can't kick the user mentioned.**",
+      "noC":"**<:Not:463805182648778783> | Please set up the channel to send the mod-logs**"
+   },
+   "kiss":{  
+      "author":"Why would you do that?!",
+      "client":"I'm sorry, I can't do that >.<!",
+      "notMention":"You should be feeling alone... I'll give you a 🐈",
+      "mention":"You were kissed by ",
+      "error":"Something went wrong while getting an image 💔"
+   },
+   "mc":{  
+      "noArgs":"You should give a description to create an minecraft achievement",
+      "args22":" I only support less than 22 characters"
+   },
+   "mdocs":{  
+      "args":"What would you like to search?",
+      "noFound":"Could not found results."
+   },
+   "modslist":{  
+      "title":"Moderators of **{{guild}}** :\n"
+   },
+   "pat":{  
+      "author":"Why would you do that!?",
+      "client":"I'm sorry, I can't do that >.<!",
+      "notMention":"You should be feeling alone... I'll give you a 🐈",
+      "mention":"You were patted by ",
+      "error":"Something went wrong while getting an image 💔"
+   },
+   "poke":{  
+      "author":"Why would you do that!?",
+      "client":"I'm sorry, I can't do that >.<!",
+      "notMention":"You should be feeling alone... I'll give you a 🐈",
+      "mention":"You were poked by ",
+      "error":"Something went wrong while getting an image 💔"
+   },
+   "hug":{  
+      "author":"Why would you do that!?",
+      "client":"I'm sorry, I can't do that >.<!",
+      "notMention":"You should be feeling alone... I'll give you a 🐈",
+      "mention":"You were hugged by ",
+      "error":"Something went wrong while getting an image 💔"
+   },
+   "slap":{  
+      "author":"Why would you do that!?",
+      "client":"I'm sorry, I can't do that >.<!",
+      "notMention":"You should be feeling alone... I'll give you a 🐈",
+      "mention":"You were slapped by ",
+      "error":"Something went wrong while getting an image 💔"
+   },
+   "starboard":{  
+      "setC":"Please mention a channel using {{prefix}}starboard set <#channel>",
+      "cS":"Channel configured sucessfully!",
+      "setR":"Specify the role that can use starboard with {{prefix}}starboard role <roleName>",
+      "removeR":"The required role to use starboard has been disabled sucessfully.",
+      "roleN":"Needed role stablished to: ",
+      "rolNot":"*- Not stablished*",
+      "channelNot":"Use {{prefix}}starboard set #channel to stablish the starboard channel",
+      "c":"Channel",
+      "ena":"Enabled",
+      "rolR":"Required role",
+      "note":"Note: The required role only applies to the first star, which means that anyone can star the message already starred by someone with the role"
+   },
+   "roblox":{  
+      "args":"**Please, specify an user!**",
+      "args1":"My system says that roblox usernames doesn't haves spaces in their names! (use _ instead)",
+      "noFound":"User **{{user}}** could be not found.",
+      "N":"Name",
+      "ID":"ID",
+      "status":"Online status",
+      "friends":"Total friends: ",
+      "friendsL":"Friends list: ",
+      "weas":"Badges list: ",
+      "groups":"Groups list:"
+   },
+   "rolebots":{  
+      "args":"Please provide a role name. `{{prefix}}rolebots <role name>",
+      "roleS":"Automatic role for bots has been changed to: "
+   },
+   "roleusers":{  
+      "args":"Please provide a role name. `{{prefix}}roleusers <role name>",
+      "roleS":"Automatic role for users has been changed to:"
+   },
+   "setlogs":{  
+      "noActive":{  
+         "title":"<:off:442082928323985408> Mod-logs disabled.",
+         "text":"Please enable mod-logs before using this command.\nIf you don't know how use: `{{prefix}}welcome <channel>"
       },
-    "langu": {
-      "name": "English",
-      "title": "Language"
-    },
-  "BALL": {
-    "usage": ["<:Not:463805182648778783> | " , ", the correct usage is: `Yu!8ball <question>`\n◈ | e.g. `Yu!8ball Is potato soup yummy?`\n◈ | Get more help using `Yu!help 8ball`"],
-    "preg": "Question",
-    "res": "Answer",
-    "ress": ["Yes", "Not", "Why?", "Please", "Perhaps", "I don't know", "Definitely.", "Of course!", "Of course not"]
-  },
-  "about": {
-    "owner": "Owner",
-    "L": "Library",
-    "CPU": "CPU Usage",
-    "C": "Commands",
-    "guilds": "Servers",
-    "Ca": "Channels",
-    "Prefix": "Prefix",
-    "v": "Version",
-    "M": "Memory",
-    "uptime": "Activity time",
-    "E": "Events",
-    "Mem": "Members",
-    "WebSite": "Website",
-    "Vote": "Vote for the bot" ,
-    "use": "Use Yu!vote"
-  },
-  "dbl": {
-    "men": "**<:Not:463200957396680714> Mention a bot.**",
-    "uB": "**<:Not:463200957396680714> You are not a bot.**",
-    "nB": "**<:Not:463200957396680714> The user {{user}} is not a bot" 
-  },
-  "dbli": {
-    "title": "Discord Bots List Information",
-    "ID": "ID",
-    "name": "Bot Name",
-    "tag": "Discriminator",
-    "L": "Library",
-    "prefix": "Prefix",
-    "upvotes": "Upvotes",
-    "guilds": "Server Count",
-    "CB": "Certified Bot",
-    "Tags": "Tags",
-    "owner": "Owner(s)",
-    "SD": "Short description",
-    "Links": "Links"
-  }, 
-  "ASCII": {
-    "args": "Write something to transform it into ascii text.",
-    "c14": "you passed the 14 characters allowed...."
-  },
-  "ban": {
-    "men": "<:Not:463805182648778783> | You must mention someone <:bEmoji:440388028939239434>",
-    "reazon": "<:Not:463805182648778783> | Write down a reason `Yu!ban @username [reason]`",
-    "noBP": "<:Not:463805182648778783> | I cannot ban the mentioned user.",
-    "noC": "**<:Not:463805182648778783> | Please create a channel with the name `mod-logs`.**"
-  },
-   "calculated": {
-     "noArgs": "You must provide an equation to solve in the calculator",
-     "errorTitle": "Math failure!",
-     "ErrorM": "Incorrect calculation!",
-     "sussT": "Calculated Math!",
-     "firtsField": "I've calculated successfully:",
-     "secondField": "The answer is:"    
+      "args":"**Please mention a channel to stablish mod-logs**",
+      "logsC":"Registering channel has been changed to "
    },
-   "dogandcat": {
-     "CatMessage": "Here's your random cat. <:Cat:429724283003207681>",
-     "DogMessage": "Your random dog is here."
+   "settings":{  
+      "noSet":"**<:off:442082928323985408>  Not configurated**",
+      "welcomeL":"<:off:442082928323985408> Welcome-logs disabled.",
+      "message":"This is the configuration page for **Yuuki**. Every setting is here.\nYou can see commands and Yuuki current status.",
+      "prefix":"Prefix",
+      "cmd":"Command",
+      "notT":"Command not finished.",
+      "field1":"Welcome Settings ",
+      "field2":"Anti-invite",
+      "field3":"Type of Welcoming",
+      "field4":"Welcome Text",
+      "field5":"Leave Text"
    },
-   "clean": {
-     "error": "<:Not:463805182648778783>  | A bot can only delete messages that are less than 14 days old.",
-     "succMessage": "🍇 | **{{{username}}**, successfully pruned {{total}} messages!"  
+   "unban":{  
+      "args":"Please ",
+      "error":"I couldn't ban {{user}}",
+      "error2":"I'm sorry, but I couldn't find an user with that ID...",
+      "unb":"Alright, now {{user}} is not banned anymore."
    },
-   "clyde": {
-     "args": "You must give a description for Clyde",
-     "args60": "I can only handle a maximum of 60 characters",
-     "NoLoad": "Click here if the image failed to load"  
+   "vote":{  
+      "title":"Votation System",
+      "message":"**Caracteristics**\n• Bot will be more known.\n• For bot to grow, counts with a total of **{{guilds}}** guilds\n• You get new awesome features everyday!"
    },
-    "Gif": {
-        "noArgs": "Please enter a term to search for the gif",
-        "search": ":arrows_counterclockwise: Searching...",
-        "noTerms": "I couldn't find any results!",
-        "Title": "Search result of gifs for: ",
-        "page": "Page {{page}} of {{pagesL}}"
-    },
-     "Github": {
-        "nF": "Not Found",
-        "nE": "The user does not exist",
-        "args": "Please provide a username/organization",
-         "infoEmbed": {
-             "f": "Followers",
-             "F": "Following",
-             "C": "Created on",
-             "L": "Localization",
-             "Com": "Company",
-             "rP": " Public Repos",
-              "WebN": "Web Not set up" 
-           }
-       },  
-      "hackban": {
-          "user": "Which user do you want to hackban? Provide their id",
-          "uB": "Please don't ban me....!",
-          "uA": "I wouldn't dare hack you....!",
-          "days": "How many days do I have to wait to delete the message history (max: 7)?",
-          "reason": "What's the reason?",
-          "cancel": "Command Cancelled!",
-          "succ": "**{{user}}** has been sucessfully banned! 👋"
-     },
-    "hook": {
-        "messageD": "{{prefix}}hook <title>, <message>, [HEXcolor], [avatarURL]\n\n**<> = Required\n[] = Optional**" 
-    },
-    "jumbo": {
-        "Nemoji": "Please provide an emoji to expand it",
-        "Demoji": "I can't expand built-in discord emojis.",
-        "Iemoji": "Please provide a valid emoji.",
-        "Ni": "I can't identify the emoji!"
-    },
-  "kick": {
-    "men": "**<:Not:463805182648778783> | You must mention someone**",
-    "reazon": "**<:Not:463805182648778783> | Write the reason, `{{prefix}}kick @username [razón]`**",
-    "noBP": "**<:Not:463805182648778783> | I can't kick the user mentioned.**",
-    "noC": "**<:Not:463805182648778783> | Please set up the channel to send the mod-logs**"
-  }
+   "warn":{  
+      "perms":"I'm sorry but you don't have valid permissions! If you think this is an error contact with bot owner.",
+      "user":"What user do you want to warn?",
+      "nPerms":"You can't give a warning to yourself, or who you try to warn is a role more hoisted than yours.",
+      "reazon":"Please, specify the reason of the warning!",
+      "nC":"**<:Not:463805182648778783> | Please, stablish mod-logs channel!**",
+      "sW":"I have warned him, and logged it.",
+      "userS":"You were warned at {{mensaje.guild}} with the reason: {{reason}}!**",
+      "muted":"The **Muted** role doesn't exists in this server!",
+      "timeMute":"Mute time has been passed for {{user}}",
+      "warn3":"The user **{{user}}** was temporaly silenced for **10minutes** for surpassing 3 warnings.",
+      "warn5":"The user **{{user}}** was banned from the server for surpassing 5 warnings."
+   },
+   "warns":{  
+      "perms":"I'm sorry but you don't have valid permissions! If you think this is an error contact with bot owner.",
+      "user":"Please mention an user",
+      "nWarns":"The following user doesn't haves any warnings!",
+      "tWarns":"Please, specify the warning you would like to see information about. The following user has a total of {{total}} warnings.",
+      "field":"{{user}}'s {{warn}}st warning",
+      "reason":"Reason: **{{warns}}**"
+   },
+   "welcome":{  
+      "message":"React with :regional_indicator_y: to enable mod-logs or react with :regional_indicator_n: to cancel.",
+      "title1":"<:onn:442082974037573641> Mod-logs enabled",
+      "title2":"<:off:442082928323985408> Mod-logs disabled",
+      "subt":"Use {{prefix}}setlogs <#channel> to set logs channel",
+      "subt2":"Use {{prefix}}setlogs <#channel> to welcome logs channel"
+   },
+   "welcomelogs":{  
+      "noActive":{  
+         "title":"<:off:442082928323985408>Mod-logs disabled",
+         "text":"Please enable mod-logs before using this command.\nIf you don't know how use: `{{prefix}}welcome <channel>"
+      },
+      "args":"**Please mention a channel to use welcome messages",
+      "logsC":"Welcome logs has been set to: "
+   },
+   "typeW":{  
+      "title":"Type of welcome",
+      "message":"Currently this command has been disabled because we only have image type, sorry!"
+   },
+   "leavetext":{  
+      "title1":"The following leave text is: ",
+      "title2":"Leave text sucessfully updated",
+      "subtitle":{  
+         "s1":"Settings",
+         "s2":"To change the text use {{prefix}}welcometext <new text>"
+      }
+   },
+   "welcometext":{  
+      "title1":"The following current welcome text is",
+      "title2":"Welcome text has been sucessfully updated to",
+      "subtitle":{  
+         "s1":"Settings",
+         "s2":"To change welcome text use {{prefix}}welcometext <new welcome text>"
+      }
+   },
+   "messageReaction":{  
+      "title":"Starboard",
+      "author":"You can't star your own message!",
+      "embed":{  
+         "field1":"Stars",
+         "field2":"Author",
+         "footer":"Reacted by: "
+      },
+      "embed2":{  
+         "field1":"Stars",
+         "field2":"Author",
+         "footer":"Reacted by:"
+      },
+      "noPerms":{  
+         "message":"I'm sorry, but only people with **{{Role}}** tole can firstly star a message"
+      }
+   },
+   "messageReactionR":{  
+      "title":"Starboard",
+      "embed":{  
+         "field1":"Stars",
+         "field2":"Author",
+         "footer":"Reacted by: "
+      }
+   }
 }
