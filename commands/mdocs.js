@@ -5,22 +5,30 @@ const { GITHUB_USERNAME, GITHUB_PASSWORD } = require('../data/apis.json')
 const db = require('quick.db')
 
 exports.run = async (bot, msg, args) => {
+  
+    var langg = await bot.tools.Lang(msg.guild)    
+    const lang = require(`../langs/${langg}.json`) 
+
     const artc = args.join(' ')
     const astc2 = artc => artc.replace(/#/g, '.prototype.')
+    var url
+    if(langg === 'en') url = 'https://developer.mozilla.org/en-US/search.json'
+    if(langg === 'es') url = 'https://developer.mozilla.org/es-ES/search.json'
+    if(langg === 'pt') url = 'https://developer.mozilla.org/pt-PT/search.json'
     if(!artc) {
-    msg.channel.send('¿Qué artículo te gustaría buscar?')
+    msg.channel.send(lang.mdocs.args)
       return;
     }
     
   try {
 			const { body } = await snekfetch
-				.get('https://developer.mozilla.org/es-ES/search.json')
+				.get(url)
 				.query({
 					q: artc,
 					locale: 'es-ES',
 					highlight: false
 				});
-			if (!body.documents.length) return msg.channel.send('Could not find any results.');
+			if (!body.documents.length) return msg.channel.send(lang.mdocs.noFound);
 			const data = body.documents[0];
 			const embed = new Discord.MessageEmbed()
 				.setColor(0x066FAD)
