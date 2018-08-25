@@ -2,21 +2,26 @@ const Discord = require('discord.js')
 const jsroblox = require('js-robloxapi');
 const db = require('quick.db')
 
-exports.run = (bot, message, args) => {
+exports.run = async (bot, message, args) => {
+var langg = await bot.tools.Lang(message.guild)    
+const lang = require(`../langs/${langg}.json`) 
+
   if(!args.join(' ')){
-  bot.tools.embed(message.channel,'**Por favor, especifique un usuario!**')
+  bot.tools.embed(message.channel, lang.roblox.args)
   return;  
   }
   if (args.length > 1) {
-     bot.tools.embed(message.channel,"Mi sistemas me dicen que los nombres de usuario de Roblox no tienen espacios en sus nombres");
+     bot.tools.embed(message.channel, lang.roblox.args1);
   return;
   }
 jsroblox.getInfo(args, (data) => {
-if (!data) return message.channel.send(`Usuario **${args[0]}** no fue encontrado`); 
+  var noF = lang.roblox.noFound
   
-    let pages = [`**Nombre**\n ${data.Name}\n**ID:**\n ${data.Id}\n **Estado en línea**\n ${data.Online}`, `**Total de amigos:** \` ${data.TotalFriends}\`\n**Lista de amigos:**\n ${data.ListFriends}`, `**Lista de insignias**\n ${data.ListBadges}`, `**Lista de grupos**\n ${data.ListGroup}`]
+if (!data) return message.channel.send(noF.replace('{{user}}', args[0])); 
+  
+    let pages = [`**${lang.roblox.N}**\n ${data.Name}\n**${lang.roblox.ID}**\n ${data.Id}\n **${lang.roblox.status}**\n ${data.Online}`, `**${lang.roblox.friends}** \` ${data.TotalFriends}\`\n**${lang.roblox.friendsL}**\n ${data.ListFriends}`, `**${lang.roblox.weas}**\n ${data.ListBadges}`, `**${lang.roblox.groups}**\n ${data.ListGroup}`]
     let page = 1;
- 
+    let pag = lang.Gif.page
     const embed = new Discord.MessageEmbed()
         .setColor(0x36393e)
         .setFooter(`Page ${page} of ${pages.length}`)
@@ -39,7 +44,7 @@ if (!data) return message.channel.send(`Usuario **${args[0]}** no fue encontrado
                 page--;
                 embed.setDescription(pages[page - 1]);
                 embed.setImage(data.Avatar)
-                embed.setFooter(`Page ${page} of ${pages.length}`);
+                embed.setFooter(pag.replace('{{page}}', page).replace('{{pagesL}}', pages.length))
                 
                 msg.edit(embed);
             });
@@ -49,7 +54,7 @@ if (!data) return message.channel.send(`Usuario **${args[0]}** no fue encontrado
                 page++;
                 embed.setDescription(pages[page - 1]);
                 embed.setImage(data.Avatar)
-                embed.setFooter(`Page ${page} of ${pages.length}`);
+                embed.setFooter(pag.replace('{{page}}', page).replace('{{pagesL}}', pages.length))
                 msg.edit(embed);
         }); 
       });
