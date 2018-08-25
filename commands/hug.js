@@ -9,12 +9,12 @@ const lang = require(`../langs/${langg}.json`)
  try {
      if(member === msg.author) return msg.channel.send(lang.hug.author)
      if(member === bot.user) return msg.channel.send(lang.hug.client)
-     if(member.bot) return msg.channel.send(lang.hug.author)
+
    
       const hugFetch = await fetch('https://nekos.life/api/v2/img/hug'),
         hugImg = await hugFetch.json();
 
-      return msg.channel.send({ embed: {
+      return msg.channel.send(`<@${member ? member.id : msg.author.id}>`, { embed: {
          description: member
           ? `${member.username}! ${lang.hug.mention} ${msg.member.displayName} 💖!`
           : `${msg.member.displayName} ${lang.hug.notMention}`,
