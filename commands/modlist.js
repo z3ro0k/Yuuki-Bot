@@ -29,10 +29,12 @@ exports.run = async (client, message) => {
     const lang = require(`../langs/${langg}.json`) 
     
     var message = lang.modslist.title
+    
 	let mods = message.guild.members.array().filter(msg => isStaff(msg) && !msg.user.bot).sort((a, b) => sortMap[getStatus(a, false)] > sortMap[getStatus(b, false)]);
 	mods = mods.map(msg => `${getStatus(msg)} **${msg.user.username}#${msg.user.discriminator}**`);
+  
   const embed = new MessageEmbed()
-    .setDescription([`message.replace()`].concat(mods))
+    .setDescription([`weones`].concat(mods))
 	message.channel.send(embed);
 };
 
