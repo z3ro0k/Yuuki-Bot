@@ -53,7 +53,8 @@
     "opusscript": "^0.0.6",
     "node-gyp": "^3.7.0",
     "youtube-info": "^1.2.0",
-    "idiotic-api": "^0.2.11"
+    "idiotic-api": "^0.2.11",
+    "dblapi.js": "^2.2.0"
   },
   "engines": {
     "node": "8.x"

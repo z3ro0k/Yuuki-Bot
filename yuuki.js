@@ -44,6 +44,7 @@ bot.idiotAPI = new idioticApi.Client('OuuLWREjnx5BNhGl1B7C', { dev: true });
 
 bot.on('message', async (message) => {
 
+  c
 
   if (message.channel.type != 'text') return;
   
