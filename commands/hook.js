@@ -10,7 +10,7 @@ exports.run = async (bot, message, args) => {
   var message = lang.hook.messageD
         message.delete();
 
-         if (!args.join(' ')) { return tools.hook(message.channel,'Hook Usage', `${message.replace('{{prefix}})}`,'FC8469','https://cdn4.iconfinder.com/data/icons/global-logistics-3/512/129-512.png') 
+         if (!args.join(' ')) { return tools.hook(message.channel,'Hook Usage', `${message.replace('{{prefix}}', prefix)}`,'FC8469','https://cdn4.iconfinder.com/data/icons/global-logistics-3/512/129-512.png') 
         } 
         let hookArgs = message.content.slice(prefix.length + 4).split(","); 
 

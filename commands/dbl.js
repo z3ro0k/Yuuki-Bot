@@ -12,6 +12,7 @@ exports.run = async (bot ,message, args) => {
   
  const lang = require(`../langs/${langg}.json`) 
  
+ var nB = lang.dbl.nM
   if (!args[0]) {
         bot.tools.embed(message.channel, lang.dbl.men);
         return;
@@ -21,7 +22,7 @@ exports.run = async (bot ,message, args) => {
         return;
     } else
   if(!bott.bot) {
-      bot.tools.embed(message.channel, `**<:Not:463200957396680714> No uuuu **`)
+      bot.tools.embed(message.channel, `${nB.replace('{{user}}', bott.username)}`)
         return;
   }
  

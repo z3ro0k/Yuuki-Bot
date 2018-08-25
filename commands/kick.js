@@ -17,11 +17,12 @@ module.exports.run = async (bot, message, args) => {
     if(!perms) return message.channel.send(lang.noP.ban);
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return errors.cantfindUser(message.channel);
-    if(kUser.hasPermission("MANAGE_MESSAGES")) return errors.equalPerms(message, kUser, "MANAGE_MESSAGES");
+  
+    if(!kUser) return message.channel.send(lang.kick.men);
+    if(kUser.hasPermission("KICK_MEMBERS")) return message.channel.send(lang.kick.noBP);
 
     let kReason = args.join(" ").slice(22);   
-    if(!kReason) return message.channel.send("Por favor, especifique la razón para patear al usuario mencionado.");
+    if(!kReason) return message.channel.send(lang.kick.reazon);
     
   var idC = await bot.tools.getLogsChannel(message.guild)
   
