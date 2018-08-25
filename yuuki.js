@@ -32,6 +32,7 @@ const db = require('quick.db')
 
 /*global Set, Map*/
 const queue = new Map();
+let cooldown = new Set();
 
 bot.tools = require('./functions.js');
 bot.tools.loadCmds(bot)
@@ -66,6 +67,18 @@ bot.on('message', async (message) => {
   var args = cont.slice(1);
   
   if (!message.content.startsWith(prefix)) return;
+  /*
+  if(cooldown.has(message.author.id)){
+      message.channel.send(`**${message.author.username}**, espera 10 segundos para poder usar el comando de nuevo.`).then(m => {
+      m.delete({ timeout: 5000})
+      });
+      return;
+   }
+   cooldown.add(message.author.id);
+   
+   setTimeout(() => {
+     cooldown.delete(message.author.id);
+   }, 10000);  */    
   
   var cmd = bot.commands.get(cont[0].toLowerCase()) || bot.commands.get(bot.aliases.get(cont[0].toLowerCase()));
   if (cmd) cmd.run(bot, message, args, queue);
