@@ -13,21 +13,6 @@ exports.run = async (client, msg) => {
   
   client.dbl.hasVoted(msg.author.id).then(voted => {
    
-  
-  if (voted === true)  {
-    
-  var feedbackE = new Discord.MessageEmbed()
-    .setTitle(msg.author.tag + ' suggested:')
-    .setColor(0x36393E)
-    .setThumbnail(msg.author.displayAvatarURL())
-    .setDescription(feedback)
-    .addField('User\'s ID:', `${msg.author.id}`)
-    .addField('Server:', `${msg.guild.name} [${msg.guild.id}]`, true)
-    .addField('Channel:', `${msg.channel.name} [${msg.channel.id}]`, true);
-      
-     return channel.send({embed: feedbackE}).then(msg.channel.send("Gracias por su opinión!"));
-    
-  }
   if (voted === false) {
     
   var notUpvoter = new Discord.MessageEmbed()
@@ -41,7 +26,21 @@ exports.run = async (client, msg) => {
    return msg.channel.send({embed: notUpvoter});
 
   } 
-
+    
+ if (voted === true)  {
+    
+  var feedbackE = new Discord.MessageEmbed()
+    .setTitle(msg.author.tag + ' suggested:')
+    .setColor(0x36393E)
+    .setThumbnail(msg.author.displayAvatarURL())
+    .setDescription(feedback)
+    .addField('User\'s ID:', `${msg.author.id}`)
+    .addField('Server:', `${msg.guild.name} [${msg.guild.id}]`, true)
+    .addField('Channel:', `${msg.channel.name} [${msg.channel.id}]`, true);
+      
+     return channel.send({embed: feedbackE}).then(msg.channel.send("Gracias por su opinión!"));
+    
+  }
  }); 
 };
 
