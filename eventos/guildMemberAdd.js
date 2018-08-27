@@ -53,7 +53,7 @@ let text
       .setFooter(member.guild.name, member.guild.iconURL())
 	 return sourceChannel.send({ embed: embed })*/
   
-  const image = await client.idiotAPI.welcome("anime", member.user.bot, member.user.displayAvatarURL({ format: "png", size: 128 }), member.user.tag);
+  const image = await client.idiotAPI.welcome("anime", member.user.bot, member.user.displayAvatarURL({ format: "png", size: 128 }), member.user.tag,`${member.guild.name}#${member.guild.memberCount}`);
       sourceChannel.send(new MessageAttachment(image)).catch(console.error);
 
 }
