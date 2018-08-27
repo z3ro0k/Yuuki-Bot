@@ -1,13 +1,19 @@
 const db = require('quick.db')
 
-exports.run = (bot, message, args) => {
+exports.run = async (bot, message, args) => {
     
-    if (!message.member.hasPermission('ADMINISTRATOR')) return  bot.tools.embed(message.channel, '<:adminNep:372599923381633024> **| No tienes Permisos para usar este comando.**') 
-    if (!args.join(" ")) return message.channel.send('Por favor ingrese el nombre del rol. `roleusers <roleName>`') 
+    var langg = await bot.tools.Lang(message.guild)    
+    const lang = require(`../langs/${langg}.json`) 
 
-    db.set(`autoRoleU_${message.guild.id}`, args.join(" ").trim()).then(i => { 
+    var prefixx =  await bot.tools.GuildPrefix(message.guild) 
+    let rolee = message.mentions.roles.first() || message.guild.roles.find(role => role.name === args[0])
+    
+    if (!message.member.hasPermission('ADMINISTRATOR')) return  bot.tools.embed(message.channel, lang.noP.ban) 
+    if (!rolee) return message.channel.send(lang.roleusers.args) 
 
-        message.channel.send('Cambió correctamente el rol automático para los usuarios  a: **' + i + '**'); 
+    db.set(`autoRoleU_${message.guild.id}`, rolee.name).then(i => { 
+
+        message.channel.send(`${lang.roleusers.roleS} **${rolee.name}**`); 
 
     })
 

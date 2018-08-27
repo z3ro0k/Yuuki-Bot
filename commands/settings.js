@@ -2,11 +2,12 @@ const Discord = require('discord.js'),
       db = require('quick.db')
       
 exports.run = async (bot, message, args) => {
+  
+ var langg = await bot.tools.Lang(message.guild)    
+ const lang = require(`../langs/${langg}.json`) 
 
   let mod
   let prefix = await bot.tools.GuildPrefix(message.guild)
-  
-  
   
   let starboardChannel
   
@@ -14,7 +15,7 @@ exports.run = async (bot, message, args) => {
   let ChannelID = await bot.tools.getWelcomeChannel(message.guild)
   
   let Logs
-  if (!message.guild.channels.get(ChannelID)) Logs = '**<:off:442082928323985408>  Not set**'
+  if (!message.guild.channels.get(ChannelID)) Logs = `${lang.settings}`
   else Logs = message.guild.channels.get(ChannelID)  
   
   /*Mod Logs channel*/
@@ -31,8 +32,6 @@ exports.run = async (bot, message, args) => {
   let autoRoleB = await bot.tools.autoRoleBots(message.guild)
   var Bots = autoRoleB
   
- var langg = await bot.tools.Lang(message.guild)    
- const lang = require(`../langs/${langg}.json`) 
  
   const textjoin = await bot.tools.welcomeText(message.guild) 
   
