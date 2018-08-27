@@ -4,25 +4,30 @@ const fs = require('fs');
 
 exports.run = async (client, message, args) => {
   
+ var langg = await client.tools.Lang(message.guild)    
+ const lang = require(`../langs/${langg}.json`) 
+ 
+ let prefix = await client.tools.GuildPrefix(message.guild)
+ 
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
       .setTitle('Starboard')
   
 
   if (args[0] && args[0].toLowerCase() === 'set') {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter('Este comando requiere permisos de "ADMINISTRADOR".'), message.channel.send(embed);
+    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter(lang.noP.kick), message.channel.send(embed);
     
-    if (!message.mentions.channels.first()) return embed.setFooter('Por favor, mencione un canal "Yu!Starboard set #channel".'), message.channel.send(embed);
+    if (!message.mentions.channels.first()) return embed.setFooter(lang.starboard.setC.replace('{{prefiz}}', prefix)), message.channel.send(embed);
     db.set(`starboard_${message.guild.id}`, { enabled: true, channel: message.mentions.channels.first().id })
     db.set(`starboardChannel_${message.guild.id}`, message.mentions.channels.first().id)
-    embed.setFooter('Channel successfully set!')
+    embed.setFooter(lang.starboard.cS)
     return message.channel.send(embed)
   }
   
 
   if (args[0] && args[0].toLowerCase() === 'role') {
-    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter('Este comando requiere permisos de "ADMINISTRADOR".'), message.channel.send(embed);
-    if (!args[1]) return embed.setFooter('Especifique un roleName Yu!Starboard role [roleName | remove].'), message.channel.send(embed);
+    if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter(lang.noP.kick), message.channel.send(embed);
+    if (!args[1]) return embed.setFooter(lang.starboard.setR.replace('{{prefiz}}', prefix)), message.channel.send(embed);
     if (args[1].toLowerCase() === 'remove') {
       db.delete(`starStarter_${message.guild.id}`)
       embed.setFooter('El requisito de función se deshabilitó correctamente.')

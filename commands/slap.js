@@ -17,13 +17,13 @@ const lang = require(`../langs/${langg}.json`)
       return msg.channel.send({ embed: {
           description: member
           ? `${member.displayName}! ${lang.slap.mention} ${msg.member.displayName} 💢!` : 
-        `${msg.member.displayName} ${lang.slap.notMention}`,
+        `${msg.member.displayName} ${lang.slap.noMention}`,
         image: {url: member ? slapImg.url : 'http://cdn.awwni.me/mz98.gif'},
         color: msg.guild ? msg.guild.me.displayColor : 10610610
       }});
     } catch (err) {
   
-      return msg.reply(lang.slap.error);
+      return msg.reply('something went wrong getting a poke image 💔');
     }
 }
 module.exports.config = {
