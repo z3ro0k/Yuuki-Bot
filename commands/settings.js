@@ -34,6 +34,7 @@ exports.run = async (bot, message, args) => {
   
  
   const textjoin = await bot.tools.welcomeText(message.guild) 
+  const textleave = await bot.tools.leaveText(message.guild)
   
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
@@ -57,7 +58,7 @@ const settings = new Discord.MessageEmbed()
 .addField(lang.settings.cmd, prefix +'sprefix <newprefix>', true)
 
 .addField(lang.settings.field1, mod, true)
-.addField('Anti Invite', "Coming Soon..", true)
+.addField(lang.settings.field2, "Coming Soon..", true)
 
 .addField(lang.settings.cmd, prefix+'welcome', true)
 .addField(lang.settings.cmd, prefix+'antiinvite <false/true>', true)
@@ -74,13 +75,14 @@ const settings = new Discord.MessageEmbed()
 .addField(lang.settings.cmd, prefix + 'roleusers <rolename>', true)
 .addField(lang.settings.cmd, prefix + 'rolebots <rolename>', true)
 
-.addField(lang.settings.cmd, starboardChannel, true)
-.addField('Coming Soon..', "Imagen", true)
+.addField('StarBoard', starboardChannel, true)
+.addField(lang.settings.field3, "Imagen", true)
 
 .addField(lang.settings.cmd, prefix + 'starboard set #channel', true)
 .addField(lang.settings.cmd, prefix + 'wtype <image/embed> ', true)
 
-.addField('Texto de bienvenida', textjoin)
+.addField(lang.settings.field4, textjoin, true)
+.addField(lang.settings.field5, textleave, true)
 .setColor(0x36393e)
 message.channel.send(settings)
           })          

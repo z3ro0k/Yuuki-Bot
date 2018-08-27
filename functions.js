@@ -368,14 +368,14 @@ fs.readdir('./eventos/', async (err, files) => {
   welcomeText: async function(guild) {  
     var text
     const rolename = await db.fetch(`joinMessage_${guild.id}`)
-    if (rolename === null) text = 'Bienvenido **{user:tag}** a **{server:name}** ya somos un total de **{server:membercount} de miembros*** en el servidor'
+    if (rolename === null) text = 'No Habilitado/Not Enabled'//'Bienvenido **{user:tag}** a **{server:name}** ya somos un total de **{server:membercount} de miembros*** en el servidor'
      else text = rolename
     return text
   },
   leaveText: async function(guild) {  
     var text
     const texto = await db.fetch(`leaveMessage_${guild.id}`)
-    if (texto === null) text = 'Good bye, **{user:tag}** You are now leaving **{server:name}**!'
+    if (texto === null) text = 'No Habilitado/Not Enabled'//'Good bye, **{user:tag}** You are now leaving **{server:name}**!'
      else text = texto
     return text
   }
