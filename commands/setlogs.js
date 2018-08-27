@@ -44,5 +44,5 @@ exports.run = async (bot, message, args) => {
 module.exports.config = {
   command: "setlogs", 
   usage: "<prefix>setlogs",
-  aliases: ['setlogs', 'setchannel', 'setcanal']
+  aliases: ['setlogs', 'setchannel', 'setcanal', 'modlogs']
 }

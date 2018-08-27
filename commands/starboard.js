@@ -27,32 +27,32 @@ exports.run = async (client, message, args) => {
 
   if (args[0] && args[0].toLowerCase() === 'role') {
     if (!message.member.hasPermission('ADMINISTRATOR')) return embed.setFooter(lang.noP.kick), message.channel.send(embed);
-    if (!args[1]) return embed.setFooter(lang.starboard.setR.replace('{{prefiz}}', prefix)), message.channel.send(embed);
+    if (!args[1]) return embed.setFooter(lang.starboard.setR.replace('{{prefix}}', prefix)), message.channel.send(embed);
     if (args[1].toLowerCase() === 'remove') {
       db.delete(`starStarter_${message.guild.id}`)
-      embed.setFooter('El requisito de función se deshabilitó correctamente.')
+      embed.setFooter(lang.starboard.removeR)
       return message.channel.send(embed)
     } else {
       args = args.slice(1).join(' ')
       db.set(`starStarter_${message.guild.id}`, args)
-      embed.setFooter(`rol necesario establecido a "${args}".`)
+      embed.setFooter(`${lang.starboard.roleN} "${args}".`)
       return message.channel.send(embed)
     }
   }
   
   let enabled = await db.fetch(`starboard_${message.guild.id}`, { target: '.enabled' })
   let requiredRole = await db.fetch(`starStarter_${message.guild.id}`)
-  if (requiredRole === null) requiredRole = '*- No establecido*'
+  if (requiredRole === null) requiredRole = lang.starboard.rolNot
   if (enabled === null || !enabled) {
-    embed.setFooter('Use YU!Starboard set #channel para establecer el canal de salida.')
+    embed.setFooter(lang.starboard.channelNot.replace('{{prefix}}', prefix))
     return message.channel.send(embed)
   }
   
   let starboard = await db.fetch(`starboard_${message.guild.id}`)
-  embed.addField('Canal', client.channels.get(starboard.channel), true)
-  .addField('Habilitado', `${starboard.enabled}`, true)
-  .addField('Rol requerido', requiredRole, true)
-  .setFooter('Nota: El Rol requerido solo se aplica a la primera estrella, cualquiera puede protagonizar después de eso. Puedes usar Yu!Starboard role <roleName> para configurar esto.')
+  embed.addField(lang.starboard.c, client.channels.get(starboard.channel), true)
+  .addField(lang.starboard.ena, `${starboard.enabled}`, true)
+  .addField(lang.starboard.rolR, requiredRole, true)
+  .setFooter(lang.starboard.note.replace('{{prefix}}', prefix))
   
   message.channel.send(embed)
   
