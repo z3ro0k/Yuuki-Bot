@@ -24,7 +24,7 @@ const lang = require(`../langs/${langg}.json`)
       }});
     } catch (err) {
   
-      return msg.reply('something went wrong getting a poke image 💔');
+      return msg.reply(lang.poke.error);
     }
 }
 module.exports.config = {
