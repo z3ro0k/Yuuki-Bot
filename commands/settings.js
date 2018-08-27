@@ -15,14 +15,14 @@ exports.run = async (bot, message, args) => {
   let ChannelID = await bot.tools.getWelcomeChannel(message.guild)
   
   let Logs
-  if (!message.guild.channels.get(ChannelID)) Logs = `${lang.settings}`
+  if (!message.guild.channels.get(ChannelID)) Logs = `${lang.settings.noSet}`
   else Logs = message.guild.channels.get(ChannelID)  
   
   /*Mod Logs channel*/
   let channelLogsID = await bot.tools.getLogsChannel(message.guild)
   
   let Mlogs
-  if (!message.guild.channels.get(channelLogsID)) Mlogs = '**<:off:442082928323985408>  Not set**'
+  if (!message.guild.channels.get(channelLogsID)) Mlogs = `${lang.settings.noSet}`
   else Mlogs = message.guild.channels.get(channelLogsID) 
   
       
@@ -37,48 +37,48 @@ exports.run = async (bot, message, args) => {
   
   db.fetch(`welcomeSettings_${message.guild.id}`).then(welcomeSettingsFetched => {
 
-        if (!welcomeSettingsFetched) mod  = '<:off:442082928323985408> Welcome-logs disable'
+        if (!welcomeSettingsFetched) mod  = `${lang.settings.welcomeL}`
         else mod = welcomeSettingsFetched
    
 
         db.fetch(`starboardChannel_${message.guild.id}`).then(stardboardIDFetchd => {
-              if(!stardboardIDFetchd) starboardChannel = '**<:off:442082928323985408>  Not set**'
+              if(!stardboardIDFetchd) starboardChannel = `${lang.settings.noSet}`
               else starboardChannel = '<:onn:442082974037573641> <#' + stardboardIDFetchd + '>'
         
  
     
 const settings = new Discord.MessageEmbed()
 .setAuthor('Settings', 'https://cdn.discordapp.com/emojis/393126289214537738.png')
-.setDescription('Esta es la página de configuración para **Yuuki**. Todos los ajustes se enumeran aquí. \nPuede ver los comandos y su estado actual')
+.setDescription(lang.settings.message)
 .addField(lang.langu.title , lang.langu.name , true)
 .addField('prefix:', prefix, true)
 
-.addField('Command:', prefix +'lang <idioma>', true)
-.addField('Command', prefix +'sprefix <newprefix>', true)
+.addField(lang.settings.cmd, prefix +'lang <idioma>', true)
+.addField(lang.settings.cmd, prefix +'sprefix <newprefix>', true)
 
-.addField('Welcome Settings', mod, true)
+.addField(lang.settings.field1, mod, true)
 .addField('Anti Invite', "Coming Soon..", true)
 
-.addField('Command:', prefix+'welcome', true)
-.addField('Command:', prefix+'antiinvite <false/true>', true)
+.addField(lang.settings.cmd, prefix+'welcome', true)
+.addField(lang.settings.cmd, prefix+'antiinvite <false/true>', true)
 
 .addField('Welcome Logs', Logs, true)
 .addField('Mod-Logs', Mlogs , true)
 
-.addField('Command:', prefix + 'welcomelogs #channel',true)
-.addField('Command:', prefix + 'modlogs #channel',true)
+.addField(lang.settings.cmd, prefix + 'welcomelogs #channel',true)
+.addField(lang.settings.cmd, prefix + 'modlogs #channel',true)
 
 .addField('Autorole Users', User, true)
 .addField('Autorole Bots', Bots, true)
 
-.addField('Command:', prefix + 'roleusers <rolename>', true)
-.addField('Command:', prefix + 'rolebots <rolename>', true)
+.addField(lang.settings.cmd, prefix + 'roleusers <rolename>', true)
+.addField(lang.settings.cmd, prefix + 'rolebots <rolename>', true)
 
-.addField('StarBoard', starboardChannel, true)
+.addField(lang.settings.cmd, starboardChannel, true)
 .addField('Coming Soon..', "Imagen", true)
 
-.addField('Command:', prefix + 'starboard set #channel', true)
-.addField('Coming Soon..', prefix + 'wtype <image/embed> ', true)
+.addField(lang.settings.cmd, prefix + 'starboard set #channel', true)
+.addField(lang.settings.cmd, prefix + 'wtype <image/embed> ', true)
 
 .addField('Texto de bienvenida', textjoin)
 .setColor(0x36393e)
