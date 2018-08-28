@@ -8,9 +8,9 @@ exports.run =  async (bot, message, args) => {
   
     var prefix = await bot.tools.GuildPrefix(message.guild) 
     
-    let pages = [`◈ \`${prefix}ping\` ◈ \`${prefix}avatar\` ◈ \`${prefix}ascii\` ◈ \`${prefix}calc\` ◈ \`${prefix}emojis\` ◈ \`${prefix}playing\` ◈ \`${prefix}jumbo\` ◈ \`${prefix}fortnite\` ◈ \`Yu!cat\` ◈ \`Yu!dog\` `];
-    let info = ['◈ `Yu!spotify` ◈ `Yu!weather` ◈ `Yu!help` ◈ `Yu!npm` ◈ `Yu!user` ◈ `Yu!ytsearch` ◈ `Yu!google` ◈ `Yu!mcuser` ◈ `Yu!roblox`']
-    let admin = ['◈ `Yu!hook` ◈ `Yu!settings` ◈ `Yu!tmute` ◈ `Yu!warn` ◈ `Yu!warnlist` ◈ `Yu!clean`']
+    let pages = [`◈ \`${prefix}ping\` ◈ \`${prefix}avatar\` ◈ \`${prefix}ascii\` ◈ \`${prefix}calc\` ◈ \`${prefix}emojis\` ◈ \`${prefix}playing\` ◈ \`${prefix}jumbo\` ◈ \`${prefix}cat\` ◈ \`${prefix}dog\` `];
+    let info = [`◈ \`{prefix}spotify\` ◈ \`{prefix}help\` ◈ \`{prefix}user\` ◈ \`{prefix}ytsearch\`  ◈ \`{prefix}server\` ◈ \`{prefix}roblox\` ◈ \`{prefix}info\` ◈ \`Yu!about\` - \`{prefix}mdocs\` `]
+    let admin = ['◈ \`{prefix}hook\` ◈ \`{prefix}settings\` ◈ \`{prefix}hackban\` ◈ \`{prefix}warn\` ◈ \`{prefix}warnlist\` ◈ \`{prefix}clean\` - \`{prefix}kick\` - \`{prefix}unban']
     let nsfw = ['◈ No hay comandos NSFW por el momento']
     let botC = ['◈ `Yu!report` ◈ `Yu!suggestion` ◈ `Yu!about`  ◈ `Yu!changelogs`']
     let server = ['◈ `Yu!welcome` ◈ `To!setautorole` ◈ `To!setchannel` ◈ `Yu!perms` ◈ `Yu!server` ◈ `Yu!starboard`']
@@ -21,12 +21,12 @@ exports.run =  async (bot, message, args) => {
 if(!command) {
      const embed = new Discord.MessageEmbed()
       .setDescription(`<:help:483876577420247040>Use ${prefix}help <command> or @Yuuki#3102 <command> para ver información detallada sobre el comando.<:help:483876577420247040>`)
-      //.addField("== Comandos de Diversion ==", pages)
+      .addField("== Comandos de Diversion ==", pages)
       .addField("== Comandos de información ==", info)
       .addField("== Comandos de Interacción ==", 'weas aqui')
       .addField("== Comandos de administración ==", admin)
-      .addField("== BOT Commands ==", botC)
-      .addField("== Server Commands ==", server)
+      .addField("== Comandos Útiles ==", botC)
+      .addField("== Comandos de Configuración ==", server)
       .addField("== NSFW Commands ==", nsfw)
       .setFooter(`${bot.commands.size } Commands`, bot.user.displayAvatarURL())
       .setColor(0xfcc7fb);
