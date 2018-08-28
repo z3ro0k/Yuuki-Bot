@@ -4,6 +4,10 @@ const tools = require('../functions.js')
 
 exports.run = async (bot, messageReaction, user) => {
 
+  var langg = await bot.tools.Lang(messageReaction.message.guild)   
+  const lang = require(`../langs/${langg}.json`) 
+ 
+  let prefix = await bot.tools.GuildPrefix(messageReaction.message.guild)
 
   if (messageReaction.emoji.toString() !== '⭐') return; 
   
@@ -18,10 +22,10 @@ exports.run = async (bot, messageReaction, user) => {
   
   const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
-      .setTitle('Starboard')
+      .setTitle(lang.messageReaction.title)
   
   if (messageReaction.message.author.id === user.id) {
-    embed.setFooter('¡No puedes reacionar a tu propio mensaje!')
+    embed.setFooter(lang.messageReaction.author)
     return messageReaction.message.channel.send(embed).then(msg => {
       msg.delete({timeout: 10000})
     })
@@ -36,9 +40,9 @@ exports.run = async (bot, messageReaction, user) => {
     db.set(`starItem_${messageReaction.message.id}`, { reactions: 1, reactants: [user.tag], message: { id: messageReaction.message.id, content: messageReaction.message.content }, author: { id: messageReaction.message.author.id, tag: messageReaction.message.author.tag } })
     
       embed.setDescription(messageReaction.message.content)
-      .addField('Estrellas', '`⭐1`', true)
-      .setFooter(`Reactivos: ${user.tag}`)
-      .addField('Autor', messageReaction.message.guild.members.get(messageReaction.message.author.id), true)
+      .addField(lang.messageReaction.embed.field1, '`⭐1`', true)
+      .setFooter(`${lang.messageReaction.embed.footer} ${user.tag}`)
+      .addField(lang.messageReaction.embed.field2, messageReaction.message.guild.members.get(messageReaction.message.author.id), true)
     
     if (messageReaction.message.attachments.first()) {
       db.set(`starItem_${messageReaction.message.id}`, messageReaction.message.attachments.first().url, { target: '.attachment' })
@@ -58,9 +62,9 @@ exports.run = async (bot, messageReaction, user) => {
     newItem.reactants.push(user.tag)
 
       embed.setDescription(newItem.message.content)
-      .addField('Estrellas', `\`⭐${newItem.reactions}\``, true)
-      .setFooter(`Reactivos: ${newItem.reactants.join(', ')}`)
-      .addField('Autor', messageReaction.message.guild.members.get(newItem.author.id), true)
+      .addField(lang.messageReaction.embed.field1, `\`⭐${newItem.reactions}\``, true)
+      .setFooter(`${lang.messageReaction.embed.footer} ${newItem.reactants.join(', ')}`)
+      .addField(lang.messageReaction.embed.field2, messageReaction.message.guild.members.get(newItem.author.id), true)
       
       if (newItem.attachment) embed.setImage(newItem.attachment)
     
@@ -69,7 +73,7 @@ exports.run = async (bot, messageReaction, user) => {
     db.set(`starItem_${msgID}`, newItem)
     
   } else if (!messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === 'Moderators' || '+' || 'Mods')) {
-    embed.setFooter(`Lo sentimos, solo las personas con el rol ${requiredRole} pueden ser los primeros en destacar el mensaje.`)
+    embed.setFooter(lang.messageReaction.noPerms.message.replace('{{Role}}'))
     return messageReaction.message.channel.send(embed).then(msg => {
       msg.delete({timeout: 10000})
     })

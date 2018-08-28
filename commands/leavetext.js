@@ -2,9 +2,25 @@ const db = require('quick.db')
 const { MessageEmbed } = require('discord.js')
 exports.run = async (bot, message, args) => {
   
-   const perms = bot.options.owner.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
+   var langg = await bot.tools.Lang(message.guild)   
+  const lang = require(`../langs/${langg}.json`) 
+
+   
+  const perms = bot.options.owner.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
    
   let prefix = await bot.tools.GuildPrefix(message.guild)
+  
+  let type = await db.fetch(`welcomeType_${message.guild.id}`);
+  
+    if (type !== 'embed' ) {
+        
+        const embed = new MessageEmbed()
+        .setTitle(lang.typeW.title)
+        .setColor(0x36393e)
+        .setDescription(lang.typeW.message)
+        message.channel.send({ embed: embed });
+
+    } else {
   
     if (!perms) return  bot.tools.embed(message.channel, '**This command requires the Administrator role**') 
     
@@ -33,7 +49,7 @@ exports.run = async (bot, message, args) => {
         .setThumbnail(message.guild.iconURL())
       message.channel.send({embed})
     })
-
+   }
 }
 exports.config = {
   command: "wleavetext",
