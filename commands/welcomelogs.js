@@ -4,9 +4,10 @@ const tools = require('../functions.js');
 const { IdOwner } = require('../botconfig.js');
 
 exports.run = async (bot, message, args) => {
+  
 const ids = bot.options.owner
   const perms = ids.includes(message.author.id) || message.member.hasPermission('ADMINISTRATOR') 
-  
+ 
   
  let off = await db.fetch(`welcomeSettings_${message.guild.id}`);
   

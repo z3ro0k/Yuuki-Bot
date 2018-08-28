@@ -1,12 +1,16 @@
 const db = require('quick.db')
 const A = require('discord.js');
 
-exports.run = (bot, message, args) => {
-
-
+exports.run = async(bot, message, args) => {
+  
+   var langg = await bot.tools.Lang(message.guild)   
+   const lang = require(`../langs/${langg}.json`) 
+ 
+    let prefix = await bot.tools.GuildPrefix(message.guild)
+   
     const emoji1 = '🇳'
     const emoji = '🇾'
-    message.channel.send('Reacts **yes** to activate the mod-logs or reacts **no** to cancel').then(msg => {
+    message.channel.send(lang.welcome.message).then(msg => {
         
       msg.react(emoji).then(r => {
             msg.react(emoji1)
@@ -21,10 +25,11 @@ exports.run = (bot, message, args) => {
             });
             sure.on('collect', r => {
                 msg.delete();
+              var subt = lang.welcome.subt
+              var subt2 = lang.welcome.subt2
                 const emb = new A.MessageEmbed()
                     .setColor(0x36393e)
-                    .setDescription('<:onn:442082974037573641>Mod-logs enable')
-                    .setFooter('use ~setlogs #channel to set the channel')
+                    .setDescription(`**${lang.welcome.title1}**\n${subt.replace('{{prefix}}', prefix)}\n${subt2.replace('{{prefix}}', prefix)}`)
                 message.channel.send({
                     embed: emb
                 })
@@ -34,7 +39,7 @@ exports.run = (bot, message, args) => {
               msg.delete()
                 const emb = new A.MessageEmbed()
                      .setColor(0x36393e)
-                    .setDescription('<:off:442082928323985408>Mod-logs disable')
+                    .setDescription(lang.welcome.title2)
                     //.setFooter('use ~setlogs #channel to set the channel')
                 message.channel.send({
                     embed: emb

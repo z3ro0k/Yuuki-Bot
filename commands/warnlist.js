@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
 
         if (i === null) return message.channel.send(lang.warns.nWarns)
 
-        if (!args[1]) return message.channel.send(lang.warns.tWarns.replace('{{total}}', ))
+        if (!args[1]) return message.channel.send(lang.warns.tWarns.replace('{{total}}', i))
       
     })
 
