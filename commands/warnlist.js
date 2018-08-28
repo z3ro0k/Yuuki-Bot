@@ -3,17 +3,22 @@ const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Sorry, but you do not have valid permissions! If you believe this is an error, contact an owner.")
+   var langg = await client.tools.Lang(message.guild)   
+   const lang = require(`../langs/${langg}.json`) 
+ 
+   let prefix = await client.tools.GuildPrefix(message.guild)
+ 
+    if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(lang.warns.perms)
 
     let user = message.mentions.users.first()
-    if (!user) return message.channel.send('**Please mention a user!**')
+    if (!user) return message.channel.send(lang.warns.user)
 
     const numberwarn = new db.table('WARNNUMBERs')
     numberwarn.fetch(`user_${user.id}_${message.guild.id}`).then(i => {
 
-        if (i === null) return message.channel.send(`**This user don't have any warnings**`)
+        if (i === null) return message.channel.send(lang.warns.nWarns)
 
-        if (!args[1]) return message.channel.send(`**Please specify which warning do you want to see! This user have ${i} warnings!**`)
+        if (!args[1]) return message.channel.send(lang.warns.tWarns.replace('{{total}}', ))
       
     })
 
@@ -25,23 +30,23 @@ module.exports.run = async (client, message, args) => {
     const warns = await userwarns.fetch(`warn_${user.id}_${args[1]}_${message.guild.id}`)
 
     const embed1 = new Discord.MessageEmbed()
-        .setAuthor(`${user.username}'s ${args[1]}st warning`)
+        .setAuthor(lang.warns.field.replace('{{user}}', user.username))
         .setDescription(`Reason: **${warns}**`)
         .setColor(0x36393e)
 
     const embed2 = new Discord.MessageEmbed()
-        .setAuthor(`${user.username}'s ${args[1]}nd warning`)
-        .setDescription(`Reason: **${warns}**`)
+        .setAuthor(lang.warns.field.replace('{{user}}', user.username))
+        .setDescription(lang.warns.reason.replace('{{warns}}', warns))
         .setColor(0x36393e)
 
     const embed3 = new Discord.MessageEmbed()
-        .setAuthor(`${user.username}'s ${args[1]}rd warning`)
-        .setDescription(`Reason: **${warns}**`)
+        .setAuthor(lang.warns.field.replace('{{user}}', user.username))
+        .setDescription(lang.warns.reason.replace('{{warns}}', warns))
         .setColor(0x36393e)
 
     const embed4 = new Discord.MessageEmbed()
-        .setAuthor(`${user.username}'s ${args[1]}th warning`)
-        .setDescription(`Reason: **${warns}**`)
+        .setAuthor(lang.warns.field.replace('{{user}}', user.username))
+        .setDescription(lang.warns.reason.replace('{{warns}}', warns))
         .setColor(0x36393e)
 
 
