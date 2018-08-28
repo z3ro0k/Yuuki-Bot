@@ -9,10 +9,11 @@ exports.run =  async (bot, message, args) => {
     var prefix = await bot.tools.GuildPrefix(message.guild) 
     
     let pages = [`◈ \`${prefix}ping\` ◈ \`${prefix}avatar\` ◈ \`${prefix}ascii\` ◈ \`${prefix}calc\` ◈ \`${prefix}emojis\` ◈ \`${prefix}playing\` ◈ \`${prefix}jumbo\` ◈ \`${prefix}cat\` ◈ \`${prefix}dog\` `];
-    let info = [`◈ \`{prefix}spotify\` ◈ \`{prefix}help\` ◈ \`{prefix}user\` ◈ \`{prefix}ytsearch\`  ◈ \`{prefix}server\` ◈ \`{prefix}roblox\` ◈ \`{prefix}info\` ◈ \`Yu!about\` - \`{prefix}mdocs\` `]
-    let admin = ['◈ \`{prefix}hook\` ◈ \`{prefix}settings\` ◈ \`{prefix}hackban\` ◈ \`{prefix}warn\` ◈ \`{prefix}warnlist\` ◈ \`{prefix}clean\` - \`{prefix}kick\` - \`{prefix}unban']
+    let info = [`◈ \`${prefix}spotify\` ◈ \`${prefix}help\` ◈ \`${prefix}user\` ◈ \`${prefix}ytsearch\`  ◈ \`${prefix}server\` ◈ \`${prefix}roblox\` ◈ \`${prefix}info\` ◈ \`Yu!about\` - \`${prefix}mdocs\` `]
+    let roleplay = [`◈ \`{prefix}kiss\` ◈ \`{prefix}hug\` ◈ \`{prefix}poke\` ◈ \`{prefix}pat\` ◈ \`{prefix}slap\``]
+    let admin = [`◈ \`${prefix}hook\` ◈ \`${prefix}settings\` ◈ \`${prefix}hackban\` ◈ \`${prefix}warn\` ◈ \`${prefix}warnlist\` ◈ \`${prefix}clean\` ◈ \`${prefix}kick\` ◈ \`${prefix}unban\` `]
     let nsfw = ['◈ No hay comandos NSFW por el momento']
-    let botC = ['◈ `Yu!report` ◈ `Yu!suggestion` ◈ `Yu!about`  ◈ `Yu!changelogs`']
+    let botC = ['◈ `Yu!report` ◈ `Yu!feedback(beta)` ◈ `Yu!vote`  ◈ `Yu!changelogs`']
     let server = ['◈ `Yu!welcome` ◈ `To!setautorole` ◈ `To!setchannel` ◈ `Yu!perms` ◈ `Yu!server` ◈ `Yu!starboard`']
     
     var command = bot.commands.get(args[0]) || bot.commands.get(bot.aliases.get(args[0]))
@@ -23,9 +24,9 @@ if(!command) {
       .setDescription(`<:help:483876577420247040>Use ${prefix}help <command> or @Yuuki#3102 <command> para ver información detallada sobre el comando.<:help:483876577420247040>`)
       .addField("== Comandos de Diversion ==", pages)
       .addField("== Comandos de información ==", info)
-      .addField("== Comandos de Interacción ==", 'weas aqui')
-      .addField("== Comandos de administración ==", admin)
+      .addField("== Comandos de Interacción ==", roleplay)
       .addField("== Comandos Útiles ==", botC)
+      .addField("== Comandos de administración ==", admin)
       .addField("== Comandos de Configuración ==", server)
       .addField("== NSFW Commands ==", nsfw)
       .setFooter(`${bot.commands.size } Commands`, bot.user.displayAvatarURL())
