@@ -8,7 +8,7 @@ exports.run =  async (bot, message, args) => {
   
     var prefix = await bot.tools.GuildPrefix(message.guild) 
     
-    let pages = ['◈ `Yu!ping` ◈ `Yu!avatar` ◈ `Yu!ascii`◈ `Yu!calc◈` `Yu!emojis` ◈ `Yu!playing` ◈ `Yu!jumbo` ◈ `Yu!hug` ◈ `Yu!fortnite` ◈ `Yu!cat` ◈ `Yu!dog`'];
+    let pages = [`◈ \`${prefix}ping\` ◈ \`${prefix}avatar\` ◈ \`${prefix}ascii\` ◈ \`${prefix}calc\` ◈ \`${prefix}emojis\` ◈ \`${prefix}playing\` ◈ \`${prefix}jumbo\` ◈ \`${prefix}fortnite\` ◈ \`Yu!cat\` ◈ \`Yu!dog\` `];
     let info = ['◈ `Yu!spotify` ◈ `Yu!weather` ◈ `Yu!help` ◈ `Yu!npm` ◈ `Yu!user` ◈ `Yu!ytsearch` ◈ `Yu!google` ◈ `Yu!mcuser` ◈ `Yu!roblox`']
     let admin = ['◈ `Yu!hook` ◈ `Yu!settings` ◈ `Yu!tmute` ◈ `Yu!warn` ◈ `Yu!warnlist` ◈ `Yu!clean`']
     let nsfw = ['◈ No hay comandos NSFW por el momento']
@@ -20,15 +20,16 @@ exports.run =  async (bot, message, args) => {
 
 if(!command) {
      const embed = new Discord.MessageEmbed()
-      .setDescription(`<:help:483876577420247040>**Mis comandos son **<:help:483876577420247040>\nUse Yu!help comando para ver información detallada sobre el comando.`)
-      .addField("== Comandos de Diversion ==", pages)
+      .setDescription(`<:help:483876577420247040>Use ${prefix}help <command> or @Yuuki#3102 <command> para ver información detallada sobre el comando.<:help:483876577420247040>`)
+      //.addField("== Comandos de Diversion ==", pages)
       .addField("== Comandos de información ==", info)
+      .addField("== Comandos de Interacción ==", 'weas aqui')
       .addField("== Comandos de administración ==", admin)
       .addField("== BOT Commands ==", botC)
       .addField("== Server Commands ==", server)
       .addField("== NSFW Commands ==", nsfw)
       .setFooter(`${bot.commands.size } Commands`, bot.user.displayAvatarURL())
-      .setColor(0x36393e) 
+      .setColor(0xfcc7fb);
      
 			 message.channel.send("Te envie mi lista de comandos a tu DMs").then(m => {
     return message.author.send({ embed })
