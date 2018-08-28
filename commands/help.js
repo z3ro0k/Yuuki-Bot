@@ -10,11 +10,11 @@ exports.run =  async (bot, message, args) => {
     
     let pages = [`◈ \`${prefix}ping\` ◈ \`${prefix}avatar\` ◈ \`${prefix}ascii\` ◈ \`${prefix}calc\` ◈ \`${prefix}emojis\` ◈ \`${prefix}playing\` ◈ \`${prefix}jumbo\` ◈ \`${prefix}cat\` ◈ \`${prefix}dog\` `];
     let info = [`◈ \`${prefix}spotify\` ◈ \`${prefix}help\` ◈ \`${prefix}user\` ◈ \`${prefix}ytsearch\`  ◈ \`${prefix}server\` ◈ \`${prefix}roblox\` ◈ \`${prefix}info\` ◈ \`Yu!about\` - \`${prefix}mdocs\` `]
-    let roleplay = [`◈ \`{prefix}kiss\` ◈ \`{prefix}hug\` ◈ \`{prefix}poke\` ◈ \`{prefix}pat\` ◈ \`{prefix}slap\``]
+    let roleplay = [`◈ \`${prefix}kiss\` ◈ \`${prefix}hug\` ◈ \`${prefix}poke\` ◈ \`${prefix}pat\` ◈ \`${prefix}slap\``]
     let admin = [`◈ \`${prefix}hook\` ◈ \`${prefix}settings\` ◈ \`${prefix}hackban\` ◈ \`${prefix}warn\` ◈ \`${prefix}warnlist\` ◈ \`${prefix}clean\` ◈ \`${prefix}kick\` ◈ \`${prefix}unban\` `]
-    let nsfw = ['◈ No hay comandos NSFW por el momento']
-    let botC = ['◈ `Yu!report` ◈ `Yu!feedback(beta)` ◈ `Yu!vote`  ◈ `Yu!changelogs`']
-    let server = ['◈ `Yu!welcome` ◈ `To!setautorole` ◈ `To!setchannel` ◈ `Yu!perms` ◈ `Yu!server` ◈ `Yu!starboard`']
+    let nsfw = ['◈ Estan ocultos <:piensa:472566168859836456>']
+    let botC = [`◈ \`${prefix}report\` ◈ \`${prefix}feedback(beta)\` ◈ \`${prefix}vote\`  ◈ \`${prefix}changelogs\` `]
+    let server = [`◈  \`${prefix}lang\` ◈  \`${prefix}prefix\` ◈  \`${prefix}welcomelogs\` ◈  \`${prefix}modlogs\` ◈  \`${prefix}roleuser\` ◈  \`${prefix}rolebots\` ◈  \`${prefix}leavetext\` ◈  \`${prefix}welcometext\` ◈ \`${prefix}starboard\` `]
     
     var command = bot.commands.get(args[0]) || bot.commands.get(bot.aliases.get(args[0]))
   
@@ -28,7 +28,7 @@ if(!command) {
       .addField("== Comandos Útiles ==", botC)
       .addField("== Comandos de administración ==", admin)
       .addField("== Comandos de Configuración ==", server)
-      .addField("== NSFW Commands ==", nsfw)
+      .addField("== Comandos Ocultos ==", nsfw)
       .setFooter(`${bot.commands.size } Commands`, bot.user.displayAvatarURL())
       .setColor(0xfcc7fb);
      
