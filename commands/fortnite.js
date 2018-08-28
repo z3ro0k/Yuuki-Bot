@@ -2,10 +2,8 @@ const Discord = require('discord.js'),
   {MessageEmbed} = require('discord.js'),
   {oneLine, stripIndents} = require('common-tags')
 const key = require('../data/apis.json')
-const Client = require('fortnite')
-const fortnite = new Client(key.FORTNITE)
 const db = require('quick.db')
-
+const fetch = require('node-fetch')
 exports.run = async (bot, msg, args) => {
  //  msg.delete();
   let username = args[0];
@@ -85,7 +83,7 @@ const res = await fetch(`https://api.fortnitetracker.com/v1/profile/${platform}/
 
       return msg.channel.send(fortEmbed);
     } catch (err) {
-
+    console.log(err)
       if ((/(noplayer)/i).test(err.toString())) {
         return msg.reply('no player found by that name. Check the platform (`pc`, `xbox` or `psn`)');
       }

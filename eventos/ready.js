@@ -13,7 +13,7 @@ exports.run = async (client, guild, args) => {
 			});
   
 	function rotateGames() {
-			let games = [`¿Necesita ayuda? Yu!help`,`with ${client.options.author}`,`en ${client.guilds.size} servers`, 'Multilanguage Coming Soon :D'];
+			let games = [`¿Necesita ayuda? Yu!help`,`with ${client.options.author}`,`en ${client.guilds.size} servers`, 'Multi-lang is now Use Yu!lang'];
     
 			client.user.setPresence({
 				status: "dnd",
