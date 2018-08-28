@@ -5,7 +5,11 @@ const db = require('quick.db')
 exports.run = async (client, message, args ) => {
   
 	 let emoji = client.emojis.find(e => e.name === 'Upvote');
-  
+  var langg = await client.tools.Lang(message.guild)   
+ const lang = require(`../langs/${langg}.json`) 
+ 
+ let prefix = await client.tools.GuildPrefix(message.guild)
+ 
   var request = require("request");
             var options = {
                 method: 'GET',
@@ -40,8 +44,8 @@ exports.run = async (client, message, args ) => {
     if(certified === true) certified = '<:Certified:464296361899327498> Yes'
     //console.log(body3)
     let embed = new Discord.MessageEmbed()
-   .setTitle('Vote System')
-   .setDescription(`**Vote system Características**\n• El bot sera más conocido.\n• Para que el bot cresca Cuenta con **${client.guilds.size}** guilds actuales\n• ¡Obtienes más características increíbles todos los días!`)
+   .setTitle(lang.vote.title)
+   .setDescription(lang.vote)
    .addField('DBL Information',  `Upvotes: ${emoji}${body.points}\nCertified Bot: ${certified}\nLinks: ${body.invite.length !== 0 ? `[\`Invite\`](${body.invite}) | ` : ""}${body.website.length !== 0 ? `[\`Website\`](${body.website}) | ` : "" }${body.support.length !== 0 ? `[\`Support Server\`](https://discord.gg/${body.support})` : ""} | [\`Vote\`](https://discordbots.org/bot/365949788807757834/vote)`)
    .addField('Discord Bot World Information',  `Upvotes: ${emoji}${body2.stats.likes}\nLinks: [\`Invite\`](${body2.invite}) | [\`Website\`](${body2.website}) |  [\`Support Server\`](${body2.discord}) | [\`Vote\`](https://discordbot.world/bot/365949788807757834)`)
    .setColor(0x36393e)

@@ -273,7 +273,7 @@
       "field5":"Texto de salida"
    },
    "unban":{  
-      "args":"Por favor ",
+      "args":"Por favor ingresa la id del usuario",
       "error":"Falló al desbanear a {{user}}",
       "error2":"Lo siento, no puedo encontrar un usuario con esa ID....",
       "unb":"De acuerdo, ya no esta banneado {{user}}."

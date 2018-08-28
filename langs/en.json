@@ -273,7 +273,7 @@
       "field5":"Leave Text"
    },
    "unban":{  
-      "args":"Please ",
+      "args":"Please enter the user id",
       "error":"I couldn't ban {{user}}",
       "error2":"I'm sorry, but I couldn't find an user with that ID...",
       "unb":"Alright, now {{user}} is not banned anymore."
