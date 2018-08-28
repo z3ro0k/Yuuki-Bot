@@ -4,7 +4,11 @@ const tools = require('../functions.js')
 exports.run = async (bot, messageReaction, user) => {
 if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
 
-  // Fetch Data
+  var langg = await bot.tools.Lang(messageReaction.message.guild)   
+  const lang = require(`../langs/${langg}.json`) 
+ 
+  let prefix = await bot.tools.GuildPrefix(messageReaction.message.guild)
+  
   let item = await db.fetch(`starItem_${messageReaction.message.id}`)
   let target = await db.fetch(`starboard_${messageReaction.message.guild.id}`)
   let channel = messageReaction.message.guild.channels.get(target.channel) || false;
@@ -22,12 +26,12 @@ if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
 
     const embed = new Discord.MessageEmbed()
       .setColor(0x36393e)
-      .setTitle('Starboard')
+      .setTitle(lang.messageReactionR.title)
       .setDescription(newItem.message.content)
-      .addField('Estrellas', `\`⭐${newItem.reactions}\``, true)
-      .addField('Autor', messageReaction.message.guild.members.get(newItem.author.id), true)
+      .addField(lang.messageReactionR.embed.field1, `\`⭐${newItem.reactions}\``, true)
+      .addField(lang.messageReactionR.embed.field2, messageReaction.message.guild.members.get(newItem.author.id), true)
     
-    if (newItem.reactants instanceof Array) embed.setFooter(`Reactivos: ${newItem.reactants.join(', ')}`)
+    if (newItem.reactants instanceof Array) embed.setFooter(`${lang.messageReactionR.embed.footer} ${newItem.reactants.join(', ')}`)
     if (newItem.attachment) embed.setImage(newItem.attachment)
     bot.channels.get(target.channel).messages.get(newItem.embedID).edit(embed)
     

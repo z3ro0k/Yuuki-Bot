@@ -4,14 +4,15 @@ const tools = require('../functions.js')
 
 exports.run = async (bot, messageReaction, user) => {
 
+ 
+
+  if (messageReaction.emoji.toString() !== '⭐') return; 
+  
   var langg = await bot.tools.Lang(messageReaction.message.guild)   
   const lang = require(`../langs/${langg}.json`) 
  
   let prefix = await bot.tools.GuildPrefix(messageReaction.message.guild)
-
-  if (messageReaction.emoji.toString() !== '⭐') return; 
   
-
   let item = await db.fetch(`starItem_${messageReaction.message.id}`)
   let target = await db.fetch(`starboard_${messageReaction.message.guild.id}`)
   let requiredRole = await db.fetch(`starStarter_${messageReaction.message.guild.id}`)
@@ -73,7 +74,7 @@ exports.run = async (bot, messageReaction, user) => {
     db.set(`starItem_${msgID}`, newItem)
     
   } else if (!messageReaction.message.guild.members.get(user.id).roles.find(role => role.name === 'Moderators' || '+' || 'Mods')) {
-    embed.setFooter(lang.messageReaction.noPerms.message.replace('{{Role}}'))
+    embed.setFooter(lang.messageReaction.noPerms.message.replace('{{Role}}', requiredRole))
     return messageReaction.message.channel.send(embed).then(msg => {
       msg.delete({timeout: 10000})
     })
