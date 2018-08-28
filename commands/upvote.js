@@ -45,7 +45,7 @@ exports.run = async (client, message, args ) => {
     //console.log(body3)
     let embed = new Discord.MessageEmbed()
    .setTitle(lang.vote.title)
-   .setDescription(lang.vote)
+   .setDescription(lang.vote.message.replace('{{guilds}}', client.guilds.size))
    .addField('DBL Information',  `Upvotes: ${emoji}${body.points}\nCertified Bot: ${certified}\nLinks: ${body.invite.length !== 0 ? `[\`Invite\`](${body.invite}) | ` : ""}${body.website.length !== 0 ? `[\`Website\`](${body.website}) | ` : "" }${body.support.length !== 0 ? `[\`Support Server\`](https://discord.gg/${body.support})` : ""} | [\`Vote\`](https://discordbots.org/bot/365949788807757834/vote)`)
    .addField('Discord Bot World Information',  `Upvotes: ${emoji}${body2.stats.likes}\nLinks: [\`Invite\`](${body2.invite}) | [\`Website\`](${body2.website}) |  [\`Support Server\`](${body2.discord}) | [\`Vote\`](https://discordbot.world/bot/365949788807757834)`)
    .setColor(0x36393e)

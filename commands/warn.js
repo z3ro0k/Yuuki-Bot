@@ -9,21 +9,27 @@ let warns = JSON.parse(fs.readFileSync("./data/warnings.json", "utf8"));
 
 exports.run = async (bot, message, args, func) => {
 
+ var langg = await bot.tools.Lang(message.guild)   
+ const lang = require(`../langs/${langg}.json`) 
+ 
+ let prefix = await bot.tools.GuildPrefix(message.guild)
+ 
+
     var channelID = await bot.tools.getLogsChannel(message.guild)
     const modlog = message.guild.channels.find(channel => channel.id === `${channelID}`);
   
-    if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Sorry, but you do not have valid permissions! If you believe this is an error, contact an owner.")
+    if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(lang.warn.perms)
   
     const mod = message.author;
   
     let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   
-    if (!user) return message.channelsend("Couldn't find user.")
-    if (user.hasPermission("KICK_MEMBERS")) return message.channel.send("The user you are trying to warn is either the same, or higher role than you.")
+    if (!user) return message.channelsend(lang.warn.user)
+    if (user.hasPermission("KICK_MEMBERS")) return message.channel.send(lang.warn.nPerms)
     let reason = message.content.split(" ").slice(2).join(" ");
-    if (!reason) return message.channel.send('Please specify a reason for the warn!')
+    if (!reason) return message.channel.send(lang.warn.reazon)
   
-  if (!modlog) return message.channel.send('**Please create a channel with the name `mod-log`**')
+  if (!modlog) return message.channel.send(lang.warn.nC)
   
     const casenumbers = new db.table('CASENUMBERs')
     const guildcasenumber = await casenumbers.fetch(`case_${message.guild.id}`)
@@ -56,8 +62,8 @@ exports.run = async (bot, message, args, func) => {
             .setFooter(`ID ${user.id}`)
        modlog.send(embed)
       
-        message.channel.send('I have warned the person and logged it!')
-        user.send(`**You have been warned in ${message.guild.name}: ${reason}!**`)
+        message.channel.send(lang.warn.sW)
+        user.send(lang.wa)
    
   if(num1 === 3){
     let muterole = message.guild.roles.find(role => role.name === "Muted");
