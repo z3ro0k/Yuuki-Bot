@@ -90,7 +90,7 @@ bot.on('message', async (message) => {
   
 })
 
-bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
+//bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
 
 var dbl = async () => {
 await bot.tools.post_dbl(bot)
