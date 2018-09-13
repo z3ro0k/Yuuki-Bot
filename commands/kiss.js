@@ -16,7 +16,7 @@ const lang = require(`../langs/${langg}.json`)
 
  return msg.channel.send(`<@${member ? member.id : msg.author.id}>` ,{ embed: {
         description: member
-          ? `${member.username}! ${lang.kiss.mention} ${msg.member.displayName} 💋!` : 
+          ? `${message.author.username} gave ${message.mentions.members.first().user.username} a kiss!` : 
         `${msg.member.displayName} ${lang.kiss.notMention}`,
         image: {url: member ? kissImg.url : 'http://gifimage.net/wp-content/uploads/2017/06/anime-cat-gif-17.gif'},
         color: msg.guild ? msg.guild.me.displayColor : 10610610
