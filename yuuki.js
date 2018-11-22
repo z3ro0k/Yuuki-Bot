@@ -35,7 +35,7 @@ const db = require('quick.db')
 const queue = new Map();
 let cooldown = new Set();
 
-const DBL = require("dblapi.js");
+//const DBL = require("dblapi.js");
 
 
 bot.tools = require('./functions.js');
@@ -45,7 +45,7 @@ bot.ownerID = '322203879208910849';
 bot.color = 0xfcc7fb;
 
 bot.idiotAPI = new idioticApi.Client('OuuLWREjnx5BNhGl1B7C', { dev: true });
-bot.dbl = new DBL(apis.DBLAPI, bot);
+//bot.dbl = new DBL(apis.DBLAPI, bot);
 
 bot.on('message', async (message) => {
 
@@ -90,7 +90,7 @@ bot.on('message', async (message) => {
   
 })
 
-//bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
+bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.DUwiiw.5XOJyb96StwLoAE_JZxpXNWaclE')
 
 var dbl = async () => {
 await bot.tools.post_dbl(bot)
