@@ -18,7 +18,12 @@ exports.run = async (music, message, args, queue) => {
   const serverQueue = queue.get(message.guild.id);
     let o = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
     let fotinha = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
-    const voiceChannel = message.member.voiceChannel;
+    const voiceChannel = message.member.voice.channel;
+  
+    if (voiceChannel.id !== "516063964610822144") {
+        message.channel.send("Solo puedes escuchar musica en el canal <#516063964610822144>")
+      return;
+    }
     if (!voiceChannel) return message.channel.send('Lo siento, pero usted necesita estar en un canal de voz para tocar la música!');
     if (searchString < 1) return message.reply("Usted no ha colocado el nombre de la canción o un url.");
 

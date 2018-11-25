@@ -15,7 +15,7 @@ exports.run = async (client, message, args, queue) => {
     const url = args1[1] ? args1[1].replace(/<(.+)>/g, '$1') : '';
     const serverQueue = queue.get(message.guild.id);
 
-    if (!message.member.voiceChannel) return message.channel.send('Usted no está en un canal de voz!');
+    if (!message.member.voice.channel) return message.channel.send('Usted no está en un canal de voz!');
     if (!serverQueue) return message.channel.send("No hay ni una canción para parar. ");
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end('¡El comando de parada se ha utilizado!');
