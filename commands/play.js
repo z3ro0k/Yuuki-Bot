@@ -20,10 +20,10 @@ exports.run = async (music, message, args, queue) => {
     let fotinha = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
     const voiceChannel = message.member.voice.channel;
   
-    if (voiceChannel.id !== "516063964610822144") {
+   /* if (voiceChannel.id !== "516063964610822144") {
         message.channel.send("Solo puedes escuchar musica en el canal <#516063964610822144>")
       return;
-    }
+    }*/
     if (!voiceChannel) return message.channel.send('Lo siento, pero usted necesita estar en un canal de voz para tocar la música!');
     if (searchString < 1) return message.reply("Usted no ha colocado el nombre de la canción o un url.");
 
