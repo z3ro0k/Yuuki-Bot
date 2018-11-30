@@ -35,9 +35,10 @@ exports.run = async (bot, message, args) => {
     if (args.join(" ").toUpperCase() === 'NONE') newChannel = ''; 
     else newChannel = message.mentions.channels.first().id; 
 
+      const cName = message.guild.channels.find(c => c.id === newChannel)
     
     db.set(`messageChannel_${message.guild.id}`, newChannel).then(i => {
-        tools.embed(message.channel, lang.setlogs.logsC)
+        tools.embed(message.channel, lang.setlogs.logsC + ` #${cName.name}`)
     })
   }
 } 

@@ -36,7 +36,7 @@ exports.run = async (bot, message, args) => {
 
     
     db.set(`welcomeChannel_${message.guild.id}`, newChannel).then(i => {
-        tools.embed(message.channel, `${lang.welcomelogs.text} #${message.mentions.channels.first().name}**`) 
+        tools.embed(message.channel, `${lang.welcomelogs.logsC} **#${message.mentions.channels.first().name}**`) 
     })
   }
 } 
