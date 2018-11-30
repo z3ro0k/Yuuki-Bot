@@ -58,6 +58,7 @@ try {
       .addField(lang.dbli.SD, body.shortdesc, true)
       .addField(lang.dbli.Links, `${body.invite.length !== 0 ? `[Invite](${body.invite}) | ` : ""}${body.website.length !== 0 ? `[Website](${body.website}) | ` : "" }${body.support.length !== 0 ? `[Support Server](https://discord.gg/${body.support})` : ""}`, true)
       .setTimestamp()
+   
       message.channel.send({ embed });
   } catch(err) {
     message.channel.send(`El bot que has mencionado no se encuentra en la lista de discordbotlist. (o hubo un error interno! Oops!)`)
