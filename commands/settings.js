@@ -49,6 +49,7 @@ exports.run = async (bot, message, args) => {
  
     
 const settings = new Discord.MessageEmbed()
+.setThumbnail("https://cdn.dribbble.com/users/114736/screenshots/1046938/loading-gif.gif")
 .setAuthor('Settings', 'https://cdn.discordapp.com/emojis/393126289214537738.png')
 .setDescription(lang.settings.message)
 .addField(lang.langu.title , lang.langu.name , true)
@@ -84,7 +85,6 @@ const settings = new Discord.MessageEmbed()
 .addField(lang.settings.field4, textjoin, true)
 .addField(lang.settings.field5, textleave, true)
 .setColor(0x36393e)
-.setThumbnail()
 message.channel.send(settings)
           })          
         })
