@@ -10,7 +10,7 @@ exports.run = async (client, member) => {
  
   if(member.user.bot) {
   const borole = await client.tools.autoRoleBots(member.guild)
-  if (!borole || borole.toLowerCase() === 'none');
+  if (!borole || borole.toLowerCase() === null);
         else { 
             try { 
                 member.roles.add(member.guild.roles.find(roleU => roleU.name === `${borole}`))

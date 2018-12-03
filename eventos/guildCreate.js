@@ -6,7 +6,7 @@ var canal = bot.channels.get('429467913531949056');
 let user = guild.members.size;
 let bots = guild.members.filter(m => m.user.bot).size;
 let discriminar = user - bots;
-  const channelini = guild.channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first();
+const channelini = guild.channels.filter(c => c.permissionsFor(guild.me).has('SEND_MESSAGES') && c.type === 'text').first();
 let idc = channelini.id;
 bot.channels.get(idc).send(`Gracias por invitarme a **${guild.name}**\nUse: Yu!help para mas información`);
 
