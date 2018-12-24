@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const db = require('quick.db')
 exports.run = (bot, message, args, func) => {
 
-    let ping = Math.floor(message.client.ping);
+    let ping = Math.floor(bot.ws.ping);
 
 message.channel.send(":ping_pong: Pong!")
 .then(m => {
