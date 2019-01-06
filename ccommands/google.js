@@ -1,4 +1,4 @@
-lconst google = require("google");
+const google = require("google");
 const Discord = require("discord.js");
 const blacklist = require('../utils/blacklist.json');
 
