@@ -43,19 +43,10 @@ bot.tools.loadCmds(bot)
 bot.tools.eventsLoad(bot)
 bot.ownerID = '322203879208910849';
 bot.color = 0xfcc7fb;
-
 bot.idiotAPI = new idioticApi.Client('OuuLWREjnx5BNhGl1B7C', { dev: true });
-const server = http.createServer(app);
-var tokenDBl = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2NTk0OTc4ODgwNzc1NzgzNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTE0OTM5ODc3fQ.QFcaSEfNHj3l6VTegWbi5w7Vz52KqikAdt4KUlVvy4Y"
-const DBL = require('dblapi.js');
-const DBl = new DBL(tokenDBl, { webhookPort: 5000, webhookAuth: 'YuukiBot' });
 
-DBl.webhook.on('ready', hook => {
-  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
-});
-DBl.webhook.on('vote', vote => {
-  console.log(`User with ID ${vote.user} just voted!`);
-});
+const server = http.createServer(app);
+
 
 bot.on('message', async (message) => {
 
