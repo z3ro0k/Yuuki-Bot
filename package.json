@@ -54,6 +54,8 @@
     "node-gyp": "^3.7.0",
     "youtube-info": "^1.2.0",
     "idiotic-api": "^0.2.11",
+    "canvas": "^1.6.11",
+    "pixel-util": "^0.0.2",
     "dblapi.js": "^2.2.0"
   },
   "engines": {
