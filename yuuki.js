@@ -12,11 +12,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/index.html');
 });
 
-app.listen(process.env.PORT);
 
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
-}, 280000);
 
 
 const Discord = require('discord.js');
