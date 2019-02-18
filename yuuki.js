@@ -11,6 +11,7 @@ app.get("/", (request, response) => {
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/index.html');
 });
+
 app.listen(process.env.PORT);
 
 setInterval(() => {
