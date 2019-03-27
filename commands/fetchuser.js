@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const { MessageEmbed,  escapeMarkdown } = require('discord.js');
 exports.run = async(bot, message, args, level) => {
-  
+  try {
   bot.users.fetch(args[0]).then(user => {
     var userStatus
         if (user.presence.activity !== null) {
@@ -28,6 +28,9 @@ const embed = new Discord.MessageEmbed()
 .setThumbnail(user.displayAvatarURL())
 message.channel.send(embed)
   });
+  } catch(e) {
+   message.channel.send('User not found') 
+  }
 }
 exports.config = {
   command: "fetchuser",
