@@ -31,6 +31,7 @@ let cooldown = new Set();
 
 //const DBL = require("dblapi.js");
 
+bot.config = require('./botconfig')
 
 bot.tools = require('./functions.js');
 bot.tools.loadCmds(bot)
@@ -85,7 +86,7 @@ bot.on('message', async (message) => {
   
 })
 
-bot.login('MzY1OTQ5Nzg4ODA3NzU3ODM0.D38Pew.kWadiYPmN2XbeWNA9tteX1MVfgw')
+bot.login(bot.config.token)
 
 var dbl = async () => {
 await bot.tools.post_dbl(bot)

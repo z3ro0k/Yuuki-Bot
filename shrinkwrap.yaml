@@ -7,7 +7,7 @@ dependencies:
   date-diff: 0.1.3
   dateformat: 3.0.3
   dblapi.js: 2.2.0
-  discord.js: github.com/discordjs/discord.js/9085138f0d0845cb52442c62e4dbe67bd1d284aa
+  discord.js: github.com/discordjs/discord.js/04fa56d0c07b66c77d0fdd6cb4419efb890043eb
   express: 4.16.4
   figlet: 1.2.0
   fortnite: 4.1.1
@@ -1082,7 +1082,7 @@ packages:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.7
-      mime-types: 2.1.21
+      mime-types: 2.1.22
     dev: false
     engines:
       node: '>= 0.12'
@@ -1942,6 +1942,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-R3C4db6bgQhlIhPU48fUtdVmKnflq+hRdad7IyKhtFj06VPNVdk2RhiYL3UjQIlso8L+YxAtFkobT0VK+S/ybg==
+  /mime-db/1.38.0:
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-bqVioMFFzc2awcdJZIzR3HjZFX20QhilVS7hytkKrv7xFAn8bM1gzc/FOX2awLISvWe0PV8ptFKcon+wZ5qYkg==
   /mime-types/2.1.18:
     dependencies:
       mime-db: 1.33.0
@@ -1966,6 +1972,14 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-3iL6DbwpyLzjR3xHSFNFeb9Nz/M8WDkX33t1GFQnFOllWk8pOrh/LSrB5OXlnlW5P9LH73X6loW/eogc+F5lJg==
+  /mime-types/2.1.22:
+    dependencies:
+      mime-db: 1.38.0
+    dev: false
+    engines:
+      node: '>= 0.6'
+    resolution:
+      integrity: sha512-aGl6TZGnhm/li6F7yx82bJiBZwgiEa4Hf6CNr8YO+r5UHr53tSTYZb102zyU50DOWWKeOv0uQLRL0/9EiKWCog==
   /mime/1.4.1:
     dev: false
     hasBin: true
@@ -2276,10 +2290,10 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-88em58dDVB/KzPEx1X0N3LwFfYZPyDc4B6eF38M1rk9VTZMbxXXgjugz8mmwpS9Ox4BDZ+t6t3QP5+/gazweIA==
-  /pako/1.0.6:
+  /pako/1.0.10:
     dev: false
     resolution:
-      integrity: sha512-lQe48YPsMJAig+yngZ87Lus+NF+3mtu7DVOBu6b/gHO1YpKwIj5AWjZ/TOS7i46HD/UixzWb1zeWDZfGZ3iYcg==
+      integrity: sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
   /parse-bmfont-ascii/1.0.6:
     dev: false
     resolution:
@@ -2448,6 +2462,15 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
+  /prism-media/1.0.1:
+    dev: false
+    peerDependencies:
+      ffmpeg-binaries: ^4.0.0
+      ffmpeg-static: ^2.4.0
+      node-opus: ^0.3.1
+      opusscript: ^0.0.6
+    resolution:
+      integrity: sha512-Unmeibfk7b8wiiQFPlCC0GgCRaAejSpe2ElgfDkMi9ZmsqzeTbUnmiLNjyqONeKK+HMYINYHOgJFox5l7FU7YA==
   /process-nextick-args/2.0.0:
     dev: false
     resolution:
@@ -3206,10 +3229,10 @@ packages:
     optional: true
     resolution:
       integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
-  /tweetnacl/1.0.0:
+  /tweetnacl/1.0.1:
     dev: false
     resolution:
-      integrity: sha1-cT2LgY2kIGh0C/aDhtBHnmb8ins=
+      integrity: sha512-kcoMoKTPYnoeS50tzoqjPY3Uv9axeuuFAZY9M/9zFnhoVvRfxz9K29IMPD7jGmt2c8SW7i3gT9WqDl2+nV7p4A==
   /type-check/0.3.2:
     dependencies:
       prelude-ls: 1.1.2
@@ -3402,12 +3425,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-nnWLa/NwZSt4KQJu51MYlCcSQ5g7INpOrOMt4XV8j4dqTXdmlUmSHQ8/oLC069ckre0fRsgfvsKwbTdtKLCDkA==
-  /ws/6.1.2:
+  /ws/6.2.1:
     dependencies:
       async-limiter: 1.0.0
     dev: false
     resolution:
-      integrity: sha512-rfUqzvz0WxmSXtJpPMX2EeASXabOrSMk1ruMOV3JBTBjo4ac2lDjGGsbQSyxj8Odhw5fBib8ZKEjDNvgouNKYw==
+      integrity: sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   /xhr/2.5.0:
     dependencies:
       global: 4.3.2
@@ -3490,36 +3513,28 @@ packages:
     dev: false
     resolution:
       integrity: sha1-o97wa6XjmuZEhQu0yirUEStIVek=
-  github.com/amishshah/prism-media/1e336c9a20dd0928ef3bdc2075ab58d1521fb323:
-    dev: false
-    name: prism-media
-    resolution:
-      registry: 'https://registry.npmjs.org/'
-      tarball: 'https://codeload.github.com/amishshah/prism-media/tar.gz/1e336c9a20dd0928ef3bdc2075ab58d1521fb323'
-    version: 0.3.1
-  github.com/discordjs/discord.js/9085138f0d0845cb52442c62e4dbe67bd1d284aa:
+  github.com/discordjs/discord.js/04fa56d0c07b66c77d0fdd6cb4419efb890043eb:
     dependencies:
       form-data: 2.3.3
       node-fetch: 2.3.0
-      pako: 1.0.6
-      prism-media: github.com/amishshah/prism-media/1e336c9a20dd0928ef3bdc2075ab58d1521fb323
+      pako: 1.0.10
+      prism-media: 1.0.1
       setimmediate: 1.0.5
-      tweetnacl: 1.0.0
-      ws: 6.1.2
+      tweetnacl: 1.0.1
+      ws: 6.2.1
     dev: false
     engines:
-      node: '>=8.0.0'
+      node: '>=10.0.0'
     name: discord.js
     peerDependencies:
-      '@discordjs/uws': ^10.149.0
-      bufferutil: ^4.0.0
+      '@discordjs/uws': ^11.149.1
+      bufferutil: ^4.0.1
       erlpack: discordapp/erlpack
-      libsodium-wrappers: ^0.7.3
-      sodium: ^2.0.3
+      libsodium-wrappers: ^0.7.4
+      sodium: ^3.0.2
       zlib-sync: ^0.1.4
     resolution:
-      registry: 'https://registry.npmjs.org/'
-      tarball: 'https://codeload.github.com/discordjs/discord.js/tar.gz/9085138f0d0845cb52442c62e4dbe67bd1d284aa'
+      tarball: 'https://codeload.github.com/discordjs/discord.js/tar.gz/04fa56d0c07b66c77d0fdd6cb4419efb890043eb'
     version: 12.0.0-dev
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
