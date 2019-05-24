@@ -30,7 +30,7 @@ exports.run = async (bot, message, args, queue) => {
             return text;
     }
 
-    var authors = ["322203879208910849", "324411190396715010", "266063988209483790"];
+    var authors = ["322203879208910849", "422208401020551173"];
     if (!authors.includes(message.author.id)) {
         message.channel.send({
             embed: embed
