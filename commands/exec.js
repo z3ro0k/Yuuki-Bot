@@ -12,8 +12,8 @@ exports.run = async(client, message, args, level) => {
           hastebin(`${response}`, "js").then(r => {
               
             const embed = new Discord.MessageEmbed()
-              .setTitle('~ Exec Command ~')`[\`${r}\`](${r})`
-              .setDescription(`**Ran: ${args.join(" ")}**\n [\`${r}\`](${r})`, {code: "asciidoc", split: "\n"})
+              .setTitle('~ Exec Command ~')
+              .setDescription(`**Ran: ${args.join(" ")}**\n\n[\`${r}\`](${r})`)
               .setThumbnail(client.user.displayAvatarURL())
               .setColor(0x36393e)  
             message.channel.send({ embed }).catch(console.error);
