@@ -48,7 +48,7 @@ bot.on('message', async (message) => {
 
   if (message.channel.type != 'text') return;
   
-  if (message.content === "=add") {
+  /*if (message.content === "=add") {
     var role = "OP"
     var user = message.member 
     
@@ -65,7 +65,7 @@ bot.on('message', async (message) => {
       
       await user.roles.add(user.guild.roles.find(roleU => roleU.name === role))
       })
-  }
+  }*/
   
   var prefixx =  await bot.tools.GuildPrefix(message.guild) 
   
