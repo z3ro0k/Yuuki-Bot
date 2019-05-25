@@ -10,8 +10,6 @@
     http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 10000);
 
-
-
 const Discord = require('discord.js');
 const fs = require('fs');
 const apis = require('./data/apis.json')
