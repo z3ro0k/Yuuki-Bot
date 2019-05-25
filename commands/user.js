@@ -25,12 +25,12 @@ let member = {};
       if (!userStatus) {
      userStatus = "User is not playing a game"
    }
-        if (member.bot) {
+        /*if (member.bot === true) {
             var author = member.user.tag + ' [BOT]'
-        } else {
-            var author = member.user.tag
-        }
-
+        } else {*//*
+            
+        }*/
+        var author = member.user.tag
         if (!member.nickname) {
             var nickname = '`N/A`'
         } else {
