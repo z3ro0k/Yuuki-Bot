@@ -1,6 +1,7 @@
 
 const tools = require('../functions.js');
 const db = require('quick.db')
+
 exports.run = async (bot, message, args) => {
   var prefix = await bot.tools.GuildPrefix(message.guild) 
   
