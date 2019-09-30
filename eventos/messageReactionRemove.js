@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
 const tools = require('../functions.js')
+
 exports.run = async (bot, messageReaction, user) => {
 if (messageReaction.emoji.toString() !== '⭐') return; // Incorrect Emoji
 
