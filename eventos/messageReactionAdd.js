@@ -4,8 +4,6 @@ const tools = require('../functions.js')
 
 exports.run = async (bot, messageReaction, user) => {
 
- 
-
   if (messageReaction.emoji.toString() !== '⭐') return; 
   
   var langg = await bot.tools.Lang(messageReaction.message.guild)   
@@ -54,7 +52,7 @@ exports.run = async (bot, messageReaction, user) => {
       db.set(`starItem_${messageReaction.message.id}`, msg.id, { target: '.embedID' })
     })
   } else if (item !== null) {
-    console.log(item)
+    //console.log(item)
     let msgID = messageReaction.message.id;
     
 
