@@ -3,8 +3,7 @@ const fetch = require('node-fetch')
 
 exports.run = async (bot, msg, args) => {
 var member = msg.mentions.users.first() || msg.guild.members.get(args.join(' ')) 
-var langg = await bot.tools.Lang(msg.guild)    
-const lang = require(`../langs/${langg}.json`) 
+var lang = await bot.tools.Lang(msg.guild)
   
  try {
      if(member === msg.author) return msg.channel.send(lang.hug.author)
