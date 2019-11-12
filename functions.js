@@ -8,11 +8,6 @@ const fs = require('fs')
 var request = require("request");
 
 
-var system = module.exports = {};
-
-system.update = {};
-system.post = {};
-
 module.exports = { 
   
     hook: function(channel, title, message, color, avatar) { 
@@ -66,31 +61,7 @@ module.exports = {
             })
 
     },
-  system: function() {
-
-	system.post.post_dbl();
-
-},
- post_dbl: function(client) {
-   
-const { stringify } = require('querystring');
-const { request } = require('https');
-   
-const data = stringify({ server_count: client.guilds.size });  
-   
-const req = request({
-    host: 'discordbots.org',
-    path: `/api/bots/365949788807757834/stats`,
-    method: 'POST',
-    headers: {
-      'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM2NTk0OTc4ODgwNzc1NzgzNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTE0OTM5ODc3fQ.QFcaSEfNHj3l6VTegWbi5w7Vz52KqikAdt4KUlVvy4Y',
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': Buffer.byteLength(data)
-    }
-  });
-  req.write(data);
-  req.end();
-},
+  
     embed: function(channel, message, timer) {
       channel = channel.channel || channel;
       channel.send({embed:{
@@ -100,7 +71,8 @@ const req = request({
         if (!isNaN(timer)) {msg.delete({timeout: timer})};
       })
     },
-  getUser: function(message, search) {
+  
+    getUser: function(message, search) {
 	let members = message.guild.members.filter(member => {
 		if(member.user.username.toLowerCase().includes(search.toLowerCase())) return true;
 		if(member.nickname && member.nickname.toLowerCase().includes(search.toLowerCase())) return true;
@@ -150,7 +122,8 @@ const req = request({
         if (!isNaN(timer)) {msg.delete({timeout: timer})};
       })
     },
-  getInfo: function() {
+  
+    getInfo: function() {
         let client = this;
 
         let info = {};
@@ -198,7 +171,8 @@ const req = request({
             getVersion();
         });
     },
- loadCmds: function(bot) {
+  
+    loadCmds: function(bot) {
 bot.commands = new Discord.Collection();  
 bot.aliases = new Discord.Collection();
 bot.events = new Discord.Collection();
@@ -221,7 +195,7 @@ fs.readdir('./commands/', (err, files) => {
   })
 },
   
-eventsLoad: function(bot) {
+    eventsLoad: function(bot) {
 fs.readdir('./eventos/', async (err, files) => {
     if (err) return console.error(err);
     const jsfiles = files.filter(f => f.split('.').pop() === 'js');
@@ -241,7 +215,8 @@ fs.readdir('./eventos/', async (err, files) => {
       });
   });
 },
-  getLang: async function(channel, guild, idioma) {
+  
+    getLang: async function(channel, guild, idioma) {
      var langg
     idioma = await db.fetch(`guildLang_${guild.id}`)
      if (idioma === null) langg = 'en'
@@ -258,7 +233,7 @@ fs.readdir('./eventos/', async (err, files) => {
 
   },
    
-  Lang: async function(guild) {
+    Lang: async function(guild) {
      var langg
      var idioma = await db.fetch(`guildLang_${guild.id}`)
      if (idioma === null) langg = 'en'
@@ -268,7 +243,7 @@ fs.readdir('./eventos/', async (err, files) => {
     return langg
   },
 
-  langU: async function(channel, guild, newLang) {
+    langU: async function(channel, guild, newLang) {
 
   db.set(`guildLang_${guild.id}`, newLang)
   
@@ -285,7 +260,8 @@ fs.readdir('./eventos/', async (err, files) => {
     channel.send({embed});
 
   },
-  GuildPrefix: async function(guild) {
+  
+    GuildPrefix: async function(guild) {
      var prefix
      var prefijo = await db.fetch(`guildPrefix_${guild.id}`)
 
@@ -294,7 +270,8 @@ fs.readdir('./eventos/', async (err, files) => {
 
     return prefix
   },
-  GetGuildPrefix: async function(channel, guild) {
+  
+    GetGuildPrefix: async function(channel, guild) {
      var prefix
 
      var prefijo = await db.fetch(`guildPrefix_${guild.id}`)
@@ -316,7 +293,8 @@ fs.readdir('./eventos/', async (err, files) => {
     channel.send({embed});
 
   },
-  UpdateGuildPrefix: async function(channel, guild, newPrefix) {
+  
+    UpdateGuildPrefix: async function(channel, guild, newPrefix) {
 
   channel = channel.channel || channel;
 
@@ -337,46 +315,53 @@ fs.readdir('./eventos/', async (err, files) => {
 
     channel.send({embed});
   }, 
-  getLogsChannel: async function(guild) {
+  
+    getLogsChannel: async function(guild) {
     var Canal
     const Lchannel = await db.fetch(`messageChannel_${guild.id}`)
     if (Lchannel === null) Canal = '**<:off:442082928323985408>  Not set**'
      else Canal = Lchannel
     return Canal
   }, 
-  getWelcomeChannel: async function(guild) {
+  
+    getWelcomeChannel: async function(guild) {
     var canal
     const channel = await db.fetch(`welcomeChannel_${guild.id}`)
     if (channel === null) canal = '**<:off:442082928323985408>  Not set**'
      else canal = channel
     return canal
   }, 
-  autoRoleUsers: async function(guild) {
+  
+    autoRoleUsers: async function(guild) {
     var role
     const rolename = await db.fetch(`autoRoleU_${guild.id}`)
     if (rolename === null) role = '**<:off:442082928323985408>  Not set**'
      else role = rolename
     return role
   },
-  autoRoleBots: async function(guild) {
+  
+    autoRoleBots: async function(guild) {
     var role
     const rolename = await db.fetch(`autoRoleB_${guild.id}`)
     if (rolename === null) role = '**<:off:442082928323985408>  Not set**'
      else role = rolename
     return role
   },
-  welcomeText: async function(guild) {  
+  
+    welcomeText: async function(guild) {  
     var text
     const rolename = await db.fetch(`joinMessage_${guild.id}`)
     if (rolename === null) text = 'No Habilitado/Not Enabled'//'Bienvenido **{user:tag}** a **{server:name}** ya somos un total de **{server:membercount} de miembros*** en el servidor'
      else text = rolename
     return text
   },
-  leaveText: async function(guild) {  
+  
+    leaveText: async function(guild) {  
     var text
     const texto = await db.fetch(`leaveMessage_${guild.id}`)
     if (texto === null) text = 'No Habilitado/Not Enabled'//'Good bye, **{user:tag}** You are now leaving **{server:name}**!'
      else text = texto
     return text
   }
+  
 }
