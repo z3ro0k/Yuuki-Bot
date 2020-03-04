@@ -1,12 +1,12 @@
 module.export = {
   
-  token: 'Your secret token',
+  token: process.env.TOKEN,
   
-  prefix: 'Your Prefix',
+  prefix: process.env.PREFIX,
   
-  IdOwner: 'Your ID',
+  IdOwner: process.env.OWNER,
   
-  supportServer: 'Support Server invite',
+  supportServer: process.env.SUPPORT,
   
   ownerName: "Your discord tag"
   
