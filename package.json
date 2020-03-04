@@ -1,6 +1,6 @@
 {
   "name": "yuuki",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "What am I about?",
   "main": "server.js",
   "scripts": {
