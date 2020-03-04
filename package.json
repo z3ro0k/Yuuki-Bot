@@ -66,5 +66,8 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "@architect/sandbox": "^1.7.2"
+  }
 }
